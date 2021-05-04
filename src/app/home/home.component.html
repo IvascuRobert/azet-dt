@@ -1,0 +1,104 @@
+<div class="row justify-content-center my-3">
+    <div class="col-11 mb-3">
+        <ngb-carousel #carousel
+                      [interval]="200000"
+                      [pauseOnHover]="pauseOnHover"
+                      [pauseOnFocus]="pauseOnFocus"
+                      (slide)="onSlide($event)">
+            <ng-template ngbSlide
+                         *ngFor="let img of images; index as i">
+                <div class="carousel-caption">
+                    <h3>My slide {{i + 1}} title</h3>
+                </div>
+                <a href="/"
+                   rel="nofollow noopener noreferrer">
+                    <div class="picsum-img-wrapper">
+                        <img src="/assets/tires_1.jpg"
+                             style="height: 300px; width: 100%;"
+                             class="rounded"
+                             alt="My image {{i + 1}} description">
+                    </div>
+                </a>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    <div class="col-11 mb-3">
+        <div class="row">
+            <div class="col-2">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar
+                                  matTooltip="Vara"
+                                  aria-hidden="false"
+                                  aria-label="Vara">wb_sunny</mat-icon>
+                        <mat-card-title>Continental</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div class="col-2">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar
+                                  matTooltip="Vara"
+                                  aria-hidden="false"
+                                  aria-label="Vara">wb_sunny</mat-icon>
+                        <mat-card-title>Continental</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div class="col-2">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar
+                                  matTooltip="Vara"
+                                  aria-hidden="false"
+                                  aria-label="Vara">wb_sunny</mat-icon>
+                        <mat-card-title>Continental</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div class="col-2">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar
+                                  matTooltip="Vara"
+                                  aria-hidden="false"
+                                  aria-label="Vara">wb_sunny</mat-icon>
+                        <mat-card-title>Continental</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div class="col-2">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar
+                                  matTooltip="Vara"
+                                  aria-hidden="false"
+                                  aria-label="Vara">wb_sunny</mat-icon>
+                        <mat-card-title>Continental</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div class="col-2">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar
+                                  matTooltip="Vara"
+                                  aria-hidden="false"
+                                  aria-label="Vara">wb_sunny</mat-icon>
+                        <mat-card-title>Continental</mat-card-title>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div class="col-11">
+        <mat-tab-group mat-align-tabs="center"
+                       color="primary"
+                       backgroundColor="primary">
+            <mat-tab label="Cele mai vandute">Cele mai vandute</mat-tab>
+            <mat-tab label="Ofertele curente">Ofertele curente</mat-tab>
+            <mat-tab label="Cele mai noi modele">Cele mai noi modele</mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

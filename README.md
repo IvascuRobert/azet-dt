@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
+## Libraries are installed
+
+npm install eslint
+@angular/material
+
+npm install --save-dev @fortawesome/fontawesome-free 
+si trebuie adaugate si styles and scripts: https://stackoverflow.com/questions/53025162/use-font-awesome-5-on-angular-material-7
+
+npm install ngcc
+npm install ngx-drag-scroll --save
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
