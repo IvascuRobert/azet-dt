@@ -1,8 +1,19 @@
-.example-container {
+.side-nav-container {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background: #eee;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  >.col,
+  >[class*="col-"] {
+    padding-right: 2px;
+    padding-left: 0;
+  }
 }

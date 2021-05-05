@@ -10,12 +10,12 @@ import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, HttpClientModule, MatToolbarModule, MatIconModule, MatTooltipModule, MatButtonModule],
-  exports: [RouterModule, HttpClientModule, HeaderComponent, FooterComponent, SideNavComponent],
-  declarations: [HeaderComponent, FooterComponent, SideNavComponent],
+  exports: [RouterModule, HttpClientModule, HeaderComponent, FooterComponent, SideNavPagesComponent],
+  declarations: [HeaderComponent, FooterComponent, SideNavPagesComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
