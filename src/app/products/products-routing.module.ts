@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductsCardComponent } from './products-card/products-card.component';
 import { ProductsComponent } from './products.component';
 
 const routes: Routes = [
@@ -12,5 +13,5 @@ const routes: Routes = [
 })
 
 export class ProductsRoutingModule {
-    static components = [ProductsComponent];
+    static components = [ProductsComponent, ProductsCardComponent];
 }

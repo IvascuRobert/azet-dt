@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SeasonToIconPipe } from './pipes/seasonToIcon.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
-import { ProductCardModule } from './product-card/product-card.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        ProductCardModule
     ],
     exports: [
         CommonModule,
-        ProductCardModule,
-        TrimPipe
+        TrimPipe,
+        SeasonToIconPipe
     ],
-    declarations: [TrimPipe]
+    declarations: [
+        TrimPipe,
+        SeasonToIconPipe
+    ]
 })
 export class SharedModule { }

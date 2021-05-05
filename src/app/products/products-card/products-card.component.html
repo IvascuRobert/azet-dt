@@ -1,0 +1,25 @@
+<div class="row">
+    <div *ngFor="let product of products;trackBy: trackbyService.product"
+         class="col-3 mb-3">
+        <mat-card class="product-card">
+            <mat-card-header>
+                <i mat-card-avatar
+                   aria-hidden="false"
+                   aria-label="Sezon"
+                   [class]="product.season | seasonToIcon"></i>
+                <mat-card-title>{{product.name}}</mat-card-title>
+                <mat-card-subtitle>{{product.producer}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image
+                 src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                 [alt]="product.name">
+            <mat-card-content>
+                <!-- <p>{{product.description}}</p> -->
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

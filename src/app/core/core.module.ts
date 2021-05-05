@@ -10,6 +10,7 @@ import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { TrackByService } from './services/trackBy.service';
 import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
   exports: [RouterModule, HttpClientModule, HeaderComponent, FooterComponent, SideNavPagesComponent],
   declarations: [HeaderComponent, FooterComponent, SideNavPagesComponent],
   providers: [
+    TrackByService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
@@ -25,7 +27,7 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
     { provide: 'Window', useFactory: () => window }
   ] // these should be singleton
 })
-  
+
 export class CoreModule extends EnsureModuleLoadedOnceGuard { // Ensure that CoreModule is only loaded into AppModule
 
   // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)

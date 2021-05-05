@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { IUserLogin } from '../../shared/interfaces';
+import { IUserLogin } from '../../shared/interfaces.interface';
 import { UtilitiesService } from './utilities.service';
 
 @Injectable()
