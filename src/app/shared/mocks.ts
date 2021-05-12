@@ -1,6 +1,6 @@
 import { Observable, of } from "rxjs";
 import { ProductDataClass } from "./classes.class";
-import { EnumCarCategory, EnumFuelEfficiency, EnumSeason, EnumWeather } from "./enums.enum";
+import { EnumCarCategory, EnumFuelEfficiency, EnumSeason, EnumWeatherEfficiency } from "./enums.enum";
 export class MockDataService {
     constructor() { }
 
@@ -25,7 +25,7 @@ export const productsMock: ProductDataClass[] = [{
     },
     review: 3,
     guarantee: 24,
-    weather: EnumWeather.Snowy,
+    weatherEfficiency: EnumWeatherEfficiency.A,
     season: EnumSeason.Winter,
     noiseLevel: 68,
     profile: 'FastRespone 84H',
@@ -48,7 +48,7 @@ export const productsMock: ProductDataClass[] = [{
     },
     review: 3,
     guarantee: 24,
-    weather: EnumWeather.Sunny,
+    weatherEfficiency: EnumWeatherEfficiency.G,
     season: EnumSeason.AllSeason,
     noiseLevel: 68,
     profile: 'FastRespone 84H',
@@ -71,7 +71,7 @@ export const productsMock: ProductDataClass[] = [{
     },
     review: 3,
     guarantee: 24,
-    weather: EnumWeather.Icy,
+    weatherEfficiency: EnumWeatherEfficiency.B,
     season: EnumSeason.Summer,
     noiseLevel: 68,
     profile: 'FastRespone 84H',
@@ -94,7 +94,7 @@ export const productsMock: ProductDataClass[] = [{
     },
     review: 3,
     guarantee: 24,
-    weather: EnumWeather.Icy,
+    weatherEfficiency: EnumWeatherEfficiency.C,
     season: EnumSeason.Summer,
     noiseLevel: 68,
     profile: 'FastRespone 84H',

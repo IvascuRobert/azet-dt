@@ -1,4 +1,4 @@
-import { EnumCarCategory, EnumFuelEfficiency, EnumSeason, EnumWeather } from "./enums.enum";
+import { EnumCarCategory, EnumFuelEfficiency, EnumSeason, EnumWeatherEfficiency } from "./enums.enum";
 import { ISize } from "./interfaces.interface";
 
 export class ProductDataClass {
@@ -12,7 +12,7 @@ export class ProductDataClass {
     size: ISize;
     review: number;
     guarantee: number;
-    weather: EnumWeather;
+    weatherEfficiency: EnumWeatherEfficiency;
     season: EnumSeason;
     noiseLevel: number;
     profile: string;
@@ -37,7 +37,7 @@ export class ProductDataClass {
         },
         review = null,
         guarantee = null,
-        weather = null,
+        weatherEfficiency = null,
         season = null,
         noiseLevel = null,
         profile = '',
@@ -60,7 +60,7 @@ export class ProductDataClass {
         };
         this.review = review;
         this.guarantee = guarantee;
-        this.weather = weather;
+        this.weatherEfficiency = weatherEfficiency;
         this.season = season;
         this.noiseLevel = noiseLevel;
         this.profile = profile;

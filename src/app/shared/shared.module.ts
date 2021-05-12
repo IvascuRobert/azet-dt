@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { CarCategoryToIconPipe } from './pipes/carCategoryToIcon.pipe';
 import { SeasonToIconPipe } from './pipes/seasonToIcon.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 
@@ -10,11 +11,13 @@ import { TrimPipe } from './pipes/trim.pipe';
     exports: [
         CommonModule,
         TrimPipe,
-        SeasonToIconPipe
+        SeasonToIconPipe,
+        CarCategoryToIconPipe
     ],
     declarations: [
         TrimPipe,
-        SeasonToIconPipe
+        SeasonToIconPipe,
+        CarCategoryToIconPipe
     ]
 })
 export class SharedModule { }

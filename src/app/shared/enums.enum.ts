@@ -1,10 +1,11 @@
-export enum EnumWeather {
-    Sunny,
-    Cloudy,
-    Snowy,
-    Rainy,
-    Windy,
-    Icy
+export enum EnumWeatherEfficiency {
+    A = 'A',
+    B = 'B',
+    C = 'C',
+    D = 'D',
+    E = 'E',
+    F = 'F',
+    G = 'G',
 }
 
 export enum EnumSeason {
@@ -14,30 +15,30 @@ export enum EnumSeason {
 }
 
 export enum EnumCarCategory {
-    Micro,
-    Sedan,
-    CUV,
-    SUV,
-    Hatchback,
-    Roadster,
-    Pickup,
-    Van,
-    Coupe,
-    SuperCar,
-    CamperVAN,
-    MiniTruck,
-    Cabriolet,
-    MiniVAN,
-    Truck,
-    BigTruck
+    Micro = 'Micro',
+    Sedan = 'Sedan',
+    CUV = 'CUV',
+    SUV = 'SUV',
+    Hatchback = 'Hatchback',
+    Roadster = 'Roadster',
+    Pickup = 'Pickup',
+    Van = 'Van',
+    Coupe = 'Coupe',
+    SuperCar = 'SuperCar',
+    CamperVAN = 'CamperVAN',
+    MiniTruck = 'MiniTruck',
+    Cabriolet = 'Cabriolet',
+    MiniVAN = 'MiniVAN',
+    Truck = 'Truck',
+    BigTruck = 'BigTruck',
 }
 
 export enum EnumFuelEfficiency {
-    A,
-    B,
-    C,
-    D,
-    E,
-    F,
-    G
+    A = 'A',
+    B = 'B',
+    C = 'C',
+    D = 'D',
+    E = 'E',
+    F = 'F',
+    G = 'G',
 }
