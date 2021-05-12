@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row product-card-container">
   <div *ngFor="let product of products;trackBy: trackbyService.product"
-       class="col-md-6 col-lg-4 col-xl-3 mb-3">
+       class="col-md-12 col-lg-6 col-xl-4 mb-3">
     <mat-card class="product-card">
       <mat-card-header>
         <i mat-card-avatar
@@ -17,8 +17,8 @@
              [alt]="product.name">
       </div>
       <mat-card-content class="mb-0">
-        <div class="row justify-content-center text-center font-weight-bold">
-          <div class="col-12">
+        <div class="row justify-content-center font-weight-bold">
+          <div class="col-12 text-center">
             <i aria-hidden="false"
                aria-label="Pret"
                class="fas fa-tag"></i>
@@ -27,41 +27,41 @@
             </span>
             <span class="currency">LEI</span>
           </div>
-          <div class="col-9 my-2">
+          <div class="col-11 my-2">
             <mat-divider></mat-divider>
           </div>
           <div class="col-6"
-               style="font-size: 0.9rem">
+               style="font-size: 1rem">
             <i aria-hidden="false"
                aria-label="Nivelul de consum"
                class="fas fa-gas-pump"></i>
             {{product.fuelEfficiency}}
           </div>
           <div class="col-6"
-               style="font-size: 0.9rem">
-            <i aria-hidden="false"
-               aria-label="Eficienta pe vreme"
-               class="fas fa-cloud-rain"></i>
-            {{product.weatherEfficiency}}
-          </div>
-          <div class="col-6"
-               style="font-size: 0.9rem">
+               style="font-size: 1rem">
             <i aria-hidden="false"
                aria-label="Nivelul de zgomot"
                class="fas fa-volume-up"></i>
             {{product.noiseLevel}} db
           </div>
           <div class="col-6"
-               style="font-size: 0.9rem">
+               style="font-size: 1rem">
             <i aria-hidden="false"
                aria-label="Tip vehicul"
-               [class]="product.carCategory | carCategoryToIcon"></i>
+               class="fas fa-car"></i>
             {{product.carCategory}}
           </div>
-          <div class="col-9 my-2">
+          <div class="col-6"
+               style="font-size: 1rem">
+            <i aria-hidden="false"
+               aria-label="Eficienta pe vreme"
+               class="fas fa-cloud-rain"></i>
+            {{product.weatherEfficiency}}
+          </div>
+          <div class="col-11 my-2">
             <mat-divider></mat-divider>
           </div>
-          <div class="col-12"
+          <div class="col-12 text-center"
                style="font-size: 18px">
             <span>DOT: </span>
             <span class="pr-1">{{product.dot}}</span>
@@ -103,17 +103,3 @@
     </mat-card>
   </div>
 </div>
-<!-- Define svg -->
-<svg width="0"
-     height="0">
-  <linearGradient id="lgrad"
-                  x1="100%"
-                  y1="100%"
-                  x2="0%"
-                  y2="0%">
-    <stop offset="0%"
-          style="stop-color:rgb(252,207,49);stop-opacity:1" />
-    <stop offset="100%"
-          style="stop-color:rgb(245,85,85);stop-opacity:1" />
-  </linearGradient>
-</svg>

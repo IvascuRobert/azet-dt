@@ -1,8 +1,9 @@
-<div class="row justify-content-center m-3">
-    <div class="col-2">
-        FILTRE
+<div class="row justify-content-center">
+    <div class="col-3">
+        <app-products-filter></app-products-filter>
     </div>
-    <div class="col-10">
+    <div class="col-9">
+        <app-products-sort></app-products-sort>
         <app-products-card [products]="products"></app-products-card>
     </div>
 </div>

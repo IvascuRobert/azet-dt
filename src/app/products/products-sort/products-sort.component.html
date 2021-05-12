@@ -1,0 +1,17 @@
+<div class="d-flex align-items-start justify-content-end">
+    <mat-form-field appearance="fill"
+                    class="pr-2">
+        <mat-label>Sortează după:</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let food of foods"
+                        [value]="food.value">
+                {{food.label}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-button-toggle-group aria-label="Mode de afișare"
+                             [value]="'grid'">
+        <mat-button-toggle value="grid"><i class="fas fa-th"></i></mat-button-toggle>
+        <mat-button-toggle value="list"><i class="fas fa-bars"></i></mat-button-toggle>
+    </mat-button-toggle-group>
+</div>

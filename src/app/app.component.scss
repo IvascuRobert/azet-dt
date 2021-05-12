@@ -5,14 +5,18 @@
   left: 0;
   right: 0;
   background: #eee;
+
+  .mat-drawer-content {
+    overflow: hidden;
+  }
 }
 
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
 
-  >.col,
-  >[class*="col-"] {
+  > .col,
+  > [class*="col-"] {
     padding-right: 2px;
     padding-left: 0;
   }

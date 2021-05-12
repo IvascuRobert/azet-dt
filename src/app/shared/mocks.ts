@@ -30,7 +30,7 @@ export const productsMock: ProductDataClass[] = [{
     noiseLevel: 68,
     profile: 'FastRespone 84H',
     image: '',
-    carCategory: EnumCarCategory.Coupe,
+    carCategory: EnumCarCategory.CamperVAN,
     fuelEfficiency: EnumFuelEfficiency.F,
 }, {
     id: 2,

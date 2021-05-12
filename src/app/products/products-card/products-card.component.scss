@@ -1,4 +1,13 @@
-.price {
-  color: red;
-  font-size: 35px;
+.product-card-container {
+  height: calc(100% - 50px);
+  overflow: auto;
+
+  .product-card {
+    z-index: -1;
+
+    .price {
+      color: red;
+      font-size: 35px;
+    }
+  }
 }
