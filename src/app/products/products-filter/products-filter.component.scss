@@ -1,0 +1,14 @@
+.filter-container {
+  .filter--zone-1 {
+    padding: 24px;
+
+    .filter--title {
+      font-size: 1rem;
+    }
+  }
+
+  .filter--zone-2 {
+    overflow-y: auto;
+    height: calc(100vh - 220px);
+  }
+}

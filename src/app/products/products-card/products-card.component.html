@@ -1,13 +1,8 @@
 <div class="row product-card-container">
   <div *ngFor="let product of products;trackBy: trackbyService.product"
-       class="col-md-12 col-lg-6 col-xl-4 mb-3">
+       class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-2">
     <mat-card class="product-card">
       <mat-card-header>
-        <i mat-card-avatar
-           aria-hidden="false"
-           aria-label="Sezon"
-           style="font-size: 2rem;"
-           [class]="product.season | seasonToIcon"></i>
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-subtitle class="mb-0">{{product.producer}}</mat-card-subtitle>
       </mat-card-header>
@@ -16,61 +11,64 @@
              class="tire-img img-fluid"
              [alt]="product.name">
       </div>
-      <mat-card-content class="mb-0">
-        <div class="row justify-content-center font-weight-bold">
-          <div class="col-12 text-center">
+      <mat-card-content>
+        <div class="row justify-content-between">
+          <div class="col-2">
             <i aria-hidden="false"
                aria-label="Pret"
                class="fas fa-tag"></i>
-            <span class="price">
-              {{product.price}}
-            </span>
+          </div>
+          <div class="col-10">
+            <span class="price">{{product.price}}</span>
             <span class="currency">LEI</span>
           </div>
-          <div class="col-11 my-2">
-            <mat-divider></mat-divider>
-          </div>
-          <div class="col-6"
-               style="font-size: 1rem">
+          <div class="col-2">
             <i aria-hidden="false"
-               aria-label="Nivelul de consum"
-               class="fas fa-gas-pump"></i>
-            {{product.fuelEfficiency}}
+               aria-label="Sezon"
+               [class]="product.season | seasonToIcon"></i>
           </div>
-          <div class="col-6"
-               style="font-size: 1rem">
+          <div class="col-10">
+            <span>{{product.season}}</span>
+          </div>
+          <div class="col-2">
             <i aria-hidden="false"
                aria-label="Nivelul de zgomot"
                class="fas fa-volume-up"></i>
-            {{product.noiseLevel}} db
           </div>
-          <div class="col-6"
-               style="font-size: 1rem">
+          <div class="col-10">
+            <span>{{product.noiseLevel}} db</span>
+          </div>
+          <div class="col-2">
             <i aria-hidden="false"
                aria-label="Tip vehicul"
                class="fas fa-car"></i>
-            {{product.carCategory}}
           </div>
-          <div class="col-6"
-               style="font-size: 1rem">
+          <div class="col-10">
+            <span>{{product.carCategory}}</span>
+          </div>
+          <div class="col-2">
+            <i aria-hidden="false"
+               aria-label="Nivelul de consum"
+               class="fas fa-gas-pump"></i>
+          </div>
+          <div class="col-10">
+            <span>{{product.fuelEfficiency}}</span>
+          </div>
+          <div class="col-2">
             <i aria-hidden="false"
                aria-label="Eficienta pe vreme"
                class="fas fa-cloud-rain"></i>
-            {{product.weatherEfficiency}}
           </div>
-          <div class="col-11 my-2">
-            <mat-divider></mat-divider>
+          <div class="col-10">
+            <span>{{product.weatherEfficiency}}</span>
           </div>
-          <div class="col-12 text-center"
-               style="font-size: 18px">
-            <span>DOT: </span>
-            <span class="pr-1">{{product.dot}}</span>
-            <span matTooltip="Informatii DOT"
-                  matTooltipPosition="right">
-              <i aria-hidden="false"
-                 aria-label="Informatii DOT"
-                 class="fas fa-info-circle"></i>
-            </span>
+          <div class="col-2">
+            <i aria-hidden="false"
+               aria-label="Informatii DOT"
+               class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="col-10">
+            <span>{{product.dot}}</span>
           </div>
         </div>
       </mat-card-content>

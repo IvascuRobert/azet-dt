@@ -9,8 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { SharedModule } from '../shared/shared.module';
-import { ChecklistDatabase } from './products-filter/products-filter.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -24,12 +24,10 @@ import { ProductsRoutingModule } from './products-routing.module';
     MatButtonToggleModule,
     MatTreeModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
   ],
-  declarations: [ProductsRoutingModule.components],
-  providers: [
-    ChecklistDatabase
-  ]
+  declarations: [ProductsRoutingModule.components]
 })
 
 export class ProductsModule { }

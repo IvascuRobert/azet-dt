@@ -1,13 +1,10 @@
 .product-card-container {
-  height: calc(100% - 50px);
-  overflow: auto;
+  overflow-y: auto;
+  height: calc(100vh - 220px);
 
   .product-card {
     z-index: -1;
 
-    .price {
-      color: red;
-      font-size: 35px;
-    }
+    .price {}
   }
 }

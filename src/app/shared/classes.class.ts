@@ -1,4 +1,4 @@
-import { EnumCarCategory, EnumFuelEfficiency, EnumSeason, EnumWeatherEfficiency } from "./enums.enum";
+import { EnumCarCategory, EnumFuelEfficiency, EnumStock, EnumTireCategory, EnumWeatherEfficiency } from "./enums.enum";
 import { ISize } from "./interfaces.interface";
 
 export class ProductDataClass {
@@ -13,12 +13,13 @@ export class ProductDataClass {
     review: number;
     guarantee: number;
     weatherEfficiency: EnumWeatherEfficiency;
-    season: EnumSeason;
+    season: EnumTireCategory;
     noiseLevel: number;
     profile: string;
     image?: string;
     carCategory: EnumCarCategory;
     fuelEfficiency: EnumFuelEfficiency;
+    stock: EnumStock
 
     // Normal signature with defaults
     constructor(
@@ -44,6 +45,7 @@ export class ProductDataClass {
         image = '',
         carCategory = null,
         fuelEfficiency = null,
+        stock = null,
     ) {
         this.id = id;
         this.name = name;
@@ -67,5 +69,6 @@ export class ProductDataClass {
         this.image = image;
         this.carCategory = carCategory;
         this.fuelEfficiency = fuelEfficiency;
+        this.stock = stock;
     }
 }

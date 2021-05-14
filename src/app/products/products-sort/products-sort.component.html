@@ -1,17 +1,23 @@
-<div class="d-flex align-items-start justify-content-end">
-    <mat-form-field appearance="fill"
-                    class="pr-2">
-        <mat-label>Sortează după:</mat-label>
+<div class="row py-2">
+  <div class="col-12">
+    <mat-card class="sort d-flex align-items-center">
+      <span class="sort--title">SORTEAZĂ DUPĂ</span>
+      <mat-form-field appearance="outline"
+                      class="sort--select">
+        <mat-label>Ați selectat:</mat-label>
         <mat-select>
-            <mat-option *ngFor="let food of foods"
-                        [value]="food.value">
-                {{food.label}}
-            </mat-option>
+          <mat-option *ngFor="let food of foods"
+                      [value]="food.value">
+            {{food.label}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
-    <mat-button-toggle-group aria-label="Mode de afișare"
-                             [value]="'grid'">
+      </mat-form-field>
+      <mat-button-toggle-group aria-label="Mod de afișare"
+                               [value]="'grid'"
+                               class="ml-auto">
         <mat-button-toggle value="grid"><i class="fas fa-th"></i></mat-button-toggle>
         <mat-button-toggle value="list"><i class="fas fa-bars"></i></mat-button-toggle>
-    </mat-button-toggle-group>
+      </mat-button-toggle-group>
+    </mat-card>
+  </div>
 </div>
