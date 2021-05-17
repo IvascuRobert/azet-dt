@@ -1,12 +1,46 @@
 <mat-toolbar class="mat-elevation-z6 app-navbar"
              color="primary">
     <mat-toolbar-row>
+        <button mat-icon-button
+                class="example-icon"
+                aria-label="Example icon-button with menu icon"
+                (click)="clickOnMenu()">
+            <mat-icon>menu</mat-icon>
+        </button>
         <button mat-button
                 class="app-navbar-title"
                 routerLink="/home">
             <mat-icon fontSet="fas"
                       fontIcon="fa-dice-d20"></mat-icon>
             AZET D.T.
+        </button>
+        <button mat-button
+                class="app-navbar-title"
+                routerLink="/products">
+            <mat-icon fontSet="fas"
+                      fontIcon="fa-dice-d20"></mat-icon>
+            Produse
+        </button>
+        <button mat-button
+                class="app-navbar-title"
+                routerLink="/about">
+            <mat-icon fontSet="fas"
+                      fontIcon="fa-dice-d20"></mat-icon>
+            Contact
+        </button>
+        <button mat-button
+                class="app-navbar-title"
+                routerLink="/orders">
+            <mat-icon fontSet="fas"
+                      fontIcon="fa-dice-d20"></mat-icon>
+            Cos
+        </button>
+        <button mat-button
+                class="app-navbar-title"
+                routerLink="/login">
+            <mat-icon fontSet="fas"
+                      fontIcon="fa-dice-d20"></mat-icon>
+            Login
         </button>
         <span class="app-navbar-spacer"></span>
         <button matTooltip="In curand!"

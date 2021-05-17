@@ -1,9 +1,8 @@
 <mat-sidenav-container class="side-nav-container">
 
-  <mat-sidenav mode="side"
-               class="mat-elevation-z6"
-               style="width: 20%;"
-               opened>
+  <mat-sidenav #sidenav
+               mode="over"
+               class="mat-elevation-z6">
 
     <app-side-nav-pages></app-side-nav-pages>
 
@@ -11,9 +10,13 @@
 
   <mat-sidenav-content>
 
-    <app-header></app-header>
+    <app-header (onMenu)="onClickOnMenu(sidenav)"></app-header>
 
-    <router-outlet></router-outlet>
+    <div class="container-fluid">
+
+      <router-outlet></router-outlet>
+
+    </div>
 
     <app-footer></app-footer>
 

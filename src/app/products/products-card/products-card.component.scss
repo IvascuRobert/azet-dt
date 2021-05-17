@@ -3,8 +3,6 @@
   height: calc(100vh - 220px);
 
   .product-card {
-    z-index: -1;
-
     .price-container {
       font-size: 1rem;
 
@@ -36,8 +34,6 @@
   height: calc(100vh - 220px);
 
   .product-card {
-    z-index: -1;
-
     .price-container {
       font-size: 1rem;
 
@@ -80,7 +76,7 @@
 
       .quantity-container--text {
         font-size: 1rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
@@ -94,7 +90,7 @@
 
       .dot-container--text {
         font-size: 1rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
@@ -108,7 +104,7 @@
 
       .profile-container--text {
         font-size: 1rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
@@ -122,7 +118,7 @@
 
       .size-container--text {
         font-size: 1rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
@@ -136,44 +132,45 @@
 
       .season-container--text {
         font-size: 1rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
     .noise-level-container {
       .noise-level-container--title {
         font-size: 0.75rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
     .fuel-efficiency-container {
       .fuel-efficiency-container--title {
         font-size: 0.75rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
     .weather-efficiency-container {
       .weather-efficiency-container--title {
         font-size: 0.75rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
 
     .cars-categories-container {
       .cars-categories-container--title {
         font-size: 0.75rem;
-        color: rgba(0, 0, 0, .54);
+        color: rgba(0, 0, 0, 0.54);
       }
-    }
-
-    .product-card-action-btn {
-      line-height: 0;
-      width: 0;
-      height: 0;
     }
   }
 }
 
-.rating {}
+.star {
+  font-size: 1.3rem;
+  color: #a8a8a8;
+}
+
+.filled {
+  color: #ffd700;
+}

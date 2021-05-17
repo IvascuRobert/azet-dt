@@ -1,296 +1,306 @@
-  <ng-container [ngSwitch]="viewMode">
-    <div *ngSwitchCase="viewModeTemplate.GRID"
-         class="row grid-product-card-container">
-      <div *ngFor="let product of products;trackBy: trackbyService.product"
-           class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-        <mat-card class="product-card">
-          <mat-card-header>
-            <mat-card-subtitle>
-              {{product.producer | uppercase}}
-            </mat-card-subtitle>
-          </mat-card-header>
-          <div mat-card-image
-               class="text-center">
-            <img src="/assets/tires-pictures/tire-mock-1.png"
-                 class="w-50 h-50"
-                 [alt]="product.name">
+<ng-container [ngSwitch]="viewMode">
+  <div *ngSwitchCase="viewModeTemplate.GRID"
+       class="row grid-product-card-container">
+    <div *ngFor="let product of products;trackBy: trackbyService.product"
+         class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-2">
+      <mat-card class="product-card">
+        <mat-card-header>
+          <mat-card-subtitle>
+            {{product.producer | uppercase}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div mat-card-image
+             class="text-center">
+          <img src="/assets/tires-pictures/tire-mock-1.png"
+               class="w-50 h-50"
+               [alt]="product.name">
+        </div>
+        <mat-card-header>
+          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-subtitle>
+            <ngb-rating [(rate)]="product.rate"
+                        [readonly]="false"
+                        [max]="5"
+                        (rateChange)="rateChange($event)">
+              <ng-template let-fill="fill"
+                           let-index="index">
+                <span class="star"
+                      [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </mat-card-subtitle>
+          <mat-card-subtitle class="price-container">
+            <i class="price-container--icon fas fa-money-bill-wave"></i>
+            <span class="price-container--bull">&bull;</span>
+            <span class="price-container--price">{{product.price}} Lei</span>
+            <ng-container [ngSwitch]="product.state">
+              <span *ngSwitchCase="stateTemplate.STOCK"
+                    style="float: right;">
+                <i class="fas fa-dot-circle"
+                   style="color: #22bb33;"></i>
+                <span class="price-container--state pl-1">{{product.state}}</span>
+              </span>
+              <span *ngSwitchCase="stateTemplate.COMMAND"
+                    style="float: right;">
+                <i class="fas fa-dot-circle"
+                   style="color: #f0ad4e;"></i>
+                <span class="price-container--state pl-1">{{product.state}}</span>
+              </span>
+              <span *ngSwitchDefault><i class="fas fa-dot-circle"></i></span>
+            </ng-container>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row justify-content-center">
+            <div class="col-11">
+              <mat-divider></mat-divider>
+            </div>
+            <div class="col-12 py-3">
+              <mat-chip-list>
+                <mat-chip>
+                  <i aria-hidden="false"
+                     aria-label="Sezon"
+                     [class]="product.season | seasonToIcon"></i>
+                  <span class="pl-1">{{product.season}}</span>
+                </mat-chip>
+                <mat-chip>
+                  <i aria-hidden="false"
+                     aria-label="Nivelul de zgomot"
+                     class="fas fa-volume-up"></i>
+                  <span class="pl-1">{{product.noiseLevel}}</span>
+                </mat-chip>
+                <mat-chip>
+                  <i aria-hidden="false"
+                     aria-label="Nivelul de consum"
+                     class="fas fa-gas-pump"></i>
+                  <span class="pl-1">{{product.fuelEfficiency}}</span>
+                </mat-chip>
+                <mat-chip>
+                  <i aria-hidden="false"
+                     aria-label="Eficienta pe vreme"
+                     class="fas fa-cloud-rain"></i>
+                  <span class="pl-1">{{product.weatherEfficiency}}</span>
+                </mat-chip>
+                <mat-chip>
+                  <i aria-hidden="false"
+                     aria-label="Informatii DOT"
+                     class="fas fa-calendar-alt"></i>
+                  <span class="pl-1">{{product.dot}}</span>
+                </mat-chip>
+                <mat-chip>
+                  <i aria-hidden="false"
+                     aria-label="Mai multe"
+                     class="fas fa-info-circle"></i>
+                  <span class="pl-1">Mai multe...</span>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
           </div>
-          <mat-card-header>
-            <mat-card-title>{{product.name}}</mat-card-title>
-            <mat-card-subtitle>
-              <ngb-rating class="rating"
-                          [(rate)]="product.rate"
-                          [readonly]="false"
-                          [max]="5"
-                          (rateChange)="rateChange($event)"></ngb-rating>
-            </mat-card-subtitle>
-            <mat-card-subtitle class="price-container">
-              <i class="price-container--icon fas fa-money-bill-wave"></i>
-              <span class="price-container--bull">&bull;</span>
-              <span class="price-container--price">{{product.price}} Lei</span>
-              <ng-container [ngSwitch]="product.state">
-                <span *ngSwitchCase="stateTemplate.STOCK"
-                      style="float: right;">
-                  <i class="fas fa-dot-circle"
-                     style="color: #22bb33;"></i>
-                  <span class="price-container--state pl-1">{{product.state}}</span>
-                </span>
-                <span *ngSwitchCase="stateTemplate.COMMAND"
-                      style="float: right;">
-                  <i class="fas fa-dot-circle"
-                     style="color: #f0ad4e;"></i>
-                  <span class="price-container--state pl-1">{{product.state}}</span>
-                </span>
-                <span *ngSwitchDefault><i class="fas fa-dot-circle"></i></span>
-              </ng-container>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="row justify-content-center">
-              <div class="col-11">
-                <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="d-flex">
+            <button mat-mini-fab
+                    color="primary">
+              <span class="material-icons">
+                add_shopping_cart
+              </span>
+            </button>
+            <button mat-icon-button
+                    class="ml-auto"
+                    color="primary">
+              <span class="material-icons">
+                favorite
+              </span>
+            </button>
+            <button mat-icon-button
+                    color="primary">
+              <span class="material-icons">
+                share
+              </span>
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngSwitchCase="viewModeTemplate.LIST"
+       class="row list-product-card-container">
+    <div *ngFor="let product of products;trackBy: trackbyService.product"
+         class="col-12 mb-2">
+      <mat-card class="product-card">
+        <mat-card-header>
+          <div mat-card-avatar>
+            <i aria-hidden="false"
+               aria-label="Sezon"
+               style="font-size: 2rem;"
+               [class]="product.season | seasonToIcon"></i>
+          </div>
+          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-subtitle>
+            <ngb-rating class="rating"
+                        [(rate)]="product.rate"
+                        [readonly]="false"
+                        [max]="5"
+                        (rateChange)="rateChange($event)">
+              <ng-template let-fill="fill"
+                           let-index="index">
+                <span class="star"
+                      [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div class="row">
+          <div class="col-2 text-center">
+            <img src="/assets/tires-pictures/tire-mock-1.png"
+                 style="width: 200px; height: 200px;"
+                 [alt]="product.name">
+            <div>{{product.producer | uppercase}}</div>
+          </div>
+          <div class="col-10">
+            <div class="row">
+              <div class="col-5">
+                <div class="price-container">
+                  <i class="price-container--icon fas fa-money-bill-wave"></i>
+                  <span class="price-container--bull">&bull;</span>
+                  <span class="price-container--price">{{product.price}} Lei</span>
+                </div>
+                <div class="state-container">
+                  <ng-container [ngSwitch]="product.state">
+                    <span *ngSwitchCase="stateTemplate.STOCK"
+                          class="state-container--icon"
+                          style="color: #22bb33;"><i class="fas fa-dot-circle"></i></span>
+                    <span *ngSwitchCase="stateTemplate.COMMAND"
+                          class="state-container--icon"
+                          style="color: #f0ad4e;"><i class="fas fa-dot-circle"></i></span>
+                    <span *ngSwitchDefault
+                          class="state-container--icon"><i class="fas fa-dot-circle"></i></span>
+                  </ng-container>
+                  <span class="state-container--text">{{product.state}}</span>
+                </div>
+                <div class="quantity-container">
+                  <span class="quantity-container--title">Cantitate: </span>
+                  <span class="quantity-container--text">{{product.quantity}}</span>
+                </div>
+                <div class="dot-container">
+                  <span class="dot-container--title">DOT: </span>
+                  <span class="dot-container--text pr-1">{{product.dot}}</span>
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="profile-container">
+                  <span class="profile-container--title">Profil: </span>
+                  <span class="profile-container--text">{{product.profile}}</span>
+                </div>
+                <div class="size-container">
+                  <span class="size-container--title">Dimensiune: </span>
+                  <span class="size-container--text">{{product.size}}</span>
+                </div>
+                <div class="season-container">
+                  <span class="season-container--title">Sezon: </span>
+                  <span class="season-container--text">{{product.season}}</span>
+                </div>
               </div>
-              <div class="col-12 py-3">
-                <mat-chip-list>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Sezon"
-                       [class]="product.season | seasonToIcon"></i>
-                    <span class="pl-1">{{product.season}}</span>
-                  </mat-chip>
-                  <mat-chip>
+              <div class="col-7">
+                <div class="row noise-level-container">
+                  <div class="col-12 noise-level-container--title">Nivel de zgomot</div>
+                  <div class="col-1">
                     <i aria-hidden="false"
                        aria-label="Nivelul de zgomot"
                        class="fas fa-volume-up"></i>
-                    <span class="pl-1">{{product.noiseLevel}}</span>
-                  </mat-chip>
-                  <mat-chip>
+                  </div>
+                  <div class="col-11">
+                    <ngb-progressbar [type]="product.noiseLevel | noiseLevelToColor"
+                                     [value]="product.noiseLevel | noiseLevelToValue"
+                                     [striped]="false">{{product.noiseLevel}} db</ngb-progressbar>
+                  </div>
+                </div>
+                <div class="row fuel-efficiency-container">
+                  <div class="col-12 fuel-efficiency-container--title">Consum</div>
+                  <div class="col-1">
                     <i aria-hidden="false"
                        aria-label="Nivelul de consum"
                        class="fas fa-gas-pump"></i>
-                    <span class="pl-1">{{product.fuelEfficiency}}</span>
-                  </mat-chip>
-                  <mat-chip>
+                  </div>
+                  <div class="col-11">
+                    <ngb-progressbar [type]="product.fuelEfficiency | efficiencyToColor"
+                                     [value]="product.fuelEfficiency | efficiencyToValue"
+                                     [striped]="false">{{product.fuelEfficiency}}</ngb-progressbar>
+                  </div>
+                </div>
+                <div class="row weather-efficiency-container">
+                  <div class="col-12 weather-efficiency-container--title">Eficiență vreme</div>
+                  <div class="col-1">
                     <i aria-hidden="false"
-                       aria-label="Eficienta pe vreme"
+                       aria-label="Eficiență vreme"
                        class="fas fa-cloud-rain"></i>
-                    <span class="pl-1">{{product.weatherEfficiency}}</span>
-                  </mat-chip>
-                  <mat-chip>
+                  </div>
+                  <div class="col-11">
+                    <ngb-progressbar [type]="product.weatherEfficiency | efficiencyToColor"
+                                     [value]="product.weatherEfficiency | efficiencyToValue"
+                                     [striped]="false">{{product.weatherEfficiency}}</ngb-progressbar>
+                  </div>
+                </div>
+                <div class="row cars-categories-container">
+                  <div class="col-12 cars-categories-container--title">Vehicule</div>
+                  <div class="col-1 align-self-center">
                     <i aria-hidden="false"
-                       aria-label="Informatii DOT"
-                       class="fas fa-calendar-alt"></i>
-                    <span class="pl-1">{{product.dot}}</span>
-                  </mat-chip>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Mai multe"
-                       class="fas fa-info-circle"></i>
-                    <span class="pl-1">Mai multe...</span>
-                  </mat-chip>
-                </mat-chip-list>
+                       aria-label="Vehicule"
+                       class="fas fa-car"></i>
+                  </div>
+                  <div class="col-11">
+                    <mat-chip-list aria-label="Vehicule">
+                      <mat-chip *ngFor="let carCategory of product.carsCategories">{{carCategory}}</mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
               </div>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <div class="d-flex">
-              <button mat-mini-fab
-                      color="primary"
-                      aria-label="Example icon button with a plus one icon">
-                <span class="material-icons">
-                  add_shopping_cart
-                </span>
-              </button>
-              <button mat-icon-button
-                      class="ml-auto"
-                      color="primary">
-                <span class="material-icons">
-                  favorite
-                </span>
-              </button>
-              <button mat-icon-button
-                      color="primary">
-                <span class="material-icons">
-                  share
-                </span>
-              </button>
-            </div>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
-    <div *ngSwitchCase="viewModeTemplate.LIST"
-         class="row list-product-card-container">
-      <div *ngFor="let product of products;trackBy: trackbyService.product"
-           class="col-12 mb-2">
-        <mat-card class="product-card">
-          <mat-card-header>
-            <div mat-card-avatar>
-              <button mat-mini-fab
-                      color="primary"
-                      aria-label="Example icon button with a plus one icon">
-                <span class="material-icons">
-                  add_shopping_cart
-                </span>
-              </button>
-            </div>
-            <mat-card-title>
-              {{product.name}}
-            </mat-card-title>
-            <mat-card-subtitle>
-              <ngb-rating class="rating"
-                          [(rate)]="product.rate"
-                          [readonly]="false"
-                          [max]="5"
-                          (rateChange)="rateChange($event)"></ngb-rating>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <div class="row">
-            <div class="col-2 text-center">
-              <img src="/assets/tires-pictures/tire-mock-1.png"
-                   style="width: 200px; height: 200px;"
-                   [alt]="product.name">
-              <div>{{product.producer | uppercase}}</div>
-            </div>
-            <div class="col-10">
-              <div class="row">
-                <div class="col-5">
-                  <div class="price-container">
-                    <i class="price-container--icon fas fa-money-bill-wave"></i>
-                    <span class="price-container--bull">&bull;</span>
-                    <span class="price-container--price">{{product.price}} Lei</span>
+              <div class="col-12 my-2">
+                <mat-divider></mat-divider>
+              </div>
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-5">
+                    <i class="fas fa-shield-alt"></i>
+                    Garanție: {{product.guarantee}} luni
                   </div>
-                  <div class="state-container">
-                    <ng-container [ngSwitch]="product.state">
-                      <span *ngSwitchCase="stateTemplate.STOCK"
-                            class="state-container--icon"
-                            style="color: #22bb33;"><i class="fas fa-dot-circle"></i></span>
-                      <span *ngSwitchCase="stateTemplate.COMMAND"
-                            class="state-container--icon"
-                            style="color: #f0ad4e;"><i class="fas fa-dot-circle"></i></span>
-                      <span *ngSwitchDefault
-                            class="state-container--icon"><i class="fas fa-dot-circle"></i></span>
-                    </ng-container>
-                    <span class="state-container--text">{{product.state}}</span>
+                  <div class="col-7">
+                    <i class="fas fa-tools"></i>
+                    Montaj in service
                   </div>
-                  <div class="quantity-container">
-                    <span class="quantity-container--title">Cantitate: </span>
-                    <span class="quantity-container--text">{{product.quantity}}</span>
+                  <div class="col-5">
+                    <i class="fas fa-credit-card"></i>
+                    Plata in rate fara dobanda
                   </div>
-                  <div class="dot-container">
-                    <span class="dot-container--title">DOT: </span>
-                    <span class="dot-container--text pr-1">{{product.dot}}</span>
-                    <i class="fas fa-info-circle"></i>
-                  </div>
-                  <div class="profile-container">
-                    <span class="profile-container--title">Profil: </span>
-                    <span class="profile-container--text">{{product.profile}}</span>
-                  </div>
-                  <div class="size-container">
-                    <span class="size-container--title">Dimensiune: </span>
-                    <span class="size-container--text">{{product.size}}</span>
-                  </div>
-                  <div class="season-container">
-                    <span class="season-container--title">Sezon: </span>
-                    <span class="season-container--text">{{product.season}}</span>
+                  <div class="col-7">
+                    <i class="fas fa-truck-moving"></i>
+                    Livrare gratuita de la 1200 lei *
                   </div>
                 </div>
-                <div class="col-7">
-                  <div class="row noise-level-container">
-                    <div class="col-12 noise-level-container--title">Nivel de zgomot</div>
-                    <div class="col-1">
-                      <i aria-hidden="false"
-                         aria-label="Nivelul de zgomot"
-                         class="fas fa-volume-up"></i>
-                    </div>
-                    <div class="col-11">
-                      <ngb-progressbar [type]="product.noiseLevel | noiseLevelToColor"
-                                       [value]="product.noiseLevel | noiseLevelToValue"
-                                       [striped]="false">{{product.noiseLevel}} db</ngb-progressbar>
-                    </div>
-                  </div>
-                  <div class="row fuel-efficiency-container">
-                    <div class="col-12 fuel-efficiency-container--title">Consum</div>
-                    <div class="col-1">
-                      <i aria-hidden="false"
-                         aria-label="Nivelul de consum"
-                         class="fas fa-gas-pump"></i>
-                    </div>
-                    <div class="col-11">
-                      <ngb-progressbar [type]="product.fuelEfficiency | efficiencyToColor"
-                                       [value]="product.fuelEfficiency | efficiencyToValue"
-                                       [striped]="false">{{product.fuelEfficiency}}</ngb-progressbar>
-                    </div>
-                  </div>
-                  <div class="row weather-efficiency-container">
-                    <div class="col-12 weather-efficiency-container--title">Eficiență vreme</div>
-                    <div class="col-1">
-                      <i aria-hidden="false"
-                         aria-label="Eficiență vreme"
-                         class="fas fa-cloud-rain"></i>
-                    </div>
-                    <div class="col-11">
-                      <ngb-progressbar [type]="product.weatherEfficiency | efficiencyToColor"
-                                       [value]="product.weatherEfficiency | efficiencyToValue"
-                                       [striped]="false">{{product.weatherEfficiency}}</ngb-progressbar>
-                    </div>
-                  </div>
-                  <div class="row cars-categories-container">
-                    <div class="col-12 cars-categories-container--title">Vehicule</div>
-                    <div class="col-1 align-self-center">
-                      <i aria-hidden="false"
-                         aria-label="Vehicule"
-                         class="fas fa-car"></i>
-                    </div>
-                    <div class="col-11">
-                      <mat-chip-list aria-label="Vehicule">
-                        <mat-chip *ngFor="let carCategory of product.carsCategories">{{carCategory}}</mat-chip>
-                      </mat-chip-list>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 my-1">
-                  <mat-divider></mat-divider>
-                </div>
-                <div class="col-5">
-                  <i class="fas fa-shield-alt"></i>
-                  Garanție: {{product.guarantee}} luni
-                </div>
-                <div class="col-7">
-                  <i class="fas fa-tools"></i>
-                  Montaj in service
-                </div>
-                <div class="col-5">
-                  <i class="fas fa-tools"></i>
-                  Plata in rate fara dobanda
-                </div>
-                <div class="col-5">
-                  <i class="fas fa-truck-moving"></i>
-                  Livrare gratuita de la 1200 lei *
-                </div>
-                <div class="col-1 text-center">
-                  <button mat-icon-button
-                          color="primary"
-                          class="product-card-action-btn">
-                    <span class="material-icons"
-                          style="font-size: 20px;">
-                      share
-                    </span>
-                  </button>
-                </div>
-                <div class="col-1 text-center">
-                  <button mat-icon-button
-                          color="primary"
-                          class="product-card-action-btn">
-                    <span class="material-icons"
-                          style="font-size: 20px;">
-                      favorite
-                    </span>
-                  </button></div>
+              </div>
+              <div class="col-2">
+                <button mat-mini-fab
+                        color="primary">
+                  <span class="material-icons">
+                    add_shopping_cart
+                  </span>
+                </button>
+                <button mat-icon-button
+                        color="primary">
+                  <span class="material-icons">
+                    share
+                  </span>
+                </button>
+                <button mat-icon-button
+                        color="primary">
+                  <span class="material-icons">
+                    favorite
+                  </span>
+                </button>
               </div>
             </div>
           </div>
-        </mat-card>
-      </div>
+        </div>
+      </mat-card>
     </div>
-  </ng-container>
+  </div>
+</ng-container>
