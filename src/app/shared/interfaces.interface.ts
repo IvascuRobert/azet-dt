@@ -4,13 +4,6 @@ export interface IUserLogin {
     password: string;
 }
 
-export interface ISize {
-    width: number;
-    crossSection: number;
-    diameter: number;
-    loadOrSpeed: number;
-}
-
 export interface IFilterFlatNode {
     expandable: boolean;
     name: string;

@@ -1,4 +1,4 @@
-export enum EnumWeatherEfficiency { // clasa aderenta
+export enum EnumEfficiency { // clasa aderenta
     A = 'A',
     B = 'B',
     C = 'C',
@@ -38,17 +38,6 @@ export enum EnumCarCategory {
     BigTruck = 'BigTruck',
 }
 
-export enum EnumFuelEfficiency { // clasa consum
-    A = 'A',
-    B = 'B',
-    C = 'C',
-    D = 'D',
-    E = 'E',
-    F = 'F',
-    G = 'G',
-    NONE = '-'
-}
-
 export enum EnumPriceRange {
     UNDER100 = '<100',
     BETWEEN100_250 = '>100&<250',
@@ -57,7 +46,12 @@ export enum EnumPriceRange {
     OVER1000 = '>1000'
 }
 
-export enum EnumStock {
+export enum EnumState {
     STOCK = 'Stock',
     COMMAND = 'Command',
+}
+
+export enum EnumViewMode {
+    GRID = 'grid',
+    LIST = 'list'
 }

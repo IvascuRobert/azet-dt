@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDataClass } from '../shared/classes.class';
+import { EnumViewMode } from '../shared/enums.enum';
 import { productsMock } from '../shared/mocks';
 
 @Component({
@@ -9,9 +10,14 @@ import { productsMock } from '../shared/mocks';
 })
 export class ProductsComponent implements OnInit {
   products: ProductDataClass[] = productsMock;
+  viewMode = EnumViewMode.GRID;
 
   constructor() { }
 
   ngOnInit(): void { }
+
+  onChangeViewMode(viewMode) {
+    this.viewMode = viewMode;
+  }
 
 }

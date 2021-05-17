@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { TrackByService } from 'src/app/core/services/trackBy.service';
+import { EnumState, EnumViewMode } from 'src/app/shared/enums.enum';
 import { ProductDataClass } from '../../shared/classes.class';
 
 @Component({
@@ -14,10 +15,19 @@ import { ProductDataClass } from '../../shared/classes.class';
 export class ProductsCardComponent implements OnInit {
 
   @Input() products: ProductDataClass[];
+  @Input() viewMode = EnumViewMode.GRID;
+
+  currentRate = 4;
+  viewModeTemplate = EnumViewMode;
+  stateTemplate = EnumState;
 
   constructor(public trackbyService: TrackByService) { }
 
   ngOnInit(): void {
+  }
+
+  rateChange(event) {
+    console.log(event);
   }
 
 }

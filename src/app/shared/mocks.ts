@@ -1,6 +1,6 @@
 import { Observable, of } from "rxjs";
 import { ProductDataClass } from "./classes.class";
-import { EnumCarCategory, EnumFuelEfficiency, EnumPriceRange, EnumStock, EnumTireCategory, EnumWeatherEfficiency } from "./enums.enum";
+import { EnumCarCategory, EnumEfficiency, EnumPriceRange, EnumState, EnumTireCategory } from "./enums.enum";
 import { IFilterNode } from "./interfaces.interface";
 export class MockDataService {
     constructor() { }
@@ -18,22 +18,17 @@ export const productsMock: ProductDataClass[] = [{
     price: 200,
     quantity: 4,
     dot: 2020,
-    size: {
-        width: 20,
-        crossSection: 15,
-        diameter: 30,
-        loadOrSpeed: 86
-    },
-    review: 3,
+    size: '235/45 R19',
+    rate: 3,
     guarantee: 24,
-    weatherEfficiency: EnumWeatherEfficiency.A,
+    weatherEfficiency: EnumEfficiency.A,
     season: EnumTireCategory.Winter,
-    noiseLevel: 68,
+    noiseLevel: 74,
     profile: 'FastRespone 84H',
     image: '',
-    carCategory: EnumCarCategory.CamperVAN,
-    fuelEfficiency: EnumFuelEfficiency.F,
-    stock: EnumStock.STOCK
+    carsCategories: [EnumCarCategory.CamperVAN, EnumCarCategory.Truck, EnumCarCategory.Roadster],
+    fuelEfficiency: EnumEfficiency.F,
+    state: EnumState.STOCK
 }, {
     id: 2,
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
@@ -42,22 +37,17 @@ export const productsMock: ProductDataClass[] = [{
     price: 200,
     quantity: 4,
     dot: 2020,
-    size: {
-        width: 20,
-        crossSection: 15,
-        diameter: 30,
-        loadOrSpeed: 86
-    },
-    review: 3,
+    size: '235/45 R19',
+    rate: 3,
     guarantee: 24,
-    weatherEfficiency: EnumWeatherEfficiency.G,
+    weatherEfficiency: EnumEfficiency.G,
     season: EnumTireCategory.AllSeason,
-    noiseLevel: 68,
-    profile: 'FastRespone 84H',
+    noiseLevel: 73,
+    profile: 'Alpin 6 91T',
     image: '',
-    carCategory: EnumCarCategory.Coupe,
-    fuelEfficiency: EnumFuelEfficiency.D,
-    stock: EnumStock.COMMAND
+    carsCategories: [EnumCarCategory.Coupe],
+    fuelEfficiency: EnumEfficiency.D,
+    state: EnumState.COMMAND
 }, {
     id: 3,
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
@@ -66,22 +56,17 @@ export const productsMock: ProductDataClass[] = [{
     price: 200,
     quantity: 4,
     dot: 2020,
-    size: {
-        width: 20,
-        crossSection: 15,
-        diameter: 30,
-        loadOrSpeed: 86
-    },
-    review: 3,
+    size: '235/45 R19',
+    rate: 3,
     guarantee: 24,
-    weatherEfficiency: EnumWeatherEfficiency.B,
+    weatherEfficiency: EnumEfficiency.B,
     season: EnumTireCategory.Summer,
     noiseLevel: 68,
     profile: 'FastRespone 84H',
     image: '',
-    carCategory: EnumCarCategory.Coupe,
-    fuelEfficiency: EnumFuelEfficiency.C,
-    stock: EnumStock.COMMAND
+    carsCategories: [EnumCarCategory.Coupe],
+    fuelEfficiency: EnumEfficiency.C,
+    state: EnumState.COMMAND
 }, {
     id: 4,
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
@@ -90,22 +75,17 @@ export const productsMock: ProductDataClass[] = [{
     price: 200,
     quantity: 4,
     dot: 2020,
-    size: {
-        width: 20,
-        crossSection: 15,
-        diameter: 30,
-        loadOrSpeed: 86
-    },
-    review: 3,
+    size: '235/45 R19',
+    rate: 3,
     guarantee: 24,
-    weatherEfficiency: EnumWeatherEfficiency.C,
+    weatherEfficiency: EnumEfficiency.C,
     season: EnumTireCategory.Summer,
     noiseLevel: 68,
     profile: 'FastRespone 84H',
     image: '',
-    carCategory: EnumCarCategory.Coupe,
-    fuelEfficiency: EnumFuelEfficiency.A,
-    stock: EnumStock.STOCK
+    carsCategories: [EnumCarCategory.Coupe],
+    fuelEfficiency: EnumEfficiency.A,
+    state: EnumState.STOCK
 }];
 
 export const FILTER_TREE_DATA: IFilterNode[] = [
@@ -113,8 +93,8 @@ export const FILTER_TREE_DATA: IFilterNode[] = [
         name: 'Disponibilitate',
         id: '',
         children: [
-            { name: 'În stoc', id: EnumStock.STOCK },
-            { name: 'La comanda', id: EnumStock.COMMAND }
+            { name: 'În stoc', id: EnumState.STOCK },
+            { name: 'La comanda', id: EnumState.COMMAND }
         ]
     },
     {
@@ -193,28 +173,28 @@ export const FILTER_TREE_DATA: IFilterNode[] = [
         name: 'Clasă consum',
         id: '',
         children: [
-            { name: EnumFuelEfficiency.A, id: EnumFuelEfficiency.A },
-            { name: EnumFuelEfficiency.B, id: EnumFuelEfficiency.B },
-            { name: EnumFuelEfficiency.C, id: EnumFuelEfficiency.C },
-            { name: EnumFuelEfficiency.D, id: EnumFuelEfficiency.D },
-            { name: EnumFuelEfficiency.E, id: EnumFuelEfficiency.E },
-            { name: EnumFuelEfficiency.F, id: EnumFuelEfficiency.F },
-            { name: EnumFuelEfficiency.G, id: EnumFuelEfficiency.G },
-            { name: EnumFuelEfficiency.NONE, id: EnumFuelEfficiency.NONE }
+            { name: EnumEfficiency.A, id: EnumEfficiency.A },
+            { name: EnumEfficiency.B, id: EnumEfficiency.B },
+            { name: EnumEfficiency.C, id: EnumEfficiency.C },
+            { name: EnumEfficiency.D, id: EnumEfficiency.D },
+            { name: EnumEfficiency.E, id: EnumEfficiency.E },
+            { name: EnumEfficiency.F, id: EnumEfficiency.F },
+            { name: EnumEfficiency.G, id: EnumEfficiency.G },
+            { name: EnumEfficiency.NONE, id: EnumEfficiency.NONE }
         ]
     },
     {
         name: 'Clasă aderență',
         id: '',
         children: [
-            { name: EnumWeatherEfficiency.A, id: EnumWeatherEfficiency.A },
-            { name: EnumWeatherEfficiency.B, id: EnumWeatherEfficiency.B },
-            { name: EnumWeatherEfficiency.C, id: EnumWeatherEfficiency.C },
-            { name: EnumWeatherEfficiency.D, id: EnumWeatherEfficiency.D },
-            { name: EnumWeatherEfficiency.E, id: EnumWeatherEfficiency.E },
-            { name: EnumWeatherEfficiency.F, id: EnumWeatherEfficiency.F },
-            { name: EnumWeatherEfficiency.G, id: EnumWeatherEfficiency.G },
-            { name: EnumWeatherEfficiency.NONE, id: EnumWeatherEfficiency.NONE }
+            { name: EnumEfficiency.A, id: EnumEfficiency.A },
+            { name: EnumEfficiency.B, id: EnumEfficiency.B },
+            { name: EnumEfficiency.C, id: EnumEfficiency.C },
+            { name: EnumEfficiency.D, id: EnumEfficiency.D },
+            { name: EnumEfficiency.E, id: EnumEfficiency.E },
+            { name: EnumEfficiency.F, id: EnumEfficiency.F },
+            { name: EnumEfficiency.G, id: EnumEfficiency.G },
+            { name: EnumEfficiency.NONE, id: EnumEfficiency.NONE }
         ]
     }
 ];

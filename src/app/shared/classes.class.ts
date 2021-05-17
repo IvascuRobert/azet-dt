@@ -1,5 +1,4 @@
-import { EnumCarCategory, EnumFuelEfficiency, EnumStock, EnumTireCategory, EnumWeatherEfficiency } from "./enums.enum";
-import { ISize } from "./interfaces.interface";
+import { EnumCarCategory, EnumEfficiency, EnumState, EnumTireCategory } from "./enums.enum";
 
 export class ProductDataClass {
     id: number;
@@ -9,17 +8,17 @@ export class ProductDataClass {
     price: number;
     quantity: number;
     dot: number;
-    size: ISize;
-    review: number;
+    size: string;
+    rate: number;
     guarantee: number;
-    weatherEfficiency: EnumWeatherEfficiency;
+    weatherEfficiency: EnumEfficiency;
     season: EnumTireCategory;
     noiseLevel: number;
     profile: string;
     image?: string;
-    carCategory: EnumCarCategory;
-    fuelEfficiency: EnumFuelEfficiency;
-    stock: EnumStock
+    carsCategories: EnumCarCategory[];
+    fuelEfficiency: EnumEfficiency;
+    state: EnumState
 
     // Normal signature with defaults
     constructor(
@@ -30,22 +29,17 @@ export class ProductDataClass {
         price = null,
         quantity = null,
         dot = null,
-        size: {
-            width: null,
-            crossSection: null,
-            diameter: null,
-            loadOrSpeed: null
-        },
-        review = null,
+        size = '',
+        rate = null,
         guarantee = null,
         weatherEfficiency = null,
         season = null,
         noiseLevel = null,
         profile = '',
         image = '',
-        carCategory = null,
+        carsCategories = null,
         fuelEfficiency = null,
-        stock = null,
+        state = null,
     ) {
         this.id = id;
         this.name = name;
@@ -54,21 +48,16 @@ export class ProductDataClass {
         this.price = price;
         this.quantity = quantity;
         this.dot = dot;
-        this.size = {
-            width: size.width,
-            crossSection: size.crossSection,
-            diameter: size.diameter,
-            loadOrSpeed: size.loadOrSpeed
-        };
-        this.review = review;
+        this.size = size;
+        this.rate = rate;
         this.guarantee = guarantee;
         this.weatherEfficiency = weatherEfficiency;
         this.season = season;
         this.noiseLevel = noiseLevel;
         this.profile = profile;
         this.image = image;
-        this.carCategory = carCategory;
+        this.carsCategories = carsCategories;
         this.fuelEfficiency = fuelEfficiency;
-        this.stock = stock;
+        this.state = state;
     }
 }

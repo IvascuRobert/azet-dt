@@ -1,9 +1,10 @@
 <div class="row justify-content-center">
-    <div class="col-3">
-        <app-products-filter></app-products-filter>
-    </div>
-    <div class="col-9">
-        <app-products-sort></app-products-sort>
-        <app-products-card [products]="products"></app-products-card>
-    </div>
+  <div class="col-3">
+    <app-products-filter></app-products-filter>
+  </div>
+  <div class="col-9">
+    <app-products-sort (onViewMode)="onChangeViewMode($event)"></app-products-sort>
+    <app-products-card [products]="products"
+                       [viewMode]="viewMode"></app-products-card>
+  </div>
 </div>
