@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule, // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule, // Shared (multi-instance) objects
     NgbModule,
-    MatSidenavModule       
+    MatSidenavModule,
+    MatCardModule
   ],
   providers: [],
   declarations: [AppComponent],

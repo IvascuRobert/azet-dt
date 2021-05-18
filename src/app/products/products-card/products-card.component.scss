@@ -1,7 +1,4 @@
 .grid-product-card-container {
-  overflow-y: auto;
-  height: calc(100vh - 220px);
-
   .product-card {
     .price-container {
       font-size: 1rem;
@@ -30,9 +27,6 @@
 }
 
 .list-product-card-container {
-  overflow-y: auto;
-  height: calc(100vh - 220px);
-
   .product-card {
     .price-container {
       font-size: 1rem;
@@ -164,13 +158,4 @@
       }
     }
   }
-}
-
-.star {
-  font-size: 1.3rem;
-  color: #a8a8a8;
-}
-
-.filled {
-  color: #ffd700;
 }

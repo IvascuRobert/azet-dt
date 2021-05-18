@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { EnumViewMode } from 'src/app/shared/enums.enum';
+import { EnumSortValue, EnumViewMode } from 'src/app/shared/enums.enum';
+import { ISelect } from 'src/app/shared/interfaces.interface';
 
 @Component({
   selector: 'app-products-sort',
@@ -11,16 +12,18 @@ export class ProductsSortComponent implements OnInit {
 
   @Output() onViewMode = new EventEmitter<string>();
 
-  foods = [];
+  sorts: ISelect[] = [];
   viewMode = EnumViewMode;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.foods = [
-      { value: 'steak-0', label: 'Steak' },
-      { value: 'pizza-1', label: 'Pizza' },
-      { value: 'tacos-2', label: 'Tacos' }
+    this.sorts = [
+      { value: EnumSortValue.POPULAR, label: 'Cele mai populare' },
+      { value: EnumSortValue.NEWEST, label: 'Cele mai noi' },
+      { value: EnumSortValue.HIGH_PRICE, label: 'Preț crescător' },
+      { value: EnumSortValue.LOW_PRICE, label: 'Preț descrescător' },
+      { value: EnumSortValue.RATING, label: 'Rating' },
     ];
   }
 

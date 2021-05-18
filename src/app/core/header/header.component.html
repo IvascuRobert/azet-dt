@@ -2,70 +2,37 @@
              color="primary">
     <mat-toolbar-row>
         <button mat-icon-button
-                class="example-icon"
-                aria-label="Example icon-button with menu icon"
                 (click)="clickOnMenu()">
             <mat-icon>menu</mat-icon>
         </button>
         <button mat-button
-                class="app-navbar-title"
-                routerLink="/home">
-            <mat-icon fontSet="fas"
-                      fontIcon="fa-dice-d20"></mat-icon>
-            AZET D.T.
-        </button>
-        <button mat-button
-                class="app-navbar-title"
                 routerLink="/products">
-            <mat-icon fontSet="fas"
-                      fontIcon="fa-dice-d20"></mat-icon>
-            Produse
+            <span class="material-icons-two-tone">
+                support
+            </span>
+            Anvelope
         </button>
         <button mat-button
-                class="app-navbar-title"
                 routerLink="/about">
-            <mat-icon fontSet="fas"
-                      fontIcon="fa-dice-d20"></mat-icon>
+            <span class="material-icons-two-tone">
+                contact_page
+            </span>
             Contact
         </button>
+        <span class="app-navbar-spacer"></span>
         <button mat-button
-                class="app-navbar-title"
                 routerLink="/orders">
-            <mat-icon fontSet="fas"
-                      fontIcon="fa-dice-d20"></mat-icon>
+            <span class="material-icons-two-tone">
+                shopping_basket
+            </span>
             Cos
         </button>
         <button mat-button
-                class="app-navbar-title"
                 routerLink="/login">
-            <mat-icon fontSet="fas"
-                      fontIcon="fa-dice-d20"></mat-icon>
+            <span class="material-icons-two-tone">
+                account_circle
+            </span>
             Login
-        </button>
-        <span class="app-navbar-spacer"></span>
-        <button matTooltip="In curand!"
-                mat-icon-button>
-            <mat-icon class="app-navbar-icon"
-                      fontSet="fab"
-                      fontIcon="fa-facebook-square"></mat-icon>
-        </button>
-        <button matTooltip="In curand!"
-                mat-icon-button>
-            <mat-icon class="app-navbar-icon"
-                      fontSet="fab"
-                      fontIcon="fa-twitter-square"></mat-icon>
-        </button>
-        <button matTooltip="In curand!"
-                mat-icon-button>
-            <mat-icon class="app-navbar-icon"
-                      fontSet="fab"
-                      fontIcon="fa-linkedin"></mat-icon>
-        </button>
-        <button matTooltip="Distribuie"
-                mat-icon-button
-                class="example-icon"
-                aria-label="Example icon-button with share icon">
-            <mat-icon>share</mat-icon>
         </button>
     </mat-toolbar-row>
 </mat-toolbar>

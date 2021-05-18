@@ -10,8 +10,14 @@ export interface IFilterFlatNode {
     level: number;
 }
 
-export class IFilterNode {
+export interface IFilterNode {
     children?: IFilterNode[];
     name: string;
     id: string;
+}
+
+export interface ISelect {
+    value: string,
+    label: string,
+    disabled?: boolean;
 }

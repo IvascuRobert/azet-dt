@@ -1,14 +1,16 @@
 <div class="row">
-  <div class="col-12 py-2">
+  <div class="col-12 mb-2">
     <mat-card class="sort d-flex align-items-center">
-      <span class="sort--title">SORTEAZĂ DUPĂ</span>
+      <i class="fas fa-sort-amount-up"></i>
+      <span class="sort--title pl-2">SORTEAZĂ DUPĂ</span>
       <mat-form-field appearance="outline"
                       class="sort--select">
         <mat-label>Ați selectat:</mat-label>
         <mat-select>
-          <mat-option *ngFor="let food of foods"
-                      [value]="food.value">
-            {{food.label}}
+          <mat-option>-- Niciuna --</mat-option>
+          <mat-option *ngFor="let sort of sorts"
+                      [value]="sort.value">
+            {{sort.label}}
           </mat-option>
         </mat-select>
       </mat-form-field>

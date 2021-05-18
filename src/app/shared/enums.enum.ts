@@ -55,3 +55,11 @@ export enum EnumViewMode {
     GRID = 'grid',
     LIST = 'list'
 }
+
+export enum EnumSortValue {
+    POPULAR = 'popular',
+    NEWEST = 'newest',
+    HIGH_PRICE = 'highPrice',
+    LOW_PRICE = 'lowPrice',
+    RATING = 'rating',
+}
