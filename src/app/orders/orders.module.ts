@@ -6,4 +6,5 @@ import { OrdersRoutingModule } from './orders-routing.module';
     imports: [OrdersRoutingModule, SharedModule],
     declarations: [OrdersRoutingModule.components]
 })
+
 export class OrdersModule { }

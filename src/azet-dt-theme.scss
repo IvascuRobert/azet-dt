@@ -1,0 +1,80 @@
+@import '~@angular/material/theming';
+@import '~bootstrap/scss/bootstrap';
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+/**
+ * Global colors.
+ *
+ * {@see https://material.io/design/material-studies/rally.html#color}
+ */
+
+$azet-dt-green: #1eb980;
+$azet-dt-dark-green: #045d56;
+$azet-dt-orange: #ff6859;
+$azet-dt-yellow: #ffcf44;
+$azet-dt-purple: #b15dff;
+$azet-dt-blue: #72deff;
+
+$azet-dt-green-palette: (50: #c6fdf2,
+  100: #a6fbe2,
+  200: #8bf4d4,
+  300: #78eced,
+  400: #69e2ac,
+  500: #1eb980,
+  600: #459a6c,
+  700: #367b55,
+  800: #275d39,
+  900: #143821,
+  A100: #8c9eff, // These are from "mat-indigo" and weren't defined in the colors for rally green.
+  A200: #536dfe,
+  A400: #3d5afe,
+  A700: #304ffe,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ));
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$azet-dt-primary: mat-palette($azet-dt-green-palette);
+$azet-dt-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$azet-dt-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$azet-dt-theme: mat-dark-theme($azet-dt-primary, $azet-dt-accent, $azet-dt-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($azet-dt-theme);
+
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

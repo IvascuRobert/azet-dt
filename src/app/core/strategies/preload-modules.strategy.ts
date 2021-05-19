@@ -8,10 +8,10 @@ import { LoggerService } from '../services/logger.service';
 @Injectable()
 export class PreloadModulesStrategy implements PreloadingStrategy {
 
-  constructor(private logger: LoggerService) {}
+  constructor(private logger: LoggerService) { }
 
   preload(route: Route, load: () => Observable<any>): Observable<any> {
-    if (route.data && route.data['preload']) {
+    if (route.data && route.data.preload) {
       this.logger.log('Preloaded: ' + route.path);
       return load();
     } else {

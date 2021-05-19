@@ -1,7 +1,7 @@
-import { Observable, of } from "rxjs";
-import { ProductDataClass } from "./classes.class";
-import { EnumCarCategory, EnumEfficiency, EnumPriceRange, EnumState, EnumTireCategory } from "./enums.enum";
-import { IFilterNode } from "./interfaces.interface";
+import { Observable, of } from 'rxjs';
+import { ProductDataClass } from './classes.class';
+import { EnumCarCategory, EnumEfficiency, EnumPriceRange, EnumState, EnumTireCategory } from './enums.enum';
+import { IFilterNode } from './interfaces.interface';
 export class MockDataService {
     constructor() { }
 
@@ -88,7 +88,7 @@ export const productsMock: ProductDataClass[] = [{
     state: EnumState.STOCK
 }];
 
-export const FILTER_TREE_DATA: IFilterNode[] = [
+export const filterDataTree: IFilterNode[] = [
     {
         name: 'Disponibilitate',
         id: '',

@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onChangeViewMode(viewMode) {
+  changeViewMode(viewMode): void {
     this.viewMode = viewMode;
   }
 

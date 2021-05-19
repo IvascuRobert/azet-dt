@@ -10,9 +10,9 @@
 
   <mat-sidenav-content>
 
-    <app-header (onMenu)="onClickOnMenu(sidenav)"></app-header>
+    <div class="container">
 
-    <div class="container py-2">
+      <app-header (clickMenu)="onClickMenu(sidenav)"></app-header>
 
       <app-contact-header></app-contact-header>
 

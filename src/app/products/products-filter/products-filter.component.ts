@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, OnInit, Output } from '@angular/cor
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import * as EventEmitter from 'events';
 import { IFilterFlatNode, IFilterNode } from 'src/app/shared/interfaces.interface';
-import { FILTER_TREE_DATA } from 'src/app/shared/mocks';
+import { filterDataTree } from 'src/app/shared/mocks';
 
 @Component({
   selector: 'app-products-filter',
@@ -14,22 +14,20 @@ import { FILTER_TREE_DATA } from 'src/app/shared/mocks';
 })
 export class ProductsFilterComponent implements OnInit {
 
-  @Output() onFilterItem = new EventEmitter();
+  @Output() clickFilterItem = new EventEmitter();
 
-  private _transformer = (node: IFilterNode, level: number) => {
+  private transformer = (node: IFilterNode, level: number) => {
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
-      level: level,
+      level,
       id: node.id,
     };
   }
 
-  treeControl = new FlatTreeControl<IFilterFlatNode>(
-    node => node.level, node => node.expandable);
+  treeControl = new FlatTreeControl<IFilterFlatNode>(node => node.level, node => node.expandable);
 
-  treeFlattener = new MatTreeFlattener(
-    this._transformer, node => node.level, node => node.expandable, node => node.children);
+  treeFlattener = new MatTreeFlattener(this.transformer, node => node.level, node => node.expandable, node => node.children);
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
@@ -39,10 +37,10 @@ export class ProductsFilterComponent implements OnInit {
   getLevel = (node: IFilterFlatNode) => node.level;
 
   constructor() {
-    this.dataSource.data = FILTER_TREE_DATA;
+    this.dataSource.data = filterDataTree;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.treeControl.expand(this.treeControl.dataNodes[0]);
     this.treeControl.expand(this.treeControl.dataNodes[3]);
   }

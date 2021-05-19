@@ -4,7 +4,7 @@ import { ProductDataClass } from 'src/app/shared/classes.class';
 @Injectable()
 export class TrackByService {
 
-    product(index: number, product: ProductDataClass) {
+    product(index: number, product: ProductDataClass): number {
         return product.id;
     }
 }

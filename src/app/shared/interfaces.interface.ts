@@ -17,7 +17,7 @@ export interface IFilterNode {
 }
 
 export interface ISelect {
-    value: string,
-    label: string,
+    value: string;
+    label: string;
     disabled?: boolean;
 }

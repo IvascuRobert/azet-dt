@@ -1,9 +1,11 @@
+@import '../azet-dt-theme.scss';
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
 
-  > .col,
-  > [class*="col-"] {
+  >.col,
+  >[class*="col-"] {
     padding-right: 2px;
     padding-left: 0;
   }
@@ -17,5 +19,19 @@
 
   .filled {
     color: #ffd700;
+  }
+
+  .azet-dt-shadow {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+  }
+
+  .azet-dt-text {
+    color: primary;
+  }
+
+  .azet-dt-border-left {
+    border-left: 4px solid $azet-dt-green;
   }
 }

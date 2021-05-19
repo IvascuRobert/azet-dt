@@ -9,7 +9,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   title = 'AZET D.T.';
 
-  onClickOnMenu(sidenav: MatSidenav) {
+  onClickMenu(sidenav: MatSidenav): void {
     sidenav.toggle();
   }
 }

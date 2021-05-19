@@ -37,14 +37,14 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     // Subscribe to params so if it changes we pick it up. Could use this.route.parent.snapshot.params["id"] to simplify it.
     this.route.parent.params.subscribe((params: Params) => {
-      const id = +params['id'];
+      const id = params.id;
       if (id) {
         this.product = productsMock.find((product) => product.id === id);
       }
     });
   }
 
-  rateChange(event) {
+  rateChange(event): void {
     console.log(event);
   }
 }

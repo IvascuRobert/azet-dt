@@ -24,9 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/styles.scss"
+              "src/azet-dt-theme.scss"
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"
@@ -88,9 +87,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/styles.scss"
+              "src/azet-dt-theme.scss"
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"

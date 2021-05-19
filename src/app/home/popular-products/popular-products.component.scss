@@ -1,0 +1,33 @@
+.popular-products-container {
+  .popular-products-header {
+    .app-navbar-spacer {
+      flex: 1 1 auto;
+    }
+  }
+
+  .product-card {
+    .price-container {
+      font-size: 1rem;
+
+      .price-container--icon {
+        color: #85bb65;
+      }
+
+      .price-container--bull {
+        padding: 0px 5px 0px 5px;
+        color: black;
+        font-size: 1.2rem;
+      }
+
+      .price-container--price {
+        font-weight: 500;
+        color: black;
+      }
+    }
+
+    .product-card--info-text {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  }
+}

@@ -26,7 +26,7 @@ export class ProductsCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  rateChange(event) {
+  rateChange(event): void {
     console.log(event);
   }
 

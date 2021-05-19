@@ -1,4 +1,4 @@
-import { EnumCarCategory, EnumEfficiency, EnumState, EnumTireCategory } from "./enums.enum";
+import { EnumCarCategory, EnumEfficiency, EnumState, EnumTireCategory } from './enums.enum';
 
 export class ProductDataClass {
     id: number;
@@ -18,7 +18,7 @@ export class ProductDataClass {
     image?: string;
     carsCategories: EnumCarCategory[];
     fuelEfficiency: EnumEfficiency;
-    state: EnumState
+    state: EnumState;
 
     // Normal signature with defaults
     constructor(

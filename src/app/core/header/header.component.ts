@@ -6,14 +6,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() onMenu = new EventEmitter<boolean>();
+  @Output() clickMenu = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  clickOnMenu() {
-    this.onMenu.emit(true);
+  clickOnMenu(): void {
+    this.clickMenu.emit(true);
   }
 }

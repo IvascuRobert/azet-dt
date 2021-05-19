@@ -10,7 +10,7 @@ import { ISelect } from 'src/app/shared/interfaces.interface';
 })
 export class ProductsSortComponent implements OnInit {
 
-  @Output() onViewMode = new EventEmitter<string>();
+  @Output() clickViewMode = new EventEmitter<string>();
 
   sorts: ISelect[] = [];
   viewMode = EnumViewMode;
@@ -27,11 +27,11 @@ export class ProductsSortComponent implements OnInit {
     ];
   }
 
-  changeViewMode(event) {
+  changeViewMode(event): void {
     const { value } = event;
 
     if (value) {
-      this.onViewMode.emit(value);
+      this.clickViewMode.emit(value);
     }
   }
 

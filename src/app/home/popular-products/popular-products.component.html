@@ -1,0 +1,116 @@
+<div class="row popular-products-container">
+  <div class="col-12">
+    <mat-toolbar class="popular-products-header"
+                 color="primary">
+      <mat-toolbar-row>
+        <span>Cele mai populare</span>
+        <span class="app-navbar-spacer"></span>
+        <button mat-icon-button
+                [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div *ngFor="let product of products"
+       class="col-3">
+    <mat-card class="product-card">
+      <div mat-card-image
+           class="text-center mt-1">
+        <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
+             [routerLink]="'/products/'+ product.id"
+             class="w-50 h-50"
+             [alt]="product.name">
+      </div>
+      <mat-card-header>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle class="price-container">
+          <i class="price-container--icon fas fa-money-bill-wave"></i>
+          <span class="price-container--bull">&bull;</span>
+          <span class="price-container--price">{{product.price}} Lei</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row justify-content-center">
+          <div class="col-11">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="col-12 py-3">
+            <mat-chip-list>
+              <mat-chip>
+                <i aria-hidden="false"
+                   aria-label="Sezon"
+                   [class]="product.season | seasonToIcon"></i>
+                <span class="pl-1">{{product.season}}</span>
+              </mat-chip>
+              <mat-chip>
+                <i aria-hidden="false"
+                   aria-label="Nivelul de zgomot"
+                   class="fas fa-volume-up"></i>
+                <span class="pl-1">{{product.noiseLevel}}</span>
+              </mat-chip>
+              <mat-chip>
+                <i aria-hidden="false"
+                   aria-label="Nivelul de consum"
+                   class="fas fa-gas-pump"></i>
+                <span class="pl-1">{{product.fuelEfficiency}}</span>
+              </mat-chip>
+              <mat-chip>
+                <i aria-hidden="false"
+                   aria-label="Eficienta pe vreme"
+                   class="fas fa-cloud-rain"></i>
+                <span class="pl-1">{{product.weatherEfficiency}}</span>
+              </mat-chip>
+              <mat-chip>
+                <i aria-hidden="false"
+                   aria-label="Informatii DOT"
+                   class="fas fa-calendar-alt"></i>
+                <span class="pl-1">{{product.dot}}</span>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="d-flex">
+          <button mat-raised-button
+                  color="primary">
+            <span class="material-icons">
+              add_shopping_cart
+            </span>
+            ADAUGĂ ÎN COȘ
+          </button>
+          <button mat-icon-button
+                  class="ml-auto"
+                  color="primary">
+            <span class="material-icons">
+              favorite
+            </span>
+          </button>
+          <button mat-icon-button
+                  color="primary">
+            <span class="material-icons">
+              share
+            </span>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item
+          disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>
