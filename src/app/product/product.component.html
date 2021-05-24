@@ -1,5 +1,10 @@
 <div class="row product-details-container text-center">
-    <div class="col-3">
+    <div *ngIf="(loading$ | async)"
+         class="col-12">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div *ngIf="!(loading$ | async)"
+         class="col-3">
         <div class="row">
             <div class="col-12 my-1">
                 <mat-card>
@@ -22,7 +27,7 @@
                     <mat-card-title>
                         <ngb-rating class="rating"
                                     [(rate)]="product.rate"
-                                    [readonly]="false"
+                                    [readonly]="true"
                                     [max]="5"
                                     (rateChange)="rateChange($event)">
                             <ng-template let-fill="fill"
@@ -61,7 +66,8 @@
             </div>
         </div>
     </div>
-    <div class="col-5">
+    <div *ngIf="!(loading$ | async)"
+         class="col-5">
         <div class="row">
             <div class="col-4 my-1">
                 <mat-card>
@@ -164,7 +170,7 @@
                     </mat-card-subtitle>
                     <mat-card-content>
                         <mat-selection-list [multiple]="false">
-                            <mat-list-option *ngFor="let review of reviews">
+                            <mat-list-option *ngFor="let review of product.reviews">
                                 <mat-icon mat-list-icon>person</mat-icon>
                                 <div mat-line>{{review.userName}}</div>
                                 <div mat-line>{{review.text}}</div>
@@ -176,7 +182,8 @@
             </div>
         </div>
     </div>
-    <div class="col-4">
+    <div *ngIf="!(loading$ | async)"
+         class="col-4">
         <div class="row">
             <div class="col-12 my-1">
                 <mat-card>

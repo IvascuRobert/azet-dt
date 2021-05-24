@@ -1,8 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, Component, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import * as EventEmitter from 'events';
 import { IFilterFlatNode, IFilterNode } from 'src/app/shared/interfaces.interface';
 import { filterDataTree } from 'src/app/shared/mocks';
 

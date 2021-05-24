@@ -1,0 +1,8 @@
+{
+    "/api": {
+        "target": "https://azet-api.herokuapp.com",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

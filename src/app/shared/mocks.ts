@@ -2,6 +2,7 @@ import { Observable, of } from 'rxjs';
 import { ProductDataClass } from './classes.class';
 import { EnumCarCategory, EnumEfficiency, EnumPriceRange, EnumState, EnumTireCategory } from './enums.enum';
 import { IFilterNode } from './interfaces.interface';
+
 export class MockDataService {
     constructor() { }
 
@@ -11,7 +12,7 @@ export class MockDataService {
 }
 
 export const productsMock: ProductDataClass[] = [{
-    id: 1,
+    id: '1',
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
     description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
     producer: 'Continental',
@@ -20,6 +21,29 @@ export const productsMock: ProductDataClass[] = [{
     dot: 2020,
     size: '235/45 R19',
     rate: 3,
+    reviews: [
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Florin O. Ieremciuc',
+            text: 'Mi-au plakut.',
+            updated: '1/1/16'
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Cezar',
+            text: 'Super fain. Mai cumpar sa moara sa faca !',
+            updated: '1/1/16'
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Diana Cocea',
+            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
+            updated: '1/1/16'
+        }
+    ],
     guarantee: 24,
     weatherEfficiency: EnumEfficiency.A,
     season: EnumTireCategory.Winter,
@@ -30,7 +54,7 @@ export const productsMock: ProductDataClass[] = [{
     fuelEfficiency: EnumEfficiency.F,
     state: EnumState.STOCK
 }, {
-    id: 2,
+    id: '2',
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
     description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
     producer: 'Continental',
@@ -39,6 +63,29 @@ export const productsMock: ProductDataClass[] = [{
     dot: 2020,
     size: '235/45 R19',
     rate: 3,
+    reviews: [
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Florin O. Ieremciuc',
+            text: 'Mi-au plakut.',
+            updated: '1/1/16',
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Cezar',
+            text: 'Super fain. Mai cumpar sa moara sa faca !',
+            updated: '1/1/16',
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Diana Cocea',
+            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
+            updated: '1/1/16',
+        }
+    ],
     guarantee: 24,
     weatherEfficiency: EnumEfficiency.G,
     season: EnumTireCategory.AllSeason,
@@ -49,7 +96,7 @@ export const productsMock: ProductDataClass[] = [{
     fuelEfficiency: EnumEfficiency.D,
     state: EnumState.COMMAND
 }, {
-    id: 3,
+    id: '3',
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
     description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
     producer: 'Continental',
@@ -58,6 +105,29 @@ export const productsMock: ProductDataClass[] = [{
     dot: 2020,
     size: '235/45 R19',
     rate: 3,
+    reviews: [
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Florin O. Ieremciuc',
+            text: 'Mi-au plakut.',
+            updated: '1/1/16'
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Cezar',
+            text: 'Super fain. Mai cumpar sa moara sa faca !',
+            updated: '1/1/16'
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Diana Cocea',
+            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
+            updated: '1/1/16'
+        }
+    ],
     guarantee: 24,
     weatherEfficiency: EnumEfficiency.B,
     season: EnumTireCategory.Summer,
@@ -68,7 +138,7 @@ export const productsMock: ProductDataClass[] = [{
     fuelEfficiency: EnumEfficiency.C,
     state: EnumState.COMMAND
 }, {
-    id: 4,
+    id: '4',
     name: 'Dunlop 175/65 R15 Fast Respone 84H',
     description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
     producer: 'Continental',
@@ -77,6 +147,29 @@ export const productsMock: ProductDataClass[] = [{
     dot: 2020,
     size: '235/45 R19',
     rate: 3,
+    reviews: [
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Florin O. Ieremciuc',
+            text: 'Mi-au plakut.',
+            updated: '1/1/16'
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Cezar',
+            text: 'Super fain. Mai cumpar sa moara sa faca !',
+            updated: '1/1/16'
+        },
+        {
+            id: 1,
+            userId: 24,
+            userName: 'Diana Cocea',
+            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
+            updated: '1/1/16'
+        }
+    ],
     guarantee: 24,
     weatherEfficiency: EnumEfficiency.C,
     season: EnumTireCategory.Summer,

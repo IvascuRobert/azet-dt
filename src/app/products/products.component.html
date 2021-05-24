@@ -4,7 +4,9 @@
   </div>
   <div class="col-9">
     <app-products-sort (clickViewMode)="changeViewMode($event)"></app-products-sort>
-    <app-products-card [products]="products"
-                       [viewMode]="viewMode"></app-products-card>
+    <app-products-card [products]="products$ | async"
+                       [loading]="loading$ | async"
+                       [viewMode]="viewMode"
+                       (clickAddToCart)="addToCart($event)"></app-products-card>
   </div>
 </div>

@@ -7,7 +7,7 @@ const AppRoutes: Routes = [
     { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
     { path: 'products/:id', data: { preload: true }, loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
     { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-    { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) },
+    { path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
     { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
     { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
     { path: 'knowledge', loadChildren: () => import('./product-knowledge/product-knowledge.module').then(m => m.ProductKnowledgeModule) },

@@ -21,3 +21,11 @@ export interface ISelect {
     label: string;
     disabled?: boolean;
 }
+
+export interface IReview {
+    userName: string;
+    userId: number;
+    id: number;
+    text: string;
+    updated: string;
+}

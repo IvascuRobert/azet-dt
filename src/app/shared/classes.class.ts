@@ -1,7 +1,8 @@
 import { EnumCarCategory, EnumEfficiency, EnumState, EnumTireCategory } from './enums.enum';
+import { IReview } from './interfaces.interface';
 
 export class ProductDataClass {
-    id: number;
+    id: string;
     name: string;
     description: string;
     producer: string;
@@ -10,6 +11,7 @@ export class ProductDataClass {
     dot: number;
     size: string;
     rate: number;
+    reviews?: IReview[];
     guarantee: number;
     weatherEfficiency: EnumEfficiency;
     season: EnumTireCategory;
