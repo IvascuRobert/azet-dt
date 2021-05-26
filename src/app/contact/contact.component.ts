@@ -34,9 +34,7 @@ export class ContactComponent implements OnInit {
   }
 
   getErrorMessage(): string {
-    if (this.name.hasError('required')) {
-      return 'Câmpul este obligatoriu !';
-    }
+    return 'Câmpul este obligatoriu !';
   }
 
   onSubmit(): void {

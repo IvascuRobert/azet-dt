@@ -47,8 +47,8 @@ export enum EnumPriceRange {
 }
 
 export enum EnumState {
-    STOCK = 'Stock',
-    COMMAND = 'Command',
+    STOCK = 'STOCK',
+    COMMAND = 'COMMAND',
 }
 
 export enum EnumViewMode {

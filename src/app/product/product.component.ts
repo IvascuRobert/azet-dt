@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ProductsService } from '../core/services/products.service';
+import { ProductService } from '../core/services/product.service';
 import { ProductDataClass } from '../shared/classes.class';
 import { EnumState } from '../shared/enums.enum';
 
@@ -19,17 +19,17 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private productService: ProductService
   ) {
-    this.product$ = this.productsService.entities$;
-    this.loading$ = this.productsService.loading$;
+    this.product$ = this.productService.entities$;
+    this.loading$ = this.productService.loading$;
   }
 
   ngOnInit(): void {
     const productId = this.route.parent.snapshot.params['id'];
 
     if (productId) {
-      this.productsService.getByKey(productId);
+      this.productService.getByKey(productId);
     }
 
     this.product$.subscribe((products: ProductDataClass[]) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../core/services/cart.service';
-import { ProductsService } from '../core/services/products.service';
+import { ProductService } from '../core/services/product.service';
 import { ProductDataClass } from '../shared/classes.class';
 import { EnumViewMode } from '../shared/enums.enum';
 
@@ -16,11 +16,11 @@ export class ProductsComponent implements OnInit {
   products$: Observable<ProductDataClass[]>
 
   constructor(
-    private productsService: ProductsService,
+    private productService: ProductService,
     private cartService: CartService
   ) {
-    this.products$ = this.productsService.entities$;
-    this.loading$ = this.productsService.loading$;
+    this.products$ = this.productService.entities$;
+    this.loading$ = this.productService.loading$;
   }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.productsService.getAll();
+    this.productService.getAll();
   }
 
   changeViewMode(viewMode): void {

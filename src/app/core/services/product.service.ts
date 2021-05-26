@@ -6,8 +6,8 @@ import {
 import { ProductDataClass } from 'src/app/shared/classes.class';
 
 @Injectable({ providedIn: 'root' })
-export class ProductsService extends EntityCollectionServiceBase<ProductDataClass> {
+export class ProductService extends EntityCollectionServiceBase<ProductDataClass> {
     constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-        super('Product', serviceElementsFactory);
+        super('Products', serviceElementsFactory);
     }
 }

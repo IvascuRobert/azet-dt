@@ -2,19 +2,20 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { ContactHeaderComponent } from './contact-header/contact-header.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TrackByService } from './services/trackBy.service';
 import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component';
-import { ContactHeaderComponent } from './contact-header/contact-header.component';
-import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MatCardModule } from '@angular/material/card';
     MatTooltipModule,
     MatButtonModule,
     MatRippleModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule
   ],
   exports: [
     RouterModule,

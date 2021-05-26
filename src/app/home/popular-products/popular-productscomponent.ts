@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, take, takeLast } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ProductsService } from 'src/app/core/services/products.service';
+import { ProductService } from 'src/app/core/services/product.service';
 import { ProductDataClass } from 'src/app/shared/classes.class';
 import { EnumState } from 'src/app/shared/enums.enum';
 
@@ -19,13 +19,13 @@ export class PopularProductsComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private productsService: ProductsService
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
-    this.productsService.getAll();
-    this.popularProducts$ = this.productsService.entities$.pipe(map(products => products.slice(0, 3)));
-    this.loading$ = this.productsService.loading$;
+    this.productService.getAll();
+    this.popularProducts$ = this.productService.entities$.pipe(map(products => products.slice(0, 3)));
+    this.loading$ = this.productService.loading$;
   }
 
   addToCart(product: ProductDataClass) {

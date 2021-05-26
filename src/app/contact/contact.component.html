@@ -1,150 +1,164 @@
-<div class="row my-3">
-    <div class="col-6">
-        <mat-card class="mat-elevation-z6">
-            <form class="row justify-content-center"
-                  [formGroup]="contactForm"
-                  (ngSubmit)="onSubmit()">
-                <mat-form-field class="col-12 w-100 my-3">
-                    <mat-label>Nume</mat-label>
-                    <input id="name"
-                           name="name"
-                           type="text"
-                           matInput
-                           formControlName="name"
-                           placeholder="Nume"
-                           required>
-                    <mat-hint align="start">Ex. Popescu Adrian</mat-hint>
-                    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
-                    <mat-icon matSuffix>person</mat-icon>
-                </mat-form-field>
-                <mat-form-field class="col-12 w-100 my-3">
-                    <mat-label>Telefon</mat-label>
-                    <input id="phone"
-                           name="phone"
-                           type="tel"
-                           aria-label="Telefon"
-                           matInput
-                           formControlName="phone"
-                           placeholder="555-555-1234"
-                           required>
-                    <mat-hint align="start">Introduceți numărul de telefon</mat-hint>
-                    <mat-error *ngIf="phone.invalid">{{getErrorMessage()}}</mat-error>
-                    <mat-icon matSuffix>phone</mat-icon>
-                </mat-form-field>
-                <mat-form-field class="col-12 w-100 my-3">
-                    <mat-label>Mesaj</mat-label>
-                    <input matInput
-                           #msg
-                           formControlName="message"
-                           maxlength="100"
-                           placeholder="Ex. Doresc să comand..."
-                           required>
-                    <mat-hint align="end">{{msg.value.length}} / 100</mat-hint>
-                    <mat-error *ngIf="message.invalid">{{getErrorMessage()}}</mat-error>
-                    <mat-icon matSuffix>textsms</mat-icon>
-                </mat-form-field>
-                <button mat-raised-button
-                        class="col-6 text-center my-3"
-                        type="submit"
-                        color="primary">Trimite</button>
-            </form>
-        </mat-card>
+<div class="row contact-container">
+  <div class="col-6">
+    <div class="row justify-content-center"
+         style="font-size: 1rem;">
+      <div class="col-12 mb-4">
+        <mat-toolbar class="mat-elevation-z6"
+                     color="primary">
+          <mat-toolbar-row>
+            <span>Cum găsești SC AZET D.T. SRL</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </div>
+      <div class="col-4 align-self-center">Strada:</div>
+      <div class="col-8">
+        <a mat-button
+           target="_blank"
+           [href]="azetDtLocation">
+          Strada Zizinului Nr. 123G, Brașov, România
+          <span class="material-icons-two-tone">
+            launch
+          </span>
+        </a>
+      </div>
+      <div class="col-4 align-self-center">Persoană contact:</div>
+      <div class="col-8">
+        <a mat-button
+           href="tel:+40737167631">
+          Tudor Neagu
+          <span class="material-icons-two-tone">
+            launch
+          </span>
+        </a>
+      </div>
+      <div class="col-4 align-self-center">Număr telefon 1:</div>
+      <div class="col-8">
+        <a mat-button
+           href="tel:+40737167631">
+          (0737) 167 631
+          <span class="material-icons-two-tone">
+            launch
+          </span>
+        </a>
+      </div>
+      <div class="col-4 align-self-center">Număr telefon 2:</div>
+      <div class="col-8">
+        <a mat-button
+           href="tel:+40754369261">
+          (0754) 369 261
+          <span class="material-icons-two-tone">
+            launch
+          </span>
+        </a>
+      </div>
+      <div class="col-4 align-self-center">Mail:</div>
+      <div class="col-8">
+        <a mat-button
+           href="mailto: office@azet-resapare.ro">
+          office@azet-resapare.ro
+          <span class="material-icons-two-tone">
+            launch
+          </span>
+        </a>
+      </div>
+      <div class="col-10 my-4">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="col-4">Identificator:</div>
+      <div class="col-8">RO 29306831</div>
+      <div class="col-4">Cont Bancar:</div>
+      <div class="col-8">RO14 BACX 0000 0006 8969 8001</div>
+      <div class="col-4">Bancă:</div>
+      <div class="col-8">Unicredit Tiriac Bank</div>
+      <div class="col-10 my-4">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="col-12 text-center">
+        <button matTooltip="Facebook"
+                mat-icon-button>
+          <mat-icon class="app-navbar-icon"
+                    fontSet="fab"
+                    fontIcon="fa-facebook-square"></mat-icon>
+        </button>
+        <button matTooltip="Twitter"
+                mat-icon-button>
+          <mat-icon class="app-navbar-icon"
+                    fontSet="fab"
+                    fontIcon="fa-twitter-square"></mat-icon>
+        </button>
+        <button matTooltip="LinkedIn"
+                mat-icon-button>
+          <mat-icon class="app-navbar-icon"
+                    fontSet="fab"
+                    fontIcon="fa-linkedin"></mat-icon>
+        </button>
+        <button matTooltip="Distribuie"
+                mat-icon-button
+                aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </div>
     </div>
-    <div class="col-6">
-        <div class="row justify-content-center"
-             style="font-size: 1rem;">
-            <div class="col-12 text-center">SC AZET D.T. SRL</div>
-            <div class="col-10 my-3">
-                <mat-divider></mat-divider>
-            </div>
-            <div class="col-4">Strada:</div>
-            <div class="col-8">
-                <a mat-button
-                   target="_blank"
-                   [href]="azetDtLocation">
-                    Strada Zizinului Nr. 123G, Brașov, România
-                    <span class="material-icons-two-tone">
-                        launch
-                    </span>
-                </a>
-            </div>
-            <div class="col-4">Persoană contact:</div>
-            <div class="col-8">
-                <a mat-button
-                   href="tel:+40737167631">
-                    Tudor Neagu
-                    <span class="material-icons-two-tone">
-                        launch
-                    </span>
-                </a>
-            </div>
-            <div class="col-4">Număr telefon 1:</div>
-            <div class="col-8">
-                <a mat-button
-                   href="tel:+40737167631">
-                    (0737) 167 631
-                    <span class="material-icons-two-tone">
-                        launch
-                    </span>
-                </a>
-            </div>
-            <div class="col-4">Număr telefon 2:</div>
-            <div class="col-8">
-                <a mat-button
-                   href="tel:+40754369261">
-                    (0754) 369 261
-                    <span class="material-icons-two-tone">
-                        launch
-                    </span>
-                </a>
-            </div>
-            <div class="col-4">Mail:</div>
-            <div class="col-8">
-                <a mat-button
-                   href="mailto: office@azet-resapare.ro">
-                    office@azet-resapare.ro
-                    <span class="material-icons-two-tone">
-                        launch
-                    </span>
-                </a>
-            </div>
-            <div class="col-10 my-3">
-                <mat-divider></mat-divider>
-            </div>
-            <div class="col-4">Identificator:</div>
-            <div class="col-8">RO 29306831</div>
-            <div class="col-4">Cont Bancar:</div>
-            <div class="col-8">RO14 BACX 0000 0006 8969 8001</div>
-            <div class="col-4">Bancă:</div>
-            <div class="col-8">Unicredit Tiriac Bank</div>
-        </div>
-        <div class="col-10 my-3">
-            <mat-divider></mat-divider>
-        </div>
-        <div class="col-12 text-center">
-            <button matTooltip="Facebook"
-                    mat-icon-button>
-                <mat-icon class="app-navbar-icon"
-                          fontSet="fab"
-                          fontIcon="fa-facebook-square"></mat-icon>
-            </button>
-            <button matTooltip="Twitter"
-                    mat-icon-button>
-                <mat-icon class="app-navbar-icon"
-                          fontSet="fab"
-                          fontIcon="fa-twitter-square"></mat-icon>
-            </button>
-            <button matTooltip="LinkedIn"
-                    mat-icon-button>
-                <mat-icon class="app-navbar-icon"
-                          fontSet="fab"
-                          fontIcon="fa-linkedin"></mat-icon>
-            </button>
-            <button matTooltip="Distribuie"
-                    mat-icon-button
-                    aria-label="Example icon-button with share icon">
-                <mat-icon>share</mat-icon>
-            </button>
-        </div>
-    </div>
+  </div>
+  <div class="col-6">
+    <mat-card class="mat-elevation-z6"
+              style="font-size: 1.2rem;">
+      <mat-card-header>
+        <mat-card-title>Contact</mat-card-title>
+        <mat-card-subtitle>Completează 3 pași simpli și te contactăm noi.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="row justify-content-center"
+              [formGroup]="contactForm"
+              (ngSubmit)="onSubmit()">
+          <mat-form-field class="col-12 w-100 my-3"
+                          appearance="fill">
+            <mat-label>Nume</mat-label>
+            <input id="name"
+                   name="name"
+                   type="text"
+                   matInput
+                   formControlName="name"
+                   placeholder="Nume"
+                   required>
+            <mat-hint align="start">Ex. Popescu Adrian</mat-hint>
+            <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="col-12 w-100 my-3"
+                          appearance="fill">
+            <mat-label>Telefon</mat-label>
+            <input id="phone"
+                   name="phone"
+                   type="tel"
+                   aria-label="Telefon"
+                   matInput
+                   formControlName="phone"
+                   placeholder="555-555-1234"
+                   required>
+            <mat-hint align="start">Introduceți numărul de telefon</mat-hint>
+            <mat-error *ngIf="phone.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="col-12 w-100 my-3"
+                          appearance="fill">
+            <mat-label>Mesaj</mat-label>
+            <input matInput
+                   #msg
+                   formControlName="message"
+                   maxlength="100"
+                   placeholder="Ex. Doresc să comand..."
+                   required>
+            <mat-hint align="end">{{msg.value.length}} / 100</mat-hint>
+            <mat-error *ngIf="message.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix>textsms</mat-icon>
+          </mat-form-field>
+          <button mat-raised-button
+                  class="col-6 text-center my-5"
+                  type="submit"
+                  color="primary">Trimite</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
