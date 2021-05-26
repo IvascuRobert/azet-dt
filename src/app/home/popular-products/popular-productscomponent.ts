@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { map, take, takeLast } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { ProductDataClass } from 'src/app/shared/classes.class';
@@ -24,7 +24,7 @@ export class PopularProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getAll();
-    this.popularProducts$ = this.productsService.entities$.pipe(take(3));
+    this.popularProducts$ = this.productsService.entities$.pipe(map(products => products.slice(0, 3)));
     this.loading$ = this.productsService.loading$;
   }
 

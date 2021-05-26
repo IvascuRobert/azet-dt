@@ -16,7 +16,7 @@
         <div mat-card-image
              class="text-center">
           <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
-               [routerLink]="'/products/'+ product._id"
+               [routerLink]="'/products/'+ product.id"
                class="w-50 h-50"
                [alt]="product.name">
         </div>
@@ -254,7 +254,7 @@
                   </div>
                   <div class="col-11">
                     <mat-chip-list aria-label="Vehicule">
-                      <mat-chip *ngFor="let carCategory of product.carsCategories">{{carCategory}}</mat-chip>
+                      <mat-chip *ngFor="let carCategory of product.carCategories">{{carCategory}}</mat-chip>
                     </mat-chip-list>
                   </div>
                 </div>

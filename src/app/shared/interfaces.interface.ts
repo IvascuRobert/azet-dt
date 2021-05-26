@@ -27,5 +27,5 @@ export interface IReview {
     userId: number;
     id: number;
     text: string;
-    updated: string;
+    createdAt: string;
 }

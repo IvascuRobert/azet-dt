@@ -4,22 +4,22 @@ import { IReview } from './interfaces.interface';
 export class ProductDataClass {
     id: string;
     name: string;
-    description: string;
+    description?: string;
     producer: string;
     price: number;
     quantity: number;
     dot: number;
     size: string;
-    rate: number;
+    rate?: number;
     reviews?: IReview[];
-    guarantee: number;
-    weatherEfficiency: EnumEfficiency;
+    guarantee?: number;
+    weatherEfficiency?: EnumEfficiency;
     season: EnumTireCategory;
-    noiseLevel: number;
+    noiseLevel?: number;
     profile: string;
     image?: string;
-    carsCategories: EnumCarCategory[];
-    fuelEfficiency: EnumEfficiency;
+    carCategories: EnumCarCategory[];
+    fuelEfficiency?: EnumEfficiency;
     state: EnumState;
 
     // Normal signature with defaults
@@ -39,7 +39,7 @@ export class ProductDataClass {
         noiseLevel = null,
         profile = '',
         image = '',
-        carsCategories = null,
+        carCategories = null,
         fuelEfficiency = null,
         state = null,
     ) {
@@ -58,7 +58,7 @@ export class ProductDataClass {
         this.noiseLevel = noiseLevel;
         this.profile = profile;
         this.image = image;
-        this.carsCategories = carsCategories;
+        this.carCategories = carCategories;
         this.fuelEfficiency = fuelEfficiency;
         this.state = state;
     }

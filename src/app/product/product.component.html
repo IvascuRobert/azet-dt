@@ -156,7 +156,7 @@
                     </mat-card-subtitle>
                     <mat-card-title>
                         <mat-chip-list aria-label="Vehicule">
-                            <mat-chip *ngFor="let carCategory of product.carsCategories">{{carCategory}}
+                            <mat-chip *ngFor="let carCategory of product.carCategories">{{carCategory}}
                             </mat-chip>
                         </mat-chip-list>
                     </mat-card-title>
@@ -174,7 +174,7 @@
                                 <mat-icon mat-list-icon>person</mat-icon>
                                 <div mat-line>{{review.userName}}</div>
                                 <div mat-line>{{review.text}}</div>
-                                <div mat-line>{{review.updated | date}}</div>
+                                <div mat-line>{{review.createdAt | date}}</div>
                             </mat-list-option>
                         </mat-selection-list>
                     </mat-card-content>

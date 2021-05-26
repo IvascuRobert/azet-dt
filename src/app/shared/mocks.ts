@@ -27,21 +27,21 @@ export const productsMock: ProductDataClass[] = [{
             userId: 24,
             userName: 'Florin O. Ieremciuc',
             text: 'Mi-au plakut.',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         },
         {
             id: 1,
             userId: 24,
             userName: 'Cezar',
             text: 'Super fain. Mai cumpar sa moara sa faca !',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         },
         {
             id: 1,
             userId: 24,
             userName: 'Diana Cocea',
             text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         }
     ],
     guarantee: 24,
@@ -50,7 +50,7 @@ export const productsMock: ProductDataClass[] = [{
     noiseLevel: 74,
     profile: 'FastRespone 84H',
     image: '',
-    carsCategories: [EnumCarCategory.CamperVAN, EnumCarCategory.Truck, EnumCarCategory.Roadster],
+    carCategories: [EnumCarCategory.CamperVAN, EnumCarCategory.Truck, EnumCarCategory.Roadster],
     fuelEfficiency: EnumEfficiency.F,
     state: EnumState.STOCK
 }, {
@@ -69,21 +69,21 @@ export const productsMock: ProductDataClass[] = [{
             userId: 24,
             userName: 'Florin O. Ieremciuc',
             text: 'Mi-au plakut.',
-            updated: '1/1/16',
+            createdAt: '1/1/16',
         },
         {
             id: 1,
             userId: 24,
             userName: 'Cezar',
             text: 'Super fain. Mai cumpar sa moara sa faca !',
-            updated: '1/1/16',
+            createdAt: '1/1/16',
         },
         {
             id: 1,
             userId: 24,
             userName: 'Diana Cocea',
             text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            updated: '1/1/16',
+            createdAt: '1/1/16',
         }
     ],
     guarantee: 24,
@@ -92,7 +92,7 @@ export const productsMock: ProductDataClass[] = [{
     noiseLevel: 73,
     profile: 'Alpin 6 91T',
     image: '',
-    carsCategories: [EnumCarCategory.Coupe],
+    carCategories: [EnumCarCategory.Coupe],
     fuelEfficiency: EnumEfficiency.D,
     state: EnumState.COMMAND
 }, {
@@ -111,21 +111,21 @@ export const productsMock: ProductDataClass[] = [{
             userId: 24,
             userName: 'Florin O. Ieremciuc',
             text: 'Mi-au plakut.',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         },
         {
             id: 1,
             userId: 24,
             userName: 'Cezar',
             text: 'Super fain. Mai cumpar sa moara sa faca !',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         },
         {
             id: 1,
             userId: 24,
             userName: 'Diana Cocea',
             text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         }
     ],
     guarantee: 24,
@@ -134,7 +134,7 @@ export const productsMock: ProductDataClass[] = [{
     noiseLevel: 68,
     profile: 'FastRespone 84H',
     image: '',
-    carsCategories: [EnumCarCategory.Coupe],
+    carCategories: [EnumCarCategory.Coupe],
     fuelEfficiency: EnumEfficiency.C,
     state: EnumState.COMMAND
 }, {
@@ -153,21 +153,21 @@ export const productsMock: ProductDataClass[] = [{
             userId: 24,
             userName: 'Florin O. Ieremciuc',
             text: 'Mi-au plakut.',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         },
         {
             id: 1,
             userId: 24,
             userName: 'Cezar',
             text: 'Super fain. Mai cumpar sa moara sa faca !',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         },
         {
             id: 1,
             userId: 24,
             userName: 'Diana Cocea',
             text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            updated: '1/1/16'
+            createdAt: '1/1/16'
         }
     ],
     guarantee: 24,
@@ -176,7 +176,7 @@ export const productsMock: ProductDataClass[] = [{
     noiseLevel: 68,
     profile: 'FastRespone 84H',
     image: '',
-    carsCategories: [EnumCarCategory.Coupe],
+    carCategories: [EnumCarCategory.Coupe],
     fuelEfficiency: EnumEfficiency.A,
     state: EnumState.STOCK
 }];

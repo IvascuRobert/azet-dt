@@ -6,7 +6,7 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 // because the plural of "hero" is not "heros"
-const pluralNames = { Product: 'Products' };
+const pluralNames = { };
 
 export const entityConfig = {
     entityMetadata,
