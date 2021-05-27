@@ -13,9 +13,10 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { CartService } from './core/services/cart.service';
 import { CustomHttpUrlGenerator } from './core/services/custom-http-url-generator.service';
 import { entityConfig } from './core/services/entity-metadata';
-import { ProductsService } from './core/services/products-data.service';
+import { NgrxProductsMethodsService } from './core/services/ngrx-products-methods.service';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
 @NgModule({
@@ -39,7 +40,8 @@ import { SharedModule } from './shared/shared.module';
     MatCardModule
   ],
   providers: [
-    ProductsService,
+    NgrxProductsMethodsService,
+    CartService,
     {
       provide: HttpUrlGenerator,
       useClass: CustomHttpUrlGenerator
@@ -53,8 +55,8 @@ export class AppModule {
   constructor(
     entityDataService: EntityDataService,
     // custom collection services
-    productsService: ProductsService
+    ngrxProductsMethodsService: NgrxProductsMethodsService
   ) {
-    entityDataService.registerService('Products', productsService);
+    entityDataService.registerService('Products', ngrxProductsMethodsService);
   }
 }

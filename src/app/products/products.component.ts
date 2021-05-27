@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartService } from '../core/services/cart.service';
-import { ProductService } from '../core/services/product.service';
-import { ProductDataClass } from '../shared/classes.class';
+import { NgrxProductsService } from '../core/services/ngrx-products.service';
+import { ProductClass } from '../shared/classes.class';
 import { EnumViewMode } from '../shared/enums.enum';
 
 @Component({
@@ -13,14 +13,14 @@ import { EnumViewMode } from '../shared/enums.enum';
 export class ProductsComponent implements OnInit {
   viewMode = EnumViewMode.GRID;
   loading$: Observable<boolean>;
-  products$: Observable<ProductDataClass[]>
+  products$: Observable<ProductClass[]>
 
   constructor(
-    private productService: ProductService,
+    private ngrxProductsService: NgrxProductsService,
     private cartService: CartService
   ) {
-    this.products$ = this.productService.entities$;
-    this.loading$ = this.productService.loading$;
+    this.products$ = this.ngrxProductsService.entities$;
+    this.loading$ = this.ngrxProductsService.loading$;
   }
 
   ngOnInit(): void {
@@ -28,16 +28,16 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.getAll();
+    this.ngrxProductsService.getAll();
   }
 
   changeViewMode(viewMode): void {
     this.viewMode = viewMode;
   }
 
-  addToCart(product: ProductDataClass) {
+  addToCart(product: ProductClass) {
     console.log(product, 'product');
-    this.cartService.add(product);
+    this.cartService.addCartItem(product);
   }
 
 }

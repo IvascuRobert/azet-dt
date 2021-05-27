@@ -1,7 +1,7 @@
 import { EnumCarCategory, EnumEfficiency, EnumState, EnumTireCategory } from './enums.enum';
 import { IReview } from './interfaces.interface';
 
-export class ProductDataClass {
+export class ProductClass {
     id: string;
     name: string;
     description?: string;
@@ -62,4 +62,9 @@ export class ProductDataClass {
         this.fuelEfficiency = fuelEfficiency;
         this.state = state;
     }
+}
+
+export class CartClass extends ProductClass {
+    uuid?: any;
+    remove?: boolean;
 }

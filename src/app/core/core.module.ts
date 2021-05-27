@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactHeaderComponent } from './contact-header/contact-header.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
@@ -28,7 +30,9 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
     MatButtonModule,
     MatRippleModule,
     MatCardModule,
-    MatTabsModule
+    MatBadgeModule,
+    MatDividerModule,
+    NgbPopoverModule,
   ],
   exports: [
     RouterModule,

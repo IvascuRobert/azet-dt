@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ProductService } from '../core/services/product.service';
-import { ProductDataClass } from '../shared/classes.class';
+import { NgrxProductsService } from '../core/services/ngrx-products.service';
+import { ProductClass } from '../shared/classes.class';
 import { EnumState } from '../shared/enums.enum';
 
 @Component({
@@ -14,25 +14,25 @@ import { EnumState } from '../shared/enums.enum';
 export class ProductComponent implements OnInit {
   stateTemplate = EnumState;
   loading$: Observable<boolean>;
-  product$: Observable<ProductDataClass[]>
-  product: ProductDataClass;
+  product$: Observable<ProductClass[]>
+  product: ProductClass;
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private ngrxProductsService: NgrxProductsService
   ) {
-    this.product$ = this.productService.entities$;
-    this.loading$ = this.productService.loading$;
+    this.product$ = this.ngrxProductsService.entities$;
+    this.loading$ = this.ngrxProductsService.loading$;
   }
 
   ngOnInit(): void {
     const productId = this.route.parent.snapshot.params['id'];
 
     if (productId) {
-      this.productService.getByKey(productId);
+      this.ngrxProductsService.getByKey(productId);
     }
 
-    this.product$.subscribe((products: ProductDataClass[]) => {
+    this.product$.subscribe((products: ProductClass[]) => {
       this.product = products[0];
     });
 

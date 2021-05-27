@@ -1,5 +1,5 @@
-@import '~@angular/material/theming';
-@import '~bootstrap/scss/bootstrap';
+@import "~@angular/material/theming";
+@import "~bootstrap/scss/bootstrap";
 
 // Plus imports for other components in your app.
 
@@ -21,7 +21,8 @@ $azet-dt-yellow: #ffcf44;
 $azet-dt-purple: #b15dff;
 $azet-dt-blue: #72deff;
 
-$azet-dt-green-palette: (50: #c6fdf2,
+$azet-dt-green-palette: (
+  50: #c6fdf2,
   100: #a6fbe2,
   200: #8bf4d4,
   300: #78eced,
@@ -31,11 +32,13 @@ $azet-dt-green-palette: (50: #c6fdf2,
   700: #367b55,
   800: #275d39,
   900: #143821,
-  A100: #8c9eff, // These are from "mat-indigo" and weren't defined in the colors for rally green.
+  A100: #8c9eff,
+  // These are from "mat-indigo" and weren't defined in the colors for rally green.
   A200: #536dfe,
   A400: #3d5afe,
   A700: #304ffe,
-  contrast: (50: $dark-primary-text,
+  contrast: (
+    50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $light-primary-text,
@@ -49,7 +52,8 @@ $azet-dt-green-palette: (50: #c6fdf2,
     A200: $light-primary-text,
     A400: $light-primary-text,
     A700: $light-primary-text,
-  ));
+  ),
+);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -81,4 +85,25 @@ body {
 
 .primary {
   color: mat-color($azet-dt-primary, text);
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $azet-dt-green transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $azet-dt-green;
+  // border-radius: 20px;
+  // border: 3px solid transparent;
 }

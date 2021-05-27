@@ -1,7 +1,35 @@
+@import "azet-dt-theme";
+
 .app-navbar {
   z-index: 2;
 
   .app-navbar-spacer {
     flex: 1 1 auto;
+  }
+}
+
+::ng-deep {
+  .cart-popover {
+    max-width: 450px;
+    // background-color: $azet-dt-dark-green;
+
+    .cart-items-container {
+      max-height: 166px;
+      overflow-y: scroll;
+    }
+
+    .mat-card {
+      padding: 5px;
+
+      .mat-card-header-text {
+        .mat-card-title {
+          font-size: 16px;
+        }
+
+        .mat-card-subtitle {
+          margin-bottom: 4px;
+        }
+      }
+    }
   }
 }

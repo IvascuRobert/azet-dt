@@ -3,10 +3,10 @@ import {
     EntityCollectionServiceBase,
     EntityCollectionServiceElementsFactory
 } from '@ngrx/data';
-import { ProductDataClass } from 'src/app/shared/classes.class';
+import { ProductClass } from 'src/app/shared/classes.class';
 
 @Injectable({ providedIn: 'root' })
-export class ProductService extends EntityCollectionServiceBase<ProductDataClass> {
+export class NgrxProductsService extends EntityCollectionServiceBase<ProductClass> {
     constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
         super('Products', serviceElementsFactory);
     }

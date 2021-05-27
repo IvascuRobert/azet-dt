@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TrackByService } from 'src/app/core/services/trackBy.service';
 import { EnumState, EnumViewMode } from 'src/app/shared/enums.enum';
-import { ProductDataClass } from '../../shared/classes.class';
+import { ProductClass } from '../../shared/classes.class';
 
 @Component({
   selector: 'app-products-card',
@@ -14,10 +14,10 @@ import { ProductDataClass } from '../../shared/classes.class';
 })
 export class ProductsCardComponent implements OnInit {
 
-  @Input() products: ProductDataClass[];
+  @Input() products: ProductClass[];
   @Input() viewMode = EnumViewMode.GRID;
   @Input() loading: boolean = false;
-  @Output() clickAddToCart = new EventEmitter<ProductDataClass>();
+  @Output() clickAddToCart = new EventEmitter<ProductClass>();
 
   viewModeTemplate = EnumViewMode;
   stateTemplate = EnumState;
@@ -31,7 +31,7 @@ export class ProductsCardComponent implements OnInit {
     console.log(event);
   }
 
-  addToCart(product: ProductDataClass): void {
+  addToCart(product: ProductClass): void {
     this.clickAddToCart.emit(product);
   }
 

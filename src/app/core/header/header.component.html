@@ -27,19 +27,93 @@
             Contact
         </button>
         <span class="app-navbar-spacer"></span>
-        <button mat-button
-                routerLink="/orders">
-            <span class="material-icons-two-tone">
-                shopping_basket
-            </span>
-            Cos
-        </button>
-        <button mat-button
-                routerLink="/login">
+        <button mat-stroked-button
+                routerLink="/login"
+                class="mr-3">
             <span class="material-icons-two-tone">
                 account_circle
             </span>
             Login
         </button>
+        <button mat-stroked-button
+                routerLink="/orders"
+                [matBadge]="(cartState$ | async)?.cart.length"
+                matBadgeColor="primary"
+                [ngbPopover]="popContent"
+                triggers="mouseenter"
+                [openDelay]="300"
+                [autoClose]="'outside'"
+                container="body"
+                placement="bottom"
+                popoverClass="cart-popover">
+            <span class="material-icons-two-tone">
+                shopping_basket
+            </span>
+            Cos
+        </button>
     </mat-toolbar-row>
 </mat-toolbar>
+
+<ng-template #popContent>
+    <ng-container *ngIf="cartState$ | async as state">
+        <div class="row m-2 justify-content-center">
+            <div *ngIf="state.cart && (state.cart.length > 0)"
+                 class="col-12 text-center">
+                <div class="primary">ULTIMILE ANVELOPE ADĂUGATE</div>
+            </div>
+            <div *ngIf="state.cart && (state.cart.length > 0)"
+                 class="col-12 my-2">
+                <mat-divider></mat-divider>
+            </div>
+            <div *ngIf="state.cart && (state.cart.length == 0)"
+                 class="col-12 text-center">
+                <div class="primary mb-2">
+                    Nu ai niciun produs în coș
+                </div>
+                <button mat-stroked-button
+                        routerLink="/products">
+                    <span class="material-icons-two-tone">
+                        support
+                    </span>
+                    Anvelope
+                </button>
+            </div>
+            <div *ngIf="state.cart && (state.cart.length > 0)"
+                 class="col-12 cart-items-container">
+                <mat-card *ngFor="let item of state.cart"
+                          class="mb-1 mat-elevation-z4">
+                    <mat-card-header>
+                        <div mat-card-avatar>
+                            <button mat-icon-button
+                                    (click)="removeCartItem(item)"
+                                    color="warn">
+                                <span class="material-icons-two-tone">
+                                    delete
+                                </span>
+                            </button>
+                        </div>
+                        <mat-card-title>{{item.name}}</mat-card-title>
+                        <mat-card-subtitle>
+                            <i class="fas fas fa-hand-holding-usd"></i>
+                            <span>&bull;</span>
+                            <span>{{item.price}} Lei</span>
+                            <span class="ml-5">x 1</span>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+            <div class="col-12 my-2">
+                <mat-divider></mat-divider>
+            </div>
+            <div class="col-12 text-center">
+                <button mat-stroked-button
+                        routerLink="/orders">
+                    <span class="material-icons-two-tone">
+                        shopping_basket
+                    </span>
+                    Vezi detalii coș
+                </button>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>

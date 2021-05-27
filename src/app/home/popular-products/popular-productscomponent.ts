@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ProductService } from 'src/app/core/services/product.service';
-import { ProductDataClass } from 'src/app/shared/classes.class';
+import { NgrxProductsService } from 'src/app/core/services/ngrx-products.service';
+import { ProductClass } from 'src/app/shared/classes.class';
 import { EnumState } from 'src/app/shared/enums.enum';
 
 @Component({
@@ -15,22 +15,22 @@ import { EnumState } from 'src/app/shared/enums.enum';
 export class PopularProductsComponent implements OnInit {
   stateTemplate = EnumState;
   loading$: Observable<boolean>;
-  popularProducts$: Observable<ProductDataClass[]>
+  popularProducts$: Observable<ProductClass[]>
 
   constructor(
     private cartService: CartService,
-    private productService: ProductService
+    private ngrxProductsService: NgrxProductsService
   ) { }
 
   ngOnInit(): void {
-    this.productService.getAll();
-    this.popularProducts$ = this.productService.entities$.pipe(map(products => products.slice(0, 3)));
-    this.loading$ = this.productService.loading$;
+    this.ngrxProductsService.getAll();
+    this.popularProducts$ = this.ngrxProductsService.entities$.pipe(map(products => products.slice(0, 3)));
+    this.loading$ = this.ngrxProductsService.loading$;
   }
 
-  addToCart(product: ProductDataClass) {
+  addToCart(product: ProductClass) {
     console.log(product, 'product');
-    this.cartService.add(product);
+    this.cartService.addCartItem(product);
   }
 
 }
