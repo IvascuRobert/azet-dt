@@ -100,7 +100,7 @@
           <div class="d-flex">
             <button mat-raised-button
                     color="primary"
-                    (click)="addToCart(product)">
+                    (click)="addCartProduct(product)">
               <span class="material-icons">
                 add_shopping_cart
               </span>
@@ -144,7 +144,7 @@
           <mat-card-subtitle>
             <ngb-rating class="rating"
                         [(rate)]="product.rate"
-                        [readonly]="false"
+                        [readonly]="true"
                         [max]="5">
               <ng-template let-fill="fill"
                            let-index="index">
@@ -184,7 +184,7 @@
                   <span class="state-container--text">{{product.state}}</span>
                 </div>
                 <div class="quantity-container">
-                  <span class="quantity-container--title">Cantitate: </span>
+                  <span class="quantity-container--title">Cantitate în stoc: </span>
                   <span class="quantity-container--text">{{product.quantity}}</span>
                 </div>
                 <div class="dot-container">
@@ -267,7 +267,7 @@
           <div class="col-3 align-self-center text-center">
             <button mat-raised-button
                     color="primary"
-                    (click)="addToCart(product)">
+                    (click)="addCartProduct(product)">
               <span class="material-icons">
                 add_shopping_cart
               </span>

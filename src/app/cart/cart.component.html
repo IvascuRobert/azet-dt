@@ -1,0 +1,282 @@
+<div class="row orders-container">
+  <div class="col-12">
+    <mat-tab-group mat-stretch-tabs
+                   mat-align-tabs="start"
+                   class="mat-elevation-z4"
+                   [selectedIndex]="tabIndex">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>shopping_basket</mat-icon>
+          Coș de cumpărături
+        </ng-template>
+        <div *ngIf="cart$ | async as cart; else loading"
+             class="row m-1">
+          <div *ngIf="cart.products.length === 0"
+               class="col-12 text-center">
+            <div class="row justify-content-center m-4">
+              <div class="col-12">
+                <h1 style="font-size: 2rem;">
+                  Nu ai niciun produs în coș
+                </h1>
+                <h3>
+                  <span class="primary">
+                    AZET D.T.
+                  </span>
+                  vă recomandă să mergeți în fereastra de Anvelope
+                </h3>
+              </div>
+              <div class="col-10 my-3">
+                <mat-divider></mat-divider>
+              </div>
+              <div class="col-12 text-center">
+                <button mat-raised-button
+                        color="primary"
+                        routerLink="/products">
+                  <span class="material-icons-two-tone">
+                    support
+                  </span>
+                  Anvelope
+                </button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="cart.products.length > 0"
+               class="col-12 my-2">
+            <button mat-stroked-button
+                    color="primary"
+                    routerLink="/products">
+              <span class="material-icons-two-tone">
+                support
+              </span>
+              Continuă cumpăturile
+            </button>
+          </div>
+          <div *ngIf="cart.products.length > 0"
+               class="col-8"
+               style="height: 35rem; overflow-y: auto;">
+            <div class="row">
+              <div *ngFor="let product of cart.products;trackBy: trackbyService.cart"
+                   class="col-12 mb-2">
+                <mat-card class="product-card">
+                  <mat-card-header>
+                    <div mat-card-avatar>
+                      <i aria-hidden="false"
+                         aria-label="Sezon"
+                         style="font-size: 2rem;"
+                         [class]="product.season | seasonToIcon"></i>
+                    </div>
+                    <mat-card-title>{{product.name}}</mat-card-title>
+                    <mat-card-subtitle>
+                      <ngb-rating class="rating"
+                                  [(rate)]="product.rate"
+                                  [readonly]="true"
+                                  [max]="5">
+                        <ng-template let-fill="fill"
+                                     let-index="index">
+                          <span class="star"
+                                [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                      </ngb-rating>
+                    </mat-card-subtitle>
+                  </mat-card-header>
+
+                  <div class="row">
+                    <div class="col-3 text-center">
+                      <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
+                           [routerLink]="'/products/'+ product.id"
+                           style="width: 160px; height: 160px;"
+                           [alt]="product.name">
+                      <div>{{product.producer | uppercase}}</div>
+                    </div>
+                    <div class="col-9">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="price-container">
+                            <i class="price-container--icon fas fas fa-hand-holding-usd"></i>
+                            <span class="price-container--bull">&bull;</span>
+                            <span class="price-container--price">{{product.price}} Lei</span>
+                          </div>
+                          <div class="state-container">
+                            <ng-container [ngSwitch]="product.state">
+                              <span *ngSwitchCase="stateTemplate.STOCK"
+                                    class="state-container--icon"
+                                    style="color: #22bb33;"><i class="fas fa-dot-circle"></i></span>
+                              <span *ngSwitchCase="stateTemplate.COMMAND"
+                                    class="state-container--icon"
+                                    style="color: #f0ad4e;"><i class="fas fa-dot-circle"></i></span>
+                              <span *ngSwitchDefault
+                                    class="state-container--icon"><i class="fas fa-dot-circle"></i></span>
+                            </ng-container>
+                            <span class="state-container--text">{{product.state}}</span>
+                          </div>
+                          <div class="quantity-container">
+                            <span class="quantity-container--title">Cantitate în stoc: </span>
+                            <span class="quantity-container--text">{{product.quantity}}</span>
+                          </div>
+                          <div class="dot-container">
+                            <span class="dot-container--title">DOT: </span>
+                            <span class="dot-container--text pr-1">{{product.dot}}</span>
+                            <i class="fas fa-info-circle"></i>
+                          </div>
+                          <div class="profile-container">
+                            <span class="profile-container--title">Profil: </span>
+                            <span class="profile-container--text">{{product.profile}}</span>
+                          </div>
+                          <div class="size-container">
+                            <span class="size-container--title">Dimensiune: </span>
+                            <span class="size-container--text">{{product.size}}</span>
+                          </div>
+                          <div class="season-container">
+                            <span class="season-container--title">Sezon: </span>
+                            <span class="season-container--text">{{product.season}}</span>
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <div class="row">
+                            <div class="col-12 align-self-center text-center">
+                              <button mat-stroked-button
+                                      color="warn"
+                                      (click)="removeCartProduct(product)">
+                                <span class="material-icons-two-tone">
+                                  delete
+                                </span>
+                                SCOATE DIN COȘ ({{product.nbOfProducts}})
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 my-2">
+                      <mat-divider></mat-divider>
+                    </div>
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-5 align-self-center">
+                          <i class="fas fa-shield-alt"></i>
+                          Garanție: {{product.guarantee}} luni
+                        </div>
+                        <div class="col-5 align-self-center">
+                          <i class="fas fa-tools"></i>
+                          Montaj in service
+                        </div>
+                        <div class="col-2 align-self-center text-center">
+                          <button mat-icon-button
+                                  color="primary">
+                            <span class="material-icons">
+                              favorite
+                            </span>
+                          </button>
+                        </div>
+                        <div class="col-5 align-self-center">
+                          <i class="fas fa-credit-card"></i>
+                          Plata in rate fara dobanda
+                        </div>
+                        <div class="col-5 align-self-center">
+                          <i class="fas fa-truck-moving"></i>
+                          Livrare gratuita de la 1200 lei *
+                        </div>
+                        <div class="col-2 align-self-center text-center">
+                          <button mat-icon-button
+                                  color="primary">
+                            <span class="material-icons">
+                              share
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="cart.products.length > 0"
+               class="col-4">
+            <div class="row justify-content-center">
+              <div class="col-12 text-center mt-3">
+                <h1 style="font-size: 2rem;">
+                  <span class="primary">SUMAR COMANDĂ</span>
+                </h1>
+              </div>
+              <div class="col-10 mb-3">
+                <mat-divider></mat-divider>
+              </div>
+              <div class="col-6">
+                <h3>
+                  <span class="primary">Total anvelope:</span>
+                </h3>
+              </div>
+              <div class="col-6 text-right">
+                <h3>
+                  <span>{{cart.totalProducts}}</span>
+                </h3>
+              </div>
+              <div class="col-6">
+                <h3>
+                  <span class="primary">Total plată: </span>
+                </h3>
+              </div>
+              <div class="col-6 text-right">
+                <h3>
+                  <span>{{cart.totalPrice}} Lei</span>
+                </h3>
+              </div>
+              <div class="col-10 my-3">
+                <mat-divider></mat-divider>
+              </div>
+              <div class="col-12 text-center">
+                <button mat-raised-button
+                        color="primary"
+                        (click)="checkoutProducts()">
+                  <span class="material-icons-two-tone">
+                    store
+                  </span>
+                  FINALIZEAZĂ COMANDA
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #loading
+                     class="row">
+          <div class="col-12">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
+        </ng-template>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>history</mat-icon>
+          Cumpărături anterioare
+        </ng-template>
+        <div class="row m-5 text-center justify-content-center">
+          <div class="col-12">
+            <h1 style="font-size: 2rem;">
+              Pentru a urmări istoricul cumpărăturilor trebuie să dețineți un cont
+            </h1>
+            <h3>
+              <span class="primary">
+                AZET D.T.
+              </span>
+              vă recomandă să mergeți în fereastra de Login
+            </h3>
+          </div>
+          <div class="col-10 my-3">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="col-12">
+            <button mat-raised-button
+                    color="primary"
+                    routerLink="/login">
+              <span class="material-icons-two-tone">
+                account_circle
+              </span>
+              Login
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

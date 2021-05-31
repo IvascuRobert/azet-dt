@@ -28,9 +28,8 @@ export class PopularProductsComponent implements OnInit {
     this.loading$ = this.ngrxProductsService.loading$;
   }
 
-  addToCart(product: ProductClass) {
-    console.log(product, 'product');
-    this.cartService.addCartItem(product);
+  addCartProduct(product: ProductClass) {
+    this.cartService.addCartProduct(product);
   }
 
 }

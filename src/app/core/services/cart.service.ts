@@ -1,41 +1,88 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BehaviorSubject } from 'rxjs';
 import { ProductClass } from 'src/app/shared/classes.class';
-import { ICartAll } from 'src/app/shared/interfaces.interface';
+import { ICart } from 'src/app/shared/interfaces.interface';
 
 @Injectable()
 export class CartService {
+
+    constructor(private _snackBar: MatSnackBar) { }
     products: ProductClass[] = []
 
-    cartProducts$ = new BehaviorSubject<ICartAll>({
+    cartProducts$ = new BehaviorSubject<ICart>({
         products: [],
-        totals: 0
+        totalProducts: 0,
+        totalPrice: 0
     });
 
-    addCartProduct(productAdded: ProductClass): void {
-        // let cartProducts: ICartAll;
+    addCartProduct(productAdded: ProductClass): BehaviorSubject<ICart> {
         this.products.push(productAdded);
 
-        this.products.reduce((previousProduct, currentProduct, index: number, array) => {
-            console.log(previousProduct, 'previousProduct')
-            console.log(currentProduct, 'currentProduct')
-            console.log(index, 'index')
-            console.log(array, 'array')
+        const cartProducts = this.transformProductsToCartProducts(this.products);
 
+        this.cartProducts$.next(cartProducts);
 
-            return array;
-        }, {})
+        this._snackBar.open('A fost adăugată o anvelopă în coș!', 'Închide', {
+            duration: 2000,
+        });
 
-        // this.cartProducts$.next();
-
-        // return cartProduct
+        return this.cartProducts$;
     }
 
-    // removeCartProduct(item: CartProductClass): CartProductClass {
-    //     const cartProduct: CartProductClass = { ...item, remove: true };
-    //     this.cartRemove$.next({ ...item, remove: true });
+    removeCartProduct(productRemoved: ProductClass): BehaviorSubject<ICart> {
+        const findIndexOfProductRemoved = this.products.findIndex((product) => product.id === productRemoved.id);
 
-    //     return cartProduct;
-    // }
+        this.products.splice(findIndexOfProductRemoved, 1);
+
+        const cartProducts = this.transformProductsToCartProducts(this.products);
+
+        this.cartProducts$.next(cartProducts);
+
+        this._snackBar.open('A fost scosă o anvelopă din coș!', 'Închide', {
+            duration: 2000,
+        });
+
+        return this.cartProducts$;
+    }
+
+    transformProductsToCartProducts(products: ProductClass[]): ICart {
+        let cartProducts: ICart = {
+            products: [],
+            totalProducts: 0,
+            totalPrice: 0
+        };
+
+        cartProducts.totalProducts = products.length;
+        cartProducts.totalPrice = products.reduce((acc, val) => acc + val.price, 0);
+
+        const groupedProductsById = this.groupBy(products, 'id');
+        const uniqueProducts: ProductClass[] = products.filter((v, i, a) => a.indexOf(v) === i);
+
+        for (let product of uniqueProducts) {
+            const { id } = product;
+            const nbOfSameProducts = groupedProductsById[id].length;
+            cartProducts.products.push({ ...product, nbOfProducts: nbOfSameProducts })
+        }
+
+        return cartProducts;
+    }
+
+    groupBy(data: ProductClass[], key: string): { [key: string]: ProductClass[] } { // `data` is an array of objects, `key` is the key (or property accessor) to group by
+        // reduce runs this anonymous function on each element of `data` (the `item` parameter,
+        // returning the `storage` parameter at the end
+        return data.reduce(function (storage, item) {
+            // get the first instance of the key by which we're grouping
+            var group = item[key];
+
+            // set `storage` for this instance of group to the outer scope (if not empty) or initialize it
+            storage[group] = storage[group] || [];
+
+            // add this item to its group within `storage`
+            storage[group].push(item);
+
+            // return the updated storage to the reduce function, which will then loop through the next 
+            return storage;
+        }, {}); // {} is the initial value of the storage
+    };
 }

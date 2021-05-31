@@ -65,5 +65,5 @@ export class ProductClass {
 }
 
 export class CartProductClass extends ProductClass {
-    nbOfItems: number;
+    nbOfProducts: number;
 }

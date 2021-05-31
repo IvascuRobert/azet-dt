@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -45,7 +46,8 @@ import { SharedModule } from './shared/shared.module';
     {
       provide: HttpUrlGenerator,
       useClass: CustomHttpUrlGenerator
-    }
+    },
+    MatSnackBar
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

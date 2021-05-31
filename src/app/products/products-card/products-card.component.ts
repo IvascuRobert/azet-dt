@@ -31,7 +31,7 @@ export class ProductsCardComponent implements OnInit {
     console.log(event);
   }
 
-  addToCart(product: ProductClass): void {
+  addCartProduct(product: ProductClass): void {
     this.clickAddToCart.emit(product);
   }
 

@@ -1,6 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductClass } from 'src/app/shared/classes.class';
+import { ICart } from 'src/app/shared/interfaces.interface';
 import { CartService } from '../services/cart.service';
+import { TrackByService } from '../services/trackBy.service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +12,16 @@ import { CartService } from '../services/cart.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() loading: boolean;
   @Output() clickMenu = new EventEmitter<boolean>();
 
-  // cartState$: Observable<ICartStateTree>;
+  cart$: Observable<ICart>;
 
-  constructor(public cartService: CartService) {
-    // this.cartState$ = this.cartService.state$;
+  constructor(
+    public trackbyService: TrackByService,
+    public cartService: CartService
+  ) {
+    this.cart$ = this.cartService.cartProducts$;
   }
 
   ngOnInit(): void {
@@ -24,7 +31,7 @@ export class HeaderComponent implements OnInit {
     this.clickMenu.emit(true);
   }
 
-  removeCartItem(itemCart: ProductClass): void {
-    this.cartService.addCartProduct(itemCart);
+  removeCartProduct(product: ProductClass): void {
+    this.cartService.removeCartProduct(product);
   }
 }

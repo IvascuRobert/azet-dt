@@ -12,7 +12,8 @@
 
     <div class="container">
 
-      <app-header (clickMenu)="onClickMenu(sidenav)"></app-header>
+      <app-header [loading]="loading | async"
+                  (clickMenu)="onClickMenu(sidenav)"></app-header>
 
       <app-contact-header></app-contact-header>
 

@@ -35,9 +35,8 @@ export class ProductsComponent implements OnInit {
     this.viewMode = viewMode;
   }
 
-  addToCart(product: ProductClass) {
-    console.log(product, 'product');
-    this.cartService.addCartItem(product);
+  addCartProduct(product: ProductClass) {
+    this.cartService.addCartProduct(product);
   }
 
 }

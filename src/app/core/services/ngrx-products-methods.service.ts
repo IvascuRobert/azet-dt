@@ -30,6 +30,6 @@ export class NgrxProductsMethodsService extends DefaultDataService<ProductClass>
     }
 
     private mapProducts(product: any): ProductClass {
-        return { ...product, id: product._id }; // form mongo db key of identifier comes _id and NGRX-DATA want id
+        return { ...product, id: product._id }; // from mongo db key of identifier comes _id and NGRX-DATA want id
     }
 }

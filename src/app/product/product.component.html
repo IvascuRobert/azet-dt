@@ -1,299 +1,304 @@
 <div class="row product-details-container text-center">
-    <div *ngIf="(loading$ | async)"
-         class="col-12">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
-    <div *ngIf="!(loading$ | async)"
-         class="col-3">
+  <div *ngIf="(loading$ | async)"
+       class="col-12">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div *ngIf="!(loading$ | async)"
+       class="col-12">
+    <div *ngIf="(product$ | async)[0] as product"
+         class="row">
+      <div class="col-3">
         <div class="row">
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-header>
-                        <mat-card-title>{{product.name}}</mat-card-title>
-                    </mat-card-header>
-                    <img mat-card-image
-                         src="/assets/pictures/tires-pictures/tire-mock-1.png"
-                         style="width: 300px; height: 300px;"
-                         [alt]="product.name">
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>{{product.producer}}</mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>
-                        <ngb-rating class="rating"
-                                    [(rate)]="product.rate"
-                                    [readonly]="true"
-                                    [max]="5"
-                                    (rateChange)="rateChange($event)">
-                            <ng-template let-fill="fill"
-                                         let-index="index">
-                                <span class="star"
-                                      [class.filled]="fill === 100">&#9733;</span>
-                            </ng-template>
-                        </ngb-rating>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-actions>
-                        <button mat-raised-button
-                                color="primary">
-                            <span class="material-icons">
-                                add_shopping_cart
-                            </span>
-                            ADAUGĂ ÎN COȘ
-                        </button>
-                        <button mat-icon-button
-                                color="primary">
-                            <span class="material-icons">
-                                favorite
-                            </span>
-                        </button>
-                        <button mat-icon-button
-                                color="primary">
-                            <span class="material-icons">
-                                share
-                            </span>
-                        </button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>{{product.name}}</mat-card-title>
+              </mat-card-header>
+              <img @pulse
+                   mat-card-image
+                   src="/assets/pictures/tires-pictures/tire-mock-1.png"
+                   style="width: 300px; height: 300px;"
+                   [alt]="product.name">
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>{{product.producer}}</mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>
+                <ngb-rating class="rating"
+                            [(rate)]="product.rate"
+                            [readonly]="true"
+                            [max]="5"
+                            (rateChange)="rateChange($event)">
+                  <ng-template let-fill="fill"
+                               let-index="index">
+                    <span class="star"
+                          [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-actions>
+                <button mat-raised-button
+                        color="primary"
+                        (click)="addCartProduct(product)">
+                  <span class="material-icons">
+                    add_shopping_cart
+                  </span>
+                  ADAUGĂ ÎN COȘ
+                </button>
+                <button mat-icon-button
+                        color="primary">
+                  <span class="material-icons">
+                    favorite
+                  </span>
+                </button>
+                <button mat-icon-button
+                        color="primary">
+                  <span class="material-icons">
+                    share
+                  </span>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
         </div>
-    </div>
-    <div *ngIf="!(loading$ | async)"
-         class="col-5">
+      </div>
+      <div class="col-5">
         <div class="row">
-            <div class="col-4 my-1">
-                <mat-card>
-                    <mat-card-title>Sezon</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>
-                        <i aria-hidden="false"
-                           aria-label="Sezon"
-                           [class]="product.season | seasonToIcon"></i>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-4 my-1">
-                <mat-card>
-                    <mat-card-title>Preț</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>{{product.price}} Lei</mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-4 my-1">
-                <mat-card>
-                    <mat-card-title>Cantitate</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>{{product.quantity}}</mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>Stoc disponibil</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>
-                        <ng-container [ngSwitch]="product.state">
-                            <span *ngSwitchCase="stateTemplate.STOCK"
-                                  class="state-container--icon"
-                                  style="color: #22bb33;"><i class="fas fa-dot-circle"></i></span>
-                            <span *ngSwitchCase="stateTemplate.COMMAND"
-                                  class="state-container--icon"
-                                  style="color: #f0ad4e;"><i class="fas fa-dot-circle"></i></span>
-                            <span *ngSwitchDefault
-                                  class="state-container--icon"><i class="fas fa-dot-circle"></i></span>
-                        </ng-container>
-                        <span class="state-container--text">{{product.state}}</span>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>DOT</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>{{product.dot}}</mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>Profil</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>{{product.profile}}</mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>Dimensiune</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>{{product.size}}</mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>Vehicule</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>
-                        <mat-chip-list aria-label="Vehicule">
-                            <mat-chip *ngFor="let carCategory of product.carCategories">{{carCategory}}
-                            </mat-chip>
-                        </mat-chip-list>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1 text-left">
-                <mat-card>
-                    <mat-card-title>Review-uri</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-content>
-                        <mat-selection-list [multiple]="false">
-                            <mat-list-option *ngFor="let review of product.reviews">
-                                <mat-icon mat-list-icon>person</mat-icon>
-                                <div mat-line>{{review.userName}}</div>
-                                <div mat-line>{{review.text}}</div>
-                                <div mat-line>{{review.createdAt | date}}</div>
-                            </mat-list-option>
-                        </mat-selection-list>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+          <div class="col-4 my-1">
+            <mat-card>
+              <mat-card-title>Sezon</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>
+                <i aria-hidden="false"
+                   aria-label="Sezon"
+                   [class]="product.season | seasonToIcon"></i>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-4 my-1">
+            <mat-card>
+              <mat-card-title>Preț</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>{{product.price}} Lei</mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-4 my-1">
+            <mat-card>
+              <mat-card-title>Cantitate</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>{{product.quantity}}</mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>Stoc disponibil</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>
+                <ng-container [ngSwitch]="product.state">
+                  <span *ngSwitchCase="stateTemplate.STOCK"
+                        class="state-container--icon"
+                        style="color: #22bb33;"><i class="fas fa-dot-circle"></i></span>
+                  <span *ngSwitchCase="stateTemplate.COMMAND"
+                        class="state-container--icon"
+                        style="color: #f0ad4e;"><i class="fas fa-dot-circle"></i></span>
+                  <span *ngSwitchDefault
+                        class="state-container--icon"><i class="fas fa-dot-circle"></i></span>
+                </ng-container>
+                <span class="state-container--text">{{product.state}}</span>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>DOT</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>{{product.dot}}</mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>Profil</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>{{product.profile}}</mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>Dimensiune</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>{{product.size}}</mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>Vehicule</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>
+                <mat-chip-list aria-label="Vehicule">
+                  <mat-chip *ngFor="let carCategory of product.carCategories">{{carCategory}}
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1 text-left">
+            <mat-card>
+              <mat-card-title>Review-uri</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-content>
+                <mat-selection-list [multiple]="false">
+                  <mat-list-option *ngFor="let review of product.reviews">
+                    <mat-icon mat-list-icon>person</mat-icon>
+                    <div mat-line>{{review.userName}}</div>
+                    <div mat-line>{{review.text}}</div>
+                    <div mat-line>{{review.createdAt | date}}</div>
+                  </mat-list-option>
+                </mat-selection-list>
+              </mat-card-content>
+            </mat-card>
+          </div>
         </div>
-    </div>
-    <div *ngIf="!(loading$ | async)"
-         class="col-4">
+      </div>
+      <div class="col-4">
         <div class="row">
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>Nivel de zgomot</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>
-                        <div class="row">
-                            <div class="col-1 align-self-center">
-                                <i aria-hidden="false"
-                                   aria-label="Nivelul de zgomot"
-                                   class="fas fa-volume-up"></i>
-                            </div>
-                            <div class="col-11 align-self-center">
-                                <ngb-progressbar [type]="product.noiseLevel | noiseLevelToColor"
-                                                 [value]="product.noiseLevel | noiseLevelToValue"
-                                                 [striped]="false">{{product.noiseLevel}} db</ngb-progressbar>
-                            </div>
-                        </div>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>Consum</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>
-                        <div class="row">
-                            <div class="col-1 align-self-center">
-                                <i aria-hidden="false"
-                                   aria-label="Nivelul de consum"
-                                   class="fas fa-gas-pump"></i>
-                            </div>
-                            <div class="col-11 align-self-center">
-                                <ngb-progressbar [type]="product.fuelEfficiency | efficiencyToColor"
-                                                 [value]="product.fuelEfficiency | efficiencyToValue"
-                                                 [striped]="false">{{product.fuelEfficiency}}</ngb-progressbar>
-                            </div>
-                        </div>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>Eficiență vreme</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-title>
-                        <div class="row">
-                            <div class="col-1 align-self-center">
-                                <i aria-hidden="false"
-                                   aria-label="Eficiență vreme"
-                                   class="fas fa-cloud-rain"></i>
-                            </div>
-                            <div class="col-11 align-self-center">
-                                <ngb-progressbar [type]="product.weatherEfficiency | efficiencyToColor"
-                                                 [value]="product.weatherEfficiency | efficiencyToValue"
-                                                 [striped]="false">{{product.weatherEfficiency}}</ngb-progressbar>
-                            </div>
-                        </div>
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>
-                        <i class="fas fa-shield-alt"></i>
-                        Garanție: {{product.guarantee}} luni
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>
-                        <i class="fas fa-tools"></i>
-                        Montaj in service
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>
-                        <i class="fas fa-credit-card"></i>
-                        Plata in rate fara dobanda
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-6 my-1">
-                <mat-card>
-                    <mat-card-title>
-                        <i class="fas fa-truck-moving"></i>
-                        Livrare gratuita de la 1200 lei *
-                    </mat-card-title>
-                </mat-card>
-            </div>
-            <div class="col-12 my-1">
-                <mat-card>
-                    <mat-card-title>Descriere</mat-card-title>
-                    <mat-card-subtitle>
-                        <hr>
-                    </mat-card-subtitle>
-                    <mat-card-content>
-                        <p>{{product.description}}</p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>Nivel de zgomot</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>
+                <div class="row">
+                  <div class="col-1 align-self-center">
+                    <i aria-hidden="false"
+                       aria-label="Nivelul de zgomot"
+                       class="fas fa-volume-up"></i>
+                  </div>
+                  <div class="col-11 align-self-center">
+                    <ngb-progressbar [type]="product.noiseLevel | noiseLevelToColor"
+                                     [value]="product.noiseLevel | noiseLevelToValue"
+                                     [striped]="false">{{product.noiseLevel}} db</ngb-progressbar>
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>Consum</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>
+                <div class="row">
+                  <div class="col-1 align-self-center">
+                    <i aria-hidden="false"
+                       aria-label="Nivelul de consum"
+                       class="fas fa-gas-pump"></i>
+                  </div>
+                  <div class="col-11 align-self-center">
+                    <ngb-progressbar [type]="product.fuelEfficiency | efficiencyToColor"
+                                     [value]="product.fuelEfficiency | efficiencyToValue"
+                                     [striped]="false">{{product.fuelEfficiency}}</ngb-progressbar>
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>Eficiență vreme</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-title>
+                <div class="row">
+                  <div class="col-1 align-self-center">
+                    <i aria-hidden="false"
+                       aria-label="Eficiență vreme"
+                       class="fas fa-cloud-rain"></i>
+                  </div>
+                  <div class="col-11 align-self-center">
+                    <ngb-progressbar [type]="product.weatherEfficiency | efficiencyToColor"
+                                     [value]="product.weatherEfficiency | efficiencyToValue"
+                                     [striped]="false">{{product.weatherEfficiency}}</ngb-progressbar>
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>
+                <i class="fas fa-shield-alt"></i>
+                Garanție: {{product.guarantee}} luni
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>
+                <i class="fas fa-tools"></i>
+                Montaj in service
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>
+                <i class="fas fa-credit-card"></i>
+                Plata in rate fara dobanda
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-6 my-1">
+            <mat-card>
+              <mat-card-title>
+                <i class="fas fa-truck-moving"></i>
+                Livrare gratuita de la 1200 lei *
+              </mat-card-title>
+            </mat-card>
+          </div>
+          <div class="col-12 my-1">
+            <mat-card>
+              <mat-card-title>Descriere</mat-card-title>
+              <mat-card-subtitle>
+                <hr>
+              </mat-card-subtitle>
+              <mat-card-content>
+                <p>{{product.description}}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
