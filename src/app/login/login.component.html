@@ -44,7 +44,7 @@
                   </div>
                   <div class="col-2 primary text-center"
                        style="font-size: 2rem;">
-                    OR
+                    SAU
                   </div>
                   <div class="col-4 align-self-center">
                     <mat-divider></mat-divider>
@@ -56,19 +56,21 @@
                   (ngSubmit)="onSubmitLoginForm()"
                   [formGroup]="logintForm">
               <mat-form-field class="col-12 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput
                        placeholder="pat@example.com"
                        formControlName="email"
+                       autocomplete="username"
                        required>
                 <mat-error *ngIf="emailLF.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Parola</mat-label>
                 <input matInput
                        formControlName="password"
+                       autocomplete="current-password"
                        [type]="hide ? 'password' : 'text'">
                 <button mat-icon-button
                         matSuffix
@@ -120,7 +122,7 @@
                   (ngSubmit)="onSubmitRegisterForm()"
                   [formGroup]="registertForm">
               <mat-form-field class="col-6 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Nume</mat-label>
                 <input matInput
                        #fn
@@ -131,7 +133,7 @@
                 <mat-error *ngIf="firstNameRF.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field class="col-6 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Prenume</mat-label>
                 <input matInput
                        #ln
@@ -142,19 +144,21 @@
                 <mat-error *ngIf="lastNameRF.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput
                        placeholder="pat@example.com"
                        formControlName="email"
+                       autocomplete="username"
                        required>
                 <mat-error *ngIf="emailRF.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Parola</mat-label>
                 <input matInput
                        formControlName="password"
+                       autocomplete="new-password"
                        [type]="hide ? 'password' : 'text'"
                        required>
                 <button mat-icon-button
@@ -167,10 +171,11 @@
                 <mat-error *ngIf="passwordRF.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Confirmă Parola</mat-label>
                 <input matInput
                        formControlName="confirmationPassword"
+                       autocomplete="new-password"
                        [type]="hide ? 'password' : 'text'"
                        required>
                 <button mat-icon-button
@@ -210,11 +215,12 @@
                   (ngSubmit)="onSubmitForgetPasswordForm()"
                   [formGroup]="forgetPasswordForm">
               <mat-form-field class="col-12 w-100 my-4"
-                              appearance="fill">
+                              appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput
                        placeholder="pat@example.com"
                        formControlName="email"
+                       autocomplete="username"
                        required>
                 <mat-error *ngIf="emailFPF.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>

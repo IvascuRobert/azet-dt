@@ -21,7 +21,8 @@ $azet-dt-yellow: #ffcf44;
 $azet-dt-purple: #b15dff;
 $azet-dt-blue: #72deff;
 
-$azet-dt-green-palette: (50: #c6fdf2,
+$azet-dt-green-palette: (
+  50: #c6fdf2,
   100: #a6fbe2,
   200: #8bf4d4,
   300: #78eced,
@@ -36,7 +37,8 @@ $azet-dt-green-palette: (50: #c6fdf2,
   A200: #536dfe,
   A400: #3d5afe,
   A700: #304ffe,
-  contrast: (50: $dark-primary-text,
+  contrast: (
+    50: $dark-primary-text,
     100: $dark-primary-text,
     200: $dark-primary-text,
     300: $light-primary-text,
@@ -102,4 +104,14 @@ body {
 
 *::-webkit-scrollbar-thumb {
   background-color: $azet-dt-green;
+}
+
+.azet-dt-shadow {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.azet-dt-border-left {
+  border-left: 4px solid $azet-dt-green;
 }
