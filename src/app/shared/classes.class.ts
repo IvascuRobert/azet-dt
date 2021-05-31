@@ -64,7 +64,6 @@ export class ProductClass {
     }
 }
 
-export class CartClass extends ProductClass {
-    uuid?: any;
-    remove?: boolean;
+export class CartProductClass extends ProductClass {
+    nbOfItems: number;
 }

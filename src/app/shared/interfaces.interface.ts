@@ -1,4 +1,4 @@
-import { CartClass } from "./classes.class";
+import { CartProductClass } from "./classes.class";
 
 export interface IUserLogin {
     email: string;
@@ -31,14 +31,7 @@ export interface IReview {
     createdAt: string;
 }
 
-export interface ICartStateTree {
-    cart: CartClass[];
-    tot: ICartTotals,
-    checkout: boolean;
-};
-
-export interface ICartTotals {
-    subTot: number;
-    tax: number;
-    grandTot: number;
+export interface ICartAll {
+    products: CartProductClass[];
+    totals: number;
 }

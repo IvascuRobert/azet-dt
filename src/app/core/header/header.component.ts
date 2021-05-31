@@ -1,7 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CartClass } from 'src/app/shared/classes.class';
-import { ICartStateTree } from 'src/app/shared/interfaces.interface';
+import { ProductClass } from 'src/app/shared/classes.class';
 import { CartService } from '../services/cart.service';
 
 @Component({
@@ -13,10 +11,10 @@ export class HeaderComponent implements OnInit {
 
   @Output() clickMenu = new EventEmitter<boolean>();
 
-  cartState$: Observable<ICartStateTree>;
+  // cartState$: Observable<ICartStateTree>;
 
   constructor(public cartService: CartService) {
-    this.cartState$ = this.cartService.state$;
+    // this.cartState$ = this.cartService.state$;
   }
 
   ngOnInit(): void {
@@ -26,7 +24,7 @@ export class HeaderComponent implements OnInit {
     this.clickMenu.emit(true);
   }
 
-  removeCartItem(itemCart: CartClass): void {
-    this.cartService.removeCartItem(itemCart);
+  removeCartItem(itemCart: ProductClass): void {
+    this.cartService.addCartProduct(itemCart);
   }
 }
