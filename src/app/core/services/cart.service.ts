@@ -19,7 +19,7 @@ export class CartService {
     addCartProduct(productAdded: ProductClass): BehaviorSubject<ICart> {
         this.products.push(productAdded);
 
-        const cartProducts = this.transformProductsToCartProducts(this.products);
+        const cartProducts = this.transformProductsToCart(this.products);
 
         this.cartProducts$.next(cartProducts);
 
@@ -35,7 +35,7 @@ export class CartService {
 
         this.products.splice(findIndexOfProductRemoved, 1);
 
-        const cartProducts = this.transformProductsToCartProducts(this.products);
+        const cartProducts = this.transformProductsToCart(this.products);
 
         this.cartProducts$.next(cartProducts);
 
@@ -46,7 +46,7 @@ export class CartService {
         return this.cartProducts$;
     }
 
-    transformProductsToCartProducts(products: ProductClass[]): ICart {
+    transformProductsToCart(products: ProductClass[]): ICart {
         let cartProducts: ICart = {
             products: [],
             totalProducts: 0,

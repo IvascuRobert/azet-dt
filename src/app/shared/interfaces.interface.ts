@@ -1,8 +1,14 @@
 import { CartProductClass } from "./classes.class";
+import { EnumMessageType } from "./enums.enum";
 
 export interface IUserLogin {
-    email: string;
-    password: string;
+    id?: string;
+    email?: string;
+    password?: string;
+    token?: string;
+    firstName?: string;
+    lastName?: string;
+    message?: string;
 }
 
 export interface IFilterFlatNode {
@@ -35,6 +41,11 @@ export interface ICart {
     products: CartProductClass[];
     totalProducts: number;
     totalPrice: number;
+}
+
+export interface IMessage {
+    type: EnumMessageType;
+    message: string;
 }
 
 export interface IAnimationOptions {

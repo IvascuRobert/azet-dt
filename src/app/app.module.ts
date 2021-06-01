@@ -17,7 +17,10 @@ import { CoreModule } from './core/core.module';
 import { CartService } from './core/services/cart.service';
 import { CustomHttpUrlGenerator } from './core/services/custom-http-url-generator.service';
 import { entityConfig } from './core/services/entity-metadata';
+import { NgrxForgotPasswordMethodsService } from './core/services/ngrx-forgot-password-methods.service';
+import { NgrxLoginMethodsService } from './core/services/ngrx-login-methods.service';
 import { NgrxProductsMethodsService } from './core/services/ngrx-products-methods.service';
+import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
 @NgModule({
@@ -42,6 +45,9 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     NgrxProductsMethodsService,
+    NgrxLoginMethodsService,
+    NgrxRegisterMethodsService,
+    NgrxForgotPasswordMethodsService,
     CartService,
     {
       provide: HttpUrlGenerator,
@@ -57,8 +63,16 @@ export class AppModule {
   constructor(
     entityDataService: EntityDataService,
     // custom collection services
-    ngrxProductsMethodsService: NgrxProductsMethodsService
+    ngrxProductsMethodsService: NgrxProductsMethodsService,
+    ngrxLoginMethodsService: NgrxLoginMethodsService,
+    ngrxRegisterMethodsService: NgrxRegisterMethodsService,
+    ngrxForgotPasswordMethodsService: NgrxForgotPasswordMethodsService,
   ) {
-    entityDataService.registerService('Products', ngrxProductsMethodsService);
+    entityDataService.registerServices({
+      Products: ngrxProductsMethodsService,
+      Login: ngrxLoginMethodsService,
+      Register: ngrxRegisterMethodsService,
+      ForgotPassword: ngrxForgotPasswordMethodsService,
+    });
   }
 }

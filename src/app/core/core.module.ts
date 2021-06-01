@@ -57,7 +57,10 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
       useClass: AuthInterceptor,
       multi: true,
     },
-    { provide: 'Window', useFactory: () => window }
+    {
+      provide: 'Window',
+      useFactory: () => window
+    }
   ] // these should be singleton
 })
 

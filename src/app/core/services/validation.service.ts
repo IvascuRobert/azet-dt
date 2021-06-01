@@ -1,5 +1,5 @@
 // Original version created by Cory Rylan: https://coryrylan.com/blog/angular-2-form-builder-and-validation-management
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export class ValidationService {
 
@@ -44,4 +44,11 @@ export class ValidationService {
             return { 'invalidPassword': true };
         }
     }
+
+    static checkPasswordAndConfirmPasswordAreSame(group: AbstractControl): ValidationErrors | null {
+        const password = group.get('password')?.value;
+        const confirmPassword = group.get('confirmPassword')?.value;
+
+        return password === confirmPassword ? null : { passwordMismatch: true }
+    };
 }

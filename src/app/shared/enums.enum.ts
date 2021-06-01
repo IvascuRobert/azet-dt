@@ -63,3 +63,10 @@ export enum EnumSortValue {
     LOW_PRICE = 'lowPrice',
     RATING = 'rating',
 }
+
+export enum EnumMessageType {
+    SUCCESS = 'success',
+    INFO = 'info',
+    WARNING = 'warning',
+    DANGER = 'danger'
+}

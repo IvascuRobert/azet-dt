@@ -3,12 +3,15 @@
     <mat-tab-group mat-stretch-tabs
                    mat-align-tabs="start"
                    class="mat-elevation-z4"
-                   [selectedIndex]="tabIndex">
-      <mat-tab>
+                   [selectedIndex]="tabIndex"
+                   (selectedIndexChange)="changeTab($event)">
+      <mat-tab [disabled]="loadingLogin$ | async">
         <ng-template mat-tab-label>
           <mat-icon>login</mat-icon>
           AUTENTIFICARE
         </ng-template>
+        <mat-progress-bar *ngIf="(loadingLogin$ | async)"
+                          mode="indeterminate"></mat-progress-bar>
         <mat-card class="login-card"
                   style="font-size: 1.2rem;">
           <mat-card-content>
@@ -22,7 +25,8 @@
               <div class="col-6 text-center">
                 <button mat-stroked-button
                         class="py-2"
-                        color="primary">
+                        color="primary"
+                        [disabled]="loadingLogin$ | async">
                   <i class="fab fa-google"></i>
                   Autentifică-te cu GOOGLE
                 </button>
@@ -30,7 +34,8 @@
               <div class="col-6 text-center">
                 <button mat-stroked-button
                         class="py-2"
-                        color="primary">
+                        color="primary"
+                        [disabled]="loadingLogin$ | async">
                   <i class="fab fa-facebook"></i>
                   Autentifică-te cu FACEBOOK
                 </button>
@@ -54,7 +59,7 @@
             </div>
             <form class="row justify-content-center"
                   (ngSubmit)="onSubmitLoginForm()"
-                  [formGroup]="logintForm">
+                  [formGroup]="loginForm">
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
                 <mat-label>Email</mat-label>
@@ -63,7 +68,7 @@
                        formControlName="email"
                        autocomplete="username"
                        required>
-                <mat-error *ngIf="emailLF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="emailLF.invalid">eroare</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
@@ -79,34 +84,39 @@
                         [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="passwordLF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="passwordLF.invalid">eroare</mat-error>
               </mat-form-field>
               <button mat-raised-button
                       type="submit"
                       class="col-6"
-                      color="primary">Autentifică-te</button>
+                      color="primary"
+                      [disabled]="loginForm.invalid || (loadingLogin$ | async)">Autentifică-te</button>
             </form>
             <div class="row">
               <div class="col-12 text-center my-2">
                 <button mat-button
                         class="primary"
-                        (click)="changeTab(2)">Ți-ai uitat parola?</button>
+                        (click)="changeTab(2)"
+                        [disabled]="loadingLogin$ | async">Ți-ai uitat parola?</button>
               </div>
               <div class="col-12 text-center">
                 <span class="mx-1">Dacă ești un utilizator nou atunci</span>
                 <button mat-button
                         color="primary"
-                        (click)="changeTab(1)">Înregistrează-te</button>
+                        (click)="changeTab(1)"
+                        [disabled]="loadingLogin$ | async">Înregistrează-te</button>
               </div>
             </div>
           </mat-card-content>
         </mat-card>
       </mat-tab>
-      <mat-tab>
+      <mat-tab [disabled]="loadingLogin$ | async">
         <ng-template mat-tab-label>
           <mat-icon>how_to_reg</mat-icon>
           ÎNREGISTRARE
         </ng-template>
+        <mat-progress-bar *ngIf="(loadingLogin$ | async)"
+                          mode="indeterminate"></mat-progress-bar>
         <mat-card class="login-card"
                   style="font-size: 1.2rem;">
           <mat-card-content>
@@ -120,7 +130,7 @@
             </div>
             <form class="row justify-content-center"
                   (ngSubmit)="onSubmitRegisterForm()"
-                  [formGroup]="registertForm">
+                  [formGroup]="registerForm">
               <mat-form-field class="col-6 w-100 my-1"
                               appearance="outline">
                 <mat-label>Nume</mat-label>
@@ -130,7 +140,7 @@
                        formControlName="firstName"
                        required>
                 <mat-hint align="end">{{fn.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="firstNameRF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="firstNameRF.invalid">eroare</mat-error>
               </mat-form-field>
               <mat-form-field class="col-6 w-100 my-1"
                               appearance="outline">
@@ -141,7 +151,7 @@
                        formControlName="lastName"
                        required>
                 <mat-hint align="end">{{ln.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="lastNameRF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="lastNameRF.invalid">eroare</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
@@ -151,12 +161,13 @@
                        formControlName="email"
                        autocomplete="username"
                        required>
-                <mat-error *ngIf="emailRF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="emailRF.invalid">eroare</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
                 <mat-label>Parola</mat-label>
                 <input matInput
+                       #p
                        formControlName="password"
                        autocomplete="new-password"
                        [type]="hide ? 'password' : 'text'"
@@ -168,15 +179,18 @@
                         [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="passwordRF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-hint align="end">{{p.value.length}} / 8</mat-hint>
+                <mat-error *ngIf="passwordRF.invalid">eroare</mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
                 <mat-label>Confirmă Parola</mat-label>
                 <input matInput
-                       formControlName="confirmationPassword"
+                       #cp
+                       formControlName="confirmPassword"
                        autocomplete="new-password"
                        [type]="hide ? 'password' : 'text'"
+                       [errorStateMatcher]="matcher"
                        required>
                 <button mat-icon-button
                         matSuffix
@@ -185,21 +199,31 @@
                         [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="passwordRF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-hint align="end">{{cp.value.length}} / 8</mat-hint>
+                <mat-error *ngIf="confirmPasswordRF.invalid">
+                  {{confirmPasswordRF.errors | formControlErrorInterpretation}}
+                </mat-error>
+                <mat-error *ngIf="registerForm.hasError('passwordMismatch')">
+                  Parolele nu sunt identice
+                </mat-error>
               </mat-form-field>
               <button mat-raised-button
                       type="submit"
                       class="col-6"
                       color="primary">Înregistrează-te</button>
+
+              <!-- [disabled]="registerForm.invalid || (loadingRegister$ | async)" -->
             </form>
           </mat-card-content>
         </mat-card>
       </mat-tab>
-      <mat-tab>
+      <mat-tab [disabled]="loadingLogin$ | async">
         <ng-template mat-tab-label>
           <mat-icon>restart_alt</mat-icon>
           RECUPREAZĂ PAROLA
         </ng-template>
+        <mat-progress-bar *ngIf="(loadingLogin$ | async)"
+                          mode="indeterminate"></mat-progress-bar>
         <mat-card class="login-card"
                   style="font-size: 1.2rem;">
           <mat-card-content>
@@ -222,12 +246,13 @@
                        formControlName="email"
                        autocomplete="username"
                        required>
-                <mat-error *ngIf="emailFPF.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-error *ngIf="emailFPF.invalid">eroare</mat-error>
               </mat-form-field>
               <button mat-raised-button
                       type="submit"
                       class="col-6"
-                      color="primary">RECUPREAZĂ</button>
+                      color="primary"
+                      [disabled]="forgetPasswordForm.invalid || (loadingForgotPassword$ | async)">RECUPREAZĂ</button>
             </form>
           </mat-card-content>
         </mat-card>

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import {
     DefaultDataService,
     HttpUrlGenerator,
-    Logger,
     QueryParams
 } from '@ngrx/data';
 import { Observable } from 'rxjs';
