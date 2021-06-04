@@ -24,6 +24,7 @@
               </div>
               <div class="col-6 text-center">
                 <button mat-stroked-button
+                        type="button"
                         class="py-2"
                         color="primary"
                         [disabled]="loadingLogin$ | async">
@@ -33,6 +34,7 @@
               </div>
               <div class="col-6 text-center">
                 <button mat-stroked-button
+                        type="button"
                         class="py-2"
                         color="primary"
                         [disabled]="loadingLogin$ | async">
@@ -68,33 +70,41 @@
                        formControlName="email"
                        autocomplete="username"
                        required>
-                <mat-error *ngIf="emailLF.invalid">eroare</mat-error>
+                <mat-error *ngIf="emailLF.invalid">
+                  {{emailLF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
                 <mat-label>Parola</mat-label>
                 <input matInput
+                       #plf
                        formControlName="password"
                        autocomplete="current-password"
-                       [type]="hide ? 'password' : 'text'">
+                       [type]="hidePasswordLF ? 'password' : 'text'">
                 <button mat-icon-button
+                        type="button"
                         matSuffix
-                        (click)="hide = !hide"
+                        (click)="hidePasswordLF = !hidePasswordLF"
                         [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        [attr.aria-pressed]="hidePasswordLF">
+                  <mat-icon>{{hidePasswordLF ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-error *ngIf="passwordLF.invalid">eroare</mat-error>
+                <mat-hint align="end">{{plf.value.length}} / 8</mat-hint>
+                <mat-error *ngIf="passwordLF.invalid">
+                  {{passwordLF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <button mat-raised-button
                       type="submit"
                       class="col-6"
-                      color="primary"
-                      [disabled]="loginForm.invalid || (loadingLogin$ | async)">Autentifică-te</button>
+                      color="primary">Autentifică-te</button>
+              <!-- [disabled]="loginForm.invalid || (loadingLogin$ | async)" -->
             </form>
             <div class="row">
               <div class="col-12 text-center my-2">
                 <button mat-button
+                        type="button"
                         class="primary"
                         (click)="changeTab(2)"
                         [disabled]="loadingLogin$ | async">Ți-ai uitat parola?</button>
@@ -102,6 +112,7 @@
               <div class="col-12 text-center">
                 <span class="mx-1">Dacă ești un utilizator nou atunci</span>
                 <button mat-button
+                        type="button"
                         color="primary"
                         (click)="changeTab(1)"
                         [disabled]="loadingLogin$ | async">Înregistrează-te</button>
@@ -140,7 +151,9 @@
                        formControlName="firstName"
                        required>
                 <mat-hint align="end">{{fn.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="firstNameRF.invalid">eroare</mat-error>
+                <mat-error *ngIf="firstNameRF.invalid">
+                  {{firstNameRF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="col-6 w-100 my-1"
                               appearance="outline">
@@ -151,7 +164,9 @@
                        formControlName="lastName"
                        required>
                 <mat-hint align="end">{{ln.value.length}} / 20</mat-hint>
-                <mat-error *ngIf="lastNameRF.invalid">eroare</mat-error>
+                <mat-error *ngIf="lastNameRF.invalid">
+                  {{lastNameRF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
@@ -161,7 +176,9 @@
                        formControlName="email"
                        autocomplete="username"
                        required>
-                <mat-error *ngIf="emailRF.invalid">eroare</mat-error>
+                <mat-error *ngIf="emailRF.invalid">
+                  {{emailRF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
@@ -170,17 +187,20 @@
                        #p
                        formControlName="password"
                        autocomplete="new-password"
-                       [type]="hide ? 'password' : 'text'"
+                       [type]="hidePasswordRF ? 'password' : 'text'"
                        required>
                 <button mat-icon-button
+                        type="button"
                         matSuffix
-                        (click)="hide = !hide"
+                        (click)="hidePasswordRF = !hidePasswordRF"
                         [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        [attr.aria-pressed]="hidePasswordRF">
+                  <mat-icon>{{hidePasswordRF ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-hint align="end">{{p.value.length}} / 8</mat-hint>
-                <mat-error *ngIf="passwordRF.invalid">eroare</mat-error>
+                <mat-error *ngIf="passwordRF.invalid">
+                  {{passwordRF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <mat-form-field class="col-12 w-100 my-1"
                               appearance="outline">
@@ -189,30 +209,26 @@
                        #cp
                        formControlName="confirmPassword"
                        autocomplete="new-password"
-                       [type]="hide ? 'password' : 'text'"
-                       [errorStateMatcher]="matcher"
+                       [type]="hidePasswordRF ? 'password' : 'text'"
                        required>
                 <button mat-icon-button
+                        type="button"
                         matSuffix
-                        (click)="hide = !hide"
+                        (click)="hidePasswordRF = !hidePasswordRF"
                         [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        [attr.aria-pressed]="hidePasswordRF">
+                  <mat-icon>{{hidePasswordRF ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-hint align="end">{{cp.value.length}} / 8</mat-hint>
                 <mat-error *ngIf="confirmPasswordRF.invalid">
                   {{confirmPasswordRF.errors | formControlErrorInterpretation}}
                 </mat-error>
-                <mat-error *ngIf="registerForm.hasError('passwordMismatch')">
-                  Parolele nu sunt identice
-                </mat-error>
               </mat-form-field>
               <button mat-raised-button
                       type="submit"
                       class="col-6"
-                      color="primary">Înregistrează-te</button>
-
-              <!-- [disabled]="registerForm.invalid || (loadingRegister$ | async)" -->
+                      color="primary"
+                      [disabled]="registerForm.invalid || (loadingRegister$ | async)">Înregistrează-te</button>
             </form>
           </mat-card-content>
         </mat-card>
@@ -246,7 +262,9 @@
                        formControlName="email"
                        autocomplete="username"
                        required>
-                <mat-error *ngIf="emailFPF.invalid">eroare</mat-error>
+                <mat-error *ngIf="emailFPF.invalid">
+                  {{emailFPF.errors | formControlErrorInterpretation}}
+                </mat-error>
               </mat-form-field>
               <button mat-raised-button
                       type="submit"

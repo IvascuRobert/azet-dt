@@ -40,8 +40,7 @@ import { SharedModule } from './shared/shared.module';
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
     NgbModule,
-    MatSidenavModule,
-    MatCardModule
+    MatSidenavModule
   ],
   providers: [
     NgrxProductsMethodsService,
@@ -49,11 +48,11 @@ import { SharedModule } from './shared/shared.module';
     NgrxRegisterMethodsService,
     NgrxForgotPasswordMethodsService,
     CartService,
+    MatSnackBar,
     {
       provide: HttpUrlGenerator,
       useClass: CustomHttpUrlGenerator
-    },
-    MatSnackBar
+    }
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

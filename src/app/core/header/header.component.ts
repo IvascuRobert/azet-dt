@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductClass } from 'src/app/shared/classes.class';
 import { ICart } from 'src/app/shared/interfaces.interface';
+import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 import { TrackByService } from '../services/trackBy.service';
 
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public trackbyService: TrackByService,
-    public cartService: CartService
+    public cartService: CartService,
+    public authService: AuthService
   ) {
     this.cart$ = this.cartService.cartProducts$;
   }

@@ -1,0 +1,10 @@
+<button *ngIf="authService.isAuthenticated"
+        mat-stroked-button
+        routerLink="/home"
+        class="mr-3"
+        (click)="logout()">
+  <span class="material-icons-two-tone">
+    logout
+  </span>
+  Logout
+</button>

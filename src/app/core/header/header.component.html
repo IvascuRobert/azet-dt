@@ -27,13 +27,23 @@
       Contact
     </button>
     <span class="app-navbar-spacer"></span>
-    <button mat-stroked-button
+    <button *ngIf="!authService.isAuthenticated"
+            mat-stroked-button
             routerLink="/login"
             class="mr-3">
       <span class="material-icons-two-tone">
-        account_circle
+        login
       </span>
       Login
+    </button>
+    <button *ngIf="authService.isAuthenticated"
+            mat-stroked-button
+            routerLink="/profile"
+            class="mr-3">
+      <span class="material-icons-two-tone">
+        face
+      </span>
+      Profil
     </button>
     <button mat-stroked-button
             routerLink="/cart"

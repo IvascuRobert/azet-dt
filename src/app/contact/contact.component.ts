@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationService } from '../core/services/validation.service';
 import { patterns } from '../shared/patterns';
 
 @Component({
@@ -11,8 +12,16 @@ export class ContactComponent implements OnInit {
 
   azetDtLocation = 'https://www.google.com/maps/place/Azet+DT+Resapare+Anvelope+Camion+SRL/@45.6575573,25.641716,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x40b35c6b2de4023d:0x1b5da9eebf44f902!2sAzet+DT+Resapare+Anvelope+Camion+SRL!8m2!3d45.6575587!4d25.6439095!3m4!1s0x40b35c6b2de4023d:0x1b5da9eebf44f902!8m2!3d45.6575587!4d25.6439095';
   contactForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    phone: new FormControl('', [Validators.required, Validators.pattern(patterns.phoneNumber.regExp)]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+      Validators.minLength(3),
+      ValidationService.customPatternValidator(patterns.onlyCharacters)
+    ]),
+    phone: new FormControl('', [
+      Validators.required,
+      ValidationService.customPatternValidator(patterns.phoneNumber)
+    ]),
     message: new FormControl('', Validators.required),
   });
 
@@ -31,10 +40,6 @@ export class ContactComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getErrorMessage(): string {
-    return 'Câmpul este obligatoriu !';
   }
 
   onSubmit(): void {

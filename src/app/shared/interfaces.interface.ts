@@ -5,7 +5,7 @@ export interface IUserLogin {
     id?: string;
     email?: string;
     password?: string;
-    token?: string;
+    accessToken?: string;
     firstName?: string;
     lastName?: string;
     message?: string;
@@ -46,6 +46,11 @@ export interface ICart {
 export interface IMessage {
     type: EnumMessageType;
     message: string;
+}
+
+export interface IPatterns {
+    msg: string;
+    regExp: RegExp;
 }
 
 export interface IAnimationOptions {

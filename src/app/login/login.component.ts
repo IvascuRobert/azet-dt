@@ -3,16 +3,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DataServiceError } from 'ngrx-data';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { SubSink } from 'subsink';
+import { AuthService } from '../core/services/auth.service';
 import { NgrxForgotPasswordService } from '../core/services/ngrx-forgot-password.service';
 import { NgrxLoginService } from '../core/services/ngrx-login.service';
 import { NgrxRegisterService } from '../core/services/ngrx-register.service';
 import { ValidationService } from '../core/services/validation.service';
-import { CustomErrorStateMatcher } from '../shared/classes.class';
 import { EnumMessageType } from '../shared/enums.enum';
-import { IMessage } from '../shared/interfaces.interface';
+import { IMessage, IUserLogin } from '../shared/interfaces.interface';
 import { MessageComponent } from '../shared/message/message.component';
+import { patterns } from '../shared/patterns';
 
 @Component({
   selector: 'app-login',
@@ -24,25 +25,35 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
   registerForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-    lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+      Validators.minLength(3),
+      ValidationService.customPatternValidator(patterns.onlyCharacters)
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+      Validators.minLength(3),
+      ValidationService.customPatternValidator(patterns.onlyCharacters)
+    ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
-  }, { validators: [ValidationService.checkPasswordAndConfirmPasswordAreSame] });
+  });
 
   forgetPasswordForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  hide = true;
+  hidePasswordRF = true;
+  hidePasswordLF = true;
   tabIndex = 0;
   errorMessage: string;
-  matcher = new CustomErrorStateMatcher();
 
   loadingLogin$: Observable<boolean>;
   loadingRegister$: Observable<boolean>;
@@ -85,7 +96,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private ngrxRegisterService: NgrxRegisterService,
     private ngrxForgotPasswordService: NgrxForgotPasswordService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private authService: AuthService
   ) {
     this.loadingLogin$ = this.ngrxLoginService.loading$;
     this.loadingRegister$ = this.ngrxRegisterService.loading$;
@@ -116,6 +128,19 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginForm.enable();
       }
     });
+
+    this.subs.sink = combineLatest([
+      this.passwordRF.valueChanges,
+      this.confirmPasswordRF.valueChanges
+    ]).subscribe(([password, confirmPassword]) => {
+      if (password && (password.length >= 8) && confirmPassword && (confirmPassword.length >= 8) && (password != confirmPassword)) {
+        this.passwordRF.setErrors({ passwordMismatch: true });
+        this.confirmPasswordRF.setErrors({ passwordMismatch: true });
+      } else if (password && (password.length >= 8) && confirmPassword && (confirmPassword.length >= 8) && (password == confirmPassword)) {
+        this.passwordRF.setErrors(null);
+        this.confirmPasswordRF.setErrors(null);
+      }
+    });
   }
 
   onSubmitLoginForm(): void {
@@ -123,8 +148,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subs.sink = this.ngrxLoginService
       .add(loginForm)
       .subscribe(
-        (user) => {
-          // this.router.navigateByUrl('/');
+        (user: IUserLogin) => {
           this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
         },
         (error: DataServiceError) => {
