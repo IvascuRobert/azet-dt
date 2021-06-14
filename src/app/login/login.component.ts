@@ -1,18 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { DataServiceError } from 'ngrx-data';
 import { combineLatest, Observable } from 'rxjs';
 import { SubSink } from 'subsink';
-import { AuthService } from '../core/services/auth.service';
 import { NgrxForgotPasswordService } from '../core/services/ngrx-forgot-password.service';
 import { NgrxLoginService } from '../core/services/ngrx-login.service';
 import { NgrxRegisterService } from '../core/services/ngrx-register.service';
 import { ValidationService } from '../core/services/validation.service';
-import { EnumMessageType } from '../shared/enums.enum';
-import { IMessage, IUserLogin } from '../shared/interfaces.interface';
-import { MessageComponent } from '../shared/message/message.component';
 import { patterns } from '../shared/patterns';
 
 @Component({
@@ -95,9 +89,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private ngrxLoginService: NgrxLoginService,
     private ngrxRegisterService: NgrxRegisterService,
     private ngrxForgotPasswordService: NgrxForgotPasswordService,
-    private router: Router,
-    private _snackBar: MatSnackBar,
-    private authService: AuthService
+    private router: Router
   ) {
     this.loadingLogin$ = this.ngrxLoginService.loading$;
     this.loadingRegister$ = this.ngrxRegisterService.loading$;
@@ -145,53 +137,20 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmitLoginForm(): void {
     const loginForm = this.loginForm.getRawValue();
-    this.subs.sink = this.ngrxLoginService
-      .add(loginForm)
-      .subscribe(
-        (user: IUserLogin) => {
-          this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
-        },
-        (error: DataServiceError) => {
-          const { message } = error;
-          this.messageAlert(EnumMessageType.DANGER, message);
-        });
+    this.ngrxLoginService.add(loginForm);
   }
 
   onSubmitRegisterForm(): void {
     const registerFormValues = this.registerForm.getRawValue();
     const registerForm = this.deepClone(this.omit(registerFormValues, 'confirmPassword'));
-
-    // this.subs.sink = this.ngrxRegisterService
-    //   .add(registerForm)
-    //   .subscribe(
-    //     (user) => {
-    //       // this.router.navigateByUrl('/');
-    //       this.messageAlert(EnumMessageType.SUCCESS, 'Înregistrare efectuată cu succes.');
-    //     },
-    //     (error: DataServiceError) => {
-    //       const { message } = error;
-    //       this.messageAlert(EnumMessageType.DANGER, message);
-    //     });
+    this.ngrxRegisterService.add(registerForm);
 
     console.log(this.registerForm, 'this.registerForm');
   }
 
   onSubmitForgetPasswordForm(): void {
     const forgetPasswordForm = this.forgetPasswordForm.getRawValue();
-    this.subs.sink = this.ngrxForgotPasswordService
-      .add(forgetPasswordForm)
-      .subscribe(
-        (user) => {
-          console.log(user, 'user')
-          console.log("User is logged in");
-          // this.router.navigateByUrl('/');
-          this.messageAlert(EnumMessageType.SUCCESS, 'Resetarea efectuată cu succes. Verificați-vă email-ul.');
-        },
-        (error: DataServiceError) => {
-          console.log(error, 'error')
-          const { message } = error;
-          this.messageAlert(EnumMessageType.DANGER, message);
-        });;
+    this.ngrxForgotPasswordService.add(forgetPasswordForm);
 
     console.log(forgetPasswordForm, 'forgetPasswordForm');
   }
@@ -213,16 +172,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   deepClone<T>(obj: T): T {
     return JSON.parse(JSON.stringify(obj)) as T;
-  }
-
-  messageAlert(type: EnumMessageType, message: string) {
-    this._snackBar.openFromComponent(MessageComponent, {
-      duration: 5000,
-      data: <IMessage>{
-        type,
-        message
-      }
-    });
   }
 
   ngOnDestroy() {

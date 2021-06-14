@@ -3,10 +3,9 @@ import {
     EntityCollectionServiceBase,
     EntityCollectionServiceElementsFactory
 } from '@ngrx/data';
-import { IUserLogin } from 'src/app/shared/interfaces.interface';
 
 @Injectable({ providedIn: 'root' })
-export class NgrxForgotPasswordService extends EntityCollectionServiceBase<IUserLogin> {
+export class NgrxForgotPasswordService extends EntityCollectionServiceBase<string> {
     constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
         super('ForgotPassword', serviceElementsFactory);
     }

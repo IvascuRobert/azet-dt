@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import {
+    DataServiceError,
     DefaultDataService,
     HttpUrlGenerator
 } from '@ngrx/data';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { IUserLogin } from 'src/app/shared/interfaces.interface';
-import { AuthService } from './auth.service';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { EnumMessageType } from 'src/app/shared/enums.enum';
+import { IMessage, IUserLogin } from 'src/app/shared/interfaces.interface';
+import { MessageComponent } from 'src/app/shared/message/message.component';
 
 @Injectable()
 export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
@@ -16,8 +19,8 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
     constructor(
         http: HttpClient,
         httpUrlGenerator: HttpUrlGenerator,
-        private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private _snackBar: MatSnackBar
     ) {
         super('Login', http, httpUrlGenerator);
     }
@@ -25,16 +28,37 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
     add(user: IUserLogin): Observable<IUserLogin> {
         return super
             .add(user)
-            .pipe(map((user) => {
-                const { accessToken } = user;
+            .pipe(
+                map((user) => {
+                    const { accessToken } = user;
+                    localStorage.setItem('access_token', accessToken);
+                    this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
+                    this.router.navigateByUrl('/');
+                    return this.mapUserLoggedIn(user);
+                }),
+                catchError((error: DataServiceError) => {
+                    const { message } = error;
+                    this.messageAlert(EnumMessageType.DANGER, message);
+                    return of(error);
+                })
+            );
+    }
 
-                this.router.navigateByUrl('/');
-                this.authService.saveToken(accessToken);
-                return this.mapUserLoggedIn(user);
-            }));
+    messageAlert(type: EnumMessageType, message: string) {
+        this._snackBar.openFromComponent(MessageComponent, {
+            duration: 5000,
+            data: <IMessage>{
+                type,
+                message
+            }
+        });
     }
 
     private mapUserLoggedIn(user: any): IUserLogin {
         return { ...user, id: user.userId }; // from mongo db key of identifier comes userId and NGRX-DATA want id
+    }
+
+    public get isAuthenticated(): boolean {
+        return localStorage.getItem('access_token') !== null;
     }
 }

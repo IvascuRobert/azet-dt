@@ -18,8 +18,6 @@ import { FooterComponent } from './footer/footer.component';
 import { CanActivateLoginGuard } from './guards/can-activate-login.guard';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { HeaderComponent } from './header/header.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { AuthService } from './services/auth.service';
 import { TrackByService } from './services/trackBy.service';
 import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component';
 
@@ -55,14 +53,8 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
   ],
   providers: [
     TrackByService,
-    AuthService,
     CanActivateGuard,
     CanActivateLoginGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
     {
       provide: 'Window',
       useFactory: () => window

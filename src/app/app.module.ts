@@ -23,6 +23,12 @@ import { NgrxProductsMethodsService } from './core/services/ngrx-products-method
 import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
+import { JwtModule } from "@auth0/angular-jwt";
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,11 +38,16 @@ import { SharedModule } from './shared/shared.module';
     CoreModule, // Singleton objects (services, components that are loaded only once, etc.)
     SharedModule, // Shared (multi-instance) objects
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      },
+    }),
+    StoreModule.forRoot({}),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
     NgbModule,

@@ -27,7 +27,7 @@
       Contact
     </button>
     <span class="app-navbar-spacer"></span>
-    <button *ngIf="!authService.isAuthenticated"
+    <button *ngIf="!ngrxLoginMethodsService.isAuthenticated"
             mat-stroked-button
             routerLink="/login"
             class="mr-3">
@@ -36,7 +36,7 @@
       </span>
       Login
     </button>
-    <button *ngIf="authService.isAuthenticated"
+    <button *ngIf="ngrxLoginMethodsService.isAuthenticated"
             mat-stroked-button
             routerLink="/profile"
             class="mr-3">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../core/services/auth.service';
+import { NgrxLoginMethodsService } from '../core/services/ngrx-login-methods.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +9,13 @@ import { AuthService } from '../core/services/auth.service';
 export class ProfileComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
+    public ngrxLoginMethodsService: NgrxLoginMethodsService
   ) { }
 
   ngOnInit(): void {
   }
 
   logout(): void {
-    this.authService.signOut();
   }
 
 }

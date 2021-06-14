@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { NgrxLoginMethodsService } from '../services/ngrx-login-methods.service';
 
 @Injectable()
 export class CanActivateGuard implements CanActivate {
 
-    constructor(public auth: AuthService, public router: Router) { }
+    constructor(public ngrxLoginMethodsService: NgrxLoginMethodsService, public router: Router) { }
 
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-        if (this.auth.isAuthenticated()) {
+        if (this.ngrxLoginMethodsService.isAuthenticated) {
             return true;
         }
 
