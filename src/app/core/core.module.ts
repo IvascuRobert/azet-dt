@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +15,6 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactHeaderComponent } from './contact-header/contact-header.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
-import { CanActivateLoginGuard } from './guards/can-activate-login.guard';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { HeaderComponent } from './header/header.component';
 import { TrackByService } from './services/trackBy.service';
@@ -34,8 +33,7 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
     MatCardModule,
     MatBadgeModule,
     MatDividerModule,
-    MatProgressBarModule,
-    NgbPopoverModule,
+    MatProgressBarModule
   ],
   exports: [
     RouterModule,
@@ -54,7 +52,6 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
   providers: [
     TrackByService,
     CanActivateGuard,
-    CanActivateLoginGuard,
     {
       provide: 'Window',
       useFactory: () => window

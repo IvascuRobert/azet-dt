@@ -70,3 +70,8 @@ export enum EnumMessageType {
     WARNING = 'warning',
     DANGER = 'danger'
 }
+
+export enum EnumLocalStorageKeysName {
+    ACCESS_TOKEN = 'azet-dt:access_token',
+    PRODUCTS = 'azet-dt:products'
+}

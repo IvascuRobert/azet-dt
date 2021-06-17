@@ -9,7 +9,7 @@ import {
 } from '@ngrx/data';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { EnumMessageType } from 'src/app/shared/enums.enum';
+import { EnumLocalStorageKeysName, EnumMessageType } from 'src/app/shared/enums.enum';
 import { IMessage, IUserLogin } from 'src/app/shared/interfaces.interface';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 
@@ -31,7 +31,7 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
             .pipe(
                 map((user) => {
                     const { accessToken } = user;
-                    localStorage.setItem('access_token', accessToken);
+                    localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
                     this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
                     this.router.navigateByUrl('/');
                     return this.mapUserLoggedIn(user);
@@ -59,6 +59,6 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
     }
 
     public get isAuthenticated(): boolean {
-        return localStorage.getItem('access_token') !== null;
+        return localStorage.getItem(EnumLocalStorageKeysName.ACCESS_TOKEN) !== null;
     }
 }

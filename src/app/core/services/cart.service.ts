@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
 import { ProductClass } from 'src/app/shared/classes.class';
+import { EnumLocalStorageKeysName } from 'src/app/shared/enums.enum';
 import { ICart } from 'src/app/shared/interfaces.interface';
 
 @Injectable()
@@ -19,6 +20,8 @@ export class CartService {
     addCartProduct(productAdded: ProductClass): BehaviorSubject<ICart> {
         this.products.push(productAdded);
 
+        localStorage.setItem(EnumLocalStorageKeysName.PRODUCTS, JSON.stringify(this.products));
+
         const cartProducts = this.transformProductsToCart(this.products);
 
         this.cartProducts$.next(cartProducts);
@@ -35,6 +38,8 @@ export class CartService {
 
         this.products.splice(findIndexOfProductRemoved, 1);
 
+        localStorage.setItem(EnumLocalStorageKeysName.PRODUCTS, JSON.stringify(this.products));
+
         const cartProducts = this.transformProductsToCart(this.products);
 
         this.cartProducts$.next(cartProducts);
@@ -42,6 +47,16 @@ export class CartService {
         this._snackBar.open('A fost scosă o anvelopă din coș!', 'Închide', {
             duration: 2000,
         });
+
+        return this.cartProducts$;
+    }
+
+    setCartProducts(products: ProductClass[]): BehaviorSubject<ICart> {
+        this.products = products;
+
+        const cartProducts = this.transformProductsToCart(this.products);
+
+        this.cartProducts$.next(cartProducts);
 
         return this.cartProducts$;
     }

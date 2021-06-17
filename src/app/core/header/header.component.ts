@@ -20,8 +20,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public trackbyService: TrackByService,
-    public cartService: CartService,
-    public ngrxLoginMethodsService: NgrxLoginMethodsService
+    public cartService: CartService
   ) {
     this.cart$ = this.cartService.cartProducts$;
   }

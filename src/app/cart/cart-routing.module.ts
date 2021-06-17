@@ -12,5 +12,7 @@ const routes: Routes = [
 })
 
 export class CartRoutingModule {
-    static components = [CartComponent];
+    static components = [
+        CartComponent
+    ];
 }

@@ -8,7 +8,7 @@ import {
 } from '@ngrx/data';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { EnumMessageType } from 'src/app/shared/enums.enum';
+import { EnumLocalStorageKeysName, EnumMessageType } from 'src/app/shared/enums.enum';
 import { IMessage, IUserLogin } from 'src/app/shared/interfaces.interface';
 import { MessageComponent } from 'src/app/shared/message/message.component';
 
@@ -29,7 +29,7 @@ export class NgrxRegisterMethodsService extends DefaultDataService<IUserLogin> {
             .pipe(
                 map((user) => {
                     const { accessToken } = user;
-                    localStorage.setItem('access_token', accessToken);
+                    localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
                     this.messageAlert(EnumMessageType.SUCCESS, 'Înregistrare efectuată cu succes.');
                     return this.mapUserLoggedIn(user);
                 }),

@@ -23,10 +23,11 @@ import { NgrxProductsMethodsService } from './core/services/ngrx-products-method
 import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
 import { LoginModule } from './login/login.module';
 import { SharedModule } from './shared/shared.module';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
+import { EnumLocalStorageKeysName } from './shared/enums.enum';
 
 export function tokenGetter() {
-  return localStorage.getItem("access_token");
+  return localStorage.getItem(EnumLocalStorageKeysName.ACCESS_TOKEN);
 }
 
 @NgModule({
@@ -40,7 +41,7 @@ export function tokenGetter() {
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter
+        tokenGetter
       },
     }),
     StoreModule.forRoot({}),
