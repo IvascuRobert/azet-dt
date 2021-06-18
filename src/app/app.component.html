@@ -1,28 +1,12 @@
-<mat-sidenav-container class="side-nav-container">
+<div [ngClass]="{'container': !isAdministration}">
 
-  <mat-sidenav #sidenav
-               mode="over"
-               class="mat-elevation-z6">
+  <app-header *ngIf="!isAdministration"
+              [loading]="loading | async"></app-header>
 
-    <app-side-nav-pages></app-side-nav-pages>
+  <app-contact-header *ngIf="!isAdministration"></app-contact-header>
 
-  </mat-sidenav>
+  <router-outlet></router-outlet>
 
-  <mat-sidenav-content>
+  <app-footer *ngIf="!isAdministration"></app-footer>
 
-    <div class="container">
-
-      <app-header [loading]="loading | async"
-                  (clickMenu)="onClickMenu(sidenav)"></app-header>
-
-      <app-contact-header></app-contact-header>
-
-      <router-outlet></router-outlet>
-
-      <app-footer></app-footer>
-
-    </div>
-
-  </mat-sidenav-content>
-
-</mat-sidenav-container>
+</div>

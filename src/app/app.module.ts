@@ -1,10 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EntityDataModule, EntityDataService, HttpUrlGenerator } from '@ngrx/data';
 import { EffectsModule } from '@ngrx/effects';
@@ -22,9 +22,8 @@ import { NgrxLoginMethodsService } from './core/services/ngrx-login-methods.serv
 import { NgrxProductsMethodsService } from './core/services/ngrx-products-methods.service';
 import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
 import { LoginModule } from './login/login.module';
-import { SharedModule } from './shared/shared.module';
-import { JwtModule } from '@auth0/angular-jwt';
 import { EnumLocalStorageKeysName } from './shared/enums.enum';
+import { SharedModule } from './shared/shared.module';
 
 export function tokenGetter() {
   return localStorage.getItem(EnumLocalStorageKeysName.ACCESS_TOKEN);

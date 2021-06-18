@@ -33,7 +33,7 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
                     const { accessToken } = user;
                     localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
                     this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
-                    this.router.navigateByUrl('/');
+                    // this.router.navigateByUrl('/');
                     return this.mapUserLoggedIn(user);
                 }),
                 catchError((error: DataServiceError) => {

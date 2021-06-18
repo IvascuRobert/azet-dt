@@ -11,14 +11,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactHeaderComponent } from './contact-header/contact-header.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { HeaderComponent } from './header/header.component';
 import { TrackByService } from './services/trackBy.service';
-import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component';
 
 @NgModule({
   imports: [
@@ -40,13 +38,11 @@ import { SideNavPagesComponent } from './side-nav-pages/side-nav-pages.component
     HttpClientModule,
     HeaderComponent,
     FooterComponent,
-    SideNavPagesComponent,
     ContactHeaderComponent
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SideNavPagesComponent,
     ContactHeaderComponent
   ],
   providers: [

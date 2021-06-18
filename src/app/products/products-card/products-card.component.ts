@@ -28,7 +28,7 @@ export class ProductsCardComponent implements OnInit {
   }
 
   rateChange(event): void {
-    console.log(event);
+    console.log(event, 'rateChange');
   }
 
   addCartProduct(product: ProductClass): void {

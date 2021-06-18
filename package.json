@@ -30,6 +30,7 @@
     "@ngrx/entity": "^12.0.0",
     "@ngrx/store": "^12.0.0",
     "@ngrx/store-devtools": "^12.0.0",
+    "@swimlane/ngx-charts": "^18.0.1",
     "bootstrap": "^4.5.0",
     "memo-decorator": "^2.0.1",
     "ngrx-data": "^6.1.0-beta.3",

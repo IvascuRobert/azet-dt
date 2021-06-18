@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { ProductClass } from 'src/app/shared/classes.class';
 import { ICart } from 'src/app/shared/interfaces.interface';
 import { CartService } from '../services/cart.service';
-import { NgrxLoginMethodsService } from '../services/ngrx-login-methods.service';
 import { TrackByService } from '../services/trackBy.service';
 
 @Component({
@@ -14,7 +13,6 @@ import { TrackByService } from '../services/trackBy.service';
 export class HeaderComponent implements OnInit {
 
   @Input() loading: boolean;
-  @Output() clickMenu = new EventEmitter<boolean>();
 
   cart$: Observable<ICart>;
 
@@ -26,10 +24,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  clickOnMenu(): void {
-    this.clickMenu.emit(true);
   }
 
   removeCartProduct(product: ProductClass): void {
