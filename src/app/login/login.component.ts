@@ -135,20 +135,20 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmitLoginForm(): void {
     const loginForm = this.loginForm.getRawValue();
-    this.ngrxLoginService.add(loginForm);
+    this.ngrxLoginService.add(loginForm, { isOptimistic: false });
   }
 
   onSubmitRegisterForm(): void {
     const registerFormValues = this.registerForm.getRawValue();
     const registerForm = this.deepClone(this.omit(registerFormValues, 'confirmPassword'));
-    this.ngrxRegisterService.add(registerForm);
+    this.ngrxRegisterService.add(registerForm, { isOptimistic: false });
 
     console.log(this.registerForm, 'this.registerForm');
   }
 
   onSubmitForgetPasswordForm(): void {
     const forgetPasswordForm = this.forgetPasswordForm.getRawValue();
-    this.ngrxForgotPasswordService.add(forgetPasswordForm);
+    this.ngrxForgotPasswordService.add(forgetPasswordForm, { isOptimistic: false });
 
     console.log(forgetPasswordForm, 'forgetPasswordForm');
   }

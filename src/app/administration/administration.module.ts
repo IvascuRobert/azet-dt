@@ -15,7 +15,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { SharedModule } from '../shared/shared.module';
 import { AdministrationRoutingModule } from './administration-routing.module';
 
@@ -38,7 +37,6 @@ import { AdministrationRoutingModule } from './administration-routing.module';
         MatProgressBarModule,
         MatChipsModule,
         MatSlideToggleModule,
-        NgxChartsModule,
         NgbRatingModule,
     ],
     declarations: [

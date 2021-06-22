@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmitAdministrationLoginForm(): void {
     const administrationLoginForm = this.administrationLoginForm.getRawValue();
-    this.ngrxLoginService.add(administrationLoginForm);
+    this.ngrxLoginService.add(administrationLoginForm, { isOptimistic: false });
   }
 
   ngOnDestroy() {
