@@ -1,10 +1,6 @@
 <mat-toolbar class="mat-elevation-z6 app-navbar"
              color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button
-            (click)="clickOnMenu()">
-      <mat-icon>menu</mat-icon>
-    </button>
     <button mat-button
             routerLink="/home">
       <span class="material-icons-two-tone">
@@ -25,6 +21,13 @@
         contact_page
       </span>
       Contact
+    </button>
+    <button mat-button
+            routerLink="/administration">
+      <span class="material-icons-two-tone">
+        contact_page
+      </span>
+      Admin
     </button>
     <span class="app-navbar-spacer"></span>
     <button mat-button

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { CartService } from './core/services/cart.service';
 import { EnumLocalStorageKeysName } from './shared/enums.enum';
@@ -14,18 +13,25 @@ export class AppComponent implements OnInit {
 
   title = 'AZET D.T.';
   loading = new BehaviorSubject<boolean>(false);
+  isAdministration = false;
 
   constructor(
     private router: Router,
-    private cartService: CartService) {
-    this.router.events.subscribe((event: Event) => {
+    private cartService: CartService
+  ) {
+    this.router.events.subscribe((event: any) => {
       switch (true) {
         case event instanceof NavigationStart: {
           this.loading.next(true);
           break;
         }
-
-        case event instanceof NavigationEnd:
+        case event instanceof NavigationEnd: {
+          if (event && event.url && event.url === '/administration') {
+            this.isAdministration = true;
+          } else {
+            this.isAdministration = false;
+          }
+        }
         case event instanceof NavigationCancel:
         case event instanceof NavigationError: {
           this.loading.next(false);
@@ -40,11 +46,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const getProductsFromLocalStorage = localStorage.getItem(EnumLocalStorageKeysName.PRODUCTS);
-    console.log(JSON.parse(getProductsFromLocalStorage), 'getProductsFromLocalStorage')
-    this.cartService.setCartProducts(JSON.parse(getProductsFromLocalStorage));
-  }
 
-  onClickMenu(sidenav: MatSidenav): void {
-    sidenav.toggle();
+    if (getProductsFromLocalStorage) {
+      console.log(JSON.parse(getProductsFromLocalStorage), 'getProductsFromLocalStorage')
+      this.cartService.setCartProducts(JSON.parse(getProductsFromLocalStorage));
+    }
   }
 }

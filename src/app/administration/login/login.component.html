@@ -1,0 +1,67 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-4">
+    <div routerLink="/home"
+         matRipple
+         class="p-3 text-center">
+      <img class="contact-header-azet-dt-icon"
+           src="/assets/pictures/azet-dt-icon.png"
+           alt="Azet D.T.">
+    </div>
+    <mat-toolbar class="mat-elevation-z6 mt-4"
+                 color="primary">
+      <mat-toolbar-row>
+        <span>PANOU DE ADMINISTRARE</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-progress-bar *ngIf="(loadingLogin$ | async)"
+                      mode="indeterminate"></mat-progress-bar>
+    <mat-card class="mt-4"
+              style="font-size: 1.2rem;">
+      <mat-card-content>
+        <form class="row justify-content-center"
+              (ngSubmit)="onSubmitAdministrationLoginForm()"
+              [formGroup]="administrationLoginForm">
+          <mat-form-field class="col-12 w-100 my-1"
+                          appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput
+                   placeholder="pat@example.com"
+                   formControlName="email"
+                   autocomplete="username"
+                   required>
+            <mat-error *ngIf="emailLF.invalid">
+              {{emailLF.errors | formControlErrorInterpretation}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-12 w-100 my-1"
+                          appearance="outline">
+            <mat-label>Parola</mat-label>
+            <input matInput
+                   #plf
+                   formControlName="password"
+                   autocomplete="current-password"
+                   [type]="hidePasswordLF ? 'password' : 'text'"
+                   required>
+            <button mat-icon-button
+                    type="button"
+                    matSuffix
+                    (click)="hidePasswordLF = !hidePasswordLF"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hidePasswordLF">
+              <mat-icon>{{hidePasswordLF ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-hint align="end">{{plf.value.length}} / 8</mat-hint>
+            <mat-error *ngIf="passwordLF.invalid">
+              {{passwordLF.errors | formControlErrorInterpretation}}
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button
+                  type="submit"
+                  class="col-6"
+                  color="primary">Autentifică-te</button>
+          <!-- [disabled]="loginForm.invalid || (loadingLogin$ | async)" -->
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

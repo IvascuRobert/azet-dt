@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { SubSink } from 'subsink';
 import { NgrxForgotPasswordService } from '../core/services/ngrx-forgot-password.service';
@@ -15,6 +14,7 @@ import { patterns } from '../shared/patterns';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
   private subs = new SubSink();
 
   loginForm = new FormGroup({
@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   hidePasswordRF = true;
   hidePasswordLF = true;
   tabIndex = 0;
-  errorMessage: string;
 
   loadingLogin$: Observable<boolean>;
   loadingRegister$: Observable<boolean>;
@@ -88,8 +87,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private ngrxLoginService: NgrxLoginService,
     private ngrxRegisterService: NgrxRegisterService,
-    private ngrxForgotPasswordService: NgrxForgotPasswordService,
-    private router: Router
+    private ngrxForgotPasswordService: NgrxForgotPasswordService
   ) {
     this.loadingLogin$ = this.ngrxLoginService.loading$;
     this.loadingRegister$ = this.ngrxRegisterService.loading$;
