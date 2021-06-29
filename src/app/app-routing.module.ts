@@ -1,16 +1,53 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CanActivateAdminDashboardGuard } from './core/guards/can-activate-admin-dashboard.guard';
+import { CanActivateAdminLoginGuard } from './core/guards/can-activate-admin-login.guard';
 import { PreloadModulesStrategy } from './core/strategies/preload-modules.strategy';
 
 const AppRoutes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: '/home' },
-    { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-    { path: 'products/:id', data: { preload: true }, loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
-    { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-    { path: 'contact', data: { preload: true }, loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule) },
-    { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
-    { path: 'administration', loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule) },
-    { path: '**', pathMatch: 'full', redirectTo: '/home' }, // catch any unfound routes and redirect to home page
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/home'
+    },
+    {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    },
+    {
+        path: 'products/:id',
+        data: { preload: true },
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
+    },
+    {
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+    },
+    {
+        path: 'contact',
+        data: { preload: true },
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+    },
+    {
+        path: 'cart',
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
+    },
+    {
+        path: 'admin-login',
+        loadChildren: () => import('./admin-login/admin-login.module').then(m => m.AdminLoginModule),
+        canActivate: [CanActivateAdminDashboardGuard]
+    },
+    {
+        path: 'admin-dashboard',
+        loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule),
+        canActivate: [CanActivateAdminLoginGuard]
+    },
+    {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: '/home'
+    },
+    // catch any unfound routes and redirect to home page
     // { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
     // { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
 ];

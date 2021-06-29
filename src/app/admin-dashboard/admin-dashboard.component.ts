@@ -7,12 +7,12 @@ import { ProductClass } from 'src/app/shared/classes.class';
 import { EnumState } from 'src/app/shared/enums.enum';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardComponent implements OnInit {
+export class AdminDashboardComponent implements OnInit {
 
   loading$: Observable<boolean>;
   products$: Observable<ProductClass[]>

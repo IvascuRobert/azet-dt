@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
           break;
         }
         case event instanceof NavigationEnd: {
-          if (event && event.url && event.url === '/administration') {
+          if (event && event.url && event.url.startsWith('/admin-')) {
             this.isAdministration = true;
           } else {
             this.isAdministration = false;

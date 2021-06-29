@@ -18,94 +18,9 @@
   </div>
   <div *ngIf="!(loading$ | async)"
        class="col-12">
-    <div class="row p-4">
-      <div *ngFor="let product of (popularProducts$ | async)"
-           class="col-4">
-        <mat-card class="product-card">
-          <div mat-card-image
-               class="text-center mt-1">
-            <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
-                 [routerLink]="'/products/'+ product.id"
-                 class="w-50 h-50"
-                 [alt]="product.name">
-          </div>
-          <mat-card-header>
-            <mat-card-title>{{product.name}}</mat-card-title>
-            <mat-card-subtitle class="price-container">
-              <i class="price-container--icon fas fas fa-hand-holding-usd"></i>
-              <span class="price-container--bull">&bull;</span>
-              <span class="price-container--price">{{product.price}} Lei</span>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="row justify-content-center">
-              <div class="col-11">
-                <mat-divider></mat-divider>
-              </div>
-              <div class="col-12 py-3">
-                <mat-chip-list>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Sezon"
-                       [class]="product.season | seasonToIcon"></i>
-                    <span class="pl-1">{{product.season}}</span>
-                  </mat-chip>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Nivelul de zgomot"
-                       class="fas fa-volume-up"></i>
-                    <span class="pl-1">{{product.noiseLevel}}</span>
-                  </mat-chip>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Nivelul de consum"
-                       class="fas fa-gas-pump"></i>
-                    <span class="pl-1">{{product.fuelEfficiency}}</span>
-                  </mat-chip>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Eficienta pe vreme"
-                       class="fas fa-cloud-rain"></i>
-                    <span class="pl-1">{{product.weatherEfficiency}}</span>
-                  </mat-chip>
-                  <mat-chip>
-                    <i aria-hidden="false"
-                       aria-label="Informatii DOT"
-                       class="fas fa-calendar-alt"></i>
-                    <span class="pl-1">{{product.dot}}</span>
-                  </mat-chip>
-                </mat-chip-list>
-              </div>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <div class="d-flex">
-              <button mat-raised-button
-                      color="primary"
-                      (click)="addCartProduct(product)">
-                <span class="material-icons">
-                  add_shopping_cart
-                </span>
-                ADAUGĂ ÎN COȘ
-              </button>
-              <button mat-icon-button
-                      class="ml-auto"
-                      color="primary">
-                <span class="material-icons">
-                  favorite
-                </span>
-              </button>
-              <button mat-icon-button
-                      color="primary">
-                <span class="material-icons">
-                  share
-                </span>
-              </button>
-            </div>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
+    <app-products-card [products]="(popularProducts$ | async)"
+                       [loading]="loading$ | async"
+                       (clickAddToCart)="addCartProduct($event)"></app-products-card>
   </div>
 </div>
 

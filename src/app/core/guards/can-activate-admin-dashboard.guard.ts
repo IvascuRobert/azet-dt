@@ -4,16 +4,15 @@ import { Observable } from 'rxjs';
 import { NgrxLoginMethodsService } from '../services/ngrx-login-methods.service';
 
 @Injectable()
-export class CanActivateGuard implements CanActivate {
+export class CanActivateAdminDashboardGuard implements CanActivate {
 
     constructor(public ngrxLoginMethodsService: NgrxLoginMethodsService, public router: Router) { }
 
     canActivate(): Observable<boolean> | Promise<boolean> | boolean {
         if (this.ngrxLoginMethodsService.isAuthenticated) {
-            return true;
+            this.router.navigate(['/admin-dashboard']);
         }
 
-        this.router.navigate(['/login']);
-        return false;
+        return true;
     }
 }

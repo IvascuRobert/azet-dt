@@ -14,7 +14,8 @@ import { RouterModule } from '@angular/router';
 import { ContactHeaderComponent } from './contact-header/contact-header.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { FooterComponent } from './footer/footer.component';
-import { CanActivateGuard } from './guards/can-activate.guard';
+import { CanActivateAdminDashboardGuard } from './guards/can-activate-admin-dashboard.guard';
+import { CanActivateAdminLoginGuard } from './guards/can-activate-admin-login.guard';
 import { HeaderComponent } from './header/header.component';
 import { TrackByService } from './services/trackBy.service';
 
@@ -47,7 +48,8 @@ import { TrackByService } from './services/trackBy.service';
   ],
   providers: [
     TrackByService,
-    CanActivateGuard,
+    CanActivateAdminLoginGuard,
+    CanActivateAdminDashboardGuard,
     {
       provide: 'Window',
       useFactory: () => window

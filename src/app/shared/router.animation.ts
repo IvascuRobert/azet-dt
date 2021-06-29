@@ -1,4 +1,4 @@
-import { trigger, state, animate, style, transition } from '@angular/animations';
+import { trigger, state, animate, style, transition, query, animateChild, group } from '@angular/animations';
 
 // Post by Gerard Sans: https://medium.com/google-developer-experts/angular-2-animate-router-transitions-6de179e00204#.7h2femijg
 
@@ -76,3 +76,32 @@ function slideToTop() {
         ])
     ]);
 }
+
+// Routable animations
+export const slideInAnimation =
+    trigger('routeAnimation', [
+        transition('heroes <=> hero', [
+            style({ position: 'relative' }),
+            query(':enter, :leave', [
+                style({
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%'
+                })
+            ]),
+            query(':enter', [
+                style({ left: '-100%' })
+            ]),
+            query(':leave', animateChild()),
+            group([
+                query(':leave', [
+                    animate('300ms ease-out', style({ left: '100%' }))
+                ]),
+                query(':enter', [
+                    animate('300ms ease-out', style({ left: '0%' }))
+                ])
+            ]),
+            query(':enter', animateChild()),
+        ])
+    ]);

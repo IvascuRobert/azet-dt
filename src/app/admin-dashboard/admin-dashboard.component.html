@@ -1,0 +1,139 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav
+               mode="side"
+               opened
+               class="mat-elevation-z6">
+
+    <mat-selection-list #dashboardSideNav
+                        [multiple]="false">
+
+      <mat-list-option value="Dashboard">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <div mat-line>Dashboard</div>
+      </mat-list-option>
+
+      <mat-list-option value="Comenzi">
+        <mat-icon mat-list-icon>request_quote</mat-icon>
+        <div mat-line>Comenzi</div>
+      </mat-list-option>
+
+      <mat-list-option value="Anvelope"
+                       selected>
+        <mat-icon mat-list-icon>support</mat-icon>
+        <div mat-line>Anvelope</div>
+      </mat-list-option>
+
+      <mat-list-option value="Review-uri">
+        <mat-icon mat-list-icon>reviews</mat-icon>
+        <div mat-line>Review-uri</div>
+      </mat-list-option>
+
+    </mat-selection-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <mat-toolbar class="mat-elevation-z6 administration-navbar"
+                       color="primary">
+            <mat-toolbar-row>
+              <button mat-icon-button
+                      (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+              </button>
+              {{dashboardSideNav.selectedOptions.selected[0]?.value | uppercase}}
+              <span class="administration-navbar-spacer"></span>
+              <button mat-stroked-button
+                      routerLink="/home">
+                <span class="material-icons-two-tone">
+                  home
+                </span>
+                Către AZET D.T. Website
+              </button>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+      </div>
+      <ng-container [ngSwitch]="dashboardSideNav.selectedOptions.selected[0]?.value">
+        <ng-container *ngSwitchCase="'Dashboard'">
+          <div class="row">
+            <div class="col-3">
+              <mat-card class="m-2 border border-primary">
+                <mat-card-header>
+                  <span mat-card-avatar
+                        style="font-size: 3rem;"
+                        class="material-icons-two-tone">
+                    support
+                  </span>
+                  <mat-card-title>30</mat-card-title>
+                  <mat-card-subtitle>Anvelope</mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+            </div>
+            <div class="col-3">
+              <mat-card class="m-2 border border-danger">
+                <mat-card-header>
+                  <span mat-card-avatar
+                        style="font-size: 3rem;"
+                        class="material-icons-two-tone">
+                    support
+                  </span>
+                  <mat-card-title>10</mat-card-title>
+                  <mat-card-subtitle>Produse</mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+            </div>
+            <div class="col-3">
+              <mat-card class="m-2 border border-success">
+                <mat-card-header>
+                  <span mat-card-avatar
+                        style="font-size: 3rem;"
+                        class="material-icons-two-tone">
+                    request_quote
+                  </span>
+                  <mat-card-title>25</mat-card-title>
+                  <mat-card-subtitle>Comenzi</mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+            </div>
+            <div class="col-3">
+              <mat-card class="m-2 border border-warning">
+                <mat-card-header>
+                  <span mat-card-avatar
+                        style="font-size: 3rem;"
+                        class="material-icons-two-tone">
+                    support
+                  </span>
+                  <mat-card-title>20</mat-card-title>
+                  <mat-card-subtitle>Review-uri</mat-card-subtitle>
+                </mat-card-header>
+              </mat-card>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Comenzi'">
+
+        </ng-container>
+        <ng-container *ngSwitchCase="'Anvelope'">
+          <div class="row">
+            <div class="col-12">
+              <button mat-raised-button
+                      color="primary">
+                <mat-icon>dashboard</mat-icon>
+                ADAUGĂ ANVELOPĂ
+              </button>
+            </div>
+          </div>
+          <app-products-card [products]="(products$ | async)"
+                             [loading]="loading$ | async"
+                             (clickAddToCart)="addCartProduct($event)"></app-products-card>
+        </ng-container>
+      </ng-container>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

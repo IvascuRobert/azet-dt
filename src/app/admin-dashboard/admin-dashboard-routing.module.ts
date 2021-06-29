@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login.component';
+import { AdminDashboardComponent } from './admin-dashboard.component';
 
 const routes: Routes = [
-    { path: '', component: LoginComponent }
+    { path: '', component: AdminDashboardComponent }
 ];
 
 @NgModule({
@@ -11,6 +11,6 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class LoginRoutingModule {
-    static components = [LoginComponent];
+export class AdminDashboardRoutingModule {
+    static components = [AdminDashboardComponent];
 }

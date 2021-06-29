@@ -5,11 +5,11 @@ import { NgrxLoginService } from 'src/app/core/services/ngrx-login.service';
 import { SubSink } from 'subsink';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class AdminLoginComponent implements OnInit, OnDestroy {
 
   private subs = new SubSink();
 
