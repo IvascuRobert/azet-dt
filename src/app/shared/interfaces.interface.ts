@@ -1,14 +1,14 @@
+import { DataServiceError } from "ngrx-data";
 import { CartProductClass } from "./classes.class";
 import { EnumMessageType } from "./enums.enum";
 
-export interface IUserLogin {
+export interface IUserLogin extends DataServiceError {
     id?: string;
     email?: string;
     password?: string;
     accessToken?: string;
     firstName?: string;
     lastName?: string;
-    message?: string;
 }
 
 export interface IFilterFlatNode {

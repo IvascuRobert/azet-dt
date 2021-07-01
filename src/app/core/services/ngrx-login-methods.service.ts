@@ -3,12 +3,11 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import {
-    DataServiceError,
     DefaultDataService,
     HttpUrlGenerator
 } from '@ngrx/data';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { EnumLocalStorageKeysName, EnumMessageType } from 'src/app/shared/enums.enum';
 import { IMessage, IUserLogin } from 'src/app/shared/interfaces.interface';
 import { MessageComponent } from 'src/app/shared/message/message.component';
@@ -35,11 +34,6 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
                     this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
                     this.router.navigateByUrl('/admin-dashboard');
                     return this.mapUserLoggedIn(user);
-                }),
-                catchError((error: DataServiceError) => {
-                    const { message } = error;
-                    this.messageAlert(EnumMessageType.DANGER, message);
-                    return of(error);
                 })
             );
     }
