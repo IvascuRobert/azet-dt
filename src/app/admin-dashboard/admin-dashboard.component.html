@@ -8,23 +8,35 @@
                         [multiple]="false">
 
       <mat-list-option value="Dashboard">
-        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-list-icon
+              class="material-icons">
+          dashboard
+        </span>
         <div mat-line>Dashboard</div>
       </mat-list-option>
 
       <mat-list-option value="Comenzi">
-        <mat-icon mat-list-icon>request_quote</mat-icon>
+        <span mat-list-icon
+              class="material-icons">
+          request_quote
+        </span>
         <div mat-line>Comenzi</div>
       </mat-list-option>
 
       <mat-list-option value="Anvelope"
                        selected>
-        <mat-icon mat-list-icon>support</mat-icon>
+        <span mat-list-icon
+              class="material-icons">
+          support
+        </span>
         <div mat-line>Anvelope</div>
       </mat-list-option>
 
       <mat-list-option value="Review-uri">
-        <mat-icon mat-list-icon>reviews</mat-icon>
+        <span mat-list-icon
+              class="material-icons">
+          reviews
+        </span>
         <div mat-line>Review-uri</div>
       </mat-list-option>
 
@@ -42,7 +54,10 @@
             <mat-toolbar-row>
               <button mat-icon-button
                       (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
+                <span mat-list-icon
+                      class="material-icons">
+                  menu
+                </span>
               </button>
               {{dashboardSideNav.selectedOptions.selected[0]?.value | uppercase}}
               <span class="administration-navbar-spacer"></span>
@@ -59,77 +74,17 @@
       </div>
       <ng-container [ngSwitch]="dashboardSideNav.selectedOptions.selected[0]?.value">
         <ng-container *ngSwitchCase="'Dashboard'">
-          <div class="row">
-            <div class="col-3">
-              <mat-card class="m-2 border border-primary">
-                <mat-card-header>
-                  <span mat-card-avatar
-                        style="font-size: 3rem;"
-                        class="material-icons-two-tone">
-                    support
-                  </span>
-                  <mat-card-title>30</mat-card-title>
-                  <mat-card-subtitle>Anvelope</mat-card-subtitle>
-                </mat-card-header>
-              </mat-card>
-            </div>
-            <div class="col-3">
-              <mat-card class="m-2 border border-danger">
-                <mat-card-header>
-                  <span mat-card-avatar
-                        style="font-size: 3rem;"
-                        class="material-icons-two-tone">
-                    support
-                  </span>
-                  <mat-card-title>10</mat-card-title>
-                  <mat-card-subtitle>Produse</mat-card-subtitle>
-                </mat-card-header>
-              </mat-card>
-            </div>
-            <div class="col-3">
-              <mat-card class="m-2 border border-success">
-                <mat-card-header>
-                  <span mat-card-avatar
-                        style="font-size: 3rem;"
-                        class="material-icons-two-tone">
-                    request_quote
-                  </span>
-                  <mat-card-title>25</mat-card-title>
-                  <mat-card-subtitle>Comenzi</mat-card-subtitle>
-                </mat-card-header>
-              </mat-card>
-            </div>
-            <div class="col-3">
-              <mat-card class="m-2 border border-warning">
-                <mat-card-header>
-                  <span mat-card-avatar
-                        style="font-size: 3rem;"
-                        class="material-icons-two-tone">
-                    support
-                  </span>
-                  <mat-card-title>20</mat-card-title>
-                  <mat-card-subtitle>Review-uri</mat-card-subtitle>
-                </mat-card-header>
-              </mat-card>
-            </div>
-          </div>
+          <app-dashboard></app-dashboard>
         </ng-container>
         <ng-container *ngSwitchCase="'Comenzi'">
-
+          <app-orders></app-orders>
         </ng-container>
         <ng-container *ngSwitchCase="'Anvelope'">
-          <div class="row">
-            <div class="col-12">
-              <button mat-raised-button
-                      color="primary">
-                <mat-icon>dashboard</mat-icon>
-                ADAUGĂ ANVELOPĂ
-              </button>
-            </div>
-          </div>
-          <app-products-card [products]="(products$ | async)"
-                             [loading]="loading$ | async"
-                             (clickAddToCart)="addCartProduct($event)"></app-products-card>
+          <app-products [products]="products$ | async"
+                        [loading]="loading$ | async"></app-products>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Review-uri'">
+          <app-reviews></app-reviews>
         </ng-container>
       </ng-container>
     </div>

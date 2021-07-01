@@ -25,9 +25,9 @@
           <button mat-icon-button
                   matTreeNodeToggle
                   [attr.aria-label]="'Toggle ' + node.name">
-            <mat-icon class="mat-icon-rtl-mirror">
+            <span class="material-icons mat-icon-rtl-mirror">
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>
+            </span>
           </button>
           <mat-checkbox [checked]="descendantsAllSelected(node)"
                         [indeterminate]="descendantsPartiallySelected(node)"

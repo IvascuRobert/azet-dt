@@ -175,7 +175,10 @@
               <mat-card-content>
                 <mat-selection-list [multiple]="false">
                   <mat-list-option *ngFor="let review of product.reviews">
-                    <mat-icon mat-list-icon>person</mat-icon>
+                    <span mat-list-icon
+                          class="material-icons">
+                      person
+                    </span>
                     <div mat-line>{{review.userName}}</div>
                     <div mat-line>{{review.text}}</div>
                     <div mat-line>{{review.createdAt | date}}</div>

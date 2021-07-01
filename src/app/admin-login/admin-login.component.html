@@ -48,7 +48,9 @@
                     (click)="hidePasswordLF = !hidePasswordLF"
                     [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hidePasswordLF">
-              <mat-icon>{{hidePasswordLF ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <span class="material-icons">
+                {{hidePasswordLF ? 'visibility_off' : 'visibility'}}
+              </span>
             </button>
             <mat-hint align="end">{{plf.value.length}} / 8</mat-hint>
             <mat-error *ngIf="passwordLF.invalid">

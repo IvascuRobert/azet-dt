@@ -7,7 +7,9 @@
                    (selectedIndexChange)="changeTab($event)">
       <mat-tab [disabled]="loadingLogin$ | async">
         <ng-template mat-tab-label>
-          <mat-icon>login</mat-icon>
+          <span class="material-icons">
+            login
+          </span>
           AUTENTIFICARE
         </ng-template>
         <mat-progress-bar *ngIf="(loadingLogin$ | async)"
@@ -89,7 +91,9 @@
                         (click)="hidePasswordLF = !hidePasswordLF"
                         [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hidePasswordLF">
-                  <mat-icon>{{hidePasswordLF ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <span class="material-icons">
+                    {{hidePasswordLF ? 'visibility_off' : 'visibility'}}
+                  </span>
                 </button>
                 <mat-hint align="end">{{plf.value.length}} / 8</mat-hint>
                 <mat-error *ngIf="passwordLF.invalid">
@@ -124,7 +128,9 @@
       </mat-tab>
       <mat-tab [disabled]="loadingLogin$ | async">
         <ng-template mat-tab-label>
-          <mat-icon>how_to_reg</mat-icon>
+          <span class="material-icons">
+            how_to_reg
+          </span>
           ÎNREGISTRARE
         </ng-template>
         <mat-progress-bar *ngIf="(loadingLogin$ | async)"
@@ -196,7 +202,9 @@
                         (click)="hidePasswordRF = !hidePasswordRF"
                         [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hidePasswordRF">
-                  <mat-icon>{{hidePasswordRF ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <span class="material-icons">
+                    {{hidePasswordRF ? 'visibility_off' : 'visibility'}}
+                  </span>
                 </button>
                 <mat-hint align="end">{{p.value.length}} / 8</mat-hint>
                 <mat-error *ngIf="passwordRF.invalid">
@@ -218,7 +226,9 @@
                         (click)="hidePasswordRF = !hidePasswordRF"
                         [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hidePasswordRF">
-                  <mat-icon>{{hidePasswordRF ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  <span class="material-icons">
+                    {{hidePasswordRF ? 'visibility_off' : 'visibility'}}
+                  </span>
                 </button>
                 <mat-hint align="end">{{cp.value.length}} / 8</mat-hint>
                 <mat-error *ngIf="confirmPasswordRF.invalid">
@@ -236,7 +246,9 @@
       </mat-tab>
       <mat-tab [disabled]="loadingLogin$ | async">
         <ng-template mat-tab-label>
-          <mat-icon>restart_alt</mat-icon>
+          <span class="material-icons">
+            restart_alt
+          </span>
           RECUPREAZĂ PAROLA
         </ng-template>
         <mat-progress-bar *ngIf="(loadingLogin$ | async)"
@@ -298,35 +310,59 @@
       <div class="col-12">
         <mat-list>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Cumpărături rapide</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Urmărire status comenzi</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Evidența comenzilor</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Factura online</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Garanție online</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Elimină birocrația</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Vezi cele mai bune oferte</div>
           </mat-list-item>
           <mat-list-item>
-            <mat-icon mat-list-icon>check</mat-icon>
+            <span mat-list-icon
+                  class="material-icons">
+              restart_alt
+            </span>
             <div mat-line>Siguranță</div>
           </mat-list-item>
         </mat-list>

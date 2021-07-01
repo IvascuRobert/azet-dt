@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -25,7 +24,6 @@ import { LoginRoutingModule } from './login-routing.module';
         MatToolbarModule,
         MatFormFieldModule,
         MatInputModule,
-        MatIconModule,
         MatDividerModule,
         MatTabsModule,
         MatListModule,

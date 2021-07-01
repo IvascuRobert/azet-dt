@@ -76,26 +76,22 @@
       <div class="col-12 text-center">
         <button matTooltip="Facebook"
                 mat-icon-button>
-          <mat-icon class="app-navbar-icon"
-                    fontSet="fab"
-                    fontIcon="fa-facebook-square"></mat-icon>
+          <i class="fab fa-facebook-square app-navbar-icon"></i>
         </button>
         <button matTooltip="Twitter"
                 mat-icon-button>
-          <mat-icon class="app-navbar-icon"
-                    fontSet="fab"
-                    fontIcon="fa-twitter-square"></mat-icon>
+          <i class="fab fa-twitter-square app-navbar-icon"></i>
         </button>
         <button matTooltip="LinkedIn"
                 mat-icon-button>
-          <mat-icon class="app-navbar-icon"
-                    fontSet="fab"
-                    fontIcon="fa-linkedin"></mat-icon>
+          <i class="fab fa-linkedin app-navbar-icon"></i>
         </button>
         <button matTooltip="Distribuie"
                 mat-icon-button
                 aria-label="Example icon-button with share icon">
-          <mat-icon>share</mat-icon>
+          <span class="material-icons">
+            share
+          </span>
         </button>
       </div>
     </div>
@@ -129,7 +125,10 @@
             <mat-error *ngIf="name.invalid">
               {{name.errors | formControlErrorInterpretation}}
             </mat-error>
-            <mat-icon matSuffix>person</mat-icon>
+            <span matSuffix
+                  class="material-icons">
+              person
+            </span>
           </mat-form-field>
           <mat-form-field class="col-12 w-100 my-3"
                           appearance="outline">
@@ -146,7 +145,10 @@
             <mat-error *ngIf="phone.invalid">
               {{phone.errors | formControlErrorInterpretation}}
             </mat-error>
-            <mat-icon matSuffix>phone</mat-icon>
+            <span matSuffix
+                  class="material-icons">
+              phone
+            </span>
           </mat-form-field>
           <mat-form-field class="col-12 w-100 my-3"
                           appearance="outline">
@@ -161,7 +163,10 @@
             <mat-error *ngIf="message.invalid">
               {{message.errors | formControlErrorInterpretation}}
             </mat-error>
-            <mat-icon matSuffix>textsms</mat-icon>
+            <span matSuffix
+                  class="material-icons">
+              textsms
+            </span>
           </mat-form-field>
           <button mat-raised-button
                   class="col-6 text-center my-5"
