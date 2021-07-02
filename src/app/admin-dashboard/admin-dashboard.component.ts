@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { NgrxProductsService } from 'src/app/core/services/ngrx-products.service';
@@ -9,8 +9,7 @@ import { EnumState } from 'src/app/shared/enums.enum';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
 

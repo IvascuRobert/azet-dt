@@ -11,15 +11,15 @@ import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
 
 @NgModule({
     imports: [
-        AdminDashboardRoutingModule,
         SharedModule,
+        AdminDashboardRoutingModule,
         ReactiveFormsModule,
         MatCardModule,
         MatButtonModule,
         MatToolbarModule,
         MatInputModule,
         MatListModule,
-        MatSidenavModule
+        MatSidenavModule,
     ],
     declarations: [AdminDashboardRoutingModule.components]
 })

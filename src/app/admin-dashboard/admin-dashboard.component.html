@@ -1,9 +1,26 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav
-               mode="side"
-               opened
-               class="mat-elevation-z6">
+<mat-toolbar class="mat-elevation-z6">
+  <mat-toolbar-row>
+    <button mat-icon-button
+            color="primary"
+            (click)="sidenav.toggle()">
+      <span class="material-icons-two-tone">
+        menu
+      </span>
+    </button>
+    <h1 class="ml-2">{{dashboardSideNav.selectedOptions.selected[0]?.value | uppercase}}</h1>
+    <span class="admin-dashboard-navbar-spacer"></span>
+    <button mat-stroked-button
+            routerLink="/home">
+      <span class="material-icons-two-tone">
+        home
+      </span>
+      Către AZET D.T. Website
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
     <mat-selection-list #dashboardSideNav
                         [multiple]="false">
 
@@ -41,37 +58,10 @@
       </mat-list-option>
 
     </mat-selection-list>
-
   </mat-sidenav>
 
   <mat-sidenav-content>
-
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <mat-toolbar class="mat-elevation-z6 administration-navbar"
-                       color="primary">
-            <mat-toolbar-row>
-              <button mat-icon-button
-                      (click)="sidenav.toggle()">
-                <span mat-list-icon
-                      class="material-icons">
-                  menu
-                </span>
-              </button>
-              {{dashboardSideNav.selectedOptions.selected[0]?.value | uppercase}}
-              <span class="administration-navbar-spacer"></span>
-              <button mat-stroked-button
-                      routerLink="/home">
-                <span class="material-icons-two-tone">
-                  home
-                </span>
-                Către AZET D.T. Website
-              </button>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
-      </div>
       <ng-container [ngSwitch]="dashboardSideNav.selectedOptions.selected[0]?.value">
         <ng-container *ngSwitchCase="'Dashboard'">
           <app-dashboard></app-dashboard>
@@ -88,7 +78,5 @@
         </ng-container>
       </ng-container>
     </div>
-
   </mat-sidenav-content>
-
 </mat-sidenav-container>
