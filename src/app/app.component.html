@@ -1,12 +1,1 @@
-<div [ngClass]="{'container': !isAdministration}">
-
-  <app-header *ngIf="!isAdministration"
-              [loading]="loading | async"></app-header>
-
-  <app-contact-header *ngIf="!isAdministration"></app-contact-header>
-
-  <router-outlet></router-outlet>
-
-  <app-footer *ngIf="!isAdministration"></app-footer>
-
-</div>
+<router-outlet></router-outlet>

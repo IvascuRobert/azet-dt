@@ -1,11 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EntityDataModule, EntityDataService, HttpUrlGenerator } from '@ngrx/data';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -21,9 +19,8 @@ import { NgrxForgotPasswordMethodsService } from './core/services/ngrx-forgot-pa
 import { NgrxLoginMethodsService } from './core/services/ngrx-login-methods.service';
 import { NgrxProductsMethodsService } from './core/services/ngrx-products-methods.service';
 import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
-import { LoginModule } from './login/login.module';
 import { EnumLocalStorageKeysName } from './shared/enums.enum';
-import { SharedModule } from './shared/shared.module';
+import { ShopModule } from './shop/shop.module';
 
 export function tokenGetter() {
   return localStorage.getItem(EnumLocalStorageKeysName.ACCESS_TOKEN);
@@ -33,10 +30,9 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    LoginModule, // Eager loaded since we may need to go here right away as browser loads based on route user enters
+    ShopModule, // Eager loaded since we may need to go here right away as browser loads based on route user enters
     AppRoutingModule, // Main routes for application
     CoreModule, // Singleton objects (services, components that are loaded only once, etc.)
-    SharedModule, // Shared (multi-instance) objects
     HttpClientModule,
     JwtModule.forRoot({
       config: {
@@ -50,8 +46,6 @@ export function tokenGetter() {
     }),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
-    NgbModule,
-    MatSidenavModule
   ],
   providers: [
     NgrxProductsMethodsService,

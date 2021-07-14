@@ -1,0 +1,116 @@
+<div class="row justify-content-center my-3">
+  <div class="col-12">
+    <ngb-carousel #carousel
+                  [interval]="200000"
+                  [pauseOnHover]="pauseOnHover"
+                  [pauseOnFocus]="pauseOnFocus"
+                  (slide)="onSlide($event)"
+                  class="azet-dt-shadow">
+      <ng-template ngbSlide
+                   *ngFor="let img of images; index as i">
+        <div class="carousel-caption">
+          <h1>Example headline.</h1>
+          <p>Some representative placeholder content for the first slide of the carousel.</p>
+          <p>
+            <button mat-stroked-button
+                    routerLink="/products"
+                    color="primary"
+                    class="shadow p-3"
+                    style="font-size: 2rem;">
+              <span class="pr-3">ANVELOPE</span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </p>
+        </div>
+        <a href="/"
+           rel="nofollow noopener noreferrer">
+          <div class="picsum-img-wrapper">
+            <img src="/assets/pictures/tires-pictures/tires_1.jpg"
+                 style="height: 350px; width: 100%;filter: brightness(0);"
+                 alt="My image {{i + 1}} description">
+          </div>
+        </a>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <div class="col-12 p-5">
+    <div class="row">
+      <div class="col-8 align-self-center">
+        <h1 class="mb-5"
+            style="font-size: 2rem;">DESCOPERĂ ANVELOPELE <span class="custom-text">AZET D.T.</span></h1>
+        <p class="azet-dt-border-left pl-2">
+          Tires are the essential point of contact between your car and the road. We work to ensure that your tires will
+          always offer excellent braking, maximum safety, and pure driving pleasure. That’s why Continental is one of
+          the leading manufacturers of passenger and light truck tires in Europe.
+        </p>
+      </div>
+      <div class="col-4 align-self-center text-right">
+        <button mat-stroked-button
+                routerLink="/products"
+                color="primary"
+                class="shadow p-3"
+                style="font-size: 2rem;">
+          <span class="pr-3">ANVELOPE</span>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <app-shop-home-popular-products></app-shop-home-popular-products>
+  </div>
+  <div class="col-12 my-3">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="col-12 p-5">
+    <div class="row">
+      <div class="col-4 align-self-center">
+        <button mat-stroked-button
+                color="primary"
+                class="shadow p-3"
+                style="font-size: 2rem;">
+          <i class="fas fa-chevron-left"></i>
+          <span class="pl-3">CUNOȘTINȚE</span>
+        </button>
+      </div>
+      <div class="col-8 align-self-center">
+        <h1 class="mb-5"
+            style="font-size: 2rem;">ÎMBUNĂTĂȚEȘTE-ȚI CUNOȘTINȚELE DESPRE ANVELOPELE
+          <span class="custom-text">AZET D.T.</span>
+        </h1>
+        <p class="azet-dt-border-left pl-2">
+          Do you have a specific question about the tires on your car? Or perhaps you're looking to brush up on your
+          general tire knowledge? Either way, you’ve come to the right place.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <app-shop-home-knowledge></app-shop-home-knowledge>
+  </div>
+  <div class="col-12 my-3">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="col-12 p-5">
+    <div class="row">
+      <div class="col-8 align-self-center">
+        <h1 class="mb-5"
+            style="font-size: 2rem;">DESPRE <span class="custom-text">AZET D.T.</span></h1>
+        <p class="azet-dt-border-left pl-2">
+          For questions, comments or inquiries about our company, brand or products, please do not hesitate to reach
+          out. We are happy to support you.
+        </p>
+      </div>
+      <div class="col-4 align-self-center text-right">
+        <button mat-stroked-button
+                routerLink="/contact"
+                color="primary"
+                class="shadow p-3"
+                style="font-size: 2rem;">
+          <span class="pr-3">CONTACTEAZĂ-NE</span>
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
