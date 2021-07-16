@@ -1,0 +1,12 @@
+<div class="row justify-content-center">
+  <div class="col-3">
+    <app-shop-products-filter></app-shop-products-filter>
+  </div>
+  <div class="col-9">
+    <app-shop-products-sort (clickViewMode)="changeViewMode($event)"></app-shop-products-sort>
+    <app-products-card [products]="products$ | async"
+                       [loading]="loading$ | async"
+                       [viewMode]="viewMode"
+                       (clickAddToCart)="addCartProduct($event)"></app-products-card>
+  </div>
+</div>

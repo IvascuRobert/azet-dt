@@ -15,6 +15,7 @@ import { NoiseLevelToValuePipe } from './pipes/noiseLevelToValue.pipe';
 import { SeasonToIconPipe } from './pipes/seasonToIcon.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { ProductsCardComponent } from './products-card/products-card.component';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
     imports: [
