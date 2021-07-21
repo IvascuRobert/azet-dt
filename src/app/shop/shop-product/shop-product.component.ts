@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
@@ -7,12 +7,11 @@ import { ProductClass } from 'src/app/shared/classes.class';
 import { EnumState } from 'src/app/shared/enums.enum';
 
 @Component({
-  selector: 'app-product-edit',
-  templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-shop-product',
+  templateUrl: './shop-product.component.html',
+  styleUrls: ['./shop-product.component.scss']
 })
-export class ProductEditComponent implements OnInit {
+export class ShopProductComponent implements OnInit {
 
   stateTemplate = EnumState;
   loading$: Observable<boolean>;
@@ -37,9 +36,5 @@ export class ProductEditComponent implements OnInit {
 
   addCartProduct(product: ProductClass) {
     this.cartService.addCartProduct(product);
-  }
-
-  rateChange(event): void {
-    console.log(event);
   }
 }

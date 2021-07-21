@@ -1,14 +1,17 @@
 <ng-container [ngSwitch]="viewMode">
   <div *ngSwitchCase="viewModeTemplate.GRID"
-       class="row grid-product-card-container">
+       class="row">
     <div *ngIf="loading"
          class="col-12">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
     <div *ngFor="let product of products;trackBy: trackbyService.product"
          class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-2">
-      <mat-card class="product-card">
+      <mat-card>
         <mat-card-header>
+          <mat-card-title>
+            {{product.name | uppercase}}
+          </mat-card-title>
           <mat-card-subtitle>
             {{product.producer | uppercase}}
           </mat-card-subtitle>
@@ -16,84 +19,48 @@
         <div mat-card-image
              class="text-center">
           <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
-               [routerLink]="['/products/view/'+ product.id]"
+               [routerLink]="['/products/' + product.id]"
                class="w-50 h-50"
                [alt]="product.name">
         </div>
-        <mat-card-header>
-          <mat-card-title>{{product.name}}</mat-card-title>
-          <mat-card-subtitle>
-            <ngb-rating class="rating"
-                        [(rate)]="product.rate"
-                        [readonly]="true"
-                        [max]="5">
-              <ng-template let-fill="fill"
-                           let-index="index">
-                <span class="star"
-                      [class.filled]="fill === 100">&#9733;</span>
-              </ng-template>
-            </ngb-rating>
-          </mat-card-subtitle>
-          <mat-card-subtitle class="price-container">
-            <i class="price-container--icon fas fas fa-hand-holding-usd"></i>
-            <span class="price-container--bull">&bull;</span>
-            <span class="price-container--price">{{product.price}} Lei</span>
-            <ng-container [ngSwitch]="product.state">
-              <span *ngSwitchCase="stateTemplate.STOCK"
-                    style="float: right;">
-                <i class="fas fa-dot-circle"
-                   style="color: #22bb33;"></i>
-                <span class="price-container--state pl-1">{{product.state}}</span>
-              </span>
-              <span *ngSwitchCase="stateTemplate.COMMAND"
-                    style="float: right;">
-                <i class="fas fa-dot-circle"
-                   style="color: #f0ad4e;"></i>
-                <span class="price-container--state pl-1">{{product.state}}</span>
-              </span>
-              <span *ngSwitchDefault><i class="fas fa-dot-circle"></i></span>
-            </ng-container>
-          </mat-card-subtitle>
-        </mat-card-header>
         <mat-card-content>
           <div class="row justify-content-center">
+
             <div class="col-11">
               <mat-divider></mat-divider>
             </div>
-            <div class="col-12 py-3">
-              <mat-chip-list>
-                <mat-chip>
-                  <i aria-hidden="false"
-                     aria-label="Sezon"
-                     [class]="product.season | seasonToIcon"></i>
-                  <span class="pl-1">{{product.season}}</span>
-                </mat-chip>
-                <mat-chip>
-                  <i aria-hidden="false"
-                     aria-label="Nivelul de zgomot"
-                     class="fas fa-volume-up"></i>
-                  <span class="pl-1">{{product.noiseLevel}}</span>
-                </mat-chip>
-                <mat-chip>
-                  <i aria-hidden="false"
-                     aria-label="Nivelul de consum"
-                     class="fas fa-gas-pump"></i>
-                  <span class="pl-1">{{product.fuelEfficiency}}</span>
-                </mat-chip>
-                <mat-chip>
-                  <i aria-hidden="false"
-                     aria-label="Eficienta pe vreme"
-                     class="fas fa-cloud-rain"></i>
-                  <span class="pl-1">{{product.weatherEfficiency}}</span>
-                </mat-chip>
-                <mat-chip>
-                  <i aria-hidden="false"
-                     aria-label="Informatii DOT"
-                     class="fas fa-calendar-alt"></i>
-                  <span class="pl-1">{{product.dot}}</span>
-                </mat-chip>
-              </mat-chip-list>
+
+            <div class="col-12 text-center price-container">
+              <div class="sale-price">
+                <del>{{300 | azetDtCurrency}}</del> (-20%)
+              </div>
+              <div class="current-price">
+                {{200 | azetDtCurrency}}
+              </div>
+              <div class="without-tax-price">
+                Fără TVA: {{280 | azetDtCurrency}}
+              </div>
             </div>
+
+            <div class="col-11">
+              <mat-divider></mat-divider>
+            </div>
+
+            <!-- <div class="col-12">
+              <ng-container [ngSwitch]="product.state">
+                <span *ngSwitchCase="stateTemplate.STOCK">
+                  <i class="fas fa-dot-circle"
+                     style="color: #22bb33;"></i>
+                  <span class="pl-1">{{product.state}}</span>
+                </span>
+                <span *ngSwitchCase="stateTemplate.COMMAND">
+                  <i class="fas fa-dot-circle"
+                     style="color: #f0ad4e;"></i>
+                  <span class="pl-1">{{product.state}}</span>
+                </span>
+                <span *ngSwitchDefault><i class="fas fa-dot-circle"></i></span>
+              </ng-container>
+            </div> -->
           </div>
         </mat-card-content>
         <mat-card-actions>
@@ -134,30 +101,12 @@
          class="col-12 mb-2">
       <mat-card class="product-card">
         <mat-card-header>
-          <div mat-card-avatar>
-            <i aria-hidden="false"
-               aria-label="Sezon"
-               style="font-size: 2rem;"
-               [class]="product.season | seasonToIcon"></i>
-          </div>
           <mat-card-title>{{product.name}}</mat-card-title>
-          <mat-card-subtitle>
-            <ngb-rating class="rating"
-                        [(rate)]="product.rate"
-                        [readonly]="true"
-                        [max]="5">
-              <ng-template let-fill="fill"
-                           let-index="index">
-                <span class="star"
-                      [class.filled]="fill === 100">&#9733;</span>
-              </ng-template>
-            </ngb-rating>
-          </mat-card-subtitle>
         </mat-card-header>
         <div class="row">
           <div class="col-3 text-center">
             <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
-                 [routerLink]="'/products/view/'+ product.id"
+                 [routerLink]="'/products/'+ product.id"
                  style="width: 160px; height: 160px;"
                  [alt]="product.name">
             <div>{{product.producer | uppercase}}</div>
@@ -203,60 +152,6 @@
                 <div class="season-container">
                   <span class="season-container--title">Sezon: </span>
                   <span class="season-container--text">{{product.season}}</span>
-                </div>
-              </div>
-              <div class="col-7">
-                <div class="row noise-level-container">
-                  <div class="col-12 noise-level-container--title">Nivel de zgomot</div>
-                  <div class="col-1">
-                    <i aria-hidden="false"
-                       aria-label="Nivelul de zgomot"
-                       class="fas fa-volume-up"></i>
-                  </div>
-                  <div class="col-11">
-                    <ngb-progressbar [type]="product.noiseLevel | noiseLevelToColor"
-                                     [value]="product.noiseLevel | noiseLevelToValue"
-                                     [striped]="false">{{product.noiseLevel}} db</ngb-progressbar>
-                  </div>
-                </div>
-                <div class="row fuel-efficiency-container">
-                  <div class="col-12 fuel-efficiency-container--title">Consum</div>
-                  <div class="col-1">
-                    <i aria-hidden="false"
-                       aria-label="Nivelul de consum"
-                       class="fas fa-gas-pump"></i>
-                  </div>
-                  <div class="col-11">
-                    <ngb-progressbar [type]="product.fuelEfficiency | efficiencyToColor"
-                                     [value]="product.fuelEfficiency | efficiencyToValue"
-                                     [striped]="false">{{product.fuelEfficiency}}</ngb-progressbar>
-                  </div>
-                </div>
-                <div class="row weather-efficiency-container">
-                  <div class="col-12 weather-efficiency-container--title">Eficiență vreme</div>
-                  <div class="col-1">
-                    <i aria-hidden="false"
-                       aria-label="Eficiență vreme"
-                       class="fas fa-cloud-rain"></i>
-                  </div>
-                  <div class="col-11">
-                    <ngb-progressbar [type]="product.weatherEfficiency | efficiencyToColor"
-                                     [value]="product.weatherEfficiency | efficiencyToValue"
-                                     [striped]="false">{{product.weatherEfficiency}}</ngb-progressbar>
-                  </div>
-                </div>
-                <div class="row cars-categories-container">
-                  <div class="col-12 cars-categories-container--title">Vehicule</div>
-                  <div class="col-1 align-self-center">
-                    <i aria-hidden="false"
-                       aria-label="Vehicule"
-                       class="fas fa-car"></i>
-                  </div>
-                  <div class="col-11">
-                    <mat-chip-list aria-label="Vehicule">
-                      <mat-chip *ngFor="let carCategory of product.carCategories">{{carCategory}}</mat-chip>
-                    </mat-chip-list>
-                  </div>
                 </div>
               </div>
             </div>

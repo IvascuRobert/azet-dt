@@ -5,49 +5,37 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgbProgressbarModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { MessageComponent } from './message/message.component';
-import { EfficiencyToColorPipe } from './pipes/efficiencyToColor.pipe';
-import { EfficiencyToValuePipe } from './pipes/efficiencyToValue.pipe';
+import { AzetDTCurrencyPipe } from './pipes/currency.pipe';
 import { FormControlErrorInterpretationPipe } from './pipes/formControlErrorInterpretation.pipe';
-import { NoiseLevelToColorPipe } from './pipes/noiseLevelToColor.pipe';
-import { NoiseLevelToValuePipe } from './pipes/noiseLevelToValue.pipe';
-import { SeasonToIconPipe } from './pipes/seasonToIcon.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { ProductsCardComponent } from './products-card/products-card.component';
-import { ProductsModule } from './products/products.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         MatButtonModule,
         MatCardModule,
         MatDividerModule,
         MatTooltipModule,
         MatChipsModule,
-        NgbRatingModule,
         NgbProgressbarModule
+    ],
+    declarations: [
+        MessageComponent,
+        TrimPipe,
+        AzetDTCurrencyPipe,
+        FormControlErrorInterpretationPipe,
+        ProductsCardComponent,
     ],
     exports: [
         CommonModule,
         MessageComponent,
         TrimPipe,
-        SeasonToIconPipe,
-        EfficiencyToValuePipe,
-        EfficiencyToColorPipe,
-        NoiseLevelToValuePipe,
-        NoiseLevelToColorPipe,
-        FormControlErrorInterpretationPipe,
-        ProductsCardComponent
-    ],
-    declarations: [
-        MessageComponent,
-        TrimPipe,
-        SeasonToIconPipe,
-        EfficiencyToValuePipe,
-        EfficiencyToColorPipe,
-        NoiseLevelToValuePipe,
-        NoiseLevelToColorPipe,
+        AzetDTCurrencyPipe,
         FormControlErrorInterpretationPipe,
         ProductsCardComponent
     ]

@@ -29,14 +29,6 @@ export interface ISelect {
     disabled?: boolean;
 }
 
-export interface IReview {
-    userName: string;
-    userId: number;
-    id: number;
-    text: string;
-    createdAt: string;
-}
-
 export interface ICart {
     products: CartProductClass[];
     totalProducts: number;

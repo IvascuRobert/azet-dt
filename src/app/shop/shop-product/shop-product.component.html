@@ -28,23 +28,6 @@
           </div>
           <div class="col-12 my-1">
             <mat-card>
-              <mat-card-title>
-                <ngb-rating class="rating"
-                            [(rate)]="product.rate"
-                            [readonly]="true"
-                            [max]="5"
-                            (rateChange)="rateChange($event)">
-                  <ng-template let-fill="fill"
-                               let-index="index">
-                    <span class="star"
-                          [class.filled]="fill === 100">&#9733;</span>
-                  </ng-template>
-                </ngb-rating>
-              </mat-card-title>
-            </mat-card>
-          </div>
-          <div class="col-12 my-1">
-            <mat-card>
               <mat-card-actions>
                 <button mat-raised-button
                         color="primary"

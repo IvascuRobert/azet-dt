@@ -43,18 +43,6 @@
                  [class]="product.season | seasonToIcon"></i>
             </div>
             <mat-card-title>{{product.name}}</mat-card-title>
-            <mat-card-subtitle>
-              <ngb-rating class="rating"
-                          [(rate)]="product.rate"
-                          [readonly]="true"
-                          [max]="5">
-                <ng-template let-fill="fill"
-                             let-index="index">
-                  <span class="star"
-                        [class.filled]="fill === 100">&#9733;</span>
-                </ng-template>
-              </ngb-rating>
-            </mat-card-subtitle>
           </mat-card-header>
 
           <div class="row">

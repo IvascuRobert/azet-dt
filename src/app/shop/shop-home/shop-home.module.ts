@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgbCarouselModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ShopHomeRoutingModule } from './shop-home-routing.module';
 
@@ -23,10 +23,9 @@ import { ShopHomeRoutingModule } from './shop-home-routing.module';
         MatToolbarModule,
         MatMenuModule,
         MatProgressBarModule,
-        NgbRatingModule,
         NgbCarouselModule,
     ],
     declarations: [ShopHomeRoutingModule.components]
 })
 
-export class HomeModule { }
+export class ShopHomeModule { }

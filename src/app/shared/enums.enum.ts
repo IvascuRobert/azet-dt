@@ -1,24 +1,3 @@
-export enum EnumEfficiency { // clasa aderenta
-    A = 'A',
-    B = 'B',
-    C = 'C',
-    D = 'D',
-    E = 'E',
-    F = 'F',
-    G = 'G',
-    NONE = '-'
-}
-
-export enum EnumTireCategory {
-    Summer = 'SUMMER',
-    Winter = 'WINTER',
-    AllSeason = 'ALL_SEASON',
-    Industrial = 'INDUSTRIAL',
-    Truck = 'TRUCK',
-    Forklift = 'FORKLIFT',
-    Agriculture = 'AGRICULTURE',
-}
-
 export enum EnumCarCategory {
     Micro = 'Micro',
     Sedan = 'Sedan',
@@ -60,8 +39,7 @@ export enum EnumSortValue {
     POPULAR = 'popular',
     NEWEST = 'newest',
     HIGH_PRICE = 'highPrice',
-    LOW_PRICE = 'lowPrice',
-    RATING = 'rating',
+    LOW_PRICE = 'lowPrice'
 }
 
 export enum EnumMessageType {

@@ -22,8 +22,7 @@ export class ShopProductsSortComponent implements OnInit {
       { value: EnumSortValue.POPULAR, label: 'Cele mai populare' },
       { value: EnumSortValue.NEWEST, label: 'Cele mai noi' },
       { value: EnumSortValue.HIGH_PRICE, label: 'Preț crescător' },
-      { value: EnumSortValue.LOW_PRICE, label: 'Preț descrescător' },
-      { value: EnumSortValue.RATING, label: 'Rating' },
+      { value: EnumSortValue.LOW_PRICE, label: 'Preț descrescător' }
     ];
   }
 

@@ -19,7 +19,7 @@ import { ShopProductsRoutingModule } from './shop-products-routing.module';
     MatProgressBarModule,
     MatSelectModule,
     MatCardModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   declarations: [ShopProductsRoutingModule.components]
 })

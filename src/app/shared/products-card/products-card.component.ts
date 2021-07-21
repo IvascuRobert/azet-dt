@@ -27,10 +27,6 @@ export class ProductsCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  rateChange(event): void {
-    console.log(event, 'rateChange');
-  }
-
   addCartProduct(product: ProductClass): void {
     this.clickAddToCart.emit(product);
   }

@@ -1,161 +1,18 @@
-.grid-product-card-container {
-  .product-card {
-    .price-container {
-      font-size: 1rem;
+.price-container {
+  padding: 10px 0px 10px 0px;
 
-      .price-container--icon {
-        color: #85bb65;
-      }
-
-      .price-container--bull {
-        padding: 0px 5px 0px 5px;
-        color: black;
-        font-size: 1.2rem;
-      }
-
-      .price-container--price {
-        font-weight: 500;
-        color: black;
-      }
-    }
-
-    .product-card--info-text {
-      font-weight: 500;
-      font-size: 1rem;
-    }
+  .sale-price {
+    font-size: 1rem;
+    font-weight: 100;
   }
-}
 
-.list-product-card-container {
-  .product-card {
-    .price-container {
-      font-size: 1rem;
+  .current-price {
+    padding: 10px 0px 10px 0px;
+    font-size: 1.8rem;
+  }
 
-      .price-container--icon {
-        color: #85bb65;
-      }
-
-      .price-container--bull {
-        padding: 0px 5px 0px 5px;
-        color: black;
-        font-size: 1.2rem;
-      }
-
-      .price-container--price {
-        font-weight: 500;
-        color: black;
-      }
-    }
-
-    .state-container {
-      margin: 4px 0px 4px 0px;
-
-      .state-container--icon {
-        padding-right: 5px;
-      }
-
-      .state-container--text {
-        font-size: 1rem;
-        font-weight: 500;
-      }
-    }
-
-    .quantity-container {
-      margin: 4px 0px 4px 0px;
-
-      .quantity-container--title {
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      .quantity-container--text {
-        font-size: 1rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .dot-container {
-      margin: 4px 0px 4px 0px;
-
-      .dot-container--title {
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      .dot-container--text {
-        font-size: 1rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .profile-container {
-      margin: 4px 0px 4px 0px;
-
-      .profile-container--title {
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      .profile-container--text {
-        font-size: 1rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .size-container {
-      margin: 4px 0px 4px 0px;
-
-      .size-container--title {
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      .size-container--text {
-        font-size: 1rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .season-container {
-      margin: 4px 0px 4px 0px;
-
-      .season-container--title {
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      .season-container--text {
-        font-size: 1rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .noise-level-container {
-      .noise-level-container--title {
-        font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .fuel-efficiency-container {
-      .fuel-efficiency-container--title {
-        font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .weather-efficiency-container {
-      .weather-efficiency-container--title {
-        font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
-
-    .cars-categories-container {
-      .cars-categories-container--title {
-        font-size: 0.75rem;
-        color: rgba(0, 0, 0, 0.54);
-      }
-    }
+  .without-tax-price {
+    font-size: 0.8rem;
+    font-weight: 100;
   }
 }

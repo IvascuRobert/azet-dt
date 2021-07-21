@@ -25,4 +25,4 @@ import { ShopContactRoutingModule } from './shop-contact-routing.module';
     ],
     declarations: [ShopContactRoutingModule.components]
 })
-export class ContactModule { }
+export class ShopContactModule { }

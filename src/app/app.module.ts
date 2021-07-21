@@ -1,4 +1,6 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import localeRo from '@angular/common/locales/ro';
 import { NgModule } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +22,9 @@ import { NgrxLoginMethodsService } from './core/services/ngrx-login-methods.serv
 import { NgrxProductsMethodsService } from './core/services/ngrx-products-methods.service';
 import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
 import { EnumLocalStorageKeysName } from './shared/enums.enum';
+import { SharedModule } from './shared/shared.module';
 import { ShopModule } from './shop/shop.module';
+registerLocaleData(localeRo);
 
 export function tokenGetter() {
   return localStorage.getItem(EnumLocalStorageKeysName.ACCESS_TOKEN);
@@ -30,6 +34,7 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    SharedModule,
     ShopModule, // Eager loaded since we may need to go here right away as browser loads based on route user enters
     AppRoutingModule, // Main routes for application
     CoreModule, // Singleton objects (services, components that are loaded only once, etc.)

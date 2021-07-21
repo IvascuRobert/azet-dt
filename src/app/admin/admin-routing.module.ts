@@ -12,12 +12,12 @@ import { ReviewsComponent } from './reviews/reviews.component';
 const routes: Routes = [
     {
         path: '',
+        // canActivate: [CanActivateGuard],
         component: AdminComponent,
         children: [
             {
                 path: 'login',
-                component: LoginComponent,
-                canActivate: [CanActivateGuard]
+                component: LoginComponent
             },
             {
                 path: 'dashboard',

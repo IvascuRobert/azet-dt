@@ -11,26 +11,34 @@ const routes: Routes = [
         children: [
             {
                 path: 'home',
-                data: { preload: true },
-                loadChildren: () => import('./shop-home/shop-home.module').then(m => m.HomeModule)
+                loadChildren: () => import('./shop-home/shop-home.module').then(m => m.ShopHomeModule)
             },
             {
                 path: 'products',
-                data: { preload: true },
                 loadChildren: () => import('./shop-products/shop-products.module').then(m => m.ShopProductsModule)
             },
             {
                 path: 'products/:id',
-                data: { preload: true },
-                loadChildren: () => import('../shared/products/products.module').then(m => m.ProductsModule)
+                loadChildren: () => import('./shop-product/shop-product.module').then(m => m.ShopProductModule)
             },
             {
                 path: 'contact',
-                loadChildren: () => import('./shop-contact/shop-contact.module').then(m => m.ContactModule)
+                loadChildren: () => import('./shop-contact/shop-contact.module').then(m => m.ShopContactModule)
             },
             {
                 path: 'cart',
-                loadChildren: () => import('./shop-cart/shop-cart.module').then(m => m.CartModule)
+                loadChildren: () => import('./shop-cart/shop-cart.module').then(m => m.ShopCartModule)
+            },
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/home'
+            },
+            // catch any unfound routes and redirect to home page
+            {
+                path: '**',
+                pathMatch: 'full',
+                redirectTo: '/home'
             }
         ]
     }

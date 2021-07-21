@@ -1,185 +1,16 @@
 import { Observable, of } from 'rxjs';
-import { ProductClass } from './classes.class';
-import { EnumCarCategory, EnumEfficiency, EnumPriceRange, EnumState, EnumTireCategory } from './enums.enum';
+import { EnumCarCategory, EnumPriceRange, EnumState } from './enums.enum';
 import { IFilterNode } from './interfaces.interface';
 
 export class MockDataService {
     constructor() { }
 
-    getProducts(): Observable<ProductClass[]> {
+    getProducts(): Observable<any> {
         return of(productsMock);
     }
 }
 
-export const productsMock: ProductClass[] = [{
-    id: '1',
-    name: 'Dunlop 175/65 R15 Fast Respone 84H',
-    description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
-    producer: 'Continental',
-    price: 200,
-    quantity: 4,
-    dot: 2020,
-    size: '235/45 R19',
-    rate: 3,
-    reviews: [
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Florin O. Ieremciuc',
-            text: 'Mi-au plakut.',
-            createdAt: '1/1/16'
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Cezar',
-            text: 'Super fain. Mai cumpar sa moara sa faca !',
-            createdAt: '1/1/16'
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Diana Cocea',
-            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            createdAt: '1/1/16'
-        }
-    ],
-    guarantee: 24,
-    weatherEfficiency: EnumEfficiency.A,
-    season: EnumTireCategory.Winter,
-    noiseLevel: 74,
-    profile: 'FastRespone 84H',
-    image: '',
-    carCategories: [EnumCarCategory.CamperVAN, EnumCarCategory.Truck, EnumCarCategory.Roadster],
-    fuelEfficiency: EnumEfficiency.F,
-    state: EnumState.STOCK
-}, {
-    id: '2',
-    name: 'Dunlop 175/65 R15 Fast Respone 84H',
-    description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
-    producer: 'Continental',
-    price: 200,
-    quantity: 4,
-    dot: 2020,
-    size: '235/45 R19',
-    rate: 3,
-    reviews: [
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Florin O. Ieremciuc',
-            text: 'Mi-au plakut.',
-            createdAt: '1/1/16',
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Cezar',
-            text: 'Super fain. Mai cumpar sa moara sa faca !',
-            createdAt: '1/1/16',
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Diana Cocea',
-            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            createdAt: '1/1/16',
-        }
-    ],
-    guarantee: 24,
-    weatherEfficiency: EnumEfficiency.G,
-    season: EnumTireCategory.AllSeason,
-    noiseLevel: 73,
-    profile: 'Alpin 6 91T',
-    image: '',
-    carCategories: [EnumCarCategory.Coupe],
-    fuelEfficiency: EnumEfficiency.D,
-    state: EnumState.COMMAND
-}, {
-    id: '3',
-    name: 'Dunlop 175/65 R15 Fast Respone 84H',
-    description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
-    producer: 'Continental',
-    price: 200,
-    quantity: 4,
-    dot: 2020,
-    size: '235/45 R19',
-    rate: 3,
-    reviews: [
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Florin O. Ieremciuc',
-            text: 'Mi-au plakut.',
-            createdAt: '1/1/16'
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Cezar',
-            text: 'Super fain. Mai cumpar sa moara sa faca !',
-            createdAt: '1/1/16'
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Diana Cocea',
-            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            createdAt: '1/1/16'
-        }
-    ],
-    guarantee: 24,
-    weatherEfficiency: EnumEfficiency.B,
-    season: EnumTireCategory.Summer,
-    noiseLevel: 68,
-    profile: 'FastRespone 84H',
-    image: '',
-    carCategories: [EnumCarCategory.Coupe],
-    fuelEfficiency: EnumEfficiency.C,
-    state: EnumState.COMMAND
-}, {
-    id: '4',
-    name: 'Dunlop 175/65 R15 Fast Respone 84H',
-    description: 'ContiSeal™ is a technology developed by Continental designed to seal a damaged tire tread. In case of penetration by foreign objects such as nails, there is no need for immediate roadside tire changes, and holes remain sealed even if the puncturing object becomes dislodged. ContiSeal™ is a sticky, viscous sealant layer. It is applied to the inside of the tire in the tread area. ContiSeal™ seals 80% of all tire punctures and therefore reduces the risk of flat tires. ContiSeal™ tires are marked clearly with a symbol on the sidewall and are compatible with all commonly available rims.',
-    producer: 'Continental',
-    price: 200,
-    quantity: 4,
-    dot: 2020,
-    size: '235/45 R19',
-    rate: 3,
-    reviews: [
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Florin O. Ieremciuc',
-            text: 'Mi-au plakut.',
-            createdAt: '1/1/16'
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Cezar',
-            text: 'Super fain. Mai cumpar sa moara sa faca !',
-            createdAt: '1/1/16'
-        },
-        {
-            id: 1,
-            userId: 24,
-            userName: 'Diana Cocea',
-            text: 'HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!! HAMMMMM UN CAUCIUCCCCCC !!! HAMMMMMMM UN BAIETELLLLLL !!!',
-            createdAt: '1/1/16'
-        }
-    ],
-    guarantee: 24,
-    weatherEfficiency: EnumEfficiency.C,
-    season: EnumTireCategory.Summer,
-    noiseLevel: 68,
-    profile: 'FastRespone 84H',
-    image: '',
-    carCategories: [EnumCarCategory.Coupe],
-    fuelEfficiency: EnumEfficiency.A,
-    state: EnumState.STOCK
-}];
+export const productsMock = [];
 
 export const filterDataTree: IFilterNode[] = [
     {
@@ -188,19 +19,6 @@ export const filterDataTree: IFilterNode[] = [
         children: [
             { name: 'În stoc', id: EnumState.STOCK },
             { name: 'La comanda', id: EnumState.COMMAND }
-        ]
-    },
-    {
-        name: 'Categorii',
-        id: '',
-        children: [
-            { name: 'Anvelope Vară', id: EnumTireCategory.Summer },
-            { name: 'Anvelope Iarnă', id: EnumTireCategory.Winter },
-            { name: 'Anvelope All Season', id: EnumTireCategory.AllSeason },
-            { name: 'Anvelope Industriale', id: EnumTireCategory.Industrial },
-            { name: 'Anvelope Camion', id: EnumTireCategory.Truck },
-            { name: 'Anvelope Motostivuitor', id: EnumTireCategory.Forklift },
-            { name: 'Anvelope Agricole', id: EnumTireCategory.Agriculture }
         ]
     },
     {
@@ -260,34 +78,6 @@ export const filterDataTree: IFilterNode[] = [
             { name: '15', id: '1' },
             { name: '19', id: '1' },
             { name: '20', id: '1' }
-        ]
-    },
-    {
-        name: 'Clasă consum',
-        id: '',
-        children: [
-            { name: EnumEfficiency.A, id: EnumEfficiency.A },
-            { name: EnumEfficiency.B, id: EnumEfficiency.B },
-            { name: EnumEfficiency.C, id: EnumEfficiency.C },
-            { name: EnumEfficiency.D, id: EnumEfficiency.D },
-            { name: EnumEfficiency.E, id: EnumEfficiency.E },
-            { name: EnumEfficiency.F, id: EnumEfficiency.F },
-            { name: EnumEfficiency.G, id: EnumEfficiency.G },
-            { name: EnumEfficiency.NONE, id: EnumEfficiency.NONE }
-        ]
-    },
-    {
-        name: 'Clasă aderență',
-        id: '',
-        children: [
-            { name: EnumEfficiency.A, id: EnumEfficiency.A },
-            { name: EnumEfficiency.B, id: EnumEfficiency.B },
-            { name: EnumEfficiency.C, id: EnumEfficiency.C },
-            { name: EnumEfficiency.D, id: EnumEfficiency.D },
-            { name: EnumEfficiency.E, id: EnumEfficiency.E },
-            { name: EnumEfficiency.F, id: EnumEfficiency.F },
-            { name: EnumEfficiency.G, id: EnumEfficiency.G },
-            { name: EnumEfficiency.NONE, id: EnumEfficiency.NONE }
         ]
     }
 ];
