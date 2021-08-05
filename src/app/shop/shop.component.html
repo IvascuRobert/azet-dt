@@ -1,9 +1,11 @@
+<app-shop-header [loading]="loading | async"></app-shop-header>
+
 <div class="container">
 
-    <app-shop-header [loading]="loading | async"></app-shop-header>
+  <app-shop-subheader></app-shop-subheader>
 
-    <router-outlet></router-outlet>
-
-    <app-shop-footer></app-shop-footer>
+  <router-outlet></router-outlet>
 
 </div>
+
+<app-shop-footer></app-shop-footer>

@@ -8,11 +8,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ShopRoutingModule } from './shop-routing.module';
-;
 
 @NgModule({
     imports: [
@@ -28,7 +28,8 @@ import { ShopRoutingModule } from './shop-routing.module';
         MatTooltipModule,
         MatRippleModule,
         MatBadgeModule,
-        MatDividerModule
+        MatDividerModule,
+        MatTabsModule
     ],
     declarations: [ShopRoutingModule.components]
 })

@@ -25,7 +25,8 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/theme/_azet-dt-theme.scss"
+              "src/theme/_azet-dt-theme.scss",
+              "src/theme/_variables.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -94,7 +95,8 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/theme/_azet-dt-theme.scss"
+              "src/theme/_azet-dt-theme.scss",
+              "src/theme/_variables.scss"
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"

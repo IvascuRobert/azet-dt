@@ -1,13 +1,32 @@
-.app-navbar {
+@import 'variables';
+
+.azet-dt-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
 
-  .app-navbar-spacer {
-    flex: 1 1 auto;
+  .section-1.mat-toolbar-row {
+    border-top: 6px solid $azet-dt-orange;
+    border-bottom: 1px solid #124978;
+    background: rgb(18, 73, 120);
+    background: linear-gradient(169deg, rgba(18, 73, 120, 1) 11%, rgba(25, 130, 219, 1) 30%, rgba(158, 158, 158, 1) 44%);
   }
 }
 
-.contact-header-container {
-  .contact-header-azet-dt-icon {
-    cursor: pointer;
+.azet-dt-subnavbar {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+
+  .section-2.mat-toolbar-row {
+    background: rgb(229, 229, 230);
+    background: linear-gradient(0deg, rgba(229, 229, 230, 1) 0%, rgba(158, 158, 158, 1) 100%);
   }
+}
+
+.azet-dt-navbar-spacer {
+  flex: 1 1 auto;
 }

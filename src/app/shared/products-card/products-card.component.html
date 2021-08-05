@@ -42,29 +42,21 @@
               </div>
             </div>
 
-            <div class="col-11">
+            <div class="col-11 mb-2">
               <mat-divider></mat-divider>
             </div>
-
-            <!-- <div class="col-12">
-              <ng-container [ngSwitch]="product.state">
-                <span *ngSwitchCase="stateTemplate.STOCK">
-                  <i class="fas fa-dot-circle"
-                     style="color: #22bb33;"></i>
-                  <span class="pl-1">{{product.state}}</span>
-                </span>
-                <span *ngSwitchCase="stateTemplate.COMMAND">
-                  <i class="fas fa-dot-circle"
-                     style="color: #f0ad4e;"></i>
-                  <span class="pl-1">{{product.state}}</span>
-                </span>
-                <span *ngSwitchDefault><i class="fas fa-dot-circle"></i></span>
-              </ng-container>
-            </div> -->
+            <div class="col-6">
+              Cantitate: {{product.quantity}}
+            </div>
+            <div class="col-6">
+              <i class="fas fa-dot-circle"
+                 style="color: #22bb33;"></i>
+              {{product.state}}
+            </div>
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <div class="d-flex">
+          <div class="d-flex justify-content-between">
             <button mat-raised-button
                     color="primary"
                     (click)="addCartProduct(product)">
@@ -72,13 +64,6 @@
                 add_shopping_cart
               </span>
               ADAUGĂ ÎN COȘ
-            </button>
-            <button mat-icon-button
-                    class="ml-auto"
-                    color="primary">
-              <span class="material-icons">
-                favorite
-              </span>
             </button>
             <button mat-icon-button
                     color="primary">
@@ -101,65 +86,34 @@
          class="col-12 mb-2">
       <mat-card class="product-card">
         <mat-card-header>
-          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-title>
+            {{product.name | uppercase}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{product.producer | uppercase}}
+          </mat-card-subtitle>
         </mat-card-header>
-        <div class="row">
-          <div class="col-3 text-center">
+        <div class="row align-items-center">
+          <div class="col-3">
             <img src="/assets/pictures/tires-pictures/tire-mock-1.png"
                  [routerLink]="'/products/'+ product.id"
                  style="width: 160px; height: 160px;"
                  [alt]="product.name">
-            <div>{{product.producer | uppercase}}</div>
           </div>
-          <div class="col-9">
-            <div class="row">
-              <div class="col-5">
-                <div class="price-container">
-                  <i class="price-container--icon fas fas fa-hand-holding-usd"></i>
-                  <span class="price-container--bull">&bull;</span>
-                  <span class="price-container--price">{{product.price}} Lei</span>
-                </div>
-                <div class="state-container">
-                  <ng-container [ngSwitch]="product.state">
-                    <span *ngSwitchCase="stateTemplate.STOCK"
-                          class="state-container--icon"
-                          style="color: #22bb33;"><i class="fas fa-dot-circle"></i></span>
-                    <span *ngSwitchCase="stateTemplate.COMMAND"
-                          class="state-container--icon"
-                          style="color: #f0ad4e;"><i class="fas fa-dot-circle"></i></span>
-                    <span *ngSwitchDefault
-                          class="state-container--icon"><i class="fas fa-dot-circle"></i></span>
-                  </ng-container>
-                  <span class="state-container--text">{{product.state}}</span>
-                </div>
-                <div class="quantity-container">
-                  <span class="quantity-container--title">Cantitate în stoc: </span>
-                  <span class="quantity-container--text">{{product.quantity}}</span>
-                </div>
-                <div class="dot-container">
-                  <span class="dot-container--title">DOT: </span>
-                  <span class="dot-container--text pr-1">{{product.dot}}</span>
-                  <i class="fas fa-info-circle"></i>
-                </div>
-                <div class="profile-container">
-                  <span class="profile-container--title">Profil: </span>
-                  <span class="profile-container--text">{{product.profile}}</span>
-                </div>
-                <div class="size-container">
-                  <span class="size-container--title">Dimensiune: </span>
-                  <span class="size-container--text">{{product.size}}</span>
-                </div>
-                <div class="season-container">
-                  <span class="season-container--title">Sezon: </span>
-                  <span class="season-container--text">{{product.season}}</span>
-                </div>
-              </div>
+          <div class="col-6 price-container">
+            <div class="sale-price">
+              <del>{{300 | azetDtCurrency}}</del> (-20%)
+            </div>
+            <div class="current-price">
+              {{200 | azetDtCurrency}}
+            </div>
+            <div class="without-tax-price">
+              Fără TVA: {{280 | azetDtCurrency}}
             </div>
           </div>
-          <div class="col-12 my-2">
-            <mat-divider></mat-divider>
-          </div>
-          <div class="col-3 align-self-center text-center">
+        </div>
+        <mat-card-actions>
+          <div class="d-flex justify-content-between">
             <button mat-raised-button
                     color="primary"
                     (click)="addCartProduct(product)">
@@ -168,44 +122,14 @@
               </span>
               ADAUGĂ ÎN COȘ
             </button>
+            <button mat-icon-button
+                    color="primary">
+              <span class="material-icons">
+                share
+              </span>
+            </button>
           </div>
-          <div class="col-9">
-            <div class="row">
-              <div class="col-5 align-self-center">
-                <i class="fas fa-shield-alt"></i>
-                Garanție: {{product.guarantee}} luni
-              </div>
-              <div class="col-5 align-self-center">
-                <i class="fas fa-tools"></i>
-                Montaj in service
-              </div>
-              <div class="col-2 align-self-center text-center">
-                <button mat-icon-button
-                        color="primary">
-                  <span class="material-icons">
-                    favorite
-                  </span>
-                </button>
-              </div>
-              <div class="col-5 align-self-center">
-                <i class="fas fa-credit-card"></i>
-                Plata in rate fara dobanda
-              </div>
-              <div class="col-5 align-self-center">
-                <i class="fas fa-truck-moving"></i>
-                Livrare gratuita de la 1200 lei *
-              </div>
-              <div class="col-2 align-self-center text-center">
-                <button mat-icon-button
-                        color="primary">
-                  <span class="material-icons">
-                    share
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        </mat-card-actions>
       </mat-card>
     </div>
   </div>
