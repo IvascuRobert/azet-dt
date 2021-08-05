@@ -1,138 +1,136 @@
-  <mat-toolbar class="mat-elevation-z6 azet-dt-navbar"
-               color="primary">
-    <mat-toolbar-row class="section-1">
-      <div routerLink="/home"
-           matRipple
-           class="mr-5">
-        <img class="contact-header-azet-dt-icon"
-             src="/assets/pictures/azet-dt-icon.png"
-             alt="Azet D.T.">
-      </div>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/home">
-        <span class="material-icons-round">
-          home
-        </span>
-        ACASĂ
-      </button>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/products">
-        <span class="material-icons-round">
-          support
-        </span>
-        ANVELOPE
-      </button>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/contact">
-        <span class="material-icons-round">
-          contact_page
-        </span>
-        CONTACT
-      </button>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/admin/login">
-        <span class="material-icons-round">
-          contact_page
-        </span>
-        ADMIN
-      </button>
-      <span class="azet-dt-navbar-spacer"></span>
-      <a mat-button
-         href="tel:+40737167631">
-        <span class="material-icons">phone</span>
-        (0737) 167 631
-      </a>
-      <button mat-flat-button>
-        <span class="material-icons-two-tone">
-          construction
-        </span>
-        PROGRAMEAZĂ ÎN SERVICE
-      </button>
-      <button mat-flat-button
-              routerLink="/cart"
-              [matBadge]="(cart$ | async)?.totalProducts"
-              matBadgeColor="primary"
-              color="accent">
-        <span class="material-icons-round">
-          shopping_cart
-        </span>
-        COȘ
-      </button>
-      <button matTooltip="Facebook"
-              mat-icon-button>
-        <i class="fab fa-facebook-square app-navbar-icon"></i>
-      </button>
-      <button matTooltip="Twitter"
-              mat-icon-button>
-        <i class="fab fa-twitter-square"></i>
-      </button>
-      <button matTooltip="LinkedIn"
-              mat-icon-button>
-        <i class="fab fa-linkedin"></i>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-toolbar class="azet-dt-subnavbar"
-               color="primary">
-    <mat-toolbar-row class="section-2">
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/home">
-        <span class="material-icons-round">
-          home
-        </span>
-        ACASĂ
-      </button>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/products">
-        <span class="material-icons-round">
-          support
-        </span>
-        ANVELOPE
-      </button>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/contact">
-        <span class="material-icons-round">
-          contact_page
-        </span>
-        CONTACT
-      </button>
-      <button mat-flat-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/admin/login">
-        <span class="material-icons-round">
-          contact_page
-        </span>
-        ADMIN
-      </button>
-      <span class="azet-dt-navbar-spacer"></span>
-      <button mat-flat-button
-              routerLink="/cart"
-              [matBadge]="(cart$ | async)?.totalProducts"
-              matBadgeColor="primary"
-              color="accent">
-        <span class="material-icons-round">
-          shopping_cart
-        </span>
-        COȘ
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-progress-bar *ngIf="loading"
-                    color="accent"
-                    mode="indeterminate">
-  </mat-progress-bar>
+<mat-toolbar #navbar
+             class="mat-elevation-z6 azet-dt-navbar"
+             color="primary">
+  <mat-toolbar-row class="section-1">
+    <div routerLink="/home"
+         matRipple
+         class="mr-5">
+      <img class="contact-header-azet-dt-icon"
+           src="/assets/pictures/azet-dt-icon.png"
+           alt="Azet D.T.">
+    </div>
+    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+            mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/home">
+      <span class="material-icons-round">
+        home
+      </span>
+      ACASĂ
+    </button>
+    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+            mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/products">
+      <span class="material-icons-round">
+        support
+      </span>
+      ANVELOPE
+    </button>
+    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+            mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/contact">
+      <span class="material-icons-round">
+        contact_page
+      </span>
+      CONTACT
+    </button>
+    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+            mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/admin/login">
+      <span class="material-icons-round">
+        contact_page
+      </span>
+      ADMIN
+    </button>
+    <span class="azet-dt-navbar-spacer"></span>
+    <a [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+       mat-button
+       href="tel:+40737167631">
+      <span class="material-icons">phone</span>
+      (0737) 167 631
+    </a>
+    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+            mat-flat-button
+            class="mx-1">
+      <span class="material-icons-two-tone">
+        construction
+      </span>
+      PROGRAMEAZĂ ÎN SERVICE
+    </button>
+    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+            mat-flat-button
+            routerLink="/cart"
+            [matBadge]="(cart$ | async)?.totalProducts"
+            matBadgeColor="primary"
+            color="accent">
+      <span class="material-icons-round">
+        shopping_cart
+      </span>
+      COȘ
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar #subnavbar
+             class="azet-dt-subnavbar"
+             color="primary">
+  <mat-toolbar-row class="section-2">
+    <button mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/home">
+      <span class="material-icons-round">
+        home
+      </span>
+      ACASĂ
+    </button>
+    <button mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/products">
+      <span class="material-icons-round">
+        support
+      </span>
+      ANVELOPE
+    </button>
+    <button mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/contact">
+      <span class="material-icons-round">
+        contact_page
+      </span>
+      CONTACT
+    </button>
+    <button mat-flat-button
+            class="mx-1"
+            routerLinkActive="mat-accent"
+            routerLink="/admin/login">
+      <span class="material-icons-round">
+        contact_page
+      </span>
+      ADMIN
+    </button>
+    <span class="azet-dt-navbar-spacer"></span>
+    <button mat-flat-button
+            routerLink="/cart"
+            [matBadge]="(cart$ | async)?.totalProducts"
+            matBadgeColor="primary"
+            color="accent">
+      <span class="material-icons-round">
+        shopping_cart
+      </span>
+      COȘ
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-progress-bar *ngIf="loading"
+                  color="accent"
+                  mode="indeterminate">
+</mat-progress-bar>

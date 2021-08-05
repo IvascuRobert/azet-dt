@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .azet-dt-navbar {
   position: fixed;
@@ -8,18 +8,22 @@
   z-index: 2;
 
   .section-1.mat-toolbar-row {
+    height: 95px;
     border-top: 6px solid $azet-dt-orange;
     border-bottom: 1px solid #124978;
     background: rgb(18, 73, 120);
-    background: linear-gradient(169deg, rgba(18, 73, 120, 1) 11%, rgba(25, 130, 219, 1) 30%, rgba(158, 158, 158, 1) 44%);
+    background: linear-gradient(
+      169deg,
+      rgba(18, 73, 120, 1) 11%,
+      rgba(25, 130, 219, 1) 30%,
+      rgba(158, 158, 158, 1) 44%
+    );
   }
 }
 
 .azet-dt-subnavbar {
-  position: absolute;
-  top: 64px;
-  left: 0;
-  right: 0;
+  height: 175px;
+  justify-content: flex-end;
 
   .section-2.mat-toolbar-row {
     background: rgb(229, 229, 230);
