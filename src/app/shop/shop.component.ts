@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 import { CartService } from '../core/services/cart.service';
 import { EnumLocalStorageKeysName } from '../shared/enums.enum';
 
@@ -11,29 +10,31 @@ import { EnumLocalStorageKeysName } from '../shared/enums.enum';
 })
 export class ShopComponent implements OnInit {
 
-  loading = new BehaviorSubject<boolean>(false);
-
   constructor(
     private router: Router,
-    private cartService: CartService) {
-    this.router.events.subscribe((event: any) => {
-      switch (true) {
-        case event instanceof NavigationStart: {
-          this.loading.next(true);
-          break;
-        }
-        case event instanceof NavigationEnd: {
-        }
-        case event instanceof NavigationCancel:
-        case event instanceof NavigationError: {
-          this.loading.next(false);
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-    });
+    private cartService: CartService
+  ) {
+
+    // temporarily removed;
+
+    // this.router.events.subscribe((event: any) => {
+    //   switch (true) {
+    //     case event instanceof NavigationStart: {
+    //       this.loading.next(true);
+    //       break;
+    //     }
+    //     case event instanceof NavigationEnd: {
+    //     }
+    //     case event instanceof NavigationCancel:
+    //     case event instanceof NavigationError: {
+    //       this.loading.next(false);
+    //       break;
+    //     }
+    //     default: {
+    //       break;
+    //     }
+    //   }
+    // });
   }
 
   ngOnInit(): void {

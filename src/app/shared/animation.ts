@@ -169,21 +169,13 @@ export const slideInAnimation =
 
 
 export const showHideNavBarButtons =
-    trigger('showHideNavBarButtons', [
-        state('open', style({
-            height: '200px',
-            opacity: 1,
-            backgroundColor: 'yellow'
+    trigger('fadeInFadeOut', [
+        state('fadeIn', style({
+            opacity: 1
         })),
-        state('closed', style({
-            height: '100px',
-            opacity: 0.8,
-            backgroundColor: '#c6ecff'
+        state('fadeOut', style({
+            opacity: 0
         })),
-        transition('open => closed', [
-            animate('1s')
-        ]),
-        transition('closed => open', [
-            animate('0.5s')
-        ]),
+        transition('fadeIn => fadeOut', [animate('0.2s')]),
+        transition('fadeOut => fadeIn', [animate('0.5s')]),
     ]);

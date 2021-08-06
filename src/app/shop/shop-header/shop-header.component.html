@@ -9,7 +9,7 @@
            src="/assets/pictures/azet-dt-icon.png"
            alt="Azet D.T.">
     </div>
-    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
             class="mx-1"
             routerLinkActive="mat-accent"
@@ -19,7 +19,7 @@
       </span>
       ACASĂ
     </button>
-    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
             class="mx-1"
             routerLinkActive="mat-accent"
@@ -29,7 +29,7 @@
       </span>
       ANVELOPE
     </button>
-    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
             class="mx-1"
             routerLinkActive="mat-accent"
@@ -39,7 +39,7 @@
       </span>
       CONTACT
     </button>
-    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
             class="mx-1"
             routerLinkActive="mat-accent"
@@ -50,13 +50,13 @@
       ADMIN
     </button>
     <span class="azet-dt-navbar-spacer"></span>
-    <a [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <a [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
        mat-button
        href="tel:+40737167631">
       <span class="material-icons">phone</span>
       (0737) 167 631
     </a>
-    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
             class="mx-1">
       <span class="material-icons-two-tone">
@@ -64,7 +64,7 @@
       </span>
       PROGRAMEAZĂ ÎN SERVICE
     </button>
-    <button [@showHideNavBarButtons]="(activateAnimation) ? 'showButtonsToNavBar': 'showButtonsToSubNavBar'"
+    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
             routerLink="/cart"
             [matBadge]="(cart$ | async)?.totalProducts"
@@ -118,6 +118,18 @@
       ADMIN
     </button>
     <span class="azet-dt-navbar-spacer"></span>
+    <a mat-button
+       href="tel:+40737167631">
+      <span class="material-icons">phone</span>
+      (0737) 167 631
+    </a>
+    <button mat-flat-button
+            class="mx-1">
+      <span class="material-icons-two-tone">
+        construction
+      </span>
+      PROGRAMEAZĂ ÎN SERVICE
+    </button>
     <button mat-flat-button
             routerLink="/cart"
             [matBadge]="(cart$ | async)?.totalProducts"
@@ -130,7 +142,3 @@
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-progress-bar *ngIf="loading"
-                  color="accent"
-                  mode="indeterminate">
-</mat-progress-bar>

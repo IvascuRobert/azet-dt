@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopFooterComponent } from './shop-footer/shop-footer.component';
 import { ShopHeaderComponent } from './shop-header/shop-header.component';
-import { ShopSubheaderComponent } from './shop-subheader/shop-subheader.component';
 import { ShopComponent } from './shop.component';
 
 const routes: Routes = [
@@ -54,7 +53,6 @@ export class ShopRoutingModule {
     static components = [
         ShopComponent,
         ShopHeaderComponent,
-        ShopSubheaderComponent,
         ShopFooterComponent
     ];
 }

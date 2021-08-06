@@ -15,8 +15,6 @@ import { ICart } from 'src/app/shared/interfaces.interface';
 })
 export class ShopHeaderComponent implements OnInit {
 
-  @Input() loading: boolean;
-
   cart$: Observable<ICart>;
   activateAnimation = false;
   totalHeighToScrollDownToActivateAnimation: number;
