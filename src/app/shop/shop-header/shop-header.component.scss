@@ -12,10 +12,12 @@
     border-top: 6px solid $azet-dt-orange;
     border-bottom: 1px solid #124978;
     background: rgb(18, 73, 120);
-    background: linear-gradient(169deg,
-        rgba(18, 73, 120, 1) 11%,
-        rgba(25, 130, 219, 1) 30%,
-        rgba(158, 158, 158, 1) 44%);
+    background: linear-gradient(
+      169deg,
+      rgba(18, 73, 120, 1) 11%,
+      rgba(25, 130, 219, 1) 30%,
+      rgba(158, 158, 158, 1) 44%
+    );
   }
 
   .mat-button-base {

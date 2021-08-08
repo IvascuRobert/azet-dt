@@ -29,7 +29,6 @@ export class ShopHeaderComponent implements OnInit {
     } else {
       this.activateAnimation = false;
     }
-    console.log(this.getYPosition(e), 'this.getYPosition(e)')
   }
 
   constructor(
