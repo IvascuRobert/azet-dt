@@ -1,4 +1,5 @@
 @import "variables";
+@import "~bootstrap/scss/bootstrap-grid.scss";
 
 .azet-dt-navbar {
   position: fixed;
@@ -12,16 +13,10 @@
     border-top: 6px solid $azet-dt-orange;
     border-bottom: 1px solid #124978;
     background: rgb(18, 73, 120);
-    background: linear-gradient(
-      169deg,
-      rgba(18, 73, 120, 1) 11%,
-      rgba(25, 130, 219, 1) 30%,
-      rgba(158, 158, 158, 1) 44%
-    );
-  }
-
-  .mat-button-base {
-    min-width: 160px;
+    background: linear-gradient(169deg,
+        rgba(18, 73, 120, 1) 11%,
+        rgba(25, 130, 219, 1) 30%,
+        rgba(158, 158, 158, 1) 44%);
   }
 }
 
@@ -33,12 +28,34 @@
     background: rgb(229, 229, 230);
     background: linear-gradient(0deg, rgba(229, 229, 230, 1) 0%, rgba(158, 158, 158, 1) 100%);
   }
-
-  .mat-button-base {
-    min-width: 160px;
-  }
 }
 
 .azet-dt-navbar-spacer {
   flex: 1 1 auto;
+}
+
+
+// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
+.azet-dt-navbar-menu-btn {
+  display: none;
+}
+
+@include media-breakpoint-down(lg) {
+  .azet-dt-navbar-menu-btn {
+    display: block;
+  }
+
+  .azet-dt-navbar-home-btn,
+  .azet-dt-navbar-products-btn,
+  .azet-dt-navbar-contact-btn,
+  .azet-dt-navbar-service-btn {
+    display: none;
+  }
+}
+
+
+@include media-breakpoint-down(sm) {
+  .azet-dt-navbar-phone-btn {
+    display: none;
+  }
 }

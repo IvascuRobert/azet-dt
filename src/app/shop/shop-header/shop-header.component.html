@@ -2,16 +2,21 @@
              class="mat-elevation-z6 azet-dt-navbar"
              color="primary">
   <mat-toolbar-row class="section-1">
+    <button mat-mini-fab
+            class="azet-dt-navbar-menu-btn mx-1">
+      <span class="material-icons-round">
+        menu
+      </span>
+    </button>
     <div routerLink="/home"
          matRipple
-         class="mr-5">
-      <img class="contact-header-azet-dt-icon"
-           src="/assets/pictures/azet-dt-icon.png"
+         class="azet-dt-navbar-icon-btn mr-5">
+      <img src="/assets/pictures/azet-dt-icon.png"
            alt="Azet D.T.">
     </div>
     <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
-            class="mx-1"
+            class="azet-dt-navbar-home-btn mx-1"
             routerLinkActive="mat-accent"
             routerLink="/home">
       <span class="material-icons-round">
@@ -21,7 +26,7 @@
     </button>
     <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
-            class="mx-1"
+            class="azet-dt-navbar-products-btn mx-1"
             routerLinkActive="mat-accent"
             routerLink="/products">
       <span class="material-icons-round">
@@ -31,7 +36,7 @@
     </button>
     <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
-            class="mx-1"
+            class="azet-dt-navbar-contact-btn mx-1"
             routerLinkActive="mat-accent"
             routerLink="/contact">
       <span class="material-icons-round">
@@ -42,13 +47,14 @@
     <span class="azet-dt-navbar-spacer"></span>
     <a [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
        mat-button
+       class="azet-dt-navbar-phone-btn"
        href="tel:+40737167631">
       <span class="material-icons">phone</span>
       (0737) 167 631
     </a>
     <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
             mat-flat-button
-            class="mx-1">
+            class="azet-dt-navbar-service-btn mx-1">
       <span class="material-icons-two-tone">
         construction
       </span>
@@ -59,7 +65,8 @@
             routerLink="/cart"
             [matBadge]="(cart$ | async)?.totalProducts"
             matBadgeColor="primary"
-            color="accent">
+            color="accent"
+            class="azet-dt-navbar-cart-btn">
       <span class="material-icons-round">
         shopping_cart
       </span>
