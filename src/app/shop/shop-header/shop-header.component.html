@@ -1,132 +1,109 @@
-<mat-toolbar #navbar
-             class="mat-elevation-z6 azet-dt-navbar"
+<mat-toolbar class="mat-elevation-z6 azet-dt-navbar"
              color="primary">
-  <mat-toolbar-row class="section-1">
-    <button mat-mini-fab
-            class="azet-dt-navbar-menu-btn mx-1">
-      <span class="material-icons-round">
-        menu
-      </span>
-    </button>
-    <div routerLink="/home"
-         matRipple
-         class="azet-dt-navbar-icon-btn mr-5">
-      <img src="/assets/pictures/azet-dt-icon.png"
-           alt="Azet D.T.">
+  <mat-toolbar-row class="section-1 border-bottom border-secondary">
+    <div class="section-1__logo mr-5">
+      <div routerLink="/home"
+           matRipple
+           class="pb-2">
+        <img src="/assets/pictures/azet-dt-icon.png"
+             alt="Azet D.T.">
+      </div>
     </div>
-    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
-            mat-flat-button
-            class="azet-dt-navbar-home-btn mx-1"
-            routerLinkActive="mat-accent"
-            routerLink="/home">
-      <span class="material-icons-round">
-        home
-      </span>
-      ACASĂ
-    </button>
-    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
-            mat-flat-button
-            class="azet-dt-navbar-products-btn mx-1"
-            routerLinkActive="mat-accent"
-            routerLink="/products">
-      <span class="material-icons-round">
-        support
-      </span>
-      ANVELOPE
-    </button>
-    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
-            mat-flat-button
-            class="azet-dt-navbar-contact-btn mx-1"
-            routerLinkActive="mat-accent"
-            routerLink="/contact">
-      <span class="material-icons-round">
-        contact_page
-      </span>
-      CONTACT
-    </button>
-    <span class="azet-dt-navbar-spacer"></span>
-    <a [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
-       mat-button
-       class="azet-dt-navbar-phone-btn"
-       href="tel:+40737167631">
-      <span class="material-icons">phone</span>
-      (0737) 167 631
-    </a>
-    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
-            mat-flat-button
-            class="azet-dt-navbar-service-btn mx-1">
-      <span class="material-icons-two-tone">
-        construction
-      </span>
-      PROGRAMEAZĂ ÎN SERVICE
-    </button>
-    <button [@fadeInFadeOut]="(activateAnimation) ? 'fadeIn': 'fadeOut'"
-            mat-flat-button
-            routerLink="/cart"
-            [matBadge]="(cart$ | async)?.totalProducts"
-            matBadgeColor="primary"
-            color="accent"
-            class="azet-dt-navbar-cart-btn">
-      <span class="material-icons-round">
-        shopping_cart
-      </span>
-      COȘ
-    </button>
+    <div class="section-1__info">
+      <a mat-button
+         href="tel:+40737167631">
+        <div class="row no-gutters">
+          <div class="col-3 align-self-center">
+            <span class="material-icons">phone</span>
+          </div>
+          <div class="col-9 text-left">
+            <div class="row no-gutters">
+              <div class="col-12"><strong>CONTACT</strong></div>
+              <div class="col-12 section-1__info__text">(0737) 167 631</div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <span class="p-3">&#8226;</span>
+      <button mat-button>
+        <div class="row no-gutters">
+          <div class="col-3 align-self-center">
+            <span class="material-icons">construction</span>
+          </div>
+          <div class="col-9 text-left">
+            <div class="row no-gutters">
+              <div class="col-12"><strong>PROGRAMEAZĂ</strong></div>
+              <div class="col-12 section-1__info__text">ÎN SERVICE</div>
+            </div>
+          </div>
+        </div>
+      </button>
+      <span class="p-3">&#8226;</span>
+      <a mat-button
+         target="_blank"
+         [href]="azetDtLocation">
+        <div class="row no-gutters">
+          <div class="col-3 align-self-center">
+            <span class="material-icons">place</span>
+          </div>
+          <div class="col-9 text-left">
+            <div class="row no-gutters">
+              <div class="col-12"><strong>LOCAȚIE</strong></div>
+              <div class="col-12 section-1__info__text">
+                Brașov, România
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <span class="p-3">&#8226;</span>
+      <button mat-button>
+        <div class="row no-gutters">
+          <div class="col-3 align-self-center">
+            <span class="material-icons">schedule</span>
+          </div>
+          <div class="col-9 text-left">
+            <div class="row no-gutters">
+              <div class="col-12"><strong>PROGRAM</strong></div>
+              <div class="col-12 section-1__info__text">L-V: 08-17</div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="section-1__social">
+      <app-social-media-icons></app-social-media-icons>
+    </div>
   </mat-toolbar-row>
-</mat-toolbar>
-<mat-toolbar #subnavbar
-             class="azet-dt-subnavbar"
-             color="primary">
   <mat-toolbar-row class="section-2">
-    <button mat-flat-button
+    <button mat-button
             class="mx-1"
             routerLinkActive="mat-accent"
             routerLink="/home">
-      <span class="material-icons-round">
-        home
-      </span>
-      ACASĂ
+      <span class="material-icons-round">home</span>
+      <span>ACASĂ</span>
     </button>
-    <button mat-flat-button
+    <button mat-button
             class="mx-1"
             routerLinkActive="mat-accent"
             routerLink="/products">
-      <span class="material-icons-round">
-        support
-      </span>
-      ANVELOPE
+      <span class="material-icons-round">support</span>
+      <span>ANVELOPE</span>
     </button>
-    <button mat-flat-button
+    <button mat-button
             class="mx-1"
             routerLinkActive="mat-accent"
             routerLink="/contact">
-      <span class="material-icons-round">
-        contact_page
-      </span>
-      CONTACT
+      <span class="material-icons-round">contact_page</span>
+      <span>CONTACT</span>
     </button>
-    <span class="azet-dt-navbar-spacer"></span>
-    <a mat-button
-       href="tel:+40737167631">
-      <span class="material-icons">phone</span>
-      (0737) 167 631
-    </a>
-    <button mat-flat-button
-            class="mx-1">
-      <span class="material-icons-two-tone">
-        construction
-      </span>
-      PROGRAMEAZĂ ÎN SERVICE
-    </button>
-    <button mat-flat-button
+    <button mat-button
             routerLink="/cart"
             [matBadge]="(cart$ | async)?.totalProducts"
             matBadgeColor="primary"
             color="accent">
-      <span class="material-icons-round">
-        shopping_cart
-      </span>
-      COȘ
+      <span class="material-icons-round">shopping_cart</span>
+      <span>COȘ</span>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>

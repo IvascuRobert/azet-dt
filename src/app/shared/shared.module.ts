@@ -12,6 +12,7 @@ import { AzetDTCurrencyPipe } from './pipes/currency.pipe';
 import { FormControlErrorInterpretationPipe } from './pipes/formControlErrorInterpretation.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { ProductsCardComponent } from './products-card/products-card.component';
+import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { ProductsCardComponent } from './products-card/products-card.component';
         AzetDTCurrencyPipe,
         FormControlErrorInterpretationPipe,
         ProductsCardComponent,
+        SocialMediaIconsComponent,
     ],
     exports: [
         CommonModule,
@@ -37,7 +39,8 @@ import { ProductsCardComponent } from './products-card/products-card.component';
         TrimPipe,
         AzetDTCurrencyPipe,
         FormControlErrorInterpretationPipe,
-        ProductsCardComponent
+        ProductsCardComponent,
+        SocialMediaIconsComponent
     ]
 })
 export class SharedModule { }

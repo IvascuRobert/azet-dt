@@ -9,24 +9,35 @@
   z-index: 2;
 
   .section-1.mat-toolbar-row {
-    height: 95px;
-    border-top: 6px solid $azet-dt-orange;
-    border-bottom: 1px solid #124978;
-    background: rgb(18, 73, 120);
-    background: linear-gradient(169deg,
-        rgba(18, 73, 120, 1) 11%,
-        rgba(25, 130, 219, 1) 30%,
-        rgba(158, 158, 158, 1) 44%);
+    height: 120px;
+    justify-content: center;
+    border-bottom: 1px solid black;
   }
-}
-
-.azet-dt-subnavbar {
-  height: 162px;
-  justify-content: flex-end;
 
   .section-2.mat-toolbar-row {
-    background: rgb(229, 229, 230);
-    background: linear-gradient(0deg, rgba(229, 229, 230, 1) 0%, rgba(158, 158, 158, 1) 100%);
+    justify-content: end;
+  }
+
+  .section-1 {
+    .section-1__logo {
+    }
+    .section-1__info {
+      .mat-button {
+        max-width: 166px;
+        padding: 0;
+
+        .material-icons {
+          font-size: 2.3rem;
+          padding-top: 10px;
+        }
+      }
+
+      .section-1__info__text {
+        margin-top: -12px;
+      }
+    }
+    .section-1__social {
+    }
   }
 }
 
@@ -34,28 +45,21 @@
   flex: 1 1 auto;
 }
 
-
-// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
-.azet-dt-navbar-menu-btn {
+.section-1__logo__menu {
   display: none;
 }
 
 @include media-breakpoint-down(lg) {
-  .azet-dt-navbar-menu-btn {
-    display: block;
-  }
-
-  .azet-dt-navbar-home-btn,
-  .azet-dt-navbar-products-btn,
-  .azet-dt-navbar-contact-btn,
-  .azet-dt-navbar-service-btn {
-    display: none;
-  }
-}
-
-
-@include media-breakpoint-down(sm) {
-  .azet-dt-navbar-phone-btn {
-    display: none;
+  .section-1 {
+    .section-1__logo {
+      .section-1__logo__menu {
+        display: block;
+      }
+    }
+    .section-1__social {
+      .section-1__social__menu {
+        display: block;
+      }
+    }
   }
 }
