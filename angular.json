@@ -25,8 +25,18 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/theme/_azet-dt-theme.scss",
-              "src/theme/_variables.scss"
+              "src/theme/_variables.scss",
+              "src/theme/_styles.scss",
+              {
+                "input": "src/theme/_azet-dt-theme.scss",
+                "inject": false,
+                "bundleName": "theme-default"
+              },
+              {
+                "input": "src/theme/_azet-dt-theme-dark.scss",
+                "inject": false,
+                "bundleName": "theme-default-dark"
+              }
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -96,7 +106,17 @@
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/theme/_azet-dt-theme.scss",
-              "src/theme/_variables.scss"
+              "src/theme/_variables.scss",
+              {
+                "input": "src/theme/_azet-dt-theme.scss",
+                "inject": false,
+                "bundleName": "theme-default"
+              },
+              {
+                "input": "src/theme/_azet-dt-theme-dark.scss",
+                "inject": false,
+                "bundleName": "theme-default-dark"
+              }
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"

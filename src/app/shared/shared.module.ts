@@ -13,6 +13,8 @@ import { FormControlErrorInterpretationPipe } from './pipes/formControlErrorInte
 import { TrimPipe } from './pipes/trim.pipe';
 import { ProductsCardComponent } from './products-card/products-card.component';
 import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
+import { LogoIconComponent } from './logo-icon/logo-icon.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
     imports: [
@@ -23,7 +25,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         MatDividerModule,
         MatTooltipModule,
         MatChipsModule,
-        NgbProgressbarModule
+        NgbProgressbarModule,
+        MatRippleModule
     ],
     declarations: [
         MessageComponent,
@@ -32,6 +35,7 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         FormControlErrorInterpretationPipe,
         ProductsCardComponent,
         SocialMediaIconsComponent,
+        LogoIconComponent,
     ],
     exports: [
         CommonModule,
@@ -40,7 +44,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         AzetDTCurrencyPipe,
         FormControlErrorInterpretationPipe,
         ProductsCardComponent,
-        SocialMediaIconsComponent
+        SocialMediaIconsComponent,
+        LogoIconComponent
     ]
 })
 export class SharedModule { }

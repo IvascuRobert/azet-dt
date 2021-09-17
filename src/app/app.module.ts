@@ -21,6 +21,7 @@ import { NgrxForgotPasswordMethodsService } from './core/services/ngrx-forgot-pa
 import { NgrxLoginMethodsService } from './core/services/ngrx-login-methods.service';
 import { NgrxProductsMethodsService } from './core/services/ngrx-products-methods.service';
 import { NgrxRegisterMethodsService } from './core/services/ngrx-register-methods.service';
+import { ThemeService } from './core/services/theme.service';
 import { EnumLocalStorageKeysName } from './shared/enums.enum';
 import { SharedModule } from './shared/shared.module';
 import { ShopModule } from './shop/shop.module';
@@ -62,7 +63,8 @@ export function tokenGetter() {
     {
       provide: HttpUrlGenerator,
       useClass: CustomHttpUrlGenerator
-    }
+    },
+    ThemeService
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

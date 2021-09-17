@@ -1,54 +1,82 @@
 <mat-toolbar class="mat-elevation-z6 azet-dt-navbar"
              color="primary">
-  <mat-toolbar-row class="section-1 border-bottom border-secondary">
-    <div class="section-1__logo mr-5">
-      <div routerLink="/home"
-           matRipple
-           class="pb-2">
-        <img src="/assets/pictures/azet-dt-icon.png"
-             alt="Azet D.T.">
-      </div>
+  <mat-toolbar-row class="section-1">
+    <button mat-icon-button
+            class="mx-1 d-lg-none d-xs-inline">
+      <span class="material-icons-round">menu</span>
+    </button>
+    <div class="section-1__logo mr-3">
+      <app-logo-icon></app-logo-icon>
     </div>
+    <div class="section-1__nav_btn">
+      <button mat-raised-button
+              class="mx-1"
+              routerLinkActive="mat-accent"
+              routerLink="/home">
+        <span class="material-icons-round">home</span>
+        <span>ACASĂ</span>
+      </button>
+      <button mat-raised-button
+              class="mx-1"
+              routerLinkActive="mat-accent"
+              routerLink="/products">
+        <span class="material-icons-round">support</span>
+        <span>ANVELOPE</span>
+      </button>
+      <button mat-raised-button
+              class="mx-1"
+              routerLinkActive="mat-accent"
+              routerLink="/contact">
+        <span class="material-icons-round">contact_page</span>
+        <span>CONTACT</span>
+      </button>
+      <button mat-raised-button
+              routerLink="/cart"
+              [matBadge]="(cart$ | async)?.totalProducts"
+              matBadgeColor="primary">
+        <span class="material-icons-round">shopping_cart</span>
+        <span>COȘ</span>
+      </button>
+    </div>
+    <span class="azet-dt-navbar-spacer"></span>
     <div class="section-1__info">
       <a mat-button
          href="tel:+40737167631">
         <div class="row no-gutters">
-          <div class="col-3 align-self-center">
-            <span class="material-icons">phone</span>
+          <div class="col-12 col-lg-3 align-self-center">
+            <span class="material-icons text-success">phone</span>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-9 text-left d-none d-lg-block">
             <div class="row no-gutters">
-              <div class="col-12"><strong>CONTACT</strong></div>
+              <div class="col-12">CONTACT</div>
               <div class="col-12 section-1__info__text">(0737) 167 631</div>
             </div>
           </div>
         </div>
       </a>
-      <span class="p-3">&#8226;</span>
       <button mat-button>
         <div class="row no-gutters">
-          <div class="col-3 align-self-center">
-            <span class="material-icons">construction</span>
+          <div class="col-12 col-lg-3 align-self-center">
+            <span class="material-icons text-warning">construction</span>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-9 text-left d-none d-lg-block">
             <div class="row no-gutters">
-              <div class="col-12"><strong>PROGRAMEAZĂ</strong></div>
+              <div class="col-12">PROGRAMEAZĂ</div>
               <div class="col-12 section-1__info__text">ÎN SERVICE</div>
             </div>
           </div>
         </div>
       </button>
-      <span class="p-3">&#8226;</span>
       <a mat-button
          target="_blank"
          [href]="azetDtLocation">
         <div class="row no-gutters">
-          <div class="col-3 align-self-center">
-            <span class="material-icons">place</span>
+          <div class="col-12 col-lg-3 align-self-center">
+            <span class="material-icons text-primary">place</span>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-9 text-left d-none d-lg-block">
             <div class="row no-gutters">
-              <div class="col-12"><strong>LOCAȚIE</strong></div>
+              <div class="col-12">LOCAȚIE</div>
               <div class="col-12 section-1__info__text">
                 Brașov, România
               </div>
@@ -56,52 +84,55 @@
           </div>
         </div>
       </a>
-      <span class="p-3">&#8226;</span>
       <button mat-button>
         <div class="row no-gutters">
-          <div class="col-3 align-self-center">
-            <span class="material-icons">schedule</span>
+          <div class="col-12 col-lg-3 align-self-center">
+            <span class="material-icons text-danger">schedule</span>
           </div>
-          <div class="col-9 text-left">
+          <div class="col-9 text-left d-none d-lg-block">
             <div class="row no-gutters">
-              <div class="col-12"><strong>PROGRAM</strong></div>
+              <div class="col-12">PROGRAM</div>
               <div class="col-12 section-1__info__text">L-V: 08-17</div>
             </div>
           </div>
         </div>
       </button>
     </div>
-    <div class="section-1__social">
-      <app-social-media-icons></app-social-media-icons>
-    </div>
+    <mat-slide-toggle color="accent"
+                      [checked]="darkMode$ | async"
+                      (change)="setDarkMode($event)">
+      <span *ngIf="(darkMode$ | async)"
+            class="material-icons">light_mode</span>
+      <span *ngIf="!(darkMode$ | async)"
+            class="material-icons">dark_mode</span>
+    </mat-slide-toggle>
   </mat-toolbar-row>
-  <mat-toolbar-row class="section-2">
-    <button mat-button
+  <mat-toolbar-row class="section-2 border-top border-secondary">
+    <button mat-raised-button
             class="mx-1"
             routerLinkActive="mat-accent"
             routerLink="/home">
       <span class="material-icons-round">home</span>
       <span>ACASĂ</span>
     </button>
-    <button mat-button
+    <button mat-raised-button
             class="mx-1"
             routerLinkActive="mat-accent"
             routerLink="/products">
       <span class="material-icons-round">support</span>
       <span>ANVELOPE</span>
     </button>
-    <button mat-button
+    <button mat-raised-button
             class="mx-1"
             routerLinkActive="mat-accent"
             routerLink="/contact">
       <span class="material-icons-round">contact_page</span>
       <span>CONTACT</span>
     </button>
-    <button mat-button
+    <button mat-raised-button
             routerLink="/cart"
             [matBadge]="(cart$ | async)?.totalProducts"
-            matBadgeColor="primary"
-            color="accent">
+            matBadgeColor="primary">
       <span class="material-icons-round">shopping_cart</span>
       <span>COȘ</span>
     </button>

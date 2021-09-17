@@ -4,8 +4,7 @@
                   [interval]="200000"
                   [pauseOnHover]="pauseOnHover"
                   [pauseOnFocus]="pauseOnFocus"
-                  (slide)="onSlide($event)"
-                  class="azet-dt-shadow">
+                  (slide)="onSlide($event)">
       <ng-template ngbSlide
                    *ngFor="let img of images; index as i">
         <div class="carousel-caption">
