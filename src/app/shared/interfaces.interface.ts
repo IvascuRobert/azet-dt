@@ -27,6 +27,8 @@ export interface ISelect {
     value: string;
     label: string;
     disabled?: boolean;
+    routerLink?: string;
+    icon?: string;
 }
 
 export interface ICart {

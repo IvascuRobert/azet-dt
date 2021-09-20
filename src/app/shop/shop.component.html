@@ -1,9 +1,30 @@
-<app-shop-header></app-shop-header>
+<app-shop-header (openSideNavDrawer)="snav.toggle()"></app-shop-header>
 
-<main class="container">
+<mat-sidenav-container class="azet-dt-sidenav-container"
+                       [style.marginTop.px]="92">
+  <mat-sidenav #snav
+               [mode]="'over'"
+               [fixedInViewport]="true"
+               fixedTopGap="92">
+    <mat-nav-list>
+      <a *ngFor="let item of azetDtMenuHeaderItems"
+         mat-list-item
+         class="mt-1"
+         routerLinkActive="mat-accent"
+         [routerLink]="item.routerLink"
+         [matBadge]="(item.value === 'cart')? (cart$ | async)?.totalProducts : null"
+         matBadgeColor="accent">
+        <span class="material-icons-round">{{item.icon}}</span>
+        <span>{{item.label}}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-  <router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
 
-</main>
-
-<app-shop-footer></app-shop-footer>
+    <app-shop-footer></app-shop-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -2,44 +2,27 @@
              color="primary">
   <mat-toolbar-row class="section-1">
     <button mat-icon-button
-            class="mx-1 d-lg-none d-xs-inline">
+            class="mx-1 d-lg-none d-xs-inline"
+            (click)="clickMenuIcon()">
       <span class="material-icons-round">menu</span>
     </button>
     <div class="section-1__logo mr-3">
       <app-logo-icon></app-logo-icon>
     </div>
     <div class="section-1__nav_btn">
-      <button mat-raised-button
+      <button *ngFor="let item of azetDtMenuHeaderItems"
+              mat-raised-button
               class="mx-1"
               routerLinkActive="mat-accent"
-              routerLink="/home">
-        <span class="material-icons-round">home</span>
-        <span>ACASĂ</span>
-      </button>
-      <button mat-raised-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/products">
-        <span class="material-icons-round">support</span>
-        <span>ANVELOPE</span>
-      </button>
-      <button mat-raised-button
-              class="mx-1"
-              routerLinkActive="mat-accent"
-              routerLink="/contact">
-        <span class="material-icons-round">contact_page</span>
-        <span>CONTACT</span>
-      </button>
-      <button mat-raised-button
-              routerLink="/cart"
-              [matBadge]="(cart$ | async)?.totalProducts"
-              matBadgeColor="primary">
-        <span class="material-icons-round">shopping_cart</span>
-        <span>COȘ</span>
+              [routerLink]="item.routerLink"
+              [matBadge]="(item.value === 'cart')? (cart$ | async)?.totalProducts : null"
+              matBadgeColor="accent">
+        <span class="material-icons-round">{{item.icon}}</span>
+        <span>{{item.label}}</span>
       </button>
     </div>
     <span class="azet-dt-navbar-spacer"></span>
-    <div class="section-1__info">
+    <div class="section-1__info d-none d-sm-block">
       <a mat-button
          href="tel:+40737167631">
         <div class="row no-gutters">
@@ -54,7 +37,7 @@
           </div>
         </div>
       </a>
-      <button mat-button>
+      <a mat-button>
         <div class="row no-gutters">
           <div class="col-12 col-lg-3 align-self-center">
             <span class="material-icons text-warning">construction</span>
@@ -66,7 +49,7 @@
             </div>
           </div>
         </div>
-      </button>
+      </a>
       <a mat-button
          target="_blank"
          [href]="azetDtLocation">
@@ -84,7 +67,7 @@
           </div>
         </div>
       </a>
-      <button mat-button>
+      <a mat-button>
         <div class="row no-gutters">
           <div class="col-12 col-lg-3 align-self-center">
             <span class="material-icons text-danger">schedule</span>
@@ -96,7 +79,7 @@
             </div>
           </div>
         </div>
-      </button>
+      </a>
     </div>
     <mat-slide-toggle color="accent"
                       [checked]="darkMode$ | async"
@@ -108,33 +91,15 @@
     </mat-slide-toggle>
   </mat-toolbar-row>
   <mat-toolbar-row class="section-2 border-top border-secondary">
-    <button mat-raised-button
+    <button *ngFor="let item of azetDtMenuHeaderItems"
+            mat-raised-button
             class="mx-1"
             routerLinkActive="mat-accent"
-            routerLink="/home">
-      <span class="material-icons-round">home</span>
-      <span>ACASĂ</span>
-    </button>
-    <button mat-raised-button
-            class="mx-1"
-            routerLinkActive="mat-accent"
-            routerLink="/products">
-      <span class="material-icons-round">support</span>
-      <span>ANVELOPE</span>
-    </button>
-    <button mat-raised-button
-            class="mx-1"
-            routerLinkActive="mat-accent"
-            routerLink="/contact">
-      <span class="material-icons-round">contact_page</span>
-      <span>CONTACT</span>
-    </button>
-    <button mat-raised-button
-            routerLink="/cart"
-            [matBadge]="(cart$ | async)?.totalProducts"
-            matBadgeColor="primary">
-      <span class="material-icons-round">shopping_cart</span>
-      <span>COȘ</span>
+            [routerLink]="item.routerLink"
+            [matBadge]="(item.value === 'cart')? (cart$ | async)?.totalProducts : null"
+            matBadgeColor="accent">
+      <span class="material-icons-round">{{item.icon}}</span>
+      <span>{{item.label}}</span>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
