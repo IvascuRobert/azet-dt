@@ -1,9 +1,10 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CartService } from '../core/services/cart.service';
 import { EnumLocalStorageKeysName } from '../shared/enums.enum';
-import { ISelect } from '../shared/interfaces.interface';
+import { ICart, ISelect } from '../shared/interfaces.interface';
 import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from '../shared/utils';
 
 @Component({
@@ -13,20 +14,15 @@ import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from '../shared/utils
 })
 export class ShopComponent implements OnInit {
 
-  mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void;
   azetDtLocation = azetDTGoogleMapsLocation;
   azetDtMenuHeaderItems: ISelect[] = azetDtMenuHeaderItems;
+  cart$: Observable<ICart>;
 
   constructor(
     private router: Router,
     private cartService: CartService,
-    media: MediaMatcher,
-    changeDetectorRef: ChangeDetectorRef
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.cart$ = this.cartService.cartProducts$;
 
     // temporarily removed;
     // this.router.events.subscribe((event: any) => {
@@ -58,10 +54,4 @@ export class ShopComponent implements OnInit {
     }
 
   }
-
-
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
 }

@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,7 +33,8 @@ import { ShopRoutingModule } from './shop-routing.module';
         MatDividerModule,
         MatSlideToggleModule,
         MatSidenavModule,
-        MatListModule
+        MatListModule,
+        MatChipsModule
     ],
     declarations: [ShopRoutingModule.components]
 })

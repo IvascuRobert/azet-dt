@@ -47,4 +47,12 @@ export class ShopHeaderComponent implements OnInit {
   clickMenuIcon() {
     this.openSideNavDrawer.emit(true);
   }
+
+  openScheduleInService() {
+
+  }
+
+  openSchedule() {
+
+  }
 }
