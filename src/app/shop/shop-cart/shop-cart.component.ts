@@ -53,7 +53,7 @@ export class ShopCartComponent implements OnInit {
   }
 
   constructor(
-    public trackbyService: TrackByService,
+    public trackByService: TrackByService,
     public cartService: CartService,
     readonly dialog: MatDialog
   ) {

@@ -8,8 +8,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
-import { DialogScheduleInServiceComponent } from './dialog-schedule-in-service/dialog-schedule-in-service.component';
-import { DialogScheduleComponent } from './dialog-schedule/dialog-schedule.component';
 import { LogoIconComponent } from './logo-icon/logo-icon.component';
 import { MessageComponent } from './message/message.component';
 import { AzetDTCurrencyPipe } from './pipes/currency.pipe';
@@ -37,9 +35,7 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         FormControlErrorInterpretationPipe,
         ProductsCardComponent,
         SocialMediaIconsComponent,
-        LogoIconComponent,
-        DialogScheduleInServiceComponent,
-        DialogScheduleComponent
+        LogoIconComponent
     ],
     exports: [
         CommonModule,
@@ -49,9 +45,7 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         FormControlErrorInterpretationPipe,
         ProductsCardComponent,
         SocialMediaIconsComponent,
-        LogoIconComponent,
-        DialogScheduleInServiceComponent,
-        DialogScheduleComponent
+        LogoIconComponent
     ]
 })
 export class SharedModule { }

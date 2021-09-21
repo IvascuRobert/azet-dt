@@ -32,7 +32,7 @@
   <div *ngIf="cart.products.length > 0"
        class="col-8">
     <div class="row">
-      <div *ngFor="let product of cart.products;trackBy: trackbyService.cart"
+      <div *ngFor="let product of cart.products;trackBy: trackByService.cart"
            class="col-12 mb-2">
         <mat-card class="product-card">
           <mat-card-header>

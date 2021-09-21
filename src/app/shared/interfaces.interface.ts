@@ -85,3 +85,15 @@ export interface IAttentionSeekerAnimationOptions extends IAnimationOptions {
      */
     direction?: '<=>' | '=>';
 }
+
+export interface IDaysOfWeek {
+    workDays: IDay[];
+    weekend: IDay[];
+}
+
+export interface IDay {
+    label: string,
+    value: number,
+    icon?: string,
+    timeRange?: string
+}

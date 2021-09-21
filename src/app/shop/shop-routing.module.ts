@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ShopDialogContentScheduleInServiceComponent } from './shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
+import { ShopDialogContentScheduleComponent } from './shop-dialog-content-schedule/shop-dialog-content-schedule.component';
 import { ShopFooterComponent } from './shop-footer/shop-footer.component';
 import { ShopHeaderComponent } from './shop-header/shop-header.component';
 import { ShopComponent } from './shop.component';
@@ -53,6 +55,8 @@ export class ShopRoutingModule {
     static components = [
         ShopComponent,
         ShopHeaderComponent,
-        ShopFooterComponent
+        ShopFooterComponent,
+        ShopDialogContentScheduleComponent,
+        ShopDialogContentScheduleInServiceComponent
     ];
 }

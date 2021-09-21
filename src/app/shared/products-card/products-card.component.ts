@@ -22,7 +22,7 @@ export class ProductsCardComponent implements OnInit {
   viewModeTemplate = EnumViewMode;
   stateTemplate = EnumState;
 
-  constructor(public trackbyService: TrackByService) { }
+  constructor(public trackByService: TrackByService) { }
 
   ngOnInit(): void {
   }

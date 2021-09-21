@@ -4,11 +4,15 @@ import { CartProductClass, ProductClass } from 'src/app/shared/classes.class';
 @Injectable()
 export class TrackByService {
 
-    product(index: number, product: ProductClass): string {
+    product(product: ProductClass): string {
         return product.id;
     }
 
-    cart(index: number, cartProduct: CartProductClass): string {
+    cart(cartProduct: CartProductClass): string {
         return cartProduct.id;
+    }
+
+    trackByValue(payload: any): string {
+        return payload.value;
     }
 }

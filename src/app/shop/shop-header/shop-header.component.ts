@@ -1,13 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
-import { TrackByService } from 'src/app/core/services/trackBy.service';
 import { showHideNavBarButtons } from 'src/app/shared/animation';
 import { ProductClass } from 'src/app/shared/classes.class';
 import { ICart, ISelect } from 'src/app/shared/interfaces.interface';
 import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from 'src/app/shared/utils';
+import { ShopDialogContentScheduleInServiceComponent } from '../shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
+import { ShopDialogContentScheduleComponent } from '../shop-dialog-content-schedule/shop-dialog-content-schedule.component';
 
 @Component({
   selector: 'app-shop-header',
@@ -25,9 +27,9 @@ export class ShopHeaderComponent implements OnInit {
   @Output() openSideNavDrawer = new EventEmitter<boolean>();
 
   constructor(
-    public trackbyService: TrackByService,
     public cartService: CartService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    public dialog: MatDialog
   ) {
     this.cart$ = this.cartService.cartProducts$;
   }
@@ -44,15 +46,15 @@ export class ShopHeaderComponent implements OnInit {
     this.themeService.setDarkMode(checked);
   }
 
-  clickMenuIcon() {
+  clickMenuIcon(): void {
     this.openSideNavDrawer.emit(true);
   }
 
-  openScheduleInService() {
-
+  openScheduleInService(): void {
+    this.dialog.open(ShopDialogContentScheduleInServiceComponent);
   }
 
-  openSchedule() {
-
+  openSchedule(): void {
+    this.dialog.open(ShopDialogContentScheduleComponent);
   }
 }
