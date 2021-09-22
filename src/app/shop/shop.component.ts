@@ -1,11 +1,13 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from '../core/services/cart.service';
 import { EnumLocalStorageKeysName } from '../shared/enums.enum';
 import { ICart, ISelect } from '../shared/interfaces.interface';
 import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from '../shared/utils';
+import { ShopDialogContentScheduleInServiceComponent } from './shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
+import { ShopDialogContentScheduleComponent } from './shop-dialog-content-schedule/shop-dialog-content-schedule.component';
 
 @Component({
   selector: 'app-shop',
@@ -21,6 +23,7 @@ export class ShopComponent implements OnInit {
   constructor(
     private router: Router,
     private cartService: CartService,
+    public dialog: MatDialog
   ) {
     this.cart$ = this.cartService.cartProducts$;
 
@@ -52,6 +55,13 @@ export class ShopComponent implements OnInit {
       console.log(JSON.parse(getProductsFromLocalStorage), 'getProductsFromLocalStorage')
       this.cartService.setCartProducts(JSON.parse(getProductsFromLocalStorage));
     }
+  }
 
+  openScheduleInService(): void {
+    this.dialog.open(ShopDialogContentScheduleInServiceComponent);
+  }
+
+  openSchedule(): void {
+    this.dialog.open(ShopDialogContentScheduleComponent);
   }
 }

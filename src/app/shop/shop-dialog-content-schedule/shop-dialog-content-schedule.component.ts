@@ -16,8 +16,6 @@ export class ShopDialogContentScheduleComponent implements OnInit {
   daysOfWeeks: IDaysOfWeek = daysOfWeeks
   realTimeClock$: Observable<Date>;
   dayNow = new Date().getDay();
-  fromDate = new Date();
-  toDate = new Date();
   currentDateIsInProgramRange: boolean;
 
   constructor(
@@ -26,9 +24,26 @@ export class ShopDialogContentScheduleComponent implements OnInit {
 
   ngOnInit(): void {
     this.realTimeClock$ = this.realTimeClockService.getClock();
+    this.currentDateIsInProgramRange = this.checkIfIsOpened();
+  }
 
-    // console.log(this.fromDate.setHours(08, 0, 0, 0), 'fromDate');
-    // console.log(this.toDate.setHours(08, 0, 0, 0), 'toDate');
+  checkIfIsOpened(): boolean {
+    const now = new Date();
+    const from = new Date();
+    const to = new Date();
+
+    from.setHours(8, 0, 0, 0);
+    to.setHours(17, 0, 0, 0);
+
+    if ((now.getDay() === 0) || (now.getDay() === 6)) { // weekends
+      return false;
+    }
+
+    if ((now < from) || (now > to)) {
+      return false;
+    }
+
+    return true;
   }
 
 }

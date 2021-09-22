@@ -3,9 +3,8 @@
   <span class="material-icons text-danger mr-3">schedule</span>
   Program de lucru
 </h1>
-<p></p>
 <mat-dialog-content mat-dialog-content>
-  <mat-list>
+  <mat-list dense>
     <div mat-subheader>Data exactă</div>
     <mat-list-item>
       <span mat-list-icon
@@ -22,14 +21,20 @@
     <mat-list-item *ngFor="let day of daysOfWeeks.workDays;trackBy: trackByService.trackByValue"
                    [ngClass]="{'border border-success rounded': (day.value === dayNow)}">
       <span mat-list-icon
+            [ngClass]="{'text-success': ((day.value === dayNow) && currentDateIsInProgramRange),
+                        'text-secondary': !((day.value === dayNow) && currentDateIsInProgramRange)}"
             class="material-icons-round text-success">{{day.icon}}</span>
-      <div mat-line>{{day.label}}
-        <span *ngIf="day.value === dayNow"
-              class="text-success">
-          DESCHIS
-        </span>
+      <div mat-line
+           class="d-flex justify-content-between">
+        <span>{{day.label}}</span>
+        <span>{{day.timeRange}}</span>
       </div>
-      <div mat-line>{{day.timeRange}}</div>
+      <div mat-line
+           *ngIf="(day.value === dayNow)">
+        <span *ngIf="currentDateIsInProgramRange else closed"
+              class="text-success">Deschis</span>
+        <ng-template #closed>Închis</ng-template>
+      </div>
     </mat-list-item>
     <mat-divider></mat-divider>
     <div mat-subheader>Zile libere</div>
