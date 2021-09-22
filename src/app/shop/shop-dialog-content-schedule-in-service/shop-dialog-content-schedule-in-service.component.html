@@ -1,5 +1,86 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+<h1 mat-dialog-title
+    class="d-flex align-items-center">
+  <span class="material-icons text-warning mr-3">construction</span>
+  Programează în service
+</h1>
+<div mat-dialog-content>
+  <form class="row align-items-center"
+        (ngSubmit)="onSubmitScheduleInServiceForm()"
+        [formGroup]="scheduleInServiceForm">
+    <mat-form-field class="col-6"
+                    appearance="outline">
+      <mat-label>Nume</mat-label>
+      <input matInput
+             #fn
+             maxlength="20"
+             formControlName="firstName"
+             required>
+      <mat-hint align="end">{{fn.value.length}} / 20</mat-hint>
+      <mat-error *ngIf="controlFirstName.invalid">
+        {{controlFirstName.errors | formControlErrorInterpretation}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-6"
+                    appearance="outline">
+      <mat-label>Prenume</mat-label>
+      <input matInput
+             #ln
+             maxlength="20"
+             formControlName="lastName"
+             required>
+      <mat-hint align="end">{{ln.value.length}} / 20</mat-hint>
+      <mat-error *ngIf="controlLastName.invalid">
+        {{controlLastName.errors | formControlErrorInterpretation}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-6"
+                    appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput
+             placeholder="pat@example.com"
+             formControlName="email"
+             autocomplete="username"
+             required>
+      <mat-error *ngIf="controlEmail.invalid">
+        {{controlEmail.errors | formControlErrorInterpretation}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-6"
+                    appearance="outline">
+      <mat-label>Data programării</mat-label>
+      <input matInput
+             formControlName="date"
+             [matDatepicker]="picker"
+             [matDatepickerFilter]="filterDate"
+             [max]="maxDate"
+             [min]="minDate"
+             required>
+      <mat-datepicker-toggle matSuffix
+                             [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="controlDate.invalid">
+        {{controlDate.errors | formControlErrorInterpretation}}
+      </mat-error>
+    </mat-form-field>
+    <mat-card class="col-12"
+              appearance="outline">
+      <mat-label>Ora programării</mat-label>
+      <ngb-timepicker formControlName="time"
+                      [hourStep]="1"
+                      [minuteStep]="15"
+                      required></ngb-timepicker>
+      <mat-error *ngIf="controlTime.invalid">
+        {{controlTime.errors | formControlErrorInterpretation}}
+      </mat-error>
+    </mat-card>
+  </form>
+</div>
+<div mat-dialog-actions
+     align="end">
+  <button mat-button
+          mat-dialog-close>Închide</button>
+  <button mat-raised-button
+          color="accent"
+          type="submit"
+          mat-dialog-data>Programează</button>
 </div>
