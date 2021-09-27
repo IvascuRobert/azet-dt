@@ -33,7 +33,9 @@ const AppRoutes: Routes = [
             {
                 preloadingStrategy: PreloadModulesStrategy,
                 relativeLinkResolution: 'legacy',
-                useHash: !environment.production
+                useHash: !environment.production,
+                scrollPositionRestoration: 'enabled',
+                anchorScrolling: 'enabled'
             }
         )
     ],
