@@ -44,7 +44,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter
-      },
+      }
     }),
     StoreModule.forRoot({}),
     // Instrumentation must be imported after importing StoreModule (config is optional)
