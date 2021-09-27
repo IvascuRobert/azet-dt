@@ -1,9 +1,10 @@
 @import "~@angular/material/theming";
+@import "variables";
 
 @include mat-core();
 
-$azet-dt-primary: mat-palette($mat-grey, 50);
-$azet-dt-accent: mat-palette($mat-blue, 700, 100, 800);
-$azet-dt-theme: mat-light-theme($azet-dt-primary, $azet-dt-accent);
+$azet-dt-dark-primary: mat-palette($azet-dt-grey-palette);
+$azet-dt-dark-accent: mat-palette($azet-dt-orange-palette, 800);
+$azet-dt-dark-theme: mat-dark-theme($azet-dt-dark-primary, $azet-dt-dark-accent);
 
-@include angular-material-theme($azet-dt-theme);
+@include angular-material-theme($azet-dt-dark-theme);

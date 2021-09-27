@@ -1,5 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
 @import "variables";
+
 
 /* You can add global styles to this file, and also import other style files */
 html,
@@ -12,34 +13,35 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// SCROLL BAR START
-
 /* Works on Firefox */
 * {
+  /* Custom scrollbar */
   scrollbar-width: thin;
   scrollbar-color: $azet-dt-blue transparent;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
+  /* Custom scrollbar */
   width: 8px;
 }
 
 *::-webkit-scrollbar-track {
+  /* Custom scrollbar */
   background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
+  /* Custom scrollbar */
   background-color: $azet-dt-blue;
 }
-
-// SCROLL BAR END
 
 .azet-dt-border-left {
   border-left: 4px solid $azet-dt-blue;
 }
 
 .no-gutters {
+  /* Reduce margin and padding of bootstrap grid ( row, col ) */
   margin-right: 0;
   margin-left: 0;
 
@@ -51,9 +53,33 @@ body {
 }
 
 a:hover {
+
+  /* Anchor hover */
   &:hover {
     color: inherit;
   }
 
   text-decoration: none;
+}
+
+ngb-timepicker {
+  fieldset {
+    .ngb-tp {
+      .ngb-tp-hour {
+        .btn.btn-link {
+          .chevron.ngb-tp-chevron {}
+        }
+
+        .ngb-tp-input {}
+      }
+
+      .ngb-tp-minute {
+        .btn.btn-link {
+          .chevron.ngb-tp-chevron {}
+
+          .ngb-tp-input {}
+        }
+      }
+    }
+  }
 }

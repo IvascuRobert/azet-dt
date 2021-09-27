@@ -7,7 +7,7 @@
   <form class="row align-items-center"
         (ngSubmit)="onSubmitScheduleInServiceForm()"
         [formGroup]="scheduleInServiceForm">
-    <mat-form-field class="col-6"
+    <mat-form-field class="col-12 col-sm-6"
                     appearance="outline">
       <mat-label>Nume</mat-label>
       <input matInput
@@ -20,7 +20,7 @@
         {{controlFirstName.errors | formControlErrorInterpretation}}
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col-6"
+    <mat-form-field class="col-12 col-sm-6"
                     appearance="outline">
       <mat-label>Prenume</mat-label>
       <input matInput
@@ -33,7 +33,7 @@
         {{controlLastName.errors | formControlErrorInterpretation}}
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col-6"
+    <mat-form-field class="col-12 col-sm-6"
                     appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput
@@ -45,7 +45,7 @@
         {{controlEmail.errors | formControlErrorInterpretation}}
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="col-6"
+    <mat-form-field class="col-12 col-sm-6"
                     appearance="outline">
       <mat-label>Data programării</mat-label>
       <input matInput
