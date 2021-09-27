@@ -86,9 +86,9 @@
     <mat-slide-toggle color="accent"
                       [checked]="darkMode$ | async"
                       (change)="setDarkMode($event)">
-      <span *ngIf="(darkMode$ | async)"
-            class="material-icons">light_mode</span>
       <span *ngIf="!(darkMode$ | async)"
+            class="material-icons">light_mode</span>
+      <span *ngIf="(darkMode$ | async)"
             class="material-icons">dark_mode</span>
     </mat-slide-toggle>
   </mat-toolbar-row>
