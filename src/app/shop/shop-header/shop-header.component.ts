@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
@@ -32,6 +31,13 @@ export class ShopHeaderComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.cart$ = this.cartService.cartProducts$;
+    const darkMode: boolean = this.themeService.getStoredThemeMode();
+
+    if (darkMode != null) {
+      this.themeService.setDarkMode(darkMode);
+    } else {
+      this.setDarkMode({ checked: true });
+    }
   }
 
   ngOnInit(): void {
@@ -42,8 +48,9 @@ export class ShopHeaderComponent implements OnInit {
     this.cartService.removeCartProduct(product);
   }
 
-  setDarkMode({ checked }: MatSlideToggleChange) {
+  setDarkMode({ checked }) {
     this.themeService.setDarkMode(checked);
+    this.themeService.storeTheme(checked);
   }
 
   clickMenuIcon(): void {

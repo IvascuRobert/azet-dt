@@ -1,6 +1,7 @@
 import { Injectable, RendererFactory2, Renderer2, Inject } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
+import { EnumLocalStorageKeysName } from 'src/app/shared/enums.enum';
 
 @Injectable({
     providedIn: 'root'
@@ -24,7 +25,7 @@ export class ThemeService {
     ) {
         this.head = document.head;
         this._renderer = rendererFactory.createRenderer(null, null);
-        this.theme$ = combineLatest(this._mainTheme$, this._darkMode$);
+        this.theme$ = combineLatest([this._mainTheme$, this._darkMode$]);
         this.theme$.subscribe(async ([mainTheme, darkMode]) => {
             const cssExt = '.css';
             const cssFilename = darkMode ? mainTheme + '-dark' + cssExt : mainTheme + cssExt;
@@ -34,11 +35,11 @@ export class ThemeService {
         })
     }
 
-    setMainTheme(name: string) {
+    setMainTheme(name: string): void {
         this._mainTheme$.next(name);
     }
 
-    setDarkMode(value: boolean) {
+    setDarkMode(value: boolean): void {
         this._darkMode$.next(value);
     }
 
@@ -52,5 +53,25 @@ export class ThemeService {
             this._renderer.appendChild(this.head, linkEl);
             this.themeLinks = [...this.themeLinks, linkEl];
         })
+    }
+
+    storeTheme(darkMode: boolean): boolean {
+        try {
+            return window.localStorage[EnumLocalStorageKeysName.THEME] = darkMode;
+        } catch { }
+    }
+
+    getStoredThemeMode(): boolean {
+        try {
+            return JSON.parse(window.localStorage[EnumLocalStorageKeysName.THEME]) || false;
+        } catch {
+            return null;
+        }
+    }
+
+    clearStorage(): void {
+        try {
+            window.localStorage.removeItem(EnumLocalStorageKeysName.THEME);
+        } catch { }
     }
 }
