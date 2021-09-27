@@ -19,7 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
+              "src/pictures/azet-dt-icon.png",
               "src/assets"
             ],
             "styles": [
@@ -39,6 +39,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
+                "node_modules",
                 "src/theme"
               ]
             },
@@ -49,7 +50,14 @@
             "extractLicenses": false,
             "buildOptimizer": false,
             "sourceMap": true,
-            "optimization": false,
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": true
+              },
+              "fonts": true
+            },
             "namedChunks": true
           },
           "configurations": {
@@ -106,7 +114,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/pictures/azet-dt-icon.png",
               "src/assets"
             ],
             "styles": [
@@ -124,6 +132,12 @@
                 "bundleName": "theme-default-dark"
               }
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules",
+                "src/theme"
+              ]
+            },
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"
             ]
