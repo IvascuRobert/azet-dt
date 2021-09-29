@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -18,6 +19,7 @@ import { ShopProductRoutingModule } from './shop-product-routing.module';
         MatChipsModule,
         MatDividerModule,
         MatToolbarModule,
+        MatListModule
     ],
     declarations: [ShopProductRoutingModule.components]
 })

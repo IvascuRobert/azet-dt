@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { EnumSortValue, EnumViewMode } from 'src/app/shared/enums.enum';
 import { ISelect } from 'src/app/shared/interfaces.interface';
 
@@ -10,7 +11,7 @@ import { ISelect } from 'src/app/shared/interfaces.interface';
 })
 export class ShopProductsSortComponent implements OnInit {
 
-  @Output() clickViewMode = new EventEmitter<string>();
+  @Output() clickViewMode = new EventEmitter<EnumViewMode>();
 
   sorts: ISelect[] = [];
   viewMode = EnumViewMode;
@@ -26,7 +27,7 @@ export class ShopProductsSortComponent implements OnInit {
     ];
   }
 
-  changeViewMode(event): void {
+  changeViewMode(event: MatButtonToggleChange): void {
     const { value } = event;
 
     if (value) {

@@ -29,11 +29,13 @@ export class NgrxRegisterMethodsService extends DefaultDataService<IUserLogin> {
             .pipe(
                 map((user) => {
                     const { accessToken } = user;
-                    localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
+                    if (accessToken) {
+                        localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
+                    }
                     this.messageAlert(EnumMessageType.SUCCESS, 'Înregistrare efectuată cu succes.');
                     return this.mapUserLoggedIn(user);
                 }),
-                catchError((error: DataServiceError) => {
+                catchError((error) => {
                     const { message } = error;
                     this.messageAlert(EnumMessageType.DANGER, message);
                     return of(error);
@@ -41,7 +43,7 @@ export class NgrxRegisterMethodsService extends DefaultDataService<IUserLogin> {
             );
     }
 
-    messageAlert(type: EnumMessageType, message: string) {
+    messageAlert(type: EnumMessageType, message: string | null) {
         this._snackBar.openFromComponent(MessageComponent, {
             duration: 5000,
             data: <IMessage>{

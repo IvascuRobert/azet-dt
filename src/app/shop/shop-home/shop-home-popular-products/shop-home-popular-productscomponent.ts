@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/core/services/cart.service';
 import { NgrxProductsService } from 'src/app/core/services/ngrx-products.service';
@@ -14,8 +14,8 @@ import { EnumState } from 'src/app/shared/enums.enum';
 })
 export class ShopHomePopularProductsComponent implements OnInit {
   stateTemplate = EnumState;
-  loading$: Observable<boolean>;
-  popularProducts$: Observable<ProductClass[]>
+  loading$: Observable<boolean> = of(false);
+  popularProducts$: Observable<ProductClass[]> = of([]);
 
   constructor(
     private cartService: CartService,

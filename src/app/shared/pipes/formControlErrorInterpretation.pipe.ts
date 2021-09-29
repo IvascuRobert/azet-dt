@@ -5,18 +5,18 @@ import memo from 'memo-decorator';
 @Pipe({ name: 'formControlErrorInterpretation' })
 export class FormControlErrorInterpretationPipe implements PipeTransform {
     @memo()
-    transform(error: ValidationErrors): string {
-        if (error.required) {
+    transform(error: ValidationErrors | null): string {
+        if (error && error.required) {
             return 'Câmpul este obligatoriu.';
-        } else if (error.email) {
+        } else if (error && error.email) {
             return 'Email-ul nu este valid.';
-        } else if (error.minlength) {
+        } else if (error && error.minlength) {
             return 'Ați completat ' + error.minlength.actualLength + ' din ' + error.minlength.requiredLength + ' caractere.';
-        } else if (error.maxlength) {
+        } else if (error && error.maxlength) {
             return 'Ați depășit numărul de caractere cu ' + error.maxlength.actualLength + ' din ' + error.maxlength.requiredLength + '.';
-        } else if (error.passwordMismatch) {
+        } else if (error && error.passwordMismatch) {
             return 'Parolele nu sunt identice.';
-        } else if (error.invalidMsg) {
+        } else if (error && error.invalidMsg) {
             return error.invalidMsg;
         } else {
             return 'Eroare.'

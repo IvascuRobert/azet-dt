@@ -38,7 +38,7 @@ export class NgrxForgotPasswordMethodsService extends DefaultDataService<string>
                 }));
     }
 
-    messageAlert(type: EnumMessageType, message: string) {
+    messageAlert(type: EnumMessageType, message: string | null) {
         this._snackBar.openFromComponent(MessageComponent, {
             duration: 5000,
             data: <IMessage>{

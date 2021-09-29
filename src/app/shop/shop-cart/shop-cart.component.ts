@@ -18,7 +18,7 @@ import { patterns } from 'src/app/shared/patterns';
 })
 export class ShopCartComponent implements OnInit {
 
-  @ViewChild('cartCheckoutTemplate') cartCheckoutTemplate: TemplateRef<any>;
+  @ViewChild('cartCheckoutTemplate') cartCheckoutTemplate!: TemplateRef<any>;
   configDialog: MatDialogConfig = {
     hasBackdrop: true
   };

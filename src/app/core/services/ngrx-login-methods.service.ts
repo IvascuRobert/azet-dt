@@ -30,7 +30,9 @@ export class NgrxLoginMethodsService extends DefaultDataService<IUserLogin> {
             .pipe(
                 map((user) => {
                     const { accessToken } = user;
-                    localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
+                    if (accessToken) {
+                        localStorage.setItem(EnumLocalStorageKeysName.ACCESS_TOKEN, accessToken);
+                    }
                     this.messageAlert(EnumMessageType.SUCCESS, 'Autentificare efectuată cu succes.');
                     this.router.navigateByUrl('/admin-dashboard');
                     return this.mapUserLoggedIn(user);

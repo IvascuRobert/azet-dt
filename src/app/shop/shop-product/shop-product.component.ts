@@ -15,7 +15,7 @@ export class ShopProductComponent implements OnInit {
 
   stateTemplate = EnumState;
   loading$: Observable<boolean>;
-  product$: Observable<ProductClass[]>
+  product$: Observable<ProductClass[] | null> // ngrxProductsService.getByKey return an array of one product
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class ShopProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const productId = this.route.parent.snapshot.params['id'];
+    const productId: string | null = this.route.parent?.snapshot.params['id'];
 
     if (productId) {
       this.ngrxProductsService.getByKey(productId);

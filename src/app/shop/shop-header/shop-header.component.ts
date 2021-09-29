@@ -1,11 +1,13 @@
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { showHideNavBarButtons } from 'src/app/shared/animation';
 import { ProductClass } from 'src/app/shared/classes.class';
-import { ICart, ISelect } from 'src/app/shared/interfaces.interface';
+import { ICart, ISelect, ISiteTheme } from 'src/app/shared/interfaces.interface';
 import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from 'src/app/shared/utils';
 import { ShopDialogContentScheduleInServiceComponent } from '../shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
 import { ShopDialogContentScheduleComponent } from '../shop-dialog-content-schedule/shop-dialog-content-schedule.component';
@@ -21,40 +23,86 @@ export class ShopHeaderComponent implements OnInit {
   cart$: Observable<ICart>;
   azetDtLocation = azetDTGoogleMapsLocation;
   azetDtMenuHeaderItems: ISelect[] = azetDtMenuHeaderItems;
-  darkMode$: Observable<boolean>;
+  currentTheme: ISiteTheme | undefined;
+
+  // The below colors need to align with the themes defined in theme-picker.scss
+  themes: ISiteTheme[] = [
+    {
+      primary: '#673AB7',
+      accent: '#FFC107',
+      displayName: 'Azet DT Light Theme',
+      name: 'azet-dt-theme-light',
+      isDark: false,
+    },
+    {
+      primary: '#3F51B5',
+      accent: '#E91E63',
+      displayName: 'Azet DT Dark Theme',
+      name: 'azet-dt-theme-dark',
+      isDark: true,
+      isDefault: true,
+    }
+  ];
 
   @Output() openSideNavDrawer = new EventEmitter<boolean>();
 
   constructor(
     public cartService: CartService,
     private themeService: ThemeService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private liveAnnouncer: LiveAnnouncer
   ) {
     this.cart$ = this.cartService.cartProducts$;
-    const darkMode: boolean = this.themeService.getStoredThemeMode();
+    const themeName = this.themeService.getStoredThemeName();
 
-    if (darkMode != null) {
-      this.themeService.setDarkMode(darkMode);
+    if (themeName) {
+      this.findAndChangeTheme(themeName);
     } else {
-      this.setDarkMode({ checked: true });
+      this.themes.find(themes => {
+        if (themes.isDefault === true) {
+          this.findAndChangeTheme(themes.name);
+        }
+      });
     }
   }
 
   ngOnInit(): void {
-    this.darkMode$ = this.themeService.darkMode$;
   }
 
   removeCartProduct(product: ProductClass): void {
     this.cartService.removeCartProduct(product);
   }
 
-  setDarkMode({ checked }) {
-    this.themeService.setDarkMode(checked);
-    this.themeService.storeTheme(checked);
+  selectTheme(event: MatSlideToggleChange) {
+    const { checked } = event;
+
+    this.findAndChangeTheme(checked);
   }
 
   clickMenuIcon(): void {
     this.openSideNavDrawer.emit(true);
+  }
+
+  findAndChangeTheme(findBy: string | boolean) {
+    const keyToFind = (typeof findBy === 'boolean') ? 'isDark' : 'name'
+    const theme = this.themes.find(currentTheme => currentTheme[keyToFind] === findBy);
+
+    if (!theme) {
+      return;
+    }
+
+    this.currentTheme = theme;
+
+    if (theme.isDefault) {
+      this.themeService.removeStyle('theme');
+    } else {
+      this.themeService.setStyle('theme', `${theme.name}.css`);
+    }
+
+    if (this.currentTheme) {
+      this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
+      this.themeService.storeTheme(this.currentTheme);
+    }
   }
 
   openScheduleInService(): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { RealTimeClockService } from 'src/app/core/services/real-time-clock.service';
 import { TrackByService } from 'src/app/core/services/trackBy.service';
 import { IDaysOfWeek } from 'src/app/shared/interfaces.interface';
@@ -14,9 +14,9 @@ import { daysOfWeeks } from 'src/app/shared/utils';
 export class ShopDialogContentScheduleComponent implements OnInit {
 
   daysOfWeeks: IDaysOfWeek = daysOfWeeks
-  realTimeClock$: Observable<Date>;
+  realTimeClock$: Observable<Date> = of(new Date());
   dayNow = new Date().getDay();
-  currentDateIsInProgramRange: boolean;
+  currentDateIsInProgramRange: boolean = false;
 
   constructor(
     public trackByService: TrackByService,

@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, TrackByFunction } from '@angular/core';
 import { CartProductClass, ProductClass } from 'src/app/shared/classes.class';
 
 @Injectable()
 export class TrackByService {
 
-    product(product: ProductClass): string {
-        return product.id;
+    product(index: number, item: ProductClass): string {
+        return item.id;
     }
 
-    cart(cartProduct: CartProductClass): string {
-        return cartProduct.id;
+    cart(index: number, item: CartProductClass): string {
+        return item.id;
     }
 
-    trackByValue(payload: any): string {
-        return payload.value;
+    trackByValue(index: number, item: any): string {
+        return item.value;
     }
 }

@@ -1,5 +1,3 @@
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { EnumCarCategory, EnumState } from './enums.enum';
 
 export class ProductClass {
@@ -7,17 +5,17 @@ export class ProductClass {
     name: string;
     description?: string;
     producer: string;
-    price: number;
-    quantity: number;
+    price: number | null;
+    quantity: number | null;
     size: string;
     profile: string;
     image?: string;
-    carCategories: EnumCarCategory[];
-    state: EnumState;
+    carCategories: EnumCarCategory[] | null;
+    state: EnumState | null;
 
     // Normal signature with defaults
     constructor(
-        id = null,
+        id = '',
         name = '',
         description = '',
         producer = '',
@@ -44,14 +42,23 @@ export class ProductClass {
 }
 
 export class CartProductClass extends ProductClass {
-    nbOfProducts: number;
-}
+    nbOfProducts: number | null;
 
-export class CustomErrorStateMatcher implements ErrorStateMatcher {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-        const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
-        const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
-
-        return (invalidCtrl || invalidParent);
+    constructor(
+        id = '',
+        name = '',
+        description = '',
+        producer = '',
+        price = null,
+        quantity = null,
+        size = '',
+        profile = '',
+        image = '',
+        carCategories = null,
+        state = null,
+        nbOfProducts = null
+    ) {
+        super(id, name, description, producer, price, quantity, size, profile, image, carCategories, state);
+        this.nbOfProducts = nbOfProducts;
     }
 }

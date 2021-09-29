@@ -84,11 +84,11 @@
       </a>
     </div>
     <mat-slide-toggle color="accent"
-                      [checked]="darkMode$ | async"
-                      (change)="setDarkMode($event)">
-      <span *ngIf="!(darkMode$ | async)"
+                      [checked]="!!currentTheme?.isDark"
+                      (change)="selectTheme($event)">
+      <span *ngIf="!(currentTheme?.isDark)"
             class="material-icons">light_mode</span>
-      <span *ngIf="(darkMode$ | async)"
+      <span *ngIf="(currentTheme?.isDark)"
             class="material-icons">dark_mode</span>
     </mat-slide-toggle>
   </mat-toolbar-row>

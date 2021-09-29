@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,7 +27,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         MatTooltipModule,
         MatChipsModule,
         NgbProgressbarModule,
-        MatRippleModule
+        MatRippleModule,
+        MatProgressBarModule
     ],
     declarations: [
         MessageComponent,

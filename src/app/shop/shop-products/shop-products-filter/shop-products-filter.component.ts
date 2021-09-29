@@ -16,7 +16,7 @@ export class ShopProductsFilterComponent implements OnInit {
   @Output() clickFilterItem = new EventEmitter();
 
   private transformer = (node: IFilterNode, level: number) => {
-    return {
+    return <IFilterFlatNode>{
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       level,

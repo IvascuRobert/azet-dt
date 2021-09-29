@@ -14,9 +14,9 @@ import { ProductClass } from '../../shared/classes.class';
 })
 export class ProductsCardComponent implements OnInit {
 
-  @Input() products: ProductClass[];
+  @Input() products: ProductClass[] | null = [];
   @Input() viewMode = EnumViewMode.GRID;
-  @Input() loading: boolean = false;
+  @Input() loading: boolean | null = false;
   @Output() clickAddToCart = new EventEmitter<ProductClass>();
 
   viewModeTemplate = EnumViewMode;

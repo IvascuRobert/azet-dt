@@ -69,7 +69,13 @@ export class CartService {
         };
 
         cartProducts.totalProducts = products.length;
-        cartProducts.totalPrice = products.reduce((acc, val) => acc + val.price, 0);
+        cartProducts.totalPrice = products.reduce((acc, val) => {
+            if (val && val.price) {
+                return acc + val.price;
+            } else {
+                return acc;
+            }
+        }, 0);
 
         const groupedProductsById = this.groupBy(products, 'id');
         const uniqueProducts: ProductClass[] = products.filter((v, i, a) => a.indexOf(v) === i);
@@ -83,12 +89,13 @@ export class CartService {
         return cartProducts;
     }
 
-    groupBy(data: ProductClass[], key: string): { [key: string]: ProductClass[] } { // `data` is an array of objects, `key` is the key (or property accessor) to group by
+    groupBy<ProductClass, K extends keyof ProductClass>(data: ProductClass[], propertyName: K): { [key: string]: ProductClass[] } {
+        // `data` is an array of objects, `key` is the key (or property accessor) to group by
         // reduce runs this anonymous function on each element of `data` (the `item` parameter,
         // returning the `storage` parameter at the end
-        return data.reduce(function (storage, item) {
+        return data.reduce((storage: any, item) => {
             // get the first instance of the key by which we're grouping
-            var group = item[key];
+            const group = item[propertyName];
 
             // set `storage` for this instance of group to the outer scope (if not empty) or initialize it
             storage[group] = storage[group] || [];

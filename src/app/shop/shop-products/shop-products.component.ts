@@ -32,7 +32,7 @@ export class ShopProductsComponent implements OnInit {
     this.ngrxProductsService.getAll();
   }
 
-  changeViewMode(viewMode): void {
+  changeViewMode(viewMode: EnumViewMode): void {
     this.viewMode = viewMode;
   }
 

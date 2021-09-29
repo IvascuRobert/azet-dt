@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
@@ -8,14 +7,15 @@ import { ThemeService } from 'src/app/core/services/theme.service';
   styleUrls: ['./logo-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LogoIconComponent implements OnInit {
+export class LogoIconComponent {
+  darkMode = false;
 
-  darkMode$: Observable<boolean>;
+  constructor(public themeService: ThemeService) {
 
-  constructor(private themeService: ThemeService) { }
+    const themeName = this.themeService.getStoredThemeName();
 
-  ngOnInit(): void {
-    this.darkMode$ = this.themeService.darkMode$;
+    if (themeName === 'azet-dt-theme-light') {
+      this.darkMode = true;
+    }
   }
-
 }

@@ -16,7 +16,7 @@ export class ShopHomeComponent implements OnInit {
   pauseOnHover = true;
   pauseOnFocus = true;
 
-  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
+  @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
 
   constructor() { }
 
