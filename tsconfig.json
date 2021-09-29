@@ -1,20 +1,42 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
+/* Taken from https://github.com/angular/material.angular.io/blob/0b390114a4cb7f3dd61e4a73ad6250a35484bc8c/tsconfig.json. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "../dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "es2020",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true
+  },
+  "exclude": [
+    "src/assets",
+    "dist"
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   }
 }
