@@ -18,29 +18,42 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/pictures/azet-dt-icon.png",
-              "src/assets"
-            ],
-            "styles": [
-              "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/theme/_variables.scss",
-              "src/theme/_styles.scss",
-              {
-                "input": "src/theme/_azet-dt-theme.scss",
-                "inject": false,
-                "bundleName": "theme-default"
+            "assets": [{
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
               },
               {
-                "input": "src/theme/_azet-dt-theme-dark.scss",
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              },
+              "src/robots.txt",
+              "src/sitemap.xml"
+            ],
+            "styles": [{
+                "input": "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              }, {
+                "input": "src/styles/_variables.scss"
+              }, {
+                "input": "src/styles/_general.scss"
+              },
+              {
+                "input": "src/styles/themes/_azet-dt-theme-light.scss",
                 "inject": false,
-                "bundleName": "theme-default-dark"
+                "bundleName": "azet-dt-theme-light"
+              },
+              {
+                "input": "src/styles/themes/_azet-dt-theme-dark.scss",
+                "inject": true,
+                "bundleName": "azet-dt-theme-dark"
               }
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules",
-                "src/theme"
+                "src",
+                "src/styles"
               ]
             },
             "scripts": [
@@ -113,29 +126,40 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/pictures/azet-dt-icon.png",
-              "src/assets"
-            ],
-            "styles": [
-              "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/theme/_azet-dt-theme.scss",
-              "src/theme/_variables.scss",
-              {
-                "input": "src/theme/_azet-dt-theme.scss",
-                "inject": false,
-                "bundleName": "theme-default"
+            "assets": [{
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
               },
               {
-                "input": "src/theme/_azet-dt-theme-dark.scss",
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              }
+            ],
+            "styles": [{
+                "input": "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              }, {
+                "input": "src/styles/_variables.scss"
+              }, {
+                "input": "src/styles/_general.scss"
+              },
+              {
+                "input": "src/styles/themes/_azet-dt-theme-light.scss",
                 "inject": false,
-                "bundleName": "theme-default-dark"
+                "bundleName": "azet-dt-theme-light"
+              },
+              {
+                "input": "src/styles/themes/_azet-dt-theme-dark.scss",
+                "inject": true,
+                "bundleName": "azet-dt-theme-dark"
               }
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules",
-                "src/theme"
+                "src",
+                "src/styles"
               ]
             },
             "scripts": [
