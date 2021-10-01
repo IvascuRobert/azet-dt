@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
+import { SubSink } from 'subsink';
+import { ISiteTheme } from '../interfaces.interface';
 
 @Component({
   selector: 'app-logo-icon',
@@ -7,15 +10,29 @@ import { ThemeService } from 'src/app/core/services/theme.service';
   styleUrls: ['./logo-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LogoIconComponent {
-  darkMode = false;
+export class LogoIconComponent implements OnInit, OnDestroy {
 
-  constructor(public themeService: ThemeService) {
+  private subs = new SubSink();
+  isDark = new BehaviorSubject<boolean>(true);
 
+  constructor(public themeService: ThemeService) { }
+
+  ngOnInit(): void {
     const themeName = this.themeService.getStoredThemeName();
 
     if (themeName === 'azet-dt-theme-light') {
-      this.darkMode = true;
+      this.isDark.next(false);
     }
+
+    this.subs.sink = this.themeService.onThemeUpdate.subscribe((theme: ISiteTheme) => {
+      if (typeof theme.isDark === 'boolean') {
+        this.isDark.next(theme.isDark);
+      }
+    });
   }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
 }

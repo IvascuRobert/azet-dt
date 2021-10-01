@@ -8,7 +8,7 @@ import { ThemeService } from 'src/app/core/services/theme.service';
 import { showHideNavBarButtons } from 'src/app/shared/animation';
 import { ProductClass } from 'src/app/shared/classes.class';
 import { ICart, ISelect, ISiteTheme } from 'src/app/shared/interfaces.interface';
-import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from 'src/app/shared/utils';
+import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems, azetDtThemes } from 'src/app/shared/utils';
 import { ShopDialogContentScheduleInServiceComponent } from '../shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
 import { ShopDialogContentScheduleComponent } from '../shop-dialog-content-schedule/shop-dialog-content-schedule.component';
 
@@ -26,23 +26,7 @@ export class ShopHeaderComponent implements OnInit {
   currentTheme: ISiteTheme | undefined;
 
   // The below colors need to align with the themes defined in theme-picker.scss
-  themes: ISiteTheme[] = [
-    {
-      primary: '#673AB7',
-      accent: '#FFC107',
-      displayName: 'Azet DT Light Theme',
-      name: 'azet-dt-theme-light',
-      isDark: false,
-    },
-    {
-      primary: '#3F51B5',
-      accent: '#E91E63',
-      displayName: 'Azet DT Dark Theme',
-      name: 'azet-dt-theme-dark',
-      isDark: true,
-      isDefault: true,
-    }
-  ];
+  themes: ISiteTheme[] = azetDtThemes;
 
   @Output() openSideNavDrawer = new EventEmitter<boolean>();
 

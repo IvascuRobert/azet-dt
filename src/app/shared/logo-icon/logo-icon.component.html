@@ -1,12 +1,9 @@
 <div class="logo-icon__wrapper p-2 mat-elevation-z4"
-     [ngClass]="{ 'logo-icon__wrapper__light': !(themeService.onThemeUpdate | async)?.isDark,
-                  'logo-icon__wrapper__dark': (themeService.onThemeUpdate | async)?.isDark }"
+     [ngClass]="{ 'logo-icon__wrapper__light': !(isDark | async),
+                  'logo-icon__wrapper__dark': (isDark | async) }"
      matRipple>
-
   <div routerLink="/home">
     <img src="/assets/pictures/azet-dt-icon.png"
          alt="Azet D.T.">
   </div>
 </div>
-
-<!-- {{themeService.onThemeUpdate | async | json}} -->
