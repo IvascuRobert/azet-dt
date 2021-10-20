@@ -1,7 +1,6 @@
 <app-shop-header (openSideNavDrawer)="snav.toggle()"></app-shop-header>
-
 <mat-sidenav-container class="azet-dt-sidenav-container"
-                       [style.marginTop.px]="92">
+                       [style.marginTop.px]="0">
   <mat-sidenav #snav
                [mode]="'over'"
                [fixedInViewport]="true"
@@ -20,9 +19,7 @@
                     selected>{{(cart$ | async)?.totalProducts}}</mat-chip>
         </mat-chip-list>
       </a>
-
       <mat-divider></mat-divider>
-
       <a mat-list-item
          class="mt-1"
          href="tel:+40737167631">
@@ -50,12 +47,10 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
-
   <mat-sidenav-content>
-    <main class="container">
+    <main>
       <router-outlet></router-outlet>
     </main>
-
     <app-shop-footer></app-shop-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
