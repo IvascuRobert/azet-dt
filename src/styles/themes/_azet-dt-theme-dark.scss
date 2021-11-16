@@ -3,8 +3,8 @@
 
 @include mat-core();
 
-$azet-dt-dark-primary: mat-palette($azet-dt-grey-palette);
-$azet-dt-dark-accent: mat-palette($azet-dt-orange-palette, 800);
+$azet-dt-dark-primary: mat-palette($mat-blue);
+$azet-dt-dark-accent: mat-palette($mat-orange);
 $azet-dt-dark-theme: mat-dark-theme($azet-dt-dark-primary, $azet-dt-dark-accent);
 
 @include angular-material-theme($azet-dt-dark-theme);
