@@ -1,21 +1,7 @@
-@import "variables";
-
 .logo-icon__wrapper {
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-  border-bottom-left-radius: 14px;
+  border-radius: 15px;
 
   &:hover {
-    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 25%);
-  }
-
-  &.logo-icon__wrapper__dark {
-    background-color: dimgray;
-    border: 2px solid $azet-dt-orange;
-  }
-
-  &.logo-icon__wrapper__light {
-    background-color: floralwhite;
-    border: 2px solid $azet-dt-blue;
+    cursor: pointer;
   }
 }

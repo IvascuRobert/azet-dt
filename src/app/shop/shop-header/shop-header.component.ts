@@ -1,7 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ThemeService } from 'src/app/core/services/theme.service';
@@ -57,10 +56,8 @@ export class ShopHeaderComponent implements OnInit {
     this.cartService.removeCartProduct(product);
   }
 
-  selectTheme(event: MatSlideToggleChange) {
-    const { checked } = event;
-
-    this.findAndChangeTheme(checked);
+  selectTheme(event: any) {
+    this.findAndChangeTheme(event);
   }
 
   clickMenuIcon(): void {

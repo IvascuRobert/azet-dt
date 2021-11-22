@@ -1,61 +1,8 @@
-@import "~bootstrap/scss/bootstrap-grid.scss";
+.azet-dt-header {
+    position: relative;
+    z-index: 2;
+}
 
-.azet-dt-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-
-  .section-1.mat-toolbar-row {
-    height: 100px;
-  }
-
-  .section-2.mat-toolbar-row {
-    justify-content: center;
-  }
-
-  .azet-dt-navbar-spacer {
+.spacer {
     flex: 1 1 auto;
-  }
-
-  .section-1 {
-    .section-1__info {
-      .mat-button {
-        max-width: 166px;
-        padding: 0;
-
-        .material-icons {
-          font-size: 2.3rem;
-          padding-top: 10px;
-        }
-      }
-
-      .section-1__info__text {
-        margin-top: -12px;
-      }
-    }
-  }
-}
-
-.section-2 {
-  display: none;
-}
-
-@media (max-width: 1400px) {
-  .section-1 {
-    .section-1__nav_btn {
-      display: none;
-    }
-  }
-
-  .section-2 {
-    display: flex;
-  }
-}
-
-@media (max-width: 991.98px) {
-  .section-2 {
-    display: none;
-  }
 }

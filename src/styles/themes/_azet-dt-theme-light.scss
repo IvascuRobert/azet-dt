@@ -3,7 +3,7 @@
 
 @include mat-core();
 
-$azet-dt-light-primary: mat-palette($mat-grey, 800, 700, 900);
+$azet-dt-light-primary: mat-palette($mat-grey, 900, 900, 900);
 $azet-dt-light-accent: mat-palette($mat-orange, A200, A100, A400);
 $azet-dt-light-theme: mat-light-theme($azet-dt-light-primary, $azet-dt-light-accent);
 

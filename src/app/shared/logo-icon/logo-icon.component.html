@@ -1,7 +1,6 @@
-<div class="logo-icon__wrapper p-2 mat-elevation-z4"
-     [ngClass]="{ 'logo-icon__wrapper__light': !(isDark | async),
-                  'logo-icon__wrapper__dark': (isDark | async) }"
-     matRipple>
+<div class="logo-icon__wrapper p-2"
+     matRipple
+     [matRippleCentered]="true">
   <div routerLink="/home">
     <img src="/assets/pictures/azet-dt-icon.png"
          alt="Azet D.T.">
