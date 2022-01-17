@@ -1,3 +1,4 @@
+@use "../general" as general;
 @import "~@angular/material/theming";
 @import "variables";
 
@@ -8,3 +9,4 @@ $azet-dt-dark-accent: mat-palette($mat-orange);
 $azet-dt-dark-theme: mat-dark-theme($azet-dt-dark-primary, $azet-dt-dark-accent);
 
 @include angular-material-theme($azet-dt-dark-theme);
+@include general.theme($azet-dt-dark-theme);

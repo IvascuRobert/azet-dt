@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-12 mb-2">
+        <mat-toolbar class="mat-elevation-z6"
+                     color="primary">
+            <mat-toolbar-row>
+                <span class="material-icons mr-2">
+                    lightbulb
+                </span>
+                <span>Informații utile</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </div>
+    <div class="col-lg-3 col-6 mb-1">
+        <mat-card class="h-100">
+            <mat-card-header>
+                <div mat-card-avatar
+                     class="material-icons-two-tone"
+                     style="font-size: 40px;">phone</div>
+                <mat-card-title class="border-bottom">
+                    <a mat-button
+                       href="tel:+40737167631">(0737) 167 631</a>
+                </mat-card-title>
+                <mat-card-subtitle>Tudor Neagu</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <div class="col-lg-3 col-6 mb-1">
+        <mat-card class="h-100">
+            <mat-card-header>
+                <div mat-card-avatar
+                     style="font-size: 40px;"
+                     class="material-icons-two-tone">place</div>
+                <mat-card-title class="border-bottom">
+                    <a mat-button
+                       target="_blank"
+                       [href]="azetDtLocation">LOCAȚIE</a>
+                </mat-card-title>
+                <mat-card-subtitle>Strada Zizinului Nr. 123G, Brașov, România</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <div class="col-lg-3 col-6 mb-1">
+        <mat-card class="h-100">
+            <mat-card-header>
+                <div mat-card-avatar
+                     style="font-size: 40px;"
+                     class="material-icons-two-tone">construction</div>
+                <mat-card-title class="border-bottom">
+                    <a mat-button
+                       (click)="openScheduleInService()">PROGRAMEAZĂ</a>
+                </mat-card-title>
+                <mat-card-subtitle>Pentru mai multe Informații te așteptăm la noi În service.</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <div class="col-lg-3 col-6 mb-1">
+        <mat-card class="h-100">
+            <mat-card-header>
+                <div mat-card-avatar
+                     style="font-size: 40px;"
+                     class="material-icons-two-tone">schedule</div>
+                <mat-card-title class="border-bottom">
+                    <a mat-button
+                       (click)="openSchedule()">PROGRAM</a>
+                </mat-card-title>
+                <mat-card-subtitle>Află programul <b>LIVE</b> AZET DT</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+</div>
