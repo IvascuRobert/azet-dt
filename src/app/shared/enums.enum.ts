@@ -28,6 +28,7 @@ export enum EnumPriceRange {
 export enum EnumState {
     STOCK = 'STOCK',
     COMMAND = 'COMMAND',
+    NOT_IN_STOCK = 'NOT_IN_STOCK'
 }
 
 export enum EnumViewMode {
@@ -53,4 +54,9 @@ export enum EnumLocalStorageKeysName {
     ACCESS_TOKEN = 'azet-dt:access_token',
     PRODUCTS = 'azet-dt:products',
     THEME = 'azet-dt:theme_name'
+}
+
+export enum EnumThemeClassName{
+    DARK_THEME = 'dark-theme',
+    LIGHT_THEME = 'light-theme',
 }

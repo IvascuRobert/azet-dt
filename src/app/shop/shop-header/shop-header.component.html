@@ -20,10 +20,10 @@
   </div>
   <button mat-icon-button
           class="ml-3"
-          (click)="selectTheme(!(currentTheme?.isDark))">
-    <span *ngIf="!(currentTheme?.isDark)"
+          (click)="switchTheme()">
+    <span *ngIf="(theme === null) || (theme === templateEnumThemeClassName.LIGHT_THEME)"
           class="material-icons">light_mode</span>
-    <span *ngIf="(currentTheme?.isDark)"
+    <span *ngIf="(theme === templateEnumThemeClassName.DARK_THEME)"
           class="material-icons">dark_mode</span>
   </button>
 </mat-toolbar>

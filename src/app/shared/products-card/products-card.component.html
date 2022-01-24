@@ -6,21 +6,71 @@
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
     <div *ngFor="let product of products;trackBy: trackByService.product"
-         class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-2">
-      <mat-card>
-        <mat-card-title-group>
-          <mat-card-title>{{product.name | uppercase}}</mat-card-title>
-          <mat-card-subtitle>{{product.producer | uppercase}}</mat-card-subtitle>
-          <img mat-card-image
-               class="img-fluid"
-               src="/assets/pictures/tires-pictures/tire-default.png"
-               style="width: 170px;"
+         class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-2 product-container">
+      <mat-card class="product-card">
+        <div mat-card-image
+             class="product-card__img text-center">
+          <img src="/assets/pictures/tires-pictures/tire-default.png"
                [routerLink]="['/products/' + product.id]"
                [alt]="product.name">
-        </mat-card-title-group>
+        </div>
+        <mat-card-title>{{product.name | uppercase}}</mat-card-title>
+        <mat-card-subtitle>{{product.producer | uppercase}}</mat-card-subtitle>
         <mat-card-content>
-          <p>This card indeterminates progress bar.</p>
+          <div class="product-card__price text-center">
+            <span class="price">{{200 | azetDtCurrency}}</span>
+            <span class="sale mx-2"><del>{{300 | azetDtCurrency}}</del></span>
+            <div class="without-tax">
+              {{280 | azetDtCurrency}} Fără TVA
+            </div>
+          </div>
+          <mat-divider inset></mat-divider>
+          <div [ngSwitch]="product.state"
+               class="product-card__stock my-2">
+            <div *ngSwitchCase="stateTemplate.STOCK"
+                 [class]="product.state">
+              <span matTooltipPosition="right"
+                    matTooltip="Vă anunțăm că numărul afișat este unul informativ, pentru mai multe detalii sunați persoana de contact.">
+                <i class="far fa-check-circle"></i>
+                Stoc
+              </span>
+              <span class="quantity">
+                <i>( > {{product.quantity}})</i>
+              </span>
+            </div>
+            <div *ngSwitchCase="stateTemplate.COMMAND"
+                 [class]="product.state">
+              <span matTooltipPosition="right"
+                    matTooltip="Acest produs se află în stoc-ul distribuitorului.">
+                <i class="far fa-question-circle"></i>
+                Comandă
+              </span>
+            </div>
+            <div *ngSwitchCase="stateTemplate.NOT_IN_STOCK"
+                 [class]="product.state">>
+              <span matTooltipPosition="right"
+                    matTooltip="Acest produs NU se află în stoc, pentru mai multe detalii sunați persoana de contact.">
+                <i class="far fa-times-circle"></i>
+                Nu se află în stoc
+              </span>
+            </div>
+            <div *ngSwitchDefault>
+              <span matTooltipPosition="right"
+                    matTooltip="Pentru mai multe detalii sunați persoana de contact.">
+                <i class="far fa-user-circle"></i>
+                Sună la:
+                <a mat-button
+                   href="tel:+40737167631">(0737) 167 631</a>
+              </span>
+            </div>
+          </div>
+          <mat-chip-list aria-label="Vehicule">
+            <mat-chip *ngFor="let carCategory of product.carCategories">
+              {{carCategory}}
+            </mat-chip>
+          </mat-chip-list>
         </mat-card-content>
+        <mat-divider inset></mat-divider>
         <mat-card-actions>
           <div class="d-flex justify-content-between">
             <button mat-raised-button

@@ -1,0 +1,14 @@
+// vendors
+@import "~bootstrap/scss/bootstrap";
+
+// Components style
+@import "./mixin";
+@import "./palette";
+@import "./scroll-bar";
+@import "./timepicker";
+@import "./general";
+@import "./variables";
+@import "./tooltip";
+
+// Themes
+@import "./core-themes";

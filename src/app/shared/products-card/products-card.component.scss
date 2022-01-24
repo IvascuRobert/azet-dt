@@ -1,0 +1,63 @@
+@import "variables";
+
+.product-container {
+    .product-card {
+        .product-card__img {
+            img {
+                cursor: pointer;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                -webkit-transition-duration: 0.3s;
+                transition-duration: 0.3s;
+                width: 180px;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .mat-card-content {
+            .product-card__price {
+                .price {
+                    // color: $azet-dt-red;
+                    font-size: 1.6em;
+                    font-weight: 600;
+                }
+
+                .sale {
+                    color: $azet-dt-grey;
+                }
+
+                .without-tax {
+                    // font-size: 0.7em;
+                }
+            }
+
+            .product-card__stock {
+                .quantity {
+                    color: $azet-dt-grey;
+                    font-size: 0.875em;
+                }
+                .STOCK {
+                    .fa-check-circle {
+                        color: $azet-dt-green;
+                        animation: pulse 2s infinite;
+                    }
+                }
+                .COMMAND {
+                    .fa-question-circle {
+                        color: $azet-dt-yellow;
+                    }
+                }
+                .NOT_IN_STOCK {
+                    .fa-times-circle {
+                        color: $azet-dt-red;
+                    }
+                }
+                .fa-user-circle {
+                    color: $azet-dt-blue;
+                }
+            }
+        }
+    }
+}

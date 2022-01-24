@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { azetDTGoogleMapsLocation } from 'src/app/shared/utils';
 import { ShopDialogContentScheduleInServiceComponent } from '../../shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
 import { ShopDialogContentScheduleComponent } from '../../shop-dialog-content-schedule/shop-dialog-content-schedule.component';
-
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-shop-home-details',
   templateUrl: './shop-home-details.component.html',
@@ -15,7 +15,7 @@ export class ShopHomeDetailsComponent implements OnInit {
   azetDtLocation = azetDTGoogleMapsLocation;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {

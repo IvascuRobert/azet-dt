@@ -1,13 +1,15 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { DOCUMENT } from '@angular/common';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
-import { ThemeService } from 'src/app/core/services/theme.service';
 import { showHideNavBarButtons } from 'src/app/shared/animation';
 import { ProductClass } from 'src/app/shared/classes.class';
-import { ICart, ISelect, ISiteTheme } from 'src/app/shared/interfaces.interface';
-import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems, azetDtThemes } from 'src/app/shared/utils';
+import { EnumLocalStorageKeysName, EnumThemeClassName } from 'src/app/shared/enums.enum';
+import { ICart, ISelect } from 'src/app/shared/interfaces.interface';
+import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from 'src/app/shared/utils';
 import { ShopDialogContentScheduleInServiceComponent } from '../shop-dialog-content-schedule-in-service/shop-dialog-content-schedule-in-service.component';
 import { ShopDialogContentScheduleComponent } from '../shop-dialog-content-schedule/shop-dialog-content-schedule.component';
 
@@ -22,30 +24,31 @@ export class ShopHeaderComponent implements OnInit {
   cart$: Observable<ICart>;
   azetDtLocation = azetDTGoogleMapsLocation;
   azetDtMenuHeaderItems: ISelect[] = azetDtMenuHeaderItems;
-  currentTheme: ISiteTheme | undefined;
-
-  // The below colors need to align with the themes defined in theme-picker.scss
-  themes: ISiteTheme[] = azetDtThemes;
+  theme: EnumThemeClassName | null = null;
+  templateEnumThemeClassName = EnumThemeClassName;
 
   @Output() openSideNavDrawer = new EventEmitter<boolean>();
 
   constructor(
     public cartService: CartService,
-    private themeService: ThemeService,
     public dialog: MatDialog,
-    private liveAnnouncer: LiveAnnouncer
+    private liveAnnouncer: LiveAnnouncer,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.cart$ = this.cartService.cartProducts$;
-    const themeName = this.themeService.getStoredThemeName();
 
-    if (themeName) {
-      this.findAndChangeTheme(themeName);
+    if (this.getStoredThemeName() != null) {
+      if (this.getStoredThemeName() === EnumThemeClassName.LIGHT_THEME) {
+        this.selectLightTheme();
+      } else {
+        this.selectDarkTheme();
+      }
     } else {
-      this.themes.find(themes => {
-        if (themes.isDefault === true) {
-          this.findAndChangeTheme(themes.name);
-        }
-      });
+      this.theme = this.document.documentElement.classList
+        .contains(EnumThemeClassName.DARK_THEME) ?
+        EnumThemeClassName.DARK_THEME :
+        EnumThemeClassName.LIGHT_THEME;
+      this.storeTheme(this.theme);
     }
   }
 
@@ -56,34 +59,8 @@ export class ShopHeaderComponent implements OnInit {
     this.cartService.removeCartProduct(product);
   }
 
-  selectTheme(event: any) {
-    this.findAndChangeTheme(event);
-  }
-
   clickMenuIcon(): void {
     this.openSideNavDrawer.emit(true);
-  }
-
-  findAndChangeTheme(findBy: string | boolean) {
-    const keyToFind = (typeof findBy === 'boolean') ? 'isDark' : 'name'
-    const theme = this.themes.find(currentTheme => currentTheme[keyToFind] === findBy);
-
-    if (!theme) {
-      return;
-    }
-
-    this.currentTheme = theme;
-
-    if (theme.isDefault) {
-      this.themeService.removeStyle('theme');
-    } else {
-      this.themeService.setStyle('theme', `${theme.name}.css`);
-    }
-
-    if (this.currentTheme) {
-      this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
-      this.themeService.storeTheme(this.currentTheme);
-    }
   }
 
   openScheduleInService(): void {
@@ -92,5 +69,45 @@ export class ShopHeaderComponent implements OnInit {
 
   openSchedule(): void {
     this.dialog.open(ShopDialogContentScheduleComponent);
+  }
+
+  switchTheme(): void {
+    if (this.getStoredThemeName() === EnumThemeClassName.LIGHT_THEME) {
+      this.selectDarkTheme();
+    } else {
+      this.selectLightTheme();
+    }
+  }
+
+  selectDarkTheme(): void {
+    this.document.documentElement.classList.add(EnumThemeClassName.DARK_THEME);
+    this.theme = EnumThemeClassName.DARK_THEME;
+    this.storeTheme(this.theme);
+  }
+
+  selectLightTheme(): void {
+    this.document.documentElement.classList.remove(EnumThemeClassName.DARK_THEME);
+    this.theme = EnumThemeClassName.LIGHT_THEME;
+    this.storeTheme(this.theme);
+  }
+
+  storeTheme(theme: EnumThemeClassName): void {
+    try {
+      window.localStorage[EnumLocalStorageKeysName.THEME] = theme;
+    } catch { }
+  }
+
+  getStoredThemeName(): EnumThemeClassName | null {
+    try {
+      return window.localStorage[EnumLocalStorageKeysName.THEME] || null;
+    } catch {
+      return null;
+    }
+  }
+
+  clearStorage(): void {
+    try {
+      window.localStorage.removeItem(EnumLocalStorageKeysName.THEME);
+    } catch { }
   }
 }

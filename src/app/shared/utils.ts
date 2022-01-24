@@ -1,4 +1,4 @@
-import { IDaysOfWeek, ISelect, ISiteTheme } from './interfaces.interface';
+import { IDaysOfWeek, ISelect } from './interfaces.interface';
 
 export const azetDTGoogleMapsLocation = `https://www.google.com/maps/place/Azet+DT+Resapare+
                                          Anvelope+Camion+SRL/@45.6575573,25.641716,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x40b35c6b2de4023d
@@ -77,21 +77,3 @@ export const daysOfWeeks: IDaysOfWeek = {
         }
     ]
 };
-
-export const azetDtThemes: ISiteTheme[] = [
-    {
-        primary: '#673AB7',
-        accent: '#FFC107',
-        displayName: 'Azet DT Light Theme',
-        name: 'azet-dt-theme-light',
-        isDark: false,
-    },
-    {
-        primary: '#3F51B5',
-        accent: '#E91E63',
-        displayName: 'Azet DT Dark Theme',
-        name: 'azet-dt-theme-dark',
-        isDark: true,
-        isDefault: true,
-    }
-];

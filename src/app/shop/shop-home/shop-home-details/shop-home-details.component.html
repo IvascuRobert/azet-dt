@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-12 mb-2">
+<div class="row justify-content-center">
+    <div class="col-12 mb-5">
         <mat-toolbar class="mat-elevation-z6"
                      color="primary">
             <mat-toolbar-row>
@@ -10,11 +10,11 @@
             </mat-toolbar-row>
         </mat-toolbar>
     </div>
-    <div class="col-lg-3 col-6 mb-1">
-        <mat-card class="h-100">
+    <div class="col-lg-3 col-6 mb-1 shop-home-details__container">
+        <mat-card class="h-100 shop-home-details__phone">
             <mat-card-header>
                 <div mat-card-avatar
-                     class="material-icons-two-tone"
+                     class="material-icons"
                      style="font-size: 40px;">phone</div>
                 <mat-card-title class="border-bottom">
                     <a mat-button
@@ -24,12 +24,12 @@
             </mat-card-header>
         </mat-card>
     </div>
-    <div class="col-lg-3 col-6 mb-1">
-        <mat-card class="h-100">
+    <div class="col-lg-3 col-6 mb-1 shop-home-details__container">
+        <mat-card class="h-100 shop-home-details__location">
             <mat-card-header>
                 <div mat-card-avatar
                      style="font-size: 40px;"
-                     class="material-icons-two-tone">place</div>
+                     class="material-icons">place</div>
                 <mat-card-title class="border-bottom">
                     <a mat-button
                        target="_blank"
@@ -39,12 +39,12 @@
             </mat-card-header>
         </mat-card>
     </div>
-    <div class="col-lg-3 col-6 mb-1">
-        <mat-card class="h-100">
+    <div class="col-lg-3 col-6 mb-1 shop-home-details__container">
+        <mat-card class="h-100 shop-home-details__appointment">
             <mat-card-header>
                 <div mat-card-avatar
                      style="font-size: 40px;"
-                     class="material-icons-two-tone">construction</div>
+                     class="material-icons">construction</div>
                 <mat-card-title class="border-bottom">
                     <a mat-button
                        (click)="openScheduleInService()">PROGRAMEAZĂ</a>
@@ -53,12 +53,12 @@
             </mat-card-header>
         </mat-card>
     </div>
-    <div class="col-lg-3 col-6 mb-1">
-        <mat-card class="h-100">
+    <div class="col-lg-3 col-6 mb-1 shop-home-details__container">
+        <mat-card class="h-100 shop-home-details__schedule">
             <mat-card-header>
                 <div mat-card-avatar
                      style="font-size: 40px;"
-                     class="material-icons-two-tone">schedule</div>
+                     class="material-icons">schedule</div>
                 <mat-card-title class="border-bottom">
                     <a mat-button
                        (click)="openSchedule()">PROGRAM</a>
@@ -67,4 +67,5 @@
             </mat-card-header>
         </mat-card>
     </div>
+    <mat-divider class="col-8 my-5"></mat-divider>
 </div>
