@@ -6,6 +6,7 @@ import memo from 'memo-decorator';
 export class FormControlErrorInterpretationPipe implements PipeTransform {
     @memo()
     transform(error: ValidationErrors | null): string {
+
         if (error && error.required) {
             return 'Câmpul este obligatoriu.';
         } else if (error && error.email) {
@@ -18,6 +19,14 @@ export class FormControlErrorInterpretationPipe implements PipeTransform {
             return 'Parolele nu sunt identice.';
         } else if (error && error.invalidMsg) {
             return error.invalidMsg;
+        } else if (error && error.matDatepickerMin) {
+            if (error.matDatepickerMin.actual && error.matDatepickerMin.min) {
+                return 'Data introdusă este în trecut.';
+            }
+
+            return 'Data este invalidă.'
+        } else if (error && error.customMessage) {
+            return error.customMessage;
         } else {
             return 'Eroare.'
         }

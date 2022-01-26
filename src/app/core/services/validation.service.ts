@@ -17,4 +17,22 @@ export class ValidationService {
             }
         };
     }
+
+    static customTimePickerValidatorInterval(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const value = control.value;
+
+            if (!value) {
+                return null;
+            }
+            if (value.hour < 8) {
+                return { customMessage: 'Ne pare rău dar este prea devreme.' };
+            }
+            if (value.hour > 17) {
+                return { customMessage: 'Ne pare rău dar este prea târziu.' };
+            }
+
+            return null;
+        };
+    }
 }

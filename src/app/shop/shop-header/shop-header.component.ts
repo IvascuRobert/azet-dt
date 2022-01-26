@@ -1,10 +1,10 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { DOCUMENT } from '@angular/common';
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { CartService } from 'src/app/core/services/cart.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { showHideNavBarButtons } from 'src/app/shared/animation';
 import { ProductClass } from 'src/app/shared/classes.class';
 import { EnumLocalStorageKeysName, EnumThemeClassName } from 'src/app/shared/enums.enum';
@@ -33,12 +33,13 @@ export class ShopHeaderComponent implements OnInit {
     public cartService: CartService,
     public dialog: MatDialog,
     private liveAnnouncer: LiveAnnouncer,
+    private localStorageService: LocalStorageService,
     @Inject(DOCUMENT) private document: Document
   ) {
     this.cart$ = this.cartService.cartProducts$;
 
-    if (this.getStoredThemeName() != null) {
-      if (this.getStoredThemeName() === EnumThemeClassName.LIGHT_THEME) {
+    if (this.localStorageService.getStorageValueByKey(EnumLocalStorageKeysName.THEME) != null) {
+      if (this.localStorageService.getStorageValueByKey(EnumLocalStorageKeysName.THEME) === EnumThemeClassName.LIGHT_THEME) {
         this.selectLightTheme();
       } else {
         this.selectDarkTheme();
@@ -48,7 +49,7 @@ export class ShopHeaderComponent implements OnInit {
         .contains(EnumThemeClassName.DARK_THEME) ?
         EnumThemeClassName.DARK_THEME :
         EnumThemeClassName.LIGHT_THEME;
-      this.storeTheme(this.theme);
+      this.localStorageService.storeValue(this.theme, EnumLocalStorageKeysName.THEME);
     }
   }
 
@@ -64,7 +65,10 @@ export class ShopHeaderComponent implements OnInit {
   }
 
   openScheduleInService(): void {
-    this.dialog.open(ShopDialogContentScheduleInServiceComponent);
+    this.dialog.open(ShopDialogContentScheduleInServiceComponent, {
+      width: '400px',
+      disableClose: true
+    });
   }
 
   openSchedule(): void {
@@ -72,7 +76,7 @@ export class ShopHeaderComponent implements OnInit {
   }
 
   switchTheme(): void {
-    if (this.getStoredThemeName() === EnumThemeClassName.LIGHT_THEME) {
+    if (this.localStorageService.getStorageValueByKey(EnumLocalStorageKeysName.THEME) === EnumThemeClassName.LIGHT_THEME) {
       this.selectDarkTheme();
     } else {
       this.selectLightTheme();
@@ -82,32 +86,12 @@ export class ShopHeaderComponent implements OnInit {
   selectDarkTheme(): void {
     this.document.documentElement.classList.add(EnumThemeClassName.DARK_THEME);
     this.theme = EnumThemeClassName.DARK_THEME;
-    this.storeTheme(this.theme);
+    this.localStorageService.storeValue(this.theme, EnumLocalStorageKeysName.THEME);
   }
 
   selectLightTheme(): void {
     this.document.documentElement.classList.remove(EnumThemeClassName.DARK_THEME);
     this.theme = EnumThemeClassName.LIGHT_THEME;
-    this.storeTheme(this.theme);
-  }
-
-  storeTheme(theme: EnumThemeClassName): void {
-    try {
-      window.localStorage[EnumLocalStorageKeysName.THEME] = theme;
-    } catch { }
-  }
-
-  getStoredThemeName(): EnumThemeClassName | null {
-    try {
-      return window.localStorage[EnumLocalStorageKeysName.THEME] || null;
-    } catch {
-      return null;
-    }
-  }
-
-  clearStorage(): void {
-    try {
-      window.localStorage.removeItem(EnumLocalStorageKeysName.THEME);
-    } catch { }
+    this.localStorageService.storeValue(this.theme, EnumLocalStorageKeysName.THEME);
   }
 }

@@ -33,6 +33,7 @@ $dark-app-theme: mat-dark-theme(
 @include angular-material-theme($light-app-theme);
 @include body-theme($light-app-theme);
 @include background-opacity-theme($light-app-theme);
+@include timepicker-theme($light-app-theme);
 
 // Include the dark color styles inside of a block with a CSS class. You can make this
 // CSS class whatever you want. In this example, any component inside of an element with
@@ -41,4 +42,5 @@ $dark-app-theme: mat-dark-theme(
     @include angular-material-color($dark-app-theme);
     @include body-theme($dark-app-theme);
     @include background-opacity-theme($dark-app-theme);
+    @include timepicker-theme($dark-app-theme);
 }

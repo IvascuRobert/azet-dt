@@ -1,39 +1,57 @@
 <h1 mat-dialog-title
     class="d-flex align-items-center">
-  <span class="material-icons text-warning mr-3">construction</span>
+  <span class="material-icons text-warning mr-3">tire_repair</span>
   Programează în service
 </h1>
 <div mat-dialog-content>
-  <form class="row align-items-center"
+  <form class="row align-items-center justify-content-center"
         (ngSubmit)="onSubmitScheduleInServiceForm()"
         [formGroup]="scheduleInServiceForm">
-    <mat-form-field class="col-12 col-sm-6"
+    <mat-form-field class="col-12 mb-1"
                     appearance="outline">
       <mat-label>Nume</mat-label>
-      <input matInput
-             #fn
+      <input id="name"
+             #n
+             name="name"
+             type="text"
+             matInput
              maxlength="20"
-             formControlName="firstName"
+             formControlName="name"
+             placeholder="Nume"
+             autocomplete="username"
              required>
-      <mat-hint align="end">{{fn.value.length}} / 20</mat-hint>
-      <mat-error *ngIf="controlFirstName.invalid">
-        {{controlFirstName.errors | formControlErrorInterpretation}}
+      <mat-hint align="start">Ex. Popescu Adrian</mat-hint>
+      <mat-hint align="end">{{n.value.length}} / 20</mat-hint>
+      <mat-error *ngIf="controlName.invalid">
+        {{controlName.errors | formControlErrorInterpretation}}
       </mat-error>
+      <span matSuffix
+            class="material-icons">
+        person
+      </span>
     </mat-form-field>
-    <mat-form-field class="col-12 col-sm-6"
+    <mat-form-field class="col-12 w-100 my-3"
                     appearance="outline">
-      <mat-label>Prenume</mat-label>
-      <input matInput
-             #ln
-             maxlength="20"
-             formControlName="lastName"
+      <span matPrefix>+40 &nbsp;</span>
+      <mat-label>Telefon</mat-label>
+      <input id="phone"
+             name="phone"
+             type="tel"
+             aria-label="Telefon"
+             matInput
+             formControlName="phone"
+             placeholder="555-555-1234"
              required>
-      <mat-hint align="end">{{ln.value.length}} / 20</mat-hint>
-      <mat-error *ngIf="controlLastName.invalid">
-        {{controlLastName.errors | formControlErrorInterpretation}}
+      <mat-hint align="start">Introduceți numărul de telefon</mat-hint>
+      <mat-error *ngIf="controlPhone.invalid">
+        {{controlPhone.errors | formControlErrorInterpretation}}
       </mat-error>
+      <span matSuffix
+            class="material-icons">
+        phone
+      </span>
     </mat-form-field>
-    <mat-form-field class="col-12 col-sm-6"
+    <mat-form-field class="col-12 mb-1"
                     appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput
@@ -44,8 +62,30 @@
       <mat-error *ngIf="controlEmail.invalid">
         {{controlEmail.errors | formControlErrorInterpretation}}
       </mat-error>
+      <span matSuffix
+            class="material-icons">
+        mail
+      </span>
     </mat-form-field>
-    <mat-form-field class="col-12 col-sm-6"
+    <mat-form-field class="col-12 mb-1"
+                    appearance="outline">
+      <mat-label>Motiv</mat-label>
+      <input matInput
+             #reason
+             formControlName="reason"
+             maxlength="100"
+             placeholder="Ex. Schimbare de cauciuc..."
+             required>
+      <mat-hint align="end">{{reason.value.length}} / 100</mat-hint>
+      <mat-error *ngIf="controlReason.invalid">
+        {{controlReason.errors | formControlErrorInterpretation}}
+      </mat-error>
+      <span matSuffix
+            class="material-icons">
+        textsms
+      </span>
+    </mat-form-field>
+    <mat-form-field class="col-12 mb-1"
                     appearance="outline">
       <mat-label>Data programării</mat-label>
       <input matInput
@@ -54,6 +94,7 @@
              [matDatepickerFilter]="filterDate"
              [max]="maxDate"
              [min]="minDate"
+             matTooltip="Data programării trebuie să fie cu o zi înainte de ziua curentă."
              required>
       <mat-datepicker-toggle matSuffix
                              [for]="picker"></mat-datepicker-toggle>
@@ -62,14 +103,21 @@
         {{controlDate.errors | formControlErrorInterpretation}}
       </mat-error>
     </mat-form-field>
-    <mat-card class="col-12"
-              appearance="outline">
-      <mat-label>Ora programării</mat-label>
+    <mat-card class="col-12 text-center m-0 p-0">
+      <mat-label class="align-items-center">
+        Ora programării *
+      </mat-label>
       <ngb-timepicker formControlName="time"
                       [hourStep]="1"
                       [minuteStep]="15"
                       required></ngb-timepicker>
-      <mat-error *ngIf="controlTime.invalid">
+      <mat-error *ngIf="controlTime.valid"
+                 class="text-success"
+                 style="font-size: 75%;">
+        Ora este validă.
+      </mat-error>
+      <mat-error *ngIf="controlTime.invalid"
+                 style="font-size: 75%;">
         {{controlTime.errors | formControlErrorInterpretation}}
       </mat-error>
     </mat-card>

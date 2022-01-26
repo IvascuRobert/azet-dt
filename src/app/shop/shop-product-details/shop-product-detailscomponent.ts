@@ -7,11 +7,11 @@ import { ProductClass } from 'src/app/shared/classes.class';
 import { EnumState } from 'src/app/shared/enums.enum';
 
 @Component({
-  selector: 'app-shop-product',
-  templateUrl: './shop-product.component.html',
-  styleUrls: ['./shop-product.component.scss']
+  selector: 'app-shop-product-details',
+  templateUrl: './shop-product-details.component.html',
+  styleUrls: ['./shop-product-details.component.scss']
 })
-export class ShopProductComponent implements OnInit {
+export class ShopProductDetailsComponent implements OnInit {
 
   stateTemplate = EnumState;
   loading$: Observable<boolean>;

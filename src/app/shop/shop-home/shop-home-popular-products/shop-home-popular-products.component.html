@@ -7,13 +7,6 @@
           local_offer
         </span>
         <span>Nu rata ofertele noastre</span>
-        <span class="navbar-spacer"></span>
-        <button mat-icon-button
-                [matMenuTriggerFor]="menu">
-          <span class="material-icons">
-            more_vert
-          </span>
-        </button>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
@@ -29,25 +22,3 @@
   </div>
   <mat-divider class="col-8 my-5"></mat-divider>
 </div>
-
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <span class="material-icons">
-      dialpad
-    </span>
-    <span>Redial</span>
-  </button>
-  <button mat-menu-item
-          disabled>
-    <span class="material-icons">
-      voicemail
-    </span>
-    <span>Check voice mail</span>
-  </button>
-  <button mat-menu-item>
-    <span class="material-icons">
-      notifications_off
-    </span>
-    <span>Disable alerts</span>
-  </button>
-</mat-menu>

@@ -1,0 +1,143 @@
+<mat-list>
+    <div mat-subheader>{{ title }}</div>
+    <mat-list-item>
+        <span mat-list-icon
+              class="material-icons">
+            call
+        </span>
+        <div mat-line>Telefon 1</div>
+        <div mat-line>
+            <a mat-button
+               href="tel:+40737167631">
+                (0737) 167 631
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </a>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <span mat-list-icon
+              class="material-icons">
+            call
+        </span>
+        <div mat-line>Telefon 2</div>
+        <div mat-line>
+            <a mat-button
+               href="tel:+40754369261">
+                (0754) 369 261
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </a>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <span mat-list-icon
+              class="material-icons">
+            email
+        </span>
+        <div mat-line>Mail</div>
+        <div mat-line>
+            <a mat-button
+               href="mailto: office@azet-resapare.ro">
+                office@azet-resapare.ro
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </a>
+        </div>
+    </mat-list-item>
+    <mat-list-item *ngIf="showContactPageDetail">
+        <span mat-list-icon
+              class="material-icons">
+            contact_page
+        </span>
+        <div mat-line>Scrie-ne pe pagina de contact</div>
+        <div mat-line>
+            <button mat-button
+                    routerLink="/contact">
+                Contact
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </button>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <span mat-list-icon
+              class="material-icons">
+            place
+        </span>
+        <div mat-line>Adresa</div>
+        <div mat-line>
+            <a mat-button
+               target="_blank"
+               [href]="azetDtLocation">
+                Strada Zizinului Nr. 123G, Brașov, România
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </a>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <span mat-list-icon
+              class="material-icons">
+            schedule
+        </span>
+        <div mat-line>Program de lucru</div>
+        <div mat-line>
+            <a mat-button
+               (click)="openSchedule()">
+                PROGRAM
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </a>
+        </div>
+    </mat-list-item>
+    <mat-list-item>
+        <span mat-list-icon
+              class="material-icons">
+            tire_repair
+        </span>
+        <div mat-line>Realizează o programare</div>
+        <div mat-line>
+            <a mat-button
+               (click)="openScheduleInService()">
+                PROGRAMEAZĂ
+                <span class="material-icons-two-tone">
+                    launch
+                </span>
+            </a>
+        </div>
+    </mat-list-item>
+    <mat-divider *ngIf="showJuridicDetails"></mat-divider>
+    <div *ngIf="showJuridicDetails"
+         mat-subheader>Detalii juridice</div>
+    <mat-list-item *ngIf="showJuridicDetails">
+        <span mat-list-icon
+              class="material-icons">
+            account_box
+        </span>
+        <div mat-line>CUI</div>
+        <div mat-line>RO 29306831</div>
+    </mat-list-item>
+    <mat-list-item *ngIf="showJuridicDetails">
+        <span mat-list-icon
+              class="material-icons">
+            account_balance_wallet
+        </span>
+        <div mat-line>Cont Bancar</div>
+        <div mat-line>RO14 BACX 0000 0006 8969 8001 </div>
+    </mat-list-item>
+    <mat-list-item *ngIf="showJuridicDetails">
+        <span mat-list-icon
+              class="material-icons">
+            account_balance
+        </span>
+        <div mat-line>Bancă</div>
+        <div mat-line>Unicredit Tiriac Bank</div>
+    </mat-list-item>
+</mat-list>

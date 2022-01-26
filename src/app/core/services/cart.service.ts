@@ -4,11 +4,15 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductClass } from 'src/app/shared/classes.class';
 import { EnumLocalStorageKeysName } from 'src/app/shared/enums.enum';
 import { ICart } from 'src/app/shared/interfaces.interface';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable()
 export class CartService {
 
-    constructor(private _snackBar: MatSnackBar) { }
+    constructor(
+        private _snackBar: MatSnackBar,
+        private localStorageService: LocalStorageService
+    ) { }
     products: ProductClass[] = []
 
     cartProducts$ = new BehaviorSubject<ICart>({
@@ -20,7 +24,7 @@ export class CartService {
     addCartProduct(productAdded: ProductClass): BehaviorSubject<ICart> {
         this.products.push(productAdded);
 
-        localStorage.setItem(EnumLocalStorageKeysName.PRODUCTS, JSON.stringify(this.products));
+        this.localStorageService.storeValue(JSON.stringify(this.products), EnumLocalStorageKeysName.PRODUCTS);
 
         const cartProducts = this.transformProductsToCart(this.products);
 
@@ -38,7 +42,7 @@ export class CartService {
 
         this.products.splice(findIndexOfProductRemoved, 1);
 
-        localStorage.setItem(EnumLocalStorageKeysName.PRODUCTS, JSON.stringify(this.products));
+        this.localStorageService.storeValue(JSON.stringify(this.products), EnumLocalStorageKeysName.PRODUCTS);
 
         const cartProducts = this.transformProductsToCart(this.products);
 

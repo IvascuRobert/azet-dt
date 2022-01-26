@@ -21,7 +21,7 @@ const routes: Routes = [
             },
             {
                 path: 'products/:id',
-                loadChildren: () => import('./shop-product/shop-product.module').then(m => m.ShopProductModule)
+                loadChildren: () => import('./shop-product-details/shop-product-details.module').then(m => m.ShopProductDetailsModule)
             },
             {
                 path: 'contact',

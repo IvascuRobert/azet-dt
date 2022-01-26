@@ -53,7 +53,8 @@ export enum EnumMessageType {
 export enum EnumLocalStorageKeysName {
     ACCESS_TOKEN = 'azet-dt:access_token',
     PRODUCTS = 'azet-dt:products',
-    THEME = 'azet-dt:theme_name'
+    THEME = 'azet-dt:theme_name',
+    SORT_VIEW = 'azet-dt:sort_view',
 }
 
 export enum EnumThemeClassName{

@@ -6,7 +6,7 @@ import memo from 'memo-decorator';
 export class AzetDTCurrencyPipe implements PipeTransform {
     @memo()
     transform(
-        value: number,
+        value: number | null,
         currencyCode: string = 'Lei',
         display:
             | 'code'
@@ -17,12 +17,17 @@ export class AzetDTCurrencyPipe implements PipeTransform {
         digitsInfo: string = '3.2-2',
         locale: string = 'ro',
     ): string | null {
-        return formatCurrency(
-            value,
-            locale,
-            getCurrencySymbol(currencyCode, 'wide'),
-            currencyCode,
-            digitsInfo,
-        );
+
+        if (value != null) {
+            return formatCurrency(
+                value,
+                locale,
+                getCurrencySymbol(currencyCode, 'wide'),
+                currencyCode,
+                digitsInfo,
+            );
+        }
+
+        return '';
     }
 }

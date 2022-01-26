@@ -6,12 +6,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ShopProductRoutingModule } from './shop-product-routing.module';
+import { ShopProductDetailsRoutingModule } from './shop-product-details-routing.module';
 
 @NgModule({
     imports: [
-        ShopProductRoutingModule,
+        ShopProductDetailsRoutingModule,
         SharedModule,
         MatCardModule,
         MatProgressBarModule,
@@ -19,8 +20,9 @@ import { ShopProductRoutingModule } from './shop-product-routing.module';
         MatChipsModule,
         MatDividerModule,
         MatToolbarModule,
+        MatTooltipModule,
         MatListModule
     ],
-    declarations: [ShopProductRoutingModule.components]
+    declarations: [ShopProductDetailsRoutingModule.components]
 })
-export class ShopProductModule { }
+export class ShopProductDetailsModule { }

@@ -1,0 +1,27 @@
+@import "variables";
+
+.product-card__stock {
+    .quantity {
+        color: $azet-dt-grey;
+        font-size: 0.875em;
+    }
+    .STOCK {
+        .fa-check-circle {
+            color: $azet-dt-green;
+            animation: pulse 2s infinite;
+        }
+    }
+    .COMMAND {
+        .fa-question-circle {
+            color: $azet-dt-yellow;
+        }
+    }
+    .NOT_IN_STOCK {
+        .fa-times-circle {
+            color: $azet-dt-red;
+        }
+    }
+    .fa-user-circle {
+        color: $azet-dt-blue;
+    }
+}

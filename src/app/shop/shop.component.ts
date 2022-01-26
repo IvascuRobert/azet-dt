@@ -58,7 +58,10 @@ export class ShopComponent implements OnInit {
   }
 
   openScheduleInService(): void {
-    this.dialog.open(ShopDialogContentScheduleInServiceComponent);
+    this.dialog.open(ShopDialogContentScheduleInServiceComponent, {
+      width: '400px',
+      disableClose: true
+    });
   }
 
   openSchedule(): void {

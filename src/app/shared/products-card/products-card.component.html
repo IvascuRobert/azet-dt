@@ -8,6 +8,9 @@
     <div *ngFor="let product of products;trackBy: trackByService.product"
          class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-2 product-container">
       <mat-card class="product-card">
+        <mat-chip matTooltip="Super ofertă, nu o rata!"
+                  matTooltipPosition="above"
+                  selected>- 20%</mat-chip>
         <div mat-card-image
              class="product-card__img text-center">
           <img src="/assets/pictures/tires-pictures/tire-default.png"
@@ -19,51 +22,16 @@
         <mat-card-content>
           <div class="product-card__price text-center">
             <span class="price">{{200 | azetDtCurrency}}</span>
-            <span class="sale mx-2"><del>{{300 | azetDtCurrency}}</del></span>
+            <span class="sale mx-2"
+                  matTooltip="Super ofertă, nu o rata!"
+                  matTooltipPosition="above"><del>{{300 | azetDtCurrency}}</del></span>
             <div class="without-tax">
               {{280 | azetDtCurrency}} Fără TVA
             </div>
           </div>
           <mat-divider inset></mat-divider>
-          <div [ngSwitch]="product.state"
-               class="product-card__stock my-2">
-            <div *ngSwitchCase="stateTemplate.STOCK"
-                 [class]="product.state">
-              <span matTooltipPosition="right"
-                    matTooltip="Vă anunțăm că numărul afișat este unul informativ, pentru mai multe detalii sunați persoana de contact.">
-                <i class="far fa-check-circle"></i>
-                Stoc
-              </span>
-              <span class="quantity">
-                <i>( > {{product.quantity}})</i>
-              </span>
-            </div>
-            <div *ngSwitchCase="stateTemplate.COMMAND"
-                 [class]="product.state">
-              <span matTooltipPosition="right"
-                    matTooltip="Acest produs se află în stoc-ul distribuitorului.">
-                <i class="far fa-question-circle"></i>
-                Comandă
-              </span>
-            </div>
-            <div *ngSwitchCase="stateTemplate.NOT_IN_STOCK"
-                 [class]="product.state">>
-              <span matTooltipPosition="right"
-                    matTooltip="Acest produs NU se află în stoc, pentru mai multe detalii sunați persoana de contact.">
-                <i class="far fa-times-circle"></i>
-                Nu se află în stoc
-              </span>
-            </div>
-            <div *ngSwitchDefault>
-              <span matTooltipPosition="right"
-                    matTooltip="Pentru mai multe detalii sunați persoana de contact.">
-                <i class="far fa-user-circle"></i>
-                Sună la:
-                <a mat-button
-                   href="tel:+40737167631">(0737) 167 631</a>
-              </span>
-            </div>
-          </div>
+          <app-product-state [productState]="product.state"
+                             [productQuantity]="product.quantity"></app-product-state>
           <mat-chip-list aria-label="Vehicule">
             <mat-chip *ngFor="let carCategory of product.carCategories">
               {{carCategory}}
@@ -90,110 +58,64 @@
           </div>
         </mat-card-actions>
       </mat-card>
-      <!-- <mat-card>
-        <mat-card-header>
-          <mat-card-title>
-            {{product.name | uppercase}}
-          </mat-card-title>
-          <mat-card-subtitle>
-            {{product.producer | uppercase}}
-          </mat-card-subtitle>
-        </mat-card-header>
-        <div mat-card-image
-             class="text-center">
-          <img src="/assets/pictures/tires-pictures/tire-default.png"
-               [routerLink]="['/products/' + product.id]"
-               class="w-50 h-50"
-               [alt]="product.name">
-        </div>
-        <mat-card-content>
-          <div class="row justify-content-center">
-            <div class="col-11">
-              <mat-divider></mat-divider>
-            </div>
-
-            <div class="col-12 text-center price-container">
-              <div class="sale-price">
-                <del>{{300 | azetDtCurrency}}</del> (-20%)
-              </div>
-              <div class="current-price">
-                {{200 | azetDtCurrency}}
-              </div>
-              <div class="without-tax-price">
-                Fără TVA: {{280 | azetDtCurrency}}
-              </div>
-            </div>
-
-            <div class="col-11 mb-2">
-              <mat-divider></mat-divider>
-            </div>
-            <div class="col-6">
-              Cantitate: {{product.quantity}}
-            </div>
-            <div class="col-6">
-              <i class="fas fa-dot-circle"
-                 style="color: #22bb33;"></i>
-              {{product.state}}
-            </div>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-          <div class="d-flex justify-content-between">
-            <button mat-raised-button
-                    color="primary"
-                    (click)="addCartProduct(product)">
-              <span class="material-icons">
-                add_shopping_cart
-              </span>
-              ADAUGĂ ÎN COȘ
-            </button>
-            <button mat-icon-button
-                    color="primary">
-              <span class="material-icons">
-                share
-              </span>
-            </button>
-          </div>
-        </mat-card-actions>
-      </mat-card> -->
     </div>
   </div>
   <div *ngSwitchCase="viewModeTemplate.LIST"
-       class="row list-product-card-container">
+       class="row">
     <div *ngIf="loading"
          class="col-12">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
     <div *ngFor="let product of products;trackBy: trackByService.product"
-         class="col-12 mb-2">
+         class="col-12 mb-2 product-container">
       <mat-card class="product-card">
-        <mat-card-header>
-          <mat-card-title>
+        <mat-card-title-group>
+          <mat-card-title class="align-items-center">
             {{product.name | uppercase}}
           </mat-card-title>
           <mat-card-subtitle>
             {{product.producer | uppercase}}
           </mat-card-subtitle>
-        </mat-card-header>
-        <div class="row align-items-center">
-          <div class="col-3">
-            <img src="/assets/pictures/tires-pictures/tire-default.png"
-                 [routerLink]="'/products/'+ product.id"
-                 style="width: 160px; height: 160px;"
-                 [alt]="product.name">
+        </mat-card-title-group>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+              <div mat-card-image
+                   class="product-card__img text-center">
+                <img src="/assets/pictures/tires-pictures/tire-default.png"
+                     [routerLink]="['/products/' + product.id]"
+                     [alt]="product.name">
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-9">
+              <div class="product-card__price">
+                <span class="price">{{product.price | azetDtCurrency}}</span>
+                <span class="sale mx-2"
+                      matTooltip="Super ofertă, nu o rata!"
+                      matTooltipPosition="above">
+                  <del>{{300 | azetDtCurrency}}</del>
+                  ( - 20%)
+                </span>
+                <div class="without-tax">
+                  {{280 | azetDtCurrency}} Fără TVA
+                </div>
+              </div>
+              <mat-divider inset></mat-divider>
+              <app-product-state [productState]="product.state"
+                                 [productQuantity]="product.quantity"></app-product-state>
+              <mat-chip-list aria-label="Vehicule">
+                <mat-chip *ngFor="let carCategory of product.carCategories">
+                  {{carCategory}}
+                </mat-chip>
+              </mat-chip-list>
+              <mat-divider inset
+                           class="my-2"></mat-divider>
+              <div *ngIf="product.size">Dimensiune: {{product.size}}</div>
+              <div *ngIf="product.profile">Profil: {{product.profile}}</div>
+            </div>
           </div>
-          <div class="col-6 price-container">
-            <div class="sale-price">
-              <del>{{300 | azetDtCurrency}}</del> (-20%)
-            </div>
-            <div class="current-price">
-              {{200 | azetDtCurrency}}
-            </div>
-            <div class="without-tax-price">
-              Fără TVA: {{280 | azetDtCurrency}}
-            </div>
-          </div>
-        </div>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
         <mat-card-actions>
           <div class="d-flex justify-content-between">
             <button mat-raised-button

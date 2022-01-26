@@ -15,33 +15,35 @@ export class ShopDialogContentScheduleInServiceComponent implements OnInit {
   maxDate: Date = new Date();
 
   scheduleInServiceForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(20),
-      Validators.minLength(3),
-      ValidationService.customPatternValidator(patterns.onlyCharacters)
-    ]),
-    lastName: new FormControl('', [
+    name: new FormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
       ValidationService.customPatternValidator(patterns.onlyCharacters)
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    date: new FormControl(new Date, Validators.required),
-    time: new FormControl(null, Validators.required)
+    phone: new FormControl('', [
+      Validators.required,
+      ValidationService.customPatternValidator(patterns.phoneNumber)
+    ]),
+    reason: new FormControl('', Validators.required),
+    date: new FormControl(null, Validators.required),
+    time: new FormControl(null, [
+      Validators.required,
+      ValidationService.customTimePickerValidatorInterval()
+    ])
   });
 
-  get controlFirstName(): FormControl {
-    return this.scheduleInServiceForm.get('firstName') as FormControl;
-  }
-
-  get controlLastName(): FormControl {
-    return this.scheduleInServiceForm.get('lastName') as FormControl;
+  get controlName(): FormControl {
+    return this.scheduleInServiceForm.get('name') as FormControl;
   }
 
   get controlEmail(): FormControl {
     return this.scheduleInServiceForm.get('email') as FormControl;
+  }
+
+  get controlPhone(): FormControl {
+    return this.scheduleInServiceForm.get('phone') as FormControl;
   }
 
   get controlDate(): FormControl {
@@ -50,6 +52,10 @@ export class ShopDialogContentScheduleInServiceComponent implements OnInit {
 
   get controlTime(): FormControl {
     return this.scheduleInServiceForm.get('time') as FormControl;
+  }
+
+  get controlReason(): FormControl {
+    return this.scheduleInServiceForm.get('reason') as FormControl;
   }
 
   filterDate = (d: Date | null): boolean => {
@@ -61,8 +67,12 @@ export class ShopDialogContentScheduleInServiceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // set minDate
+    this.minDate.setDate(this.minDate.getDate() + 1);
+
     // set maxDate
     this.maxDate.setDate(this.minDate.getDate() + 21);
+    this.controlDate.setValue(this.minDate);
   }
 
   onSubmitScheduleInServiceForm(): void {
@@ -70,9 +80,4 @@ export class ShopDialogContentScheduleInServiceComponent implements OnInit {
 
     console.log(scheduleInServiceFormValues, 'scheduleInServiceFormValues');
   }
-
-  updateDateTimeValue(date: Date): void {
-    this.controlDate.setValue(date);
-  }
-
 }
