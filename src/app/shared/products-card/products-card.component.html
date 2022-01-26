@@ -49,12 +49,7 @@
               </span>
               ADAUGĂ ÎN COȘ
             </button>
-            <button mat-icon-button
-                    color="primary">
-              <span class="material-icons">
-                share
-              </span>
-            </button>
+            <app-copy-link [pathUrl]="'/products/'+ product.id"></app-copy-link>
           </div>
         </mat-card-actions>
       </mat-card>
@@ -126,12 +121,7 @@
               </span>
               ADAUGĂ ÎN COȘ
             </button>
-            <button mat-icon-button
-                    color="primary">
-              <span class="material-icons">
-                share
-              </span>
-            </button>
+            <app-copy-link [pathUrl]="'/products/'+ product.id"></app-copy-link>
           </div>
         </mat-card-actions>
       </mat-card>

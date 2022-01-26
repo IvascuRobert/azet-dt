@@ -41,12 +41,7 @@
             </span>
             <span>{{product[0].name}}</span>
             <span class="navbar-spacer"></span>
-            <button mat-icon-button
-                    aria-label="Distribuie">
-              <span class="material-icons">
-                share
-              </span>
-            </button>
+            <app-copy-link [pathUrl]="'/products/'+ product[0].id"></app-copy-link>
           </mat-toolbar-row>
         </mat-toolbar>
         <mat-list>

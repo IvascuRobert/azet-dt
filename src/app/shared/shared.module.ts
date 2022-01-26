@@ -1,3 +1,4 @@
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,8 +19,8 @@ import { FormControlErrorInterpretationPipe } from './pipes/formControlErrorInte
 import { TrimPipe } from './pipes/trim.pipe';
 import { ProductStateComponent } from './product-state/product-state.component';
 import { ProductsCardComponent } from './products-card/products-card.component';
+import { CopyLinkComponent } from './share-link/copy-link.component';
 import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
-
 @NgModule({
     imports: [
         CommonModule,
@@ -32,7 +33,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         NgbProgressbarModule,
         MatRippleModule,
         MatProgressBarModule,
-        MatListModule
+        MatListModule,
+        ClipboardModule
     ],
     declarations: [
         MessageComponent,
@@ -43,7 +45,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         SocialMediaIconsComponent,
         LogoIconComponent,
         ProductStateComponent,
-        ContactListComponent
+        ContactListComponent,
+        CopyLinkComponent
     ],
     exports: [
         CommonModule,
@@ -55,7 +58,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         SocialMediaIconsComponent,
         LogoIconComponent,
         ProductStateComponent,
-        ContactListComponent
+        ContactListComponent,
+        CopyLinkComponent
     ]
 })
 export class SharedModule { }

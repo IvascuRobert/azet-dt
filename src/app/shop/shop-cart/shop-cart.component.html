@@ -139,12 +139,7 @@
                   Livrare gratuita de la 1200 lei *
                 </div>
                 <div class="col-2 align-self-center text-center">
-                  <button mat-icon-button
-                          color="primary">
-                    <span class="material-icons">
-                      share
-                    </span>
-                  </button>
+                  <app-copy-link [pathUrl]="'/products/'+ product.id"></app-copy-link>
                 </div>
               </div>
             </div>

@@ -1,0 +1,9 @@
+<button mat-icon-button
+        aria-label="Copiază link-ul."
+        matTooltip="Copiază link-ul."
+        [cdkCopyToClipboard]="(pathUrl)? (baseUrl + pathUrl) : (baseUrl)"
+        (click)="clickOnCopyToClipboard()">
+    <span class="material-icons">
+        link
+    </span>
+</button>
