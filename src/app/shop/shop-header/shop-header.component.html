@@ -8,8 +8,8 @@
   <span class="navbar-spacer"></span>
   <div class="section-1__nav_btn">
     <button *ngFor="let item of azetDtMenuHeaderItems"
-            mat-button
-            class="mx-1"
+            mat-raised-button
+            class="mx-1 d-none d-lg-inline"
             routerLinkActive="mat-accent"
             [routerLink]="item.routerLink"
             [matBadge]="(item.value === 'cart')? (cart$ | async)?.totalProducts : null"
@@ -22,8 +22,10 @@
           class="ml-3"
           (click)="switchTheme()">
     <span *ngIf="(theme === null) || (theme === templateEnumThemeClassName.LIGHT_THEME)"
-          class="material-icons">light_mode</span>
+          class="material-icons"
+          matTooltip="Luminează">light_mode</span>
     <span *ngIf="(theme === templateEnumThemeClassName.DARK_THEME)"
-          class="material-icons">dark_mode</span>
+          class="material-icons"
+          matTooltip="Întunecă">dark_mode</span>
   </button>
 </mat-toolbar>

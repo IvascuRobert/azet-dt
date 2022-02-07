@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { TrackByService } from 'src/app/core/services/trackBy.service';
 import { EnumState, EnumViewMode } from 'src/app/shared/enums.enum';
 import { ProductClass } from '../../shared/classes.class';
+import { IProductOptions } from '../interfaces.interface';
 
 @Component({
   selector: 'app-products-card',
@@ -17,7 +18,12 @@ export class ProductsCardComponent implements OnInit {
   @Input() products: ProductClass[] | null = [];
   @Input() viewMode = EnumViewMode.GRID;
   @Input() loading: boolean | null = false;
+  @Input() options: IProductOptions = {
+    showAddButton: true,
+    showRemoveButton: false
+  };
   @Output() clickAddToCart = new EventEmitter<ProductClass>();
+  @Output() clickRemoveToCart = new EventEmitter<ProductClass>();
 
   viewModeTemplate = EnumViewMode;
   stateTemplate = EnumState;
@@ -29,6 +35,10 @@ export class ProductsCardComponent implements OnInit {
 
   addCartProduct(product: ProductClass): void {
     this.clickAddToCart.emit(product);
+  }
+
+  removeCartProduct(product: ProductClass): void {
+    this.clickRemoveToCart.emit(product);
   }
 
 }

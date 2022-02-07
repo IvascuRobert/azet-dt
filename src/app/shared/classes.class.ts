@@ -12,6 +12,9 @@ export class ProductClass {
     image?: string;
     carCategories: EnumCarCategory[] | null;
     state: EnumState | null;
+    nbOfProducts: number | null;
+    date: Date;
+    shippingMethod: string;
 
     // Normal signature with defaults
     constructor(
@@ -26,6 +29,9 @@ export class ProductClass {
         image = '',
         carCategories = null,
         state = null,
+        nbOfProducts = null,
+        date = new Date(),
+        shippingMethod = '',
     ) {
         this.id = id;
         this.name = name;
@@ -38,27 +44,8 @@ export class ProductClass {
         this.image = image;
         this.carCategories = carCategories;
         this.state = state;
-    }
-}
-
-export class CartProductClass extends ProductClass {
-    nbOfProducts: number | null;
-
-    constructor(
-        id = '',
-        name = '',
-        description = '',
-        producer = '',
-        price = null,
-        quantity = null,
-        size = '',
-        profile = '',
-        image = '',
-        carCategories = null,
-        state = null,
-        nbOfProducts = null
-    ) {
-        super(id, name, description, producer, price, quantity, size, profile, image, carCategories, state);
         this.nbOfProducts = nbOfProducts;
+        this.date = date;
+        this.shippingMethod = shippingMethod;
     }
 }

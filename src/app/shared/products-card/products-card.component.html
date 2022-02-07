@@ -113,13 +113,23 @@
         <mat-divider inset></mat-divider>
         <mat-card-actions>
           <div class="d-flex justify-content-between">
-            <button mat-raised-button
+            <button *ngIf="options && options.showAddButton"
+                    mat-raised-button
                     color="primary"
                     (click)="addCartProduct(product)">
               <span class="material-icons">
                 add_shopping_cart
               </span>
               ADAUGĂ ÎN COȘ
+            </button>
+            <button *ngIf="options && options.showRemoveButton"
+                    mat-stroked-button
+                    color="primary"
+                    (click)="removeCartProduct(product)">
+              <span class="material-icons">
+                delete
+              </span>
+              SCOATE DIN COȘ ( {{product.nbOfProducts}} )
             </button>
             <app-copy-link [pathUrl]="'/products/'+ product.id"></app-copy-link>
           </div>

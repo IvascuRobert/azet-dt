@@ -14,7 +14,6 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { CartService } from './core/services/cart.service';
 import { CustomHttpUrlGenerator } from './core/services/custom-http-url-generator.service';
 import { entityConfig } from './core/services/entity-metadata';
 import { NgrxForgotPasswordMethodsService } from './core/services/ngrx-forgot-password-methods.service';
@@ -58,7 +57,6 @@ export function tokenGetter() {
     NgrxLoginMethodsService,
     NgrxRegisterMethodsService,
     NgrxForgotPasswordMethodsService,
-    CartService,
     MatSnackBar,
     {
       provide: HttpUrlGenerator,

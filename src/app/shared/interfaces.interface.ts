@@ -1,5 +1,5 @@
 import { DataServiceError } from "ngrx-data";
-import { CartProductClass } from "./classes.class";
+import { ProductClass } from "./classes.class";
 import { EnumMessageType } from "./enums.enum";
 
 export interface IUserLogin extends DataServiceError {
@@ -32,7 +32,7 @@ export interface ISelect {
 }
 
 export interface ICart {
-    products: CartProductClass[];
+    products: ProductClass[];
     totalProducts: number;
     totalPrice: number;
 }
@@ -57,4 +57,9 @@ export interface IDay {
     value: number,
     icon?: string,
     timeRange?: string
+}
+
+export interface IProductOptions{
+    showAddButton?: boolean,
+    showRemoveButton?: boolean
 }

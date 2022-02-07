@@ -6,8 +6,8 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { TrackByService } from 'src/app/core/services/trackBy.service';
 import { ValidationService } from 'src/app/core/services/validation.service';
 import { ProductClass } from 'src/app/shared/classes.class';
-import { EnumState } from 'src/app/shared/enums.enum';
-import { ICart } from 'src/app/shared/interfaces.interface';
+import { EnumState, EnumViewMode } from 'src/app/shared/enums.enum';
+import { ICart, IProductOptions } from 'src/app/shared/interfaces.interface';
 import { patterns } from 'src/app/shared/patterns';
 
 @Component({
@@ -19,6 +19,8 @@ import { patterns } from 'src/app/shared/patterns';
 export class ShopCartComponent implements OnInit {
 
   @ViewChild('cartCheckoutTemplate') cartCheckoutTemplate!: TemplateRef<any>;
+
+  templateViewMode = EnumViewMode.LIST;
   configDialog: MatDialogConfig = {
     hasBackdrop: true
   };
@@ -39,6 +41,11 @@ export class ShopCartComponent implements OnInit {
     ]),
     message: new FormControl('', Validators.required),
   });
+
+  options: IProductOptions = {
+    showAddButton: false,
+    showRemoveButton: true
+  };
 
   get name(): FormControl {
     return this.contactForm.get('name') as FormControl;
@@ -63,7 +70,7 @@ export class ShopCartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  removeCartProduct(product: ProductClass): void {
+  removeToCart(product: ProductClass): void {
     this.cartService.removeCartProduct(product);
   }
 

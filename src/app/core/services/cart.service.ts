@@ -6,13 +6,10 @@ import { EnumLocalStorageKeysName } from 'src/app/shared/enums.enum';
 import { ICart } from 'src/app/shared/interfaces.interface';
 import { LocalStorageService } from './local-storage.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class CartService {
-
-    constructor(
-        private _snackBar: MatSnackBar,
-        private localStorageService: LocalStorageService
-    ) { }
     products: ProductClass[] = []
 
     cartProducts$ = new BehaviorSubject<ICart>({
@@ -21,18 +18,30 @@ export class CartService {
         totalPrice: 0
     });
 
+    constructor(
+        private _snackBar: MatSnackBar,
+        private localStorageService: LocalStorageService
+    ) { }
+
     addCartProduct(productAdded: ProductClass): BehaviorSubject<ICart> {
         this.products.push(productAdded);
 
         this.localStorageService.storeValue(JSON.stringify(this.products), EnumLocalStorageKeysName.PRODUCTS);
 
-        const cartProducts = this.transformProductsToCart(this.products);
+        const cartProducts = 
 
-        this.cartProducts$.next(cartProducts);
+            this.cartProducts$.next(
+                {
+                    products: 
+            }
+            );
 
-        this._snackBar.open('A fost adăugată o anvelopă în coș!', 'Închide', {
+        this._snackBar.open('Anvelopa ' + productAdded.name + ' a fost adăugată în coș!', 'Închide', {
             duration: 2000,
         });
+
+        console.log(this.cartProducts$.getValue(), 'cart')
+        console.log(this.products, 'products')
 
         return this.cartProducts$;
     }
@@ -48,7 +57,7 @@ export class CartService {
 
         this.cartProducts$.next(cartProducts);
 
-        this._snackBar.open('A fost scosă o anvelopă din coș!', 'Închide', {
+        this._snackBar.open('Anvelopa ' + productRemoved.name + ' a fost scoasă în coș!', 'Închide', {
             duration: 2000,
         });
 
@@ -65,33 +74,25 @@ export class CartService {
         return this.cartProducts$;
     }
 
-    transformProductsToCart(products: ProductClass[]): ICart {
-        let cartProducts: ICart = {
-            products: [],
-            totalProducts: 0,
-            totalPrice: 0
-        };
+    // transformProductsToCart(products: ProductClass): ICart {
+    //     let cartProducts: ICart = {
+    //         products: [],
+    //         totalProducts: 0,
+    //         totalPrice: 0
+    //     };
 
-        cartProducts.totalProducts = products.length;
-        cartProducts.totalPrice = products.reduce((acc, val) => {
-            if (val && val.price) {
-                return acc + val.price;
-            } else {
-                return acc;
-            }
-        }, 0);
+    //     cartProducts.totalProducts = products.length;
+    //     cartProducts.totalPrice = products.reduce((acc, val) => {
+    //         if (val && val.price) {
+    //             return acc + val.price;
+    //         } else {
+    //             return acc;
+    //         }
+    //     }, 0);
 
-        const groupedProductsById = this.groupBy(products, 'id');
-        const uniqueProducts: ProductClass[] = products.filter((v, i, a) => a.indexOf(v) === i);
 
-        for (let product of uniqueProducts) {
-            const { id } = product;
-            const nbOfSameProducts = groupedProductsById[id].length;
-            cartProducts.products.push({ ...product, nbOfProducts: nbOfSameProducts })
-        }
-
-        return cartProducts;
-    }
+    //     return cartProducts;
+    // }
 
     groupBy<ProductClass, K extends keyof ProductClass>(data: ProductClass[], propertyName: K): { [key: string]: ProductClass[] } {
         // `data` is an array of objects, `key` is the key (or property accessor) to group by
