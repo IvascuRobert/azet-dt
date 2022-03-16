@@ -1,40 +1,32 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatRippleModule } from '@angular/material/core';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { LogoIconComponent } from './logo-icon/logo-icon.component';
-import { MessageComponent } from './message/message.component';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
+import { DialogContentScheduleInServiceComponent } from './components/dialog-content-schedule-in-service/dialog-content-schedule-in-service.component';
+import { DialogContentScheduleComponent } from './components/dialog-content-schedule/dialog-content-schedule.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LayoutShopComponent } from './components/layout-shop/layout-shop.component';
+import { LogoIconComponent } from './components/logo-icon/logo-icon.component';
+import { MessageComponent } from './components/message/message.component';
+import { ProductStateComponent } from './components/product-state/product-state.component';
+import { ProductsCardComponent } from './components/products-card/products-card.component';
+import { CopyLinkComponent } from './components/share-link/copy-link.component';
+import { SocialMediaIconsComponent } from './components/social-media-icons/social-media-icons.component';
+import { BootstrapModule } from './module/bootstrap.module';
+import { MaterialModule } from './module/material.module';
 import { AzetDTCurrencyPipe } from './pipes/currency.pipe';
-import { FormControlErrorInterpretationPipe } from './pipes/formControlErrorInterpretation.pipe';
+import { FormControlErrorInterpretationPipe } from './pipes/form-control-error-interpretation.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
-import { ProductStateComponent } from './product-state/product-state.component';
-import { ProductsCardComponent } from './products-card/products-card.component';
-import { CopyLinkComponent } from './share-link/copy-link.component';
-import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
+import { LayoutAdminComponent } from './components/layout-admin/layout-admin.component';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         RouterModule,
-        MatButtonModule,
-        MatCardModule,
-        MatDividerModule,
-        MatTooltipModule,
-        MatChipsModule,
-        NgbProgressbarModule,
-        MatRippleModule,
-        MatProgressBarModule,
-        MatListModule,
-        ClipboardModule
+        MaterialModule,
+        BootstrapModule
     ],
     declarations: [
         MessageComponent,
@@ -46,10 +38,18 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         LogoIconComponent,
         ProductStateComponent,
         ContactListComponent,
-        CopyLinkComponent
+        CopyLinkComponent,
+        DialogContentScheduleComponent,
+        DialogContentScheduleInServiceComponent,
+        LayoutShopComponent,
+        FooterComponent,
+        LayoutAdminComponent,
+        HeaderComponent
     ],
     exports: [
         CommonModule,
+        MaterialModule,
+        BootstrapModule,
         MessageComponent,
         TrimPipe,
         AzetDTCurrencyPipe,
@@ -59,7 +59,13 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
         LogoIconComponent,
         ProductStateComponent,
         ContactListComponent,
-        CopyLinkComponent
+        CopyLinkComponent,
+        DialogContentScheduleComponent,
+        DialogContentScheduleInServiceComponent,
+        LayoutShopComponent,
+        FooterComponent,
+        LayoutAdminComponent,
+        HeaderComponent
     ]
 })
 export class SharedModule { }

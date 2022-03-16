@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EnumLocalStorageKeysName } from 'src/app/shared/enums.enum';
+import { LocalStorageKey } from 'src/app/shared/enum/local-storage-key';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,13 @@ export class LocalStorageService {
 
   constructor() { }
 
-  storeValue(value: any, key: EnumLocalStorageKeysName): void {
+  storeValue(value: any, key: LocalStorageKey): void {
     try {
       window.localStorage[key] = value;
     } catch { }
   }
 
-  getStorageValueByKey(key: EnumLocalStorageKeysName): any {
+  getStorageValueByKey(key: LocalStorageKey): any {
     try {
       return window.localStorage[key] || null;
     } catch {
@@ -22,7 +22,7 @@ export class LocalStorageService {
     }
   }
 
-  clearStorageByKey(key: EnumLocalStorageKeysName): void {
+  clearStorageByKey(key: LocalStorageKey): void {
     try {
       window.localStorage.removeItem(key);
     } catch { }

@@ -1,0 +1,181 @@
+<div *ngIf="cart$ | async as cart; else loading" class="row mt-5 p-5">
+  <!-- <div *ngIf="cart.products.length === 0"
+       class="col-12 text-center">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h1 style="font-size: 2rem;">
+          Ooops!
+        </h1>
+        <span class="material-icons">
+          horizontal_rule
+        </span>
+        <h1 style="font-size: 2rem;">
+          Nu ai niciun produs în coș
+        </h1>
+        <span class="material-icons">
+          horizontal_rule
+        </span>
+        <h3>
+          <span class="primary">
+            AZET D.T.
+          </span>
+          vă recomandă să mergeți în fereastra de Anvelope
+        </h3>
+      </div>
+      <div class="col-10 my-3">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="col-12 text-center">
+        <button mat-raised-button
+                color="primary"
+                routerLink="/products">
+          <span class="material-icons-two-tone">
+            support
+          </span>
+          Anvelope
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="cart.products.length > 0"
+       class="col-8">
+    <app-products-card [products]="cart.products"
+                       [viewMode]="templateViewMode"
+                       (clickRemoveToCart)="removeToCart($event)"
+                       [options]="options"></app-products-card>
+  </div>
+  <div *ngIf="cart.products.length > 0"
+       class="col-4">
+    <div class="row justify-content-center">
+      <div class="col-12 mb-4">
+        <mat-toolbar class="mat-elevation-z6"
+                     color="primary">
+          <mat-toolbar-row>
+            <span>SUMAR COMANDĂ</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </div>
+      <div class="col-6">
+        <h3>
+          <span class="primary">Total anvelope:</span>
+        </h3>
+      </div>
+      <div class="col-6 text-right">
+        <h3>
+          <span>{{cart.totalProducts}}</span>
+        </h3>
+      </div>
+      <div class="col-6">
+        <h3>
+          <span class="primary">Total plată: </span>
+        </h3>
+      </div>
+      <div class="col-6 text-right">
+        <h3>
+          <span>{{cart.totalPrice}} Lei</span>
+        </h3>
+      </div>
+      <div class="col-10 my-3">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="col-12 text-center">
+        <button mat-raised-button
+                class="w-100"
+                color="primary"
+                (click)="openCheckoutProducts()">
+          <span class="material-icons-two-tone">
+            store
+          </span>
+          FINALIZEAZĂ COMANDA
+        </button>
+      </div>
+      <div class="col-12 my-5">
+        <div class="row justify-content-center">
+          <div class="col-4 align-self-center">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="col-4 align-self-center text-center primary">
+            <span style="font-size: 1.6rem;">SAU</span>
+          </div>
+          <div class="col-4 align-self-center">
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button mat-stroked-button
+                class="w-100"
+                color="primary"
+                routerLink="/products">
+          <span class="material-icons-two-tone">
+            support
+          </span>
+          Continuă cumpăturile
+        </button>
+      </div>
+    </div>
+  </div> -->
+</div>
+<ng-template #loading class="row">
+  <div class="col-12">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-template>
+
+<ng-template #cartCheckoutTemplate>
+  <h2 mat-dialog-title>Formular de înregistrare comandă</h2>
+  <mat-divider></mat-divider>
+  <mat-dialog-content class="mat-typography">
+    <form class="row justify-content-center" [formGroup]="contactForm">
+      <mat-form-field class="col-12 w-100 my-3" appearance="outline">
+        <mat-label>Nume</mat-label>
+        <input id="name" #n name="name" type="text" matInput maxlength="20" formControlName="name" placeholder="Nume"
+          autocomplete="username" required>
+        <mat-hint align="start">Ex. Popescu Adrian</mat-hint>
+        <mat-hint align="end">{{n.value.length}} / 20</mat-hint>
+        <mat-error *ngIf="name.invalid">
+          {{name.errors | formControlErrorInterpretation}}
+        </mat-error>
+        <span matSuffix class="material-icons">
+          person
+        </span>
+      </mat-form-field>
+      <mat-form-field class="col-12 w-100 my-3" appearance="outline">
+        <mat-label>Telefon</mat-label>
+        <input id="phone" name="phone" type="tel" aria-label="Telefon" matInput formControlName="phone"
+          placeholder="555-555-1234" required>
+        <mat-hint align="start">Introduceți numărul de telefon</mat-hint>
+        <mat-error *ngIf="phone.invalid">
+          {{phone.errors | formControlErrorInterpretation}}
+        </mat-error>
+        <span matSuffix class="material-icons">
+          phone
+        </span>
+      </mat-form-field>
+      <mat-form-field class="col-12 w-100 my-3" appearance="outline">
+        <mat-label>Mesaj</mat-label>
+        <input matInput #msg formControlName="message" maxlength="100" placeholder="Ex. Doresc să comand..." required>
+        <mat-hint align="end">{{msg.value.length}} / 100</mat-hint>
+        <mat-error *ngIf="message.invalid">
+          {{message.errors | formControlErrorInterpretation}}
+        </mat-error>
+        <span matSuffix class="material-icons">
+          textsms
+        </span>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Renunță</button>
+    <button mat-stroked-button type="button" color="primary" [mat-dialog-close]="true" [disabled]="contactForm.invalid">
+      <span class="material-icons">
+        send
+      </span>
+      Trimite
+    </button>
+  </mat-dialog-actions>
+  <mat-divider class="mt-4"></mat-divider>
+  <div>*Completează formularul de mai sus și apasă pe butonul <i>Trimite</i> pentru a înregistra comanda.
+  </div>
+  <div>*După ce comanda a fost înregistrată te vom suna noi în scurt timp.</div>
+</ng-template>
