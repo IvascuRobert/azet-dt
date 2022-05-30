@@ -10,15 +10,13 @@
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
-  <div *ngIf="(loading$ | async)"
-       class="col-12">
+  <div class="col-12">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-  <div *ngIf="!(loading$ | async)"
-       class="col-12 mt-5">
-    <app-products-card [products]="(popularProducts$ | async)"
-                       [loading]="loading$ | async"
-                       (clickAddToCart)="addCartProduct($event)"></app-products-card>
+  <div class="col-12 mt-5">
+    <!-- <app-products-card [products]="(popularProducts$ | async)"
+                     [loading]="loading$ | async"
+                     (clickAddToCart)="addCartProduct($event)"></app-products-card> -->
   </div>
   <mat-divider class="col-8 my-5"></mat-divider>
 </div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CartService } from 'src/app/core/services/cart/cart.service';
-import { BaseCartItem } from 'src/app/shared/class/base-cart-item';
+import { Product } from 'src/app/shared/class/base-cart-item';
 import { ViewMode } from 'src/app/shared/enum/view-mode';
-import { ProductsService } from '../service/products.service';
+import { CartService } from 'src/app/shared/service/cart.service';
+import { ProductsService } from 'src/app/shared/service/products.service';
 
 @Component({
   selector: 'app-shop-products-view',
@@ -13,15 +13,12 @@ import { ProductsService } from '../service/products.service';
 export class ShopProductsViewComponent implements OnInit {
 
   viewMode = ViewMode.GRID;
-  loading$: Observable<boolean>;
-  products$: Observable<BaseCartItem[]>;
+  products$ = new Observable<Product[]>();
 
   constructor(
     private productsService: ProductsService,
-    private cartService: CartService<BaseCartItem>
+    private cartService: CartService
   ) {
-    this.products$ = this.productsService.entities$;
-    this.loading$ = this.productsService.loading$;
   }
 
   ngOnInit(): void {
@@ -29,7 +26,7 @@ export class ShopProductsViewComponent implements OnInit {
   }
 
   getProducts() {
-    this.productsService.getAll();
+    this.products$ = this.productsService.getAll();
   }
 
   changeViewMode(viewMode: ViewMode): void {

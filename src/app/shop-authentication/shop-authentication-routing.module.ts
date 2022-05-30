@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShopAuthenticationViewComponent } from './shop-authentication-view/shop-authentication-view.component';
+import { ShopAuthenticationComponent } from './shop-authentication.component';
 
-const routes: Routes = [{ path: '', component: ShopAuthenticationViewComponent }];
+const routes: Routes = [{ path: '', component: ShopAuthenticationComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

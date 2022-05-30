@@ -2,9 +2,10 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { PriceRange } from 'src/app/shared/enum/price-range';
+import { State } from 'src/app/shared/enum/state';
 import { FilterFlatNode } from 'src/app/shared/interface/filter-flat-node';
 import { FilterNode } from 'src/app/shared/interface/filter-node';
-import { filterDataTree } from 'src/app/shared/utils/mocks';
 
 @Component({
   selector: 'app-shop-products-filter',
@@ -27,7 +28,7 @@ export class ShopProductsFilterComponent implements OnInit {
 
   treeControl = new FlatTreeControl<FilterFlatNode>(node => node.level, node => node.expandable);
 
-  treeFlattener = new MatTreeFlattener(this.transformer, node => node.level, node => node.expandable, node => node.children);
+  treeFlattener = new MatTreeFlattener(this.transformer, (node: any) => node.level, (node: any) => node.expandable, (node: any) => node.children);
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
@@ -37,7 +38,75 @@ export class ShopProductsFilterComponent implements OnInit {
   getLevel = (node: FilterFlatNode) => node.level;
 
   constructor() {
-    this.dataSource.data = filterDataTree;
+    this.dataSource.data = [
+      {
+        name: 'Disponibilitate',
+        id: '',
+        children: [
+          { name: 'În stoc', id: State.STOCK },
+          { name: 'La comanda', id: State.COMMAND }
+        ]
+      },
+      {
+        name: 'Producător',
+        id: '',
+        children: [
+          { name: 'Continental', id: 'Continental' },
+          { name: 'Pirelli', id: 'Pirelli' },
+          { name: 'Michelin', id: 'Michelin' },
+          { name: 'Bridgestone', id: 'Bridgestone' },
+          { name: 'Hankook', id: 'Hankook' },
+          { name: 'Goodyear', id: 'Goodyear' }
+        ]
+      },
+      {
+        name: 'Preț',
+        id: '',
+        children: [
+          { name: 'Sub 100 lei', id: PriceRange.UNDER100 },
+          { name: 'Între 100 și 250 lei', id: PriceRange.BETWEEN100_250 },
+          { name: 'Între 250 și 500 lei', id: PriceRange.BETWEEN250_500 },
+          { name: 'Între 500 și 1000 lei', id: PriceRange.BETWEEN500_1000 },
+          { name: 'Peste 1000', id: PriceRange.OVER1000 }
+        ]
+      },
+      {
+        name: 'Lățime',
+        id: '',
+        children: [
+          { name: '225', id: '225' },
+          { name: '215', id: '1' },
+          { name: '235', id: '1' },
+          { name: '205', id: '1' },
+          { name: '195', id: '1' },
+          { name: '255', id: '1' }
+        ]
+      },
+      {
+        name: 'Înălțime',
+        id: '',
+        children: [
+          { name: '225', id: '1' },
+          { name: '215', id: '1' },
+          { name: '235', id: '1' },
+          { name: '205', id: '1' },
+          { name: '195', id: '1' },
+          { name: '255', id: '1' }
+        ]
+      },
+      {
+        name: 'Diametru',
+        id: '',
+        children: [
+          { name: '16', id: '1' },
+          { name: '17', id: '1' },
+          { name: '18', id: '1' },
+          { name: '15', id: '1' },
+          { name: '19', id: '1' },
+          { name: '20', id: '1' }
+        ]
+      }
+    ];
   }
 
   ngOnInit(): void {

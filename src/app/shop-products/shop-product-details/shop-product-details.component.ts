@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CartService } from 'src/app/core/services/cart/cart.service';
-import { BaseCartItem } from 'src/app/shared/class/base-cart-item';
+import { Product } from 'src/app/shared/class/base-cart-item';
 import { State } from 'src/app/shared/enum/state';
-import { ProductsService } from '../service/products.service';
+import { CartService } from 'src/app/shared/service/cart.service';
+import { ProductsService } from 'src/app/shared/service/products.service';
 
 @Component({
   selector: 'app-shop-product-details',
@@ -14,27 +14,23 @@ import { ProductsService } from '../service/products.service';
 export class ShopProductDetailsComponent implements OnInit {
 
   stateTemplate = State;
-  loading$: Observable<boolean>;
-  product$: Observable<BaseCartItem[] | null> // productsService.getByKey return an array of one product
+  product$ = new Observable<Product[]>();
 
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    public cartService: CartService<BaseCartItem>
-  ) {
-    this.product$ = this.productsService.entities$;
-    this.loading$ = this.productsService.loading$;
-  }
+    public cartService: CartService
+  ) { }
 
   ngOnInit(): void {
     const productId: string | null = this.route.parent?.snapshot.params['id'];
 
     if (productId) {
-      this.productsService.getByKey(productId);
+      this.product$ = this.productsService.getById(productId);
     }
   }
 
-  addCartProduct(product: BaseCartItem) {
+  addCartProduct(product: Product) {
     // this.cartService.addCartProduct(product);
   }
 }

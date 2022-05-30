@@ -1,8 +1,7 @@
 import { CarCategory } from '../enum/car-category';
 import { State } from '../enum/state';
-import { CartItem } from './cart-item';
 
-export class BaseCartItem extends CartItem {
+export class Product {
   id: any;
   name: string;
   price: number;
@@ -20,7 +19,6 @@ export class BaseCartItem extends CartItem {
   shippingMethod: string;
 
   constructor(itemData: any = {}) {
-    super();
     this.id = itemData.id || 0;
     this.name = itemData.name || '';
     this.price = itemData.price || 0;

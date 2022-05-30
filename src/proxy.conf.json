@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://azet-api.herokuapp.com",
+        "target": "https://azet-api.herokuapp.com/api",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug"

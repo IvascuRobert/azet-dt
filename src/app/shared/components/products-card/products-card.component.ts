@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BaseCartItem } from '../../class/base-cart-item';
+import { Product } from '../../class/base-cart-item';
 import { State } from '../../enum/state';
 import { ViewMode } from '../../enum/view-mode';
 
@@ -14,15 +14,15 @@ import { ViewMode } from '../../enum/view-mode';
 })
 export class ProductsCardComponent implements OnInit {
 
-  @Input() products: BaseCartItem[] | null = [];
+  @Input() products: Product[] | null = [];
   @Input() viewMode = ViewMode.GRID;
   @Input() loading: boolean | null = false;
   @Input() options: any = {
     showAddButton: true,
     showRemoveButton: false
   };
-  @Output() clickAddToCart = new EventEmitter<BaseCartItem>();
-  @Output() clickRemoveToCart = new EventEmitter<BaseCartItem>();
+  @Output() clickAddToCart = new EventEmitter<Product>();
+  @Output() clickRemoveToCart = new EventEmitter<Product>();
 
   viewModeTemplate = ViewMode;
   stateTemplate = State;
@@ -32,11 +32,11 @@ export class ProductsCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addCartProduct(product: BaseCartItem): void {
+  addCartProduct(product: Product): void {
     this.clickAddToCart.emit(product);
   }
 
-  removeCartProduct(product: BaseCartItem): void {
+  removeCartProduct(product: Product): void {
     this.clickRemoveToCart.emit(product);
   }
 

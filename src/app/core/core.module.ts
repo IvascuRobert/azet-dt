@@ -4,10 +4,8 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { CanActivateGuard } from './guards/can-activate.guard';
-import { MemoryCartService } from './services/cart/memory-cart.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { LoggerService } from './services/logger.service';
-import { RealTimeClockService } from './services/real-time-clock.service';
 
 @NgModule({
   imports: [
@@ -22,7 +20,6 @@ import { RealTimeClockService } from './services/real-time-clock.service';
   declarations: [],
   providers: [
     CanActivateGuard,
-    RealTimeClockService,
     LoggerService,
     LocalStorageService,
     {

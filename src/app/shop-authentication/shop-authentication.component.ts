@@ -1,19 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { combineLatest, Observable } from 'rxjs';
+import { combineLatest } from 'rxjs';
+import { AuthenticationService } from 'src/app/shared/service/authentication.service';
 import { patterns } from 'src/app/shared/utils/patterns';
 import { customPatternValidator } from 'src/app/shared/utils/validation';
 import { SubSink } from 'subsink';
-import { ForgotPasswordService } from '../service/forgot-password/forgot-password.service';
-import { LoginService } from '../service/login/login.service';
-import { RegisterService } from '../service/register/register.service';
 
 @Component({
-  selector: 'app-shop-authentication-view',
-  templateUrl: './shop-authentication-view.component.html',
-  styleUrls: ['./shop-authentication-view.component.scss']
+  selector: 'app-shop-authentication',
+  templateUrl: './shop-authentication.component.html',
+  styleUrls: ['./shop-authentication.component.scss']
 })
-export class ShopAuthenticationViewComponent implements OnInit, OnDestroy {
+export class ShopAuthenticationComponent implements OnInit, OnDestroy {
 
   private subs = new SubSink();
 
@@ -48,10 +46,6 @@ export class ShopAuthenticationViewComponent implements OnInit, OnDestroy {
   hidePasswordLF = true;
   tabIndex = 0;
 
-  loadingLogin$: Observable<boolean>;
-  loadingRegister$: Observable<boolean>;
-  loadingForgotPassword$: Observable<boolean>;
-
   get emailLF(): FormControl {
     return this.loginForm.get('email') as FormControl;
   }
@@ -85,40 +79,10 @@ export class ShopAuthenticationViewComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private loginService: LoginService,
-    private registerService: RegisterService,
-    private forgotPasswordService: ForgotPasswordService
-  ) {
-    this.loadingLogin$ = this.loginService.loading$;
-    this.loadingRegister$ = this.registerService.loading$;
-    this.loadingForgotPassword$ = this.forgotPasswordService.loading$;
-  }
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
-    this.subs.sink = this.loadingLogin$.subscribe((loading) => {
-      if (loading) {
-        this.loginForm.disable();
-      } else {
-        this.loginForm.enable();
-      }
-    });
-
-    this.subs.sink = this.loadingRegister$.subscribe((loading) => {
-      if (loading) {
-        this.loginForm.disable();
-      } else {
-        this.loginForm.enable();
-      }
-    });
-
-    this.subs.sink = this.loadingForgotPassword$.subscribe((loading) => {
-      if (loading) {
-        this.loginForm.disable();
-      } else {
-        this.loginForm.enable();
-      }
-    });
-
     this.subs.sink = combineLatest([
       this.passwordRF.valueChanges,
       this.confirmPasswordRF.valueChanges
@@ -134,22 +98,21 @@ export class ShopAuthenticationViewComponent implements OnInit, OnDestroy {
   }
 
   onSubmitLoginForm(): void {
-    const loginForm = this.loginForm.getRawValue();
-    this.loginService.add(loginForm, { isOptimistic: false });
+    const loginFormValues = this.loginForm.getRawValue();
+    this.authenticationService.login(loginFormValues);
+    console.log(loginFormValues, 'loginFormValues');
   }
 
   onSubmitRegisterForm(): void {
     const registerFormValues = this.registerForm.getRawValue();
-    this.registerService.add(registerFormValues, { isOptimistic: false });
-
-    console.log(this.registerForm, 'this.registerForm');
+    this.authenticationService.login(registerFormValues);
+    console.log(registerFormValues, 'registerFormValues');
   }
 
   onSubmitForgetPasswordForm(): void {
-    const forgetPasswordForm = this.forgetPasswordForm.getRawValue();
-    this.forgotPasswordService.add(forgetPasswordForm, { isOptimistic: false });
-
-    console.log(forgetPasswordForm, 'forgetPasswordForm');
+    const forgetPasswordFormValues = this.forgetPasswordForm.getRawValue();
+    this.authenticationService.forgotPassword(forgetPasswordFormValues);
+    console.log(forgetPasswordFormValues, 'forgetPasswordFormValues');
   }
 
   changeTab(index: number): void {

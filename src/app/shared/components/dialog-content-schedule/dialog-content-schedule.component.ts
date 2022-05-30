@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { RealTimeClockService } from 'src/app/core/services/real-time-clock.service';
 import { DaysOfWeek } from 'src/app/shared/interface/days-of-week';
 import { daysOfWeeks } from 'src/app/shared/utils/utils';
 
@@ -18,11 +17,9 @@ export class DialogContentScheduleComponent implements OnInit {
   currentDateIsInProgramRange: boolean = false;
 
   constructor(
-    private realTimeClockService: RealTimeClockService
   ) { }
 
   ngOnInit(): void {
-    this.realTimeClock$ = this.realTimeClockService.getClock();
     this.currentDateIsInProgramRange = this.checkIfIsOpened();
   }
 

@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } fr
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
-import { CartService } from 'src/app/core/services/cart/cart.service';
-import { BaseCartItem } from 'src/app/shared/class/base-cart-item';
-import { ViewMode } from 'src/app/shared/enum/view-mode';
+import { Product } from 'src/app/shared/class/base-cart-item';
 import { State } from 'src/app/shared/enum/state';
-import { customPatternValidator } from 'src/app/shared/utils/validation';
+import { ViewMode } from 'src/app/shared/enum/view-mode';
 import { patterns } from 'src/app/shared/utils/patterns';
+import { customPatternValidator } from 'src/app/shared/utils/validation';
+import { CartService } from '../shared/service/cart.service';
 
 @Component({
   selector: 'app-shop-cart',
@@ -24,7 +24,7 @@ export class ShopCartComponent implements OnInit {
     hasBackdrop: true
   };
 
-  cart$: Observable<BaseCartItem>;
+  cart$: Observable<Product>;
   tabIndex = 0;
   stateTemplate = State;
   contactForm = new FormGroup({
@@ -59,7 +59,7 @@ export class ShopCartComponent implements OnInit {
   }
 
   constructor(
-    public cartService: CartService<BaseCartItem>,
+    public cartService: CartService,
     readonly dialog: MatDialog
   ) {
     // this.cart$ = this.cartService.cartProducts$;
@@ -69,7 +69,7 @@ export class ShopCartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  removeToCart(product: BaseCartItem): void {
+  removeToCart(product: Product): void {
     // this.cartService.removeCartProduct(product);
   }
 

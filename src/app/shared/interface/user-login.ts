@@ -1,6 +1,5 @@
-import { DataServiceError } from "@ngrx/data";
 
-export interface User extends DataServiceError {
+export interface User {
     id?: string;
     email?: string;
     password?: string;

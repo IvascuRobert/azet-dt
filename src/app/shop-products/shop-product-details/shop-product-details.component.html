@@ -1,122 +1,120 @@
 <div class="row product-details-container">
-    <div *ngIf="(loading$ | async)"
-         class="col-12">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
-    <div *ngIf="!(loading$ | async)"
-         class="col-12">
-      <div *ngIf="(product$ | async) as product"
-           class="row mt-5">
-        <div class="col-4">
-          <mat-card class="product-card">
-            <mat-chip matTooltip="Super ofertă, nu o rata!"
-                      matTooltipPosition="above"
-                      selected>- 21%</mat-chip>
-            <div mat-card-image
-                 class="product-card__img text-center">
-              <img src="/assets/pictures/tires-pictures/tire-default.png"
-                   [alt]="product[0].name">
-            </div>
-            <mat-divider inset></mat-divider>
-            <mat-card-actions>
-              <div class="d-flex justify-content-center">
-                <button mat-raised-button
-                        color="primary"
-                        (click)="addCartProduct(product[0])">
-                  <span class="material-icons">
-                    add_shopping_cart
-                  </span>
-                  ADAUGĂ ÎN COȘ
-                </button>
-              </div>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-        <div class="col-8">
-          <mat-toolbar class="mat-elevation-z6"
-                       color="primary">
-            <mat-toolbar-row>
-              <span class="material-icons mr-2">
-                verified
-              </span>
-              <span>{{product[0].name}}</span>
-              <span class="navbar-spacer"></span>
-              <app-copy-link [pathUrl]="'/products/'+ product[0].id"></app-copy-link>
-            </mat-toolbar-row>
-          </mat-toolbar>
-          <mat-list>
-            <div mat-subheader>Detalii anvelopă</div>
-            <mat-list-item>
-              <span mat-list-icon
-                    class="material-icons">
-                payments
-              </span>
-              <div mat-line>Preț</div>
-              <div mat-line>
-                {{product[0].price | azetDtCurrency}}
-                <span class="sale mx-2"
-                      matTooltip="Super ofertă, nu o rata!"
-                      matTooltipPosition="above">
-                  <del>{{300 | azetDtCurrency}}</del>
-                  ( - 21%)
+  <div class="col-12">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="col-12">
+    <div *ngIf="(product$ | async) as product"
+         class="row mt-5">
+      <div class="col-4">
+        <mat-card class="product-card">
+          <mat-chip matTooltip="Super ofertă, nu o rata!"
+                    matTooltipPosition="above"
+                    selected>- 21%</mat-chip>
+          <div mat-card-image
+               class="product-card__img text-center">
+            <img src="/assets/pictures/tires-pictures/tire-default.png"
+                 [alt]="product[0].name">
+          </div>
+          <mat-divider inset></mat-divider>
+          <mat-card-actions>
+            <div class="d-flex justify-content-center">
+              <button mat-raised-button
+                      color="primary"
+                      (click)="addCartProduct(product[0])">
+                <span class="material-icons">
+                  add_shopping_cart
                 </span>
-              </div>
-            </mat-list-item>
-            <mat-list-item>
-              <span mat-list-icon
-                    class="material-icons">
-                production_quantity_limits
+                ADAUGĂ ÎN COȘ
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-8">
+        <mat-toolbar class="mat-elevation-z6"
+                     color="primary">
+          <mat-toolbar-row>
+            <span class="material-icons mr-2">
+              verified
+            </span>
+            <span>{{product[0].name}}</span>
+            <span class="navbar-spacer"></span>
+            <app-copy-link [pathUrl]="'/products/'+ product[0].id"></app-copy-link>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-list>
+          <div mat-subheader>Detalii anvelopă</div>
+          <mat-list-item>
+            <span mat-list-icon
+                  class="material-icons">
+              payments
+            </span>
+            <div mat-line>Preț</div>
+            <div mat-line>
+              {{product[0].price | azetDtCurrency}}
+              <span class="sale mx-2"
+                    matTooltip="Super ofertă, nu o rata!"
+                    matTooltipPosition="above">
+                <del>{{300 | azetDtCurrency}}</del>
+                ( - 21%)
               </span>
-              <div mat-line>Disponibilitate</div>
-              <div mat-line>
-                <!-- <app-product-state [productState]="product[0].state"
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-list-icon
+                  class="material-icons">
+              production_quantity_limits
+            </span>
+            <div mat-line>Disponibilitate</div>
+            <div mat-line>
+              <!-- <app-product-state [productState]="product[0].state"
                                    [productQuantity]="product[0].quantity"></app-product-state> -->
-              </div>
-            </mat-list-item>
-            <mat-list-item>
-              <span mat-list-icon
-                    class="material-icons">
-                directions_car
-              </span>
-              <div mat-line>Vehicule</div>
-              <div mat-line>
-                <mat-chip-list aria-label="Vehicule">
-                  <!-- <mat-chip *ngFor="let carCategory of product[0].carCategories">
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-list-icon
+                  class="material-icons">
+              directions_car
+            </span>
+            <div mat-line>Vehicule</div>
+            <div mat-line>
+              <mat-chip-list aria-label="Vehicule">
+                <!-- <mat-chip *ngFor="let carCategory of product[0].carCategories">
                     {{carCategory}}
                   </mat-chip> -->
-                </mat-chip-list>
-              </div>
-            </mat-list-item>
-            <mat-list-item>
-              <span mat-list-icon
-                    class="material-icons">
-                square_foot
-              </span>
-              <div mat-line>Dimensiune</div>
-              <!-- <div mat-line>{{product[0].size}}</div> -->
-            </mat-list-item>
-            <mat-list-item>
-              <span mat-list-icon
-                    class="material-icons">
-                edit_road
-              </span>
-              <div mat-line>Profil</div>
-              <!-- <div mat-line>{{product[0].profile}}</div> -->
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <div mat-subheader>Descriere</div>
-            <mat-list-item>
-              <span mat-list-icon
-                    class="material-icons">
-                description
-              </span>
-              <div mat-line>Câteva detalii</div>
-              <!-- <div mat-line>{{product[0].description}}</div> -->
-            </mat-list-item>
-          </mat-list>
+              </mat-chip-list>
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-list-icon
+                  class="material-icons">
+              square_foot
+            </span>
+            <div mat-line>Dimensiune</div>
+            <!-- <div mat-line>{{product[0].size}}</div> -->
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-list-icon
+                  class="material-icons">
+              edit_road
+            </span>
+            <div mat-line>Profil</div>
+            <!-- <div mat-line>{{product[0].profile}}</div> -->
+          </mat-list-item>
           <mat-divider></mat-divider>
-          <app-contact-list [showJuridicDetails]="false"></app-contact-list>
-        </div>
+          <div mat-subheader>Descriere</div>
+          <mat-list-item>
+            <span mat-list-icon
+                  class="material-icons">
+              description
+            </span>
+            <div mat-line>Câteva detalii</div>
+            <!-- <div mat-line>{{product[0].description}}</div> -->
+          </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <app-contact-list [showJuridicDetails]="false"></app-contact-list>
       </div>
     </div>
   </div>
+</div>

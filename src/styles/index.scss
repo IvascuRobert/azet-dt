@@ -1,5 +1,6 @@
 // vendors
-@import "~bootstrap/scss/bootstrap";
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@angular/cdk/overlay-prebuilt.css";
 
 // Components style
 @import "./mixin";
@@ -8,7 +9,6 @@
 @import "./timepicker";
 @import "./general";
 @import "./variables";
-@import "./tooltip";
 
 // Themes
-@import "./core-themes";
+// @import "./core-themes";
