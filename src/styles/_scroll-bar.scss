@@ -1,28 +1,28 @@
-@import "variables";
+// @import 'variables';
 
-/* Works on Firefox */
-* {
-    /* Custom scrollbar */
-    scrollbar-width: thin;
-    scrollbar-color: $azet-dt-blue transparent;
-}
+// /* Works on Firefox */
+// * {
+//     /* Custom scrollbar */
+//     scrollbar-width: thin;
+//     scrollbar-color: $dark-cerulean transparent;
+// }
 
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-    /* Custom scrollbar */
-    width: 8px;
-}
+// /* Works on Chrome, Edge, and Safari */
+// *::-webkit-scrollbar {
+//     /* Custom scrollbar */
+//     width: 8px;
+// }
 
-*::-webkit-scrollbar-track {
-    /* Custom scrollbar */
-    background: transparent;
-}
+// *::-webkit-scrollbar-track {
+//     /* Custom scrollbar */
+//     background: transparent;
+// }
 
-*::-webkit-scrollbar-thumb {
-    /* Custom scrollbar */
-    background-color: $azet-dt-blue;
-}
+// *::-webkit-scrollbar-thumb {
+//     /* Custom scrollbar */
+//     background-color: $dark-cerulean;
+// }
 
-.azet-dt-border-left {
-    border-left: 4px solid $azet-dt-blue;
-}
+// .azet-dt-border-left {
+//     border-left: 4px solid $dark-cerulean;
+// }

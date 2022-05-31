@@ -1,14 +1,18 @@
 // vendors
-@import "bootstrap/dist/css/bootstrap.min.css";
-@import "@angular/cdk/overlay-prebuilt.css";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import '@angular/cdk/overlay-prebuilt.css';
 
 // Components style
-@import "./mixin";
-@import "./palette";
-@import "./scroll-bar";
-@import "./timepicker";
-@import "./general";
-@import "./variables";
+@import './mixin';
+@import './palette';
+@import './scroll-bar';
+@import './layout';
+@import './variables';
+@import './typography';
+@import './utils';
+@import './header';
+@import './input';
+@import './button';
 
 // Themes
 // @import "./core-themes";

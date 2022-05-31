@@ -1,0 +1,15 @@
+a:hover {
+    /* Anchor hover */
+    &:hover {
+        color: inherit;
+    }
+
+    text-decoration: none;
+}
+
+h3 {
+    font-size: 1.5rem !important;
+    color: $honolulu-blue;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+}

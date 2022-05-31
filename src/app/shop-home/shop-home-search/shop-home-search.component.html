@@ -1,114 +1,24 @@
-<div class="row m-0 shop-home align-items-center justify-content-between">
-    <div class="col-xl-3 col-md-4 col-12 py-4 backgound-opacity-75">
-        <div class="mat-display-2 mb-3">FAST, FREE SHIPPING ON TIRES , WHEELS & MORE</div>
-        <mat-divider class="bg-white"></mat-divider>
-        <div class="mat-caption">PLUS SAFE & EASY INSTALLATION</div>
-        <div class="d-flex justify-content-center mt-4">
-            <button mat-flat-button
-                    color="accent"
-                    routerLink="/products"
-                    aria-label="Produse"
-                    class="mr-4">
-                <span class="material-icons">
-                    support
-                </span>
-                ANVELOPE
-            </button>
+<div class="row">
+    <div class="col-12">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://player.vimeo.com/video/595738554?background=1&amp;controls=0&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;muted=true&amp;sidedock=0"
+                    width="1280"
+                    height="400"
+                    frameborder="0"
+                    allow="autoplay"
+                    muted="true"
+                    allowfullscreen=""
+                    id="vimeo-player"
+                    data-ready="true"
+                    class="embed-responsive-item"></iframe>
         </div>
-    </div>
-    <div class="col-xl-5 col-md-6 col-12">
-        <div class="row">
-            <div class="col-12">
-                <mat-toolbar class="mat-elevation-z6"
-                             color="primary">
-                    <mat-toolbar-row>
-                        <span class="material-icons">
-                            bolt
-                        </span>
-                        <span>Căutare rapidă</span>
-                        <span class="navbar-spacer"></span>
-                        <button mat-icon-button
-                                matTooltipPosition="left"
-                                matTooltip="Salvează căutarea">
-                            <span class="material-icons">
-                                saved_search
-                            </span>
-                        </button>
-                    </mat-toolbar-row>
-                </mat-toolbar>
-            </div>
-            <div class="col-12">
-                <form class="row justify-content-center m-0 p-3 backgound-opacity-75"
-                      [formGroup]="shopHomePageSearch"
-                      (ngSubmit)="onSubmit()">
-                    <mat-form-field class="col-12"
-                                    appearance="outline">
-                        <mat-label>Profil</mat-label>
-                        <mat-select name="profile"
-                                    id="profile"
-                                    formControlName="profile"
-                                    autocomplete="profile"
-                                    multiple>
-                            <mat-select-trigger>
-                                {{profile.value ? profile.value[0] : ''}}
-                                <span *ngIf="profile.value?.length > 1"
-                                      class="example-additional-selection">
-                                    (+{{profile.value.length - 1}})
-                                </span>
-                            </mat-select-trigger>
-                            <mat-option *ngFor="let topping of toppingList"
-                                        [value]="topping">{{topping}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-12"
-                                    appearance="outline">
-                        <mat-label>Toppings</mat-label>
-                        <mat-select name="size"
-                                    id="size"
-                                    formControlName="size"
-                                    autocomplete="size"
-                                    multiple>
-                            <mat-select-trigger>
-                                {{size.value ? size.value[0] : ''}}
-                                <span *ngIf="size.value?.length > 1"
-                                      class="example-additional-selection">
-                                    (+{{size.value.length - 1}})
-                                </span>
-                            </mat-select-trigger>
-                            <mat-option *ngFor="let topping of toppingList"
-                                        [value]="topping">{{topping}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-12"
-                                    appearance="outline">
-                        <mat-label>Toppings</mat-label>
-                        <mat-select name="carCategories"
-                                    id="carCategories"
-                                    formControlName="carCategories"
-                                    autocomplete="carCategories"
-                                    multiple>
-                            <mat-select-trigger>
-                                {{carCategories.value ? carCategories.value[0] : ''}}
-                                <span *ngIf="carCategories.value?.length > 1"
-                                      class="example-additional-selection">
-                                    (+{{carCategories.value.length - 1}})
-                                </span>
-                            </mat-select-trigger>
-                            <mat-option *ngFor="let topping of toppingList"
-                                        [value]="topping">{{topping}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <button mat-raised-button
-                            type="submit"
-                            color="primary"
-                            [disabled]="shopHomePageSearch.invalid">
-                        <span class="material-icons">
-                            search
-                        </span>
-                        Caută
-                    </button>
-                </form>
-            </div>
-        </div>
+        <!-- <video class="embed-responsive embed-responsive-16by9"
+               autoplay
+               loop
+               controls
+               muted>
+            <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4"
+                    type="video/mp4" />
+        </video> -->
     </div>
 </div>

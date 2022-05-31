@@ -1,0 +1,22 @@
+@import 'variables';
+
+.no-gutters {
+  /* Reduce margin and padding of bootstrap grid ( row, col ) */
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*='col-'] {
+    padding-right: 2px;
+    padding-left: 0;
+  }
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+.vertical-line {
+  border-left: 1px solid $davys-grey;
+  height: 100%;
+}

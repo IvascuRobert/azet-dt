@@ -34,7 +34,7 @@
             ],
             "styles": [
               "src/styles/index.scss",
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "stylePreprocessorOptions": {
@@ -131,7 +131,7 @@
             ],
             "styles": [
               "src/styles/index.scss",
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "stylePreprocessorOptions": {

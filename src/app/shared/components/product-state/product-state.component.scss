@@ -2,26 +2,26 @@
 
 .product-card__stock {
     .quantity {
-        color: $azet-dt-grey;
+        color: $davys-grey;
         font-size: 0.875em;
     }
     .STOCK {
         .fa-check-circle {
-            color: $azet-dt-green;
+            color: $forest-green;
             animation: pulse 2s infinite;
         }
     }
     .COMMAND {
         .fa-question-circle {
-            color: $azet-dt-yellow;
+            color: $gargoyle-gas;
         }
     }
     .NOT_IN_STOCK {
         .fa-times-circle {
-            color: $azet-dt-red;
+            color: $red;
         }
     }
     .fa-user-circle {
-        color: $azet-dt-blue;
+        color: $dark-cerulean;
     }
 }

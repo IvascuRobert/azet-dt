@@ -1,42 +1,78 @@
-<mat-toolbar *ngIf="!adminView"
-             class="mat-elevation-z6 azet-dt-header">
-    <button mat-icon-button
-            class="mx-1 d-lg-none d-xs-inline"
-            (click)="clickMenuIcon()">
-        <span class="material-icons-round">menu</span>
-    </button>
-    <app-logo-icon></app-logo-icon>
-    <span class="navbar-spacer"></span>
-    <div class="section-1__nav_btn">
-        <button *ngFor="let item of azetDtMenuHeaderItems"
-                mat-raised-button
-                class="mx-1 d-none d-lg-inline"
-                routerLinkActive="mat-accent"
-                [routerLink]="item.routerLink"
-                matBadgeColor="accent">
-            <span class="material-icons-round">{{item.icon}}</span>
-            <span>{{item.label}}</span>
-        </button>
-    </div>
-</mat-toolbar>
-<mat-toolbar *ngIf="adminView"
-             class="mat-elevation-z6">
-    <mat-toolbar-row>
-        <button mat-icon-button
-                color="primary"
-                (click)="clickMenuIcon()">
-            <span class="material-icons-two-tone">
-                menu
-            </span>
-        </button>
-        <h1 class="ml-2">{{ 'No title, pls contact the creator!' | uppercase}}</h1>
-        <span class="navbar-spacer"></span>
-        <button mat-stroked-button
-                routerLink="/home">
-            <span class="material-icons-two-tone">
-                home
-            </span>
-            Către AZET D.T. Website
-        </button>
+<mat-toolbar class="mat-elevation-z6 azet-dt-header">
+    <mat-toolbar-row class="header-first-row">
+        <div class="row w-100 align-items-center">
+            <div class="col-3 text-end">
+                <app-logo-icon></app-logo-icon>
+            </div>
+            <div class="col ms-4">
+                <button mat-button
+                        routerLink="/products"
+                        color="primary">ANVELOPE</button>
+            </div>
+
+            <div class="col text-end me-4">
+
+                <a mat-button
+                   color="primary"
+                   href="tel:+40737167631">
+                    <span class="material-icons">
+                        phone
+                    </span>
+                    (0737) 167 631
+                </a>
+            </div>
+            <div class="col vertical-line">
+                <button mat-icon-button
+                        class="mx-4"
+                        color="secondary"
+                        (click)="isOpen = !isOpen"
+                        type="button">
+                    <span class="material-icons">
+                        search
+                    </span>
+                </button>
+                <button mat-icon-button
+                        color="secondary"
+                        (click)="clickMenuIcon()">
+                    <span class="material-icons">
+                        menu
+                    </span>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="header-second-row">
+        <div cdkOverlayOrigin
+             #trigger="cdkOverlayOrigin"></div>
     </mat-toolbar-row>
 </mat-toolbar>
+
+<!-- This template displays the overlay content and is connected to the button -->
+<ng-template cdkConnectedOverlay
+             [cdkConnectedOverlayOrigin]="trigger"
+             [cdkConnectedOverlayOpen]="isOpen">
+    <div class="row azet-dt-search">
+        <div class="col-12 text-start">
+            <h3>Caută anvelopă</h3>
+            <mat-divider></mat-divider>
+            <mat-form-field class="w-100 my-3"
+                            appearance="outline">
+                <mat-label>Caută după cuvinte cheie :</mat-label>
+                <input id="searchText"
+                       #n
+                       type="text"
+                       matInput
+                       maxlength="40">
+                <span matSuffix
+                      class="material-icons">
+                    search
+                </span>
+            </mat-form-field>
+            <button mat-raised-button
+                    color="primary"
+                    type="button">
+                CAUTĂ
+            </button>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,50 @@
+@import 'variables';
+
+/* primary syling */
+.mat-button.mat-primary,
+.mat-stroked-button.mat-primary {
+    color: $honolulu-blue !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.mat-button.mat-primary:hover,
+.mat-stroked-button.mat-primary:hover {
+    // background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+    color: #f0fff3;
+    background-color: $honolulu-blue !important;
+}
+
+.mat-icon-button.mat-primary {
+    color: $honolulu-blue !important;
+}
+
+/* secondary syling */
+.mat-button.mat-secondary,
+.mat-stroked-button.mat-secondary {
+    color: $davys-grey !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.mat-button.mat-secondary:hover,
+.mat-stroked-button.mat-secondary:hover {
+    // background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-secondary,
+.mat-flat-button.mat-secondary,
+.mat-fab.mat-secondary,
+.mat-mini-fab.mat-secondary {
+    color: #f0fff3;
+    background-color: $davys-grey !important;
+}
+
+.mat-icon-button.mat-secondary {
+    color: $davys-grey !important;
+    transform: scale(1.6);
+}

@@ -7,30 +7,6 @@ export const azetDTGoogleMapsLocation = `https://www.google.com/maps/place/Azet+
                                          :0x1b5da9eebf44f902!2sAzet+DT+Resapare+Anvelope+Camion+SRL!8m2!3d45.6575587!4d25.6439095!3m4!
                                          1s0x40b35c6b2de4023d:0x1b5da9eebf44f902!8m2!3d45.6575587!4d25.6439095`;
 
-export const azetDtMenuHeaderItems: DropdownValue[] = [
-    {
-        label: 'ACASĂ',
-        value: 'home',
-        routerLink: '/home',
-        icon: 'home',
-    }, {
-        label: 'ANVELOPE',
-        value: 'tires',
-        routerLink: '/products',
-        icon: 'support',
-    }, {
-        label: 'CONTACT',
-        value: 'contact',
-        routerLink: '/contact',
-        icon: 'contact_page',
-    }, {
-        label: 'COȘ',
-        value: 'cart',
-        routerLink: '/cart',
-        icon: 'shopping_cart',
-    }
-];
-
 export const daysOfWeeks: DaysOfWeek = {
     workDays: [
         {

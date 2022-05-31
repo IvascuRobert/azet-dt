@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DropdownValue } from '../../interface/dropdown-value';
-import { azetDTGoogleMapsLocation, azetDtMenuHeaderItems } from '../../utils/utils';
+import { azetDTGoogleMapsLocation } from '../../utils/utils';
 import { DialogContentScheduleInServiceComponent } from '../dialog-content-schedule-in-service/dialog-content-schedule-in-service.component';
 import { DialogContentScheduleComponent } from '../dialog-content-schedule/dialog-content-schedule.component';
 
@@ -14,7 +13,6 @@ import { DialogContentScheduleComponent } from '../dialog-content-schedule/dialo
 export class LayoutShopComponent implements OnInit {
 
   azetDtLocation = azetDTGoogleMapsLocation;
-  azetDtMenuHeaderItems: DropdownValue[] = azetDtMenuHeaderItems;
   // cart$: Observable<Cart>;
 
   constructor(

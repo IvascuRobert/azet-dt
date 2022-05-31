@@ -6,20 +6,6 @@
                  [fixedInViewport]="true"
                  fixedTopGap="92">
         <mat-nav-list>
-            <a *ngFor="let item of azetDtMenuHeaderItems"
-               mat-list-item
-               class="mt-1"
-               routerLinkActive="mat-accent"
-               [routerLink]="item.routerLink">
-                <span class="material-icons-round">{{item.icon}}</span>
-                <span>{{item.label}}</span>
-                <!-- <mat-chip-list *ngIf="(item.value === 'cart')"
-                       class="ml-3">
-          <mat-chip color="accent"
-                    selected>{{(cart$ | async)?.totalProducts}}</mat-chip>
-        </mat-chip-list> -->
-            </a>
-            <mat-divider></mat-divider>
             <a mat-list-item
                class="mt-1"
                href="tel:+40737167631">
@@ -48,7 +34,7 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <main class="container">
+        <main class="container-fluid px-0">
             <router-outlet></router-outlet>
             <app-footer></app-footer>
         </main>

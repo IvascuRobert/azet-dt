@@ -1,6 +1,6 @@
 export enum HttpUrls {
-    Products = 'products',
-    Login = 'login',
-    Register = 'register',
-    ForgetPassword = 'forget-password'
+    Products = 'api/products',
+    Login = 'api/login',
+    Register = 'api/register',
+    ForgetPassword = 'api/forget-password'
 }
