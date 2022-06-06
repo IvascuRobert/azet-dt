@@ -48,3 +48,29 @@
     color: $davys-grey !important;
     transform: scale(1.6);
 }
+
+/* primary medium syling */
+.mat-button.mat-primary-medium,
+.mat-stroked-button.mat-primary-medium {
+    color: $honolulu-blue !important;
+    font-size: 85%;
+    line-height: 3.8;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.mat-button.mat-primary-medium:hover,
+.mat-stroked-button.mat-primary-medium:hover {
+    // background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-primary-medium,
+.mat-flat-button.mat-primary-medium,
+.mat-fab.mat-primary-medium,
+.mat-mini-fab.mat-primary-medium {
+    color: #f0fff3;
+    background-color: $honolulu-blue !important;
+}
+
+.mat-icon-button.mat-primary {
+    color: $honolulu-blue !important;
+}

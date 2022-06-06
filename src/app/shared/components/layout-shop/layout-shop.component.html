@@ -4,7 +4,7 @@
     <mat-sidenav #snavleft
                  [mode]="'over'"
                  [fixedInViewport]="true"
-                 fixedTopGap="92">
+                 fixedTopGap="100">
         <mat-nav-list>
             <a mat-list-item
                class="mt-1"
@@ -34,7 +34,7 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <main class="container-fluid px-0">
+        <main class="container-fluid">
             <router-outlet></router-outlet>
             <app-footer></app-footer>
         </main>
