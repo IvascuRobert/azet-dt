@@ -14,4 +14,5 @@ export interface DropdownValue {
   disabled?: boolean;
   routerLink?: string;
   icon?: string;
+  imageUrl?: string;
 }
