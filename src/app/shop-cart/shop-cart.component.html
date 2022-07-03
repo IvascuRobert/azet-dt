@@ -1,4 +1,5 @@
-<div *ngIf="cart$ | async as cart; else loading" class="row mt-5 p-5">
+<div *ngIf="cart$ | async as cart; else loading"
+     class="row mt-5 p-5">
   <!-- <div *ngIf="cart.products.length === 0"
        class="col-12 text-center">
     <div class="row justify-content-center">
@@ -116,7 +117,8 @@
     </div>
   </div> -->
 </div>
-<ng-template #loading class="row">
+<ng-template #loading
+             class="row">
   <div class="col-12">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
@@ -126,48 +128,79 @@
   <h2 mat-dialog-title>Formular de înregistrare comandă</h2>
   <mat-divider></mat-divider>
   <mat-dialog-content class="mat-typography">
-    <form class="row justify-content-center" [formGroup]="contactForm">
-      <mat-form-field class="col-12 w-100 my-3" appearance="outline">
+    <form class="row justify-content-center"
+          [formGroup]="contactForm">
+      <mat-form-field class="col-12 w-100 my-3"
+                      appearance="outline">
         <mat-label>Nume</mat-label>
-        <input id="name" #n name="name" type="text" matInput maxlength="20" formControlName="name" placeholder="Nume"
-          autocomplete="username" required>
+        <input id="name"
+               #n
+               name="name"
+               type="text"
+               matInput
+               maxlength="20"
+               formControlName="name"
+               placeholder="Nume"
+               autocomplete="username"
+               required>
         <mat-hint align="start">Ex. Popescu Adrian</mat-hint>
         <mat-hint align="end">{{n.value.length}} / 20</mat-hint>
         <mat-error *ngIf="name.invalid">
           {{name.errors | formControlErrorInterpretation}}
         </mat-error>
-        <span matSuffix class="material-icons">
+        <span matSuffix
+              class="material-icons">
           person
         </span>
       </mat-form-field>
-      <mat-form-field class="col-12 w-100 my-3" appearance="outline">
+      <mat-form-field class="col-12 w-100 my-3"
+                      appearance="outline">
         <mat-label>Telefon</mat-label>
-        <input id="phone" name="phone" type="tel" aria-label="Telefon" matInput formControlName="phone"
-          placeholder="555-555-1234" required>
+        <input id="phone"
+               name="phone"
+               type="tel"
+               aria-label="Telefon"
+               matInput
+               formControlName="phone"
+               placeholder="555-555-1234"
+               required>
         <mat-hint align="start">Introduceți numărul de telefon</mat-hint>
         <mat-error *ngIf="phone.invalid">
           {{phone.errors | formControlErrorInterpretation}}
         </mat-error>
-        <span matSuffix class="material-icons">
+        <span matSuffix
+              class="material-icons">
           phone
         </span>
       </mat-form-field>
-      <mat-form-field class="col-12 w-100 my-3" appearance="outline">
+      <mat-form-field class="col-12 w-100 my-3"
+                      appearance="outline">
         <mat-label>Mesaj</mat-label>
-        <input matInput #msg formControlName="message" maxlength="100" placeholder="Ex. Doresc să comand..." required>
+        <input matInput
+               #msg
+               formControlName="message"
+               maxlength="100"
+               placeholder="Ex. Doresc să comand..."
+               required>
         <mat-hint align="end">{{msg.value.length}} / 100</mat-hint>
         <mat-error *ngIf="message.invalid">
           {{message.errors | formControlErrorInterpretation}}
         </mat-error>
-        <span matSuffix class="material-icons">
+        <span matSuffix
+              class="material-icons">
           textsms
         </span>
       </mat-form-field>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Renunță</button>
-    <button mat-stroked-button type="button" color="primary" [mat-dialog-close]="true" [disabled]="contactForm.invalid">
+    <button mat-button
+            mat-dialog-close>Renunță</button>
+    <button mat-stroked-button
+            type="button"
+            color="primary"
+            [mat-dialog-close]="true"
+            [disabled]="contactForm.invalid">
       <span class="material-icons">
         send
       </span>
