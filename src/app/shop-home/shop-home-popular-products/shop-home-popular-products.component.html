@@ -1,22 +1,18 @@
-<!-- <div class="row popular-products-container justify-content-center">
-  <div class="col-12">
-    <mat-toolbar class="popular-products-header mat-elevation-z6"
-                 color="primary">
-      <mat-toolbar-row>
-        <span class="material-icons mr-2">
-          local_offer
-        </span>
-        <span>Nu rata ofertele noastre</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
+<div class="row justify-content-center py-4 mt-2 text-center popular-products-container">
+  <div class="col-12 mb-3">
+    <h4>POPULAR PRODUCTS</h4>
   </div>
-  <div class="col-12">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <div *ngFor="let item of tireList"
+       class="col-6 col-lg-3">
+    <div class="row">
+      <div class="col-12">
+        <img src="./assets/pictures/tires/tire.png"
+             class="rounded img-fluid"
+             [alt]="item.value"
+             [routerLink]="item.routerLink">
+      </div>
+      <div class="col-12">
+        <h6 class="gray">{{item.value}}</h6>
+      </div>
+    </div>
   </div>
-  <div class="col-12 mt-5">
-    <app-products-card [products]="(popularProducts$ | async)"
-                     [loading]="loading$ | async"
-                     (clickAddToCart)="addCartProduct($event)"></app-products-card>
-  </div>
-  <mat-divider class="col-8 my-5"></mat-divider>
-</div> -->

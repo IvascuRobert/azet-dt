@@ -1,8 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Product } from 'src/app/shared/class/base-cart-item';
-import { State } from 'src/app/shared/enum/state';
-import { ProductsService } from 'src/app/shared/service/products.service';
+import { DropdownValue } from 'src/app/shared/interface/dropdown-value';
 
 @Component({
   selector: 'app-shop-home-popular-products',
@@ -11,19 +8,37 @@ import { ProductsService } from 'src/app/shared/service/products.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShopHomePopularProductsComponent implements OnInit {
-  stateTemplate = State;
 
-  constructor(
-    private productsService: ProductsService
-  ) { }
+  tireList: DropdownValue[] = [
+    {
+      label: 'SPORTS CARS',
+      value: 'SPORTS CARS',
+      imageUrl: '',
+      routerLink: ''
+    },
+    {
+      label: 'SUVS',
+      value: 'SUVS',
+      imageUrl: '',
+      routerLink: ''
+    },
+    {
+      label: 'ORIGINAL EQUIPTMENT',
+      value: 'ORIGINAL EQUIPTMENT',
+      imageUrl: '',
+      routerLink: ''
+    },
+    {
+      label: '4X4 VEHICLES',
+      value: '4X4 VEHICLES',
+      imageUrl: '',
+      routerLink: ''
+    }
+  ];
+
+  constructor() { }
 
   ngOnInit(): void {
-    // this.productsService.getAll();
-    // this.popularProducts$ = this.productsService.entities$.pipe(map(products => products.slice(0, 3)));
-  }
-
-  addCartProduct(product: Product) {
-    // this.cartService.addCartProduct(product);
   }
 
 }
