@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-logo-icon',
@@ -6,9 +6,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./logo-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LogoIconComponent implements OnInit {
-
-  ngOnInit(): void {
-  }
-
+export class LogoIconComponent {
+  @Input() position: 'center' | 'end' | 'start' = 'center';
 }

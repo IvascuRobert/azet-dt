@@ -1,8 +1,8 @@
 <mat-toolbar class="mat-elevation-z6 azet-dt-header">
     <mat-toolbar-row class="header-first-row">
         <div class="row w-100 align-items-center">
-            <div class="col col-lg-3 text-end">
-                <app-logo-icon></app-logo-icon>
+            <div class="col col-lg-3">
+                <app-logo-icon [position]="'end'"></app-logo-icon>
             </div>
             <div class="col ms-4 d-none d-lg-block">
                 <button mat-button
@@ -36,7 +36,6 @@
                     </span>
                 </button>
             </div>
-
             <div class="col vertical-line d-lg-none">
                 <button mat-icon-button
                         color="secondary"

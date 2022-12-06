@@ -1,12 +1,12 @@
-@import 'variables';
+@import 'colors';
 
 .no-gutters {
   /* Reduce margin and padding of bootstrap grid ( row, col ) */
   margin-right: 0;
   margin-left: 0;
 
-  > .col,
-  > [class*='col-'] {
+  >.col,
+  >[class*='col-'] {
     padding-right: 2px;
     padding-left: 0;
   }
@@ -19,4 +19,8 @@
 .vertical-line {
   border-left: 1px solid $davys-grey;
   height: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

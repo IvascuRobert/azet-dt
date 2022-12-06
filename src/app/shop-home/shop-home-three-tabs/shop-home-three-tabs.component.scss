@@ -1,74 +1,75 @@
-@import 'variables';
+@import "colors";
 
 ::ng-deep {
-    .three-tabs-container {
-        min-height: 35rem;
+  .three-tabs-container {
+    min-height: 35rem;
 
-        .mat-tab-label {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+    .mat-tab-label {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
 
-            .mat-tab-label-content {
-                text-transform: uppercase;
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: $honolulu-blue;
-            }
-        }
-
-        .mat-tab-body-wrapper {
-            .mat-tab-body-content {
-                overflow: hidden;
-            }
-        }
-
-        .mat-card-image {
-            max-height: 10vw;
-        }
+      .mat-tab-label-content {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $honolulu-blue;
+      }
     }
+
+    .mat-tab-body-wrapper {
+      .mat-tab-body-content {
+        overflow: hidden;
+      }
+    }
+
+    .mat-card-image {
+      max-height: 10vw;
+    }
+  }
 }
 
 .tire-by-size-image {
-    background-image: url('/./assets/pictures/tires/tire3.png');
-    background-size: cover;
-    height: 176px;
-    border-bottom: 2px solid;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
+  background-image: url("/assets/pictures/tires/tire3.png");
+  background-size: cover;
+  height: 176px;
+  border-bottom: 2px solid;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .tire-by-size-text {
-    color: #0062b0;
-    font-size: 26px;
-    font-weight: bold;
+  color: $honolulu-blue;
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .tire-by {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 
-    img {
-        transition: transform 1s, filter 1.1s ease-in-out;
-        transform-origin: center center;
-        filter: brightness(80%);
+  img {
+    transition: transform 1s, filter 1.1s ease-in-out;
+    transform-origin: center center;
+    filter: brightness(80%);
 
-        &:hover {
-            filter: brightness(120%);
-        }
+    &:hover {
+      filter: brightness(120%);
     }
+  }
 
-    .content {
-        color: white;
-        width: 100%;
-        position: absolute;
-        top: 78%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgb(0, 0, 0); /* fallback color */
-        background: rgba(120, 120, 120, 0.7);
-        padding-top: 1rem;
-    }
+  .content {
+    color: white;
+    width: 100%;
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(0, 0, 0);
+    /* fallback color */
+    background: rgba(120, 120, 120, 0.7);
+    padding-top: 1rem;
+  }
 }

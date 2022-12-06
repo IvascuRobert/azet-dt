@@ -1,27 +1,31 @@
-@import "variables";
+@import "colors";
 
 .product-card__stock {
-    .quantity {
-        color: $davys-grey;
-        font-size: 0.875em;
+  .quantity {
+    color: $davys-grey;
+    font-size: 0.875em;
+  }
+
+  .STOCK {
+    .fa-check-circle {
+      color: $forest-green;
+      animation: pulse 2s infinite;
     }
-    .STOCK {
-        .fa-check-circle {
-            color: $forest-green;
-            animation: pulse 2s infinite;
-        }
+  }
+
+  .COMMAND {
+    .fa-question-circle {
+      color: $gargoyle-gas;
     }
-    .COMMAND {
-        .fa-question-circle {
-            color: $gargoyle-gas;
-        }
+  }
+
+  .NOT_IN_STOCK {
+    .fa-times-circle {
+      color: $red;
     }
-    .NOT_IN_STOCK {
-        .fa-times-circle {
-            color: $red;
-        }
-    }
-    .fa-user-circle {
-        color: $dark-cerulean;
-    }
+  }
+
+  .fa-user-circle {
+    color: $dark-cerulean;
+  }
 }

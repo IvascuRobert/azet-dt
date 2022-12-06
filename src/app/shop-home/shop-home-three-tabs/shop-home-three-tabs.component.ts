@@ -5,10 +5,9 @@ import { DropdownValue } from 'src/app/shared/interface/dropdown-value';
 @Component({
   selector: 'app-shop-home-three-tabs',
   templateUrl: './shop-home-three-tabs.component.html',
-  styleUrls: ['./shop-home-three-tabs.component.scss']
+  styleUrls: ['./shop-home-three-tabs.component.scss'],
 })
 export class ShopHomeThreeTabsComponent implements OnInit {
-
   formGroup = this.formBuilder.group({
     width: '205',
     height: '55',
@@ -35,43 +34,42 @@ export class ShopHomeThreeTabsComponent implements OnInit {
     return this.formGroup.get('speedIndex') as FormControl;
   }
 
-
   tireListByWeather: DropdownValue[] = [
     {
       label: 'Winter',
       value: 'Winter',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'Winter',
       value: 'Winter',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'Winter',
       value: 'Winter',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'Winter',
       value: 'Winter',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'Winter',
       value: 'Winter',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'Winter',
       value: 'Winter',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
   ];
 
@@ -80,46 +78,45 @@ export class ShopHomeThreeTabsComponent implements OnInit {
       label: 'SPORTS CARS',
       value: 'SPORTS CARS',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'SUVS',
       value: 'SUVS',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'ORIGINAL EQUIPTMENT',
       value: 'ORIGINAL EQUIPTMENT',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: '4X4 VEHICLES',
       value: '4X4 VEHICLES',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'TRACK CARS',
       value: 'TRACK CARS',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
     {
       label: 'VANS',
       value: 'VANS',
       imageUrl: '',
-      routerLink: ''
+      routerLink: '',
     },
   ];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log(this.formGroup.getRawValue(), 'e')
+    console.log(this.formGroup.getRawValue(), 'e');
   }
 }
