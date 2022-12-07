@@ -1,0 +1,25 @@
+.mat-tab-group {
+  min-height: 35rem;
+
+  .mat-tab-label {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    .mat-tab-label-content {
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $honolulu-blue;
+    }
+  }
+
+  .mat-tab-body-wrapper {
+    .mat-tab-body-content {
+      overflow: hidden;
+    }
+  }
+
+  .mat-card-image {
+    max-height: 10vw;
+  }
+}

@@ -18,6 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -33,24 +34,13 @@
               "src/sitemap.xml"
             ],
             "styles": [
-              {
-                "input": "src/styles/_material-theme.scss",
-                "inject": false,
-                "bundleName": "styles"
-              },
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles/index.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules",
-                "src",
-                "src/styles"
-              ]
+              "includePaths": ["node_modules", "src", "src/styles"]
             },
-            "scripts": [
-              "node_modules/@fortawesome/fontawesome-free/js/all.js"
-            ],
+            "scripts": ["node_modules/@fortawesome/fontawesome-free/js/all.js"],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -134,24 +124,13 @@
               }
             ],
             "styles": [
-              {
-                "input": "src/styles/_material-theme.scss",
-                "inject": false,
-                "bundleName": "styles"
-              },
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles/index.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules",
-                "src",
-                "src/styles"
-              ]
+              "includePaths": ["node_modules", "src", "src/styles"]
             },
-            "scripts": [
-              "node_modules/@fortawesome/fontawesome-free/js/all.js"
-            ]
+            "scripts": ["node_modules/@fortawesome/fontawesome-free/js/all.js"]
           }
         },
         "lint": {
@@ -162,9 +141,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

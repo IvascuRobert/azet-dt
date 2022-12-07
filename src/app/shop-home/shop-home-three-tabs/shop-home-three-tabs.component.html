@@ -1,10 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-lg-8 col-12">
-    <mat-tab-group
-      class="three-tabs-container"
-      mat-align-tabs="center"
-      [selectedIndex]="0"
-    >
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="0">
       <mat-tab label="Tyre by Size">
         <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
           <div class="row my-5">
@@ -35,7 +31,7 @@
                   </mat-form-field>
                 </div>
                 <div class="col-12 d-none d-lg-block text-center mb-3">
-                  <div class="tire-by-size-text">
+                  <div class="text-honolulu-blue fs-26 fw-bold">
                     <span class="mx-2 width">{{
                       width && width.value ? width.value : "205"
                     }}</span>
@@ -51,8 +47,13 @@
                     }}</span>
                   </div>
                 </div>
-                <div class="col-12 d-none d-lg-block text-center">
-                  <div class="tire-by-size-image"></div>
+                <div
+                  class="col-12 d-none d-lg-block text-center shadow-sm text-center"
+                >
+                  <img
+                    class="img-fluid"
+                    src="./assets/pictures/tires/tire3.png"
+                  />
                 </div>
                 <div class="col-12 d-none d-lg-block mt-4">
                   Find the right tyre size - that's how it works
@@ -116,7 +117,7 @@
               </div>
             </div>
             <div class="col-12 d-lg-none text-center mb-3">
-              <div class="tire-by-size-text">
+              <div class="text-honolulu-blue fs-26 fw-bold">
                 <span class="mx-2 width">{{
                   width && width.value ? width.value : "205"
                 }}</span>
@@ -132,8 +133,8 @@
                 }}</span>
               </div>
             </div>
-            <div class="col-12 d-lg-none text-center">
-              <div class="tire-by-size-image"></div>
+            <div class="col-12 d-lg-none text-center shadow-sm">
+              <img class="img-fluid" src="./assets/pictures/tires/tire3.png" />
             </div>
             <div class="col-12 d-lg-none mt-3">
               Find the right tyre size - that's how it works
@@ -158,19 +159,18 @@
         <div class="row my-5">
           <div
             *ngFor="let item of tireListByType"
-            class="col-lg-4 col-6 my-2"
-            [routerLink]="item.routerLink"
+            class="col-lg-4 col-md-6 col-xs-12 my-2"
           >
-            <div class="tire-by">
+            <mat-card>
               <img
+                class="figure-img img-fluid rounded"
                 src="./assets/pictures/truck/truck1.avif"
-                class="rounded img-fluid"
                 [alt]="item.value"
               />
-              <div class="content">
+              <mat-card-content class="text-center">
                 <h1>{{ item.label }}</h1>
-              </div>
-            </div>
+              </mat-card-content>
+            </mat-card>
           </div>
         </div>
       </mat-tab>
@@ -178,19 +178,18 @@
         <div class="row my-5">
           <div
             *ngFor="let item of tireListByWeather"
-            class="col-lg-4 col-6 my-2"
-            [routerLink]="item.routerLink"
+            class="col-lg-4 col-md-6 col-xs-12 my-2"
           >
-            <div class="tire-by">
+            <mat-card>
               <img
+                class="figure-img img-fluid rounded"
                 src="./assets/pictures/truck/truck1.avif"
-                class="rounded img-fluid"
                 [alt]="item.value"
               />
-              <div class="content">
+              <mat-card-content class="text-center">
                 <h1>{{ item.label }}</h1>
-              </div>
-            </div>
+              </mat-card-content>
+            </mat-card>
           </div>
         </div>
       </mat-tab>

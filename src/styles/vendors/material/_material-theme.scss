@@ -1,0 +1,71 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+/* For use in app/styles/color-palette.scss */
+$md-mcgpalette0: (
+  50: #e0ecf6,
+  100: #b3d0e7,
+  200: #80b1d8,
+  300: #4d91c8,
+  400: #267abc,
+  500: #0062b0,
+  600: #005aa9,
+  700: #0050a0,
+  800: #004697,
+  900: #003487,
+  A100: #b3caff,
+  A200: #80a7ff,
+  A400: #4d84ff,
+  A700: #3472ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
+// Define a light theme
+$light-primary: mat.define-palette($md-mcgpalette0);
+$light-accent: mat.define-palette($md-mcgpalette0);
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+    ),
+  )
+);
+
+// Define a dark theme
+$dark-primary: mat.define-palette($md-mcgpalette0);
+$dark-accent: mat.define-palette($md-mcgpalette0);
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+    ),
+  )
+);
+
+// Apply the light theme by default
+@include mat.all-component-themes($light-theme);
+@include mat.core-theme($light-theme);
+
+// Apply the dark theme only when the `.my-dark-theme` CSS class is applied
+// to an ancestor element of the components (such as `body`).
+.my-dark-theme {
+  @include mat.all-component-themes($dark-theme);
+  @include mat.core-theme($dark-theme);
+}

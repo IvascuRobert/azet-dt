@@ -87,8 +87,8 @@ export class ShopHomeThreeTabsComponent implements OnInit {
       routerLink: '',
     },
     {
-      label: 'ORIGINAL EQUIPTMENT',
-      value: 'ORIGINAL EQUIPTMENT',
+      label: 'ORIGINAL',
+      value: 'ORIGINAL',
       imageUrl: '',
       routerLink: '',
     },

@@ -3,11 +3,9 @@
     <app-shop-products-filter></app-shop-products-filter>
   </div>
   <div class="col-9">
-    <app-shop-products-sort (clickViewMode)="changeViewMode($event)"></app-shop-products-sort>
+    <app-shop-products-sort
+      (clickViewMode)="changeViewMode($event)"
+    ></app-shop-products-sort>
     <app-products-card [products]="products$ | async"></app-products-card>
-
-
-    <!-- [viewMode]="viewMode"
-                         (clickAddToCart)="addCartProduct($event)" -->
   </div>
 </div>
