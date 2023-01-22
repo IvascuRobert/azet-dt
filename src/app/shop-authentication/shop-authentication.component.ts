@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { combineLatest } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/service/authentication.service';
 import { patterns } from 'src/app/shared/utils/patterns';
@@ -15,67 +15,67 @@ export class ShopAuthenticationComponent implements OnInit, OnDestroy {
 
   private subs = new SubSink();
 
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+  loginForm = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)])
   });
 
-  registerForm = new FormGroup({
-    firstName: new FormControl('', [
+  registerForm = new UntypedFormGroup({
+    firstName: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
       customPatternValidator(patterns.onlyCharacters)
     ]),
-    lastName: new FormControl('', [
+    lastName: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
       customPatternValidator(patterns.onlyCharacters)
     ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+    confirmPassword: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
-  forgetPasswordForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+  forgetPasswordForm = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
   });
 
   hidePasswordRF = true;
   hidePasswordLF = true;
   tabIndex = 0;
 
-  get emailLF(): FormControl {
-    return this.loginForm.get('email') as FormControl;
+  get emailLF(): UntypedFormControl {
+    return this.loginForm.get('email') as UntypedFormControl;
   }
 
-  get passwordLF(): FormControl {
-    return this.loginForm.get('password') as FormControl;
+  get passwordLF(): UntypedFormControl {
+    return this.loginForm.get('password') as UntypedFormControl;
   }
 
-  get firstNameRF(): FormControl {
-    return this.registerForm.get('firstName') as FormControl;
+  get firstNameRF(): UntypedFormControl {
+    return this.registerForm.get('firstName') as UntypedFormControl;
   }
 
-  get lastNameRF(): FormControl {
-    return this.registerForm.get('lastName') as FormControl;
+  get lastNameRF(): UntypedFormControl {
+    return this.registerForm.get('lastName') as UntypedFormControl;
   }
 
-  get emailRF(): FormControl {
-    return this.registerForm.get('email') as FormControl;
+  get emailRF(): UntypedFormControl {
+    return this.registerForm.get('email') as UntypedFormControl;
   }
 
-  get passwordRF(): FormControl {
-    return this.registerForm.get('password') as FormControl;
+  get passwordRF(): UntypedFormControl {
+    return this.registerForm.get('password') as UntypedFormControl;
   }
 
-  get confirmPasswordRF(): FormControl {
-    return this.registerForm.get('confirmPassword') as FormControl;
+  get confirmPasswordRF(): UntypedFormControl {
+    return this.registerForm.get('confirmPassword') as UntypedFormControl;
   }
 
-  get emailFPF(): FormControl {
-    return this.forgetPasswordForm.get('email') as FormControl;
+  get emailFPF(): UntypedFormControl {
+    return this.forgetPasswordForm.get('email') as UntypedFormControl;
   }
 
   constructor(

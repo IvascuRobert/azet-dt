@@ -159,7 +159,6 @@
       }
     }
   },
-  "defaultProject": "azet-dt",
   "cli": {
     "analytics": "e6e18903-bc47-483b-928e-f5031d545c62",
     "cache": {

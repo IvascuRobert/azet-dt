@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { customPatternValidator, customTimePickerValidatorInterval } from 'src/app/shared/utils/validation';
 import { patterns } from '../../utils/patterns';
 
@@ -14,48 +14,48 @@ export class DialogContentScheduleInServiceComponent implements OnInit {
   minDate: Date = new Date();
   maxDate: Date = new Date();
 
-  scheduleInServiceForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
+  scheduleInServiceForm: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
       customPatternValidator(patterns.onlyCharacters)
     ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    phone: new UntypedFormControl('', [
       Validators.required,
       customPatternValidator(patterns.phoneNumber)
     ]),
-    reason: new FormControl('', Validators.required),
-    date: new FormControl(null, Validators.required),
-    time: new FormControl(null, [
+    reason: new UntypedFormControl('', Validators.required),
+    date: new UntypedFormControl(null, Validators.required),
+    time: new UntypedFormControl(null, [
       Validators.required,
       customTimePickerValidatorInterval()
     ])
   });
 
-  get controlName(): FormControl {
-    return this.scheduleInServiceForm.get('name') as FormControl;
+  get controlName(): UntypedFormControl {
+    return this.scheduleInServiceForm.get('name') as UntypedFormControl;
   }
 
-  get controlEmail(): FormControl {
-    return this.scheduleInServiceForm.get('email') as FormControl;
+  get controlEmail(): UntypedFormControl {
+    return this.scheduleInServiceForm.get('email') as UntypedFormControl;
   }
 
-  get controlPhone(): FormControl {
-    return this.scheduleInServiceForm.get('phone') as FormControl;
+  get controlPhone(): UntypedFormControl {
+    return this.scheduleInServiceForm.get('phone') as UntypedFormControl;
   }
 
-  get controlDate(): FormControl {
-    return this.scheduleInServiceForm.get('date') as FormControl;
+  get controlDate(): UntypedFormControl {
+    return this.scheduleInServiceForm.get('date') as UntypedFormControl;
   }
 
-  get controlTime(): FormControl {
-    return this.scheduleInServiceForm.get('time') as FormControl;
+  get controlTime(): UntypedFormControl {
+    return this.scheduleInServiceForm.get('time') as UntypedFormControl;
   }
 
-  get controlReason(): FormControl {
-    return this.scheduleInServiceForm.get('reason') as FormControl;
+  get controlReason(): UntypedFormControl {
+    return this.scheduleInServiceForm.get('reason') as UntypedFormControl;
   }
 
   filterDate = (d: Date | null): boolean => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, FormGroup } from '@angular/forms';
 import { DropdownValue } from 'src/app/shared/interface/dropdown-value';
 
 @Component({
@@ -18,20 +18,20 @@ export class ShopHomeThreeTabsComponent implements OnInit {
     manufacturer: '',
   });
 
-  get width(): FormControl {
-    return this.formGroup.get('width') as FormControl;
+  get width(): UntypedFormControl {
+    return this.formGroup.get('width') as UntypedFormControl;
   }
 
-  get height(): FormControl {
-    return this.formGroup.get('height') as FormControl;
+  get height(): UntypedFormControl {
+    return this.formGroup.get('height') as UntypedFormControl;
   }
 
-  get diameter(): FormControl {
-    return this.formGroup.get('diameter') as FormControl;
+  get diameter(): UntypedFormControl {
+    return this.formGroup.get('diameter') as UntypedFormControl;
   }
 
-  get speedIndex(): FormControl {
-    return this.formGroup.get('speedIndex') as FormControl;
+  get speedIndex(): UntypedFormControl {
+    return this.formGroup.get('speedIndex') as UntypedFormControl;
   }
 
   tireListByWeather: DropdownValue[] = [
@@ -112,7 +112,7 @@ export class ShopHomeThreeTabsComponent implements OnInit {
     },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {}
 

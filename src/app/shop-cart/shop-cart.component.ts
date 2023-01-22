@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
 import { Product } from 'src/app/shared/class/base-cart-item';
@@ -27,18 +27,18 @@ export class ShopCartComponent implements OnInit {
   cart$: Observable<Product>;
   tabIndex = 0;
   stateTemplate = State;
-  contactForm = new FormGroup({
-    name: new FormControl('', [
+  contactForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
       customPatternValidator(patterns.onlyCharacters)
     ]),
-    phone: new FormControl('', [
+    phone: new UntypedFormControl('', [
       Validators.required,
       customPatternValidator(patterns.phoneNumber)
     ]),
-    message: new FormControl('', Validators.required),
+    message: new UntypedFormControl('', Validators.required),
   });
 
   options: any = {
@@ -46,16 +46,16 @@ export class ShopCartComponent implements OnInit {
     showRemoveButton: true
   };
 
-  get name(): FormControl {
-    return this.contactForm.get('name') as FormControl;
+  get name(): UntypedFormControl {
+    return this.contactForm.get('name') as UntypedFormControl;
   }
 
-  get phone(): FormControl {
-    return this.contactForm.get('phone') as FormControl;
+  get phone(): UntypedFormControl {
+    return this.contactForm.get('phone') as UntypedFormControl;
   }
 
-  get message(): FormControl {
-    return this.contactForm.get('message') as FormControl;
+  get message(): UntypedFormControl {
+    return this.contactForm.get('message') as UntypedFormControl;
   }
 
   constructor(

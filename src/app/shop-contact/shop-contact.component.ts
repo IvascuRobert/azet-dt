@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { customPatternValidator } from 'src/app/shared/utils/validation';
 import { azetDTGoogleMapsLocation } from 'src/app/shared/utils/utils';
 import { patterns } from 'src/app/shared/utils/patterns';
@@ -12,30 +12,30 @@ import { patterns } from 'src/app/shared/utils/patterns';
 export class ShopContactComponent implements OnInit {
 
   azetDtLocation = azetDTGoogleMapsLocation;
-  contactForm = new FormGroup({
-    name: new FormControl('', [
+  contactForm = new UntypedFormGroup({
+    name: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
       customPatternValidator(patterns.onlyCharacters)
     ]),
-    phone: new FormControl('', [
+    phone: new UntypedFormControl('', [
       Validators.required,
       customPatternValidator(patterns.phoneNumber)
     ]),
-    message: new FormControl('', Validators.required),
+    message: new UntypedFormControl('', Validators.required),
   });
 
-  get name(): FormControl {
-    return this.contactForm.get('name') as FormControl;
+  get name(): UntypedFormControl {
+    return this.contactForm.get('name') as UntypedFormControl;
   }
 
-  get phone(): FormControl {
-    return this.contactForm.get('phone') as FormControl;
+  get phone(): UntypedFormControl {
+    return this.contactForm.get('phone') as UntypedFormControl;
   }
 
-  get message(): FormControl {
-    return this.contactForm.get('message') as FormControl;
+  get message(): UntypedFormControl {
+    return this.contactForm.get('message') as UntypedFormControl;
   }
 
   constructor() { }
