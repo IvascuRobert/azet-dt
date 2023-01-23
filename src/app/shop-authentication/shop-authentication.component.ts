@@ -1,23 +1,26 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  UntypedFormControl,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { combineLatest } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/service/authentication.service';
 import { patterns } from 'src/app/shared/utils/patterns';
 import { customPatternValidator } from 'src/app/shared/utils/validation';
-import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-shop-authentication',
   templateUrl: './shop-authentication.component.html',
-  styleUrls: ['./shop-authentication.component.scss']
+  styleUrls: ['./shop-authentication.component.scss'],
 })
-export class ShopAuthenticationComponent implements OnInit, OnDestroy {
-
-  private subs = new SubSink();
-
+export class ShopAuthenticationComponent implements OnInit {
   loginForm = new UntypedFormGroup({
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
-    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)])
+    password: new UntypedFormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
   });
 
   registerForm = new UntypedFormGroup({
@@ -25,17 +28,23 @@ export class ShopAuthenticationComponent implements OnInit, OnDestroy {
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
-      customPatternValidator(patterns.onlyCharacters)
+      customPatternValidator(patterns.onlyCharacters),
     ]),
     lastName: new UntypedFormControl('', [
       Validators.required,
       Validators.maxLength(20),
       Validators.minLength(3),
-      customPatternValidator(patterns.onlyCharacters)
+      customPatternValidator(patterns.onlyCharacters),
     ]),
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
-    password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
-    confirmPassword: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
+    password: new UntypedFormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+    confirmPassword: new UntypedFormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
   });
 
   forgetPasswordForm = new UntypedFormGroup({
@@ -78,19 +87,29 @@ export class ShopAuthenticationComponent implements OnInit, OnDestroy {
     return this.forgetPasswordForm.get('email') as UntypedFormControl;
   }
 
-  constructor(
-    private authenticationService: AuthenticationService
-  ) { }
+  constructor(private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.subs.sink = combineLatest([
+    combineLatest([
       this.passwordRF.valueChanges,
-      this.confirmPasswordRF.valueChanges
+      this.confirmPasswordRF.valueChanges,
     ]).subscribe(([password, confirmPassword]) => {
-      if (password && (password.length >= 8) && confirmPassword && (confirmPassword.length >= 8) && (password != confirmPassword)) {
+      if (
+        password &&
+        password.length >= 8 &&
+        confirmPassword &&
+        confirmPassword.length >= 8 &&
+        password != confirmPassword
+      ) {
         this.passwordRF.setErrors({ passwordMismatch: true });
         this.confirmPasswordRF.setErrors({ passwordMismatch: true });
-      } else if (password && (password.length >= 8) && confirmPassword && (confirmPassword.length >= 8) && (password == confirmPassword)) {
+      } else if (
+        password &&
+        password.length >= 8 &&
+        confirmPassword &&
+        confirmPassword.length >= 8 &&
+        password == confirmPassword
+      ) {
         this.passwordRF.setErrors(null);
         this.confirmPasswordRF.setErrors(null);
       }
@@ -120,9 +139,5 @@ export class ShopAuthenticationComponent implements OnInit, OnDestroy {
     this.registerForm.reset();
     this.forgetPasswordForm.reset();
     this.tabIndex = index;
-  }
-
-  ngOnDestroy() {
-    this.subs.unsubscribe();
   }
 }

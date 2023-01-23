@@ -1,8 +1,15 @@
 // Vendors
 @import "./vendors/bootstrap/share";
-@import "./vendors/material/material-palette";
-@import "./vendors/material/material-theme";
-@import "./vendors/material/share";
+
+// Helpers style
+@import "./helpers/colors";
+@import "./helpers/colors-background";
+@import "./helpers/colors-text";
+@import "./helpers/typography";
+@import "./helpers/utils";
+@import "./helpers/sizing";
+@import "./helpers/font-size";
+@import "./helpers/font-weight";
 
 // Components style
 @import "./components/scroll-bar";
@@ -11,14 +18,3 @@
 @import "./components/mat-input";
 @import "./components/mat-tab";
 @import "./components/layout";
-
-// Helpers style
-@import "./helpers/mixin";
-@import "./helpers/colors-background";
-@import "./helpers/colors-text";
-@import "./helpers/colors";
-@import "./helpers/typography";
-@import "./helpers/utils";
-@import "./helpers/sizing";
-@import "./helpers/font-size";
-@import "./helpers/font-weight";
