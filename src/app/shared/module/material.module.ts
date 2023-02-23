@@ -9,7 +9,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     exports: [
@@ -44,11 +45,13 @@ import { OverlayModule } from '@angular/cdk/overlay';
         MatTreeModule,
         MatCheckboxModule,
         MatInputModule,
-        OverlayModule
+        OverlayModule,
+        MatIconModule
     ],
     providers: [
         MatDatepickerModule,
-        MatSnackBar
+        MatSnackBar,
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
     ]
 })
 export class MaterialModule { }

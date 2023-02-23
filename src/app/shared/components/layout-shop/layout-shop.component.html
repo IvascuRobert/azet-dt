@@ -1,42 +1,5 @@
-<app-header (openSideNavDrawer)="snavleft.toggle()"></app-header>
-<mat-sidenav-container class="azet-dt-sidenav-container"
-                       [style.marginTop.px]="0">
-    <mat-sidenav #snavleft
-                 [mode]="'over'"
-                 [fixedInViewport]="true"
-                 fixedTopGap="100">
-        <mat-nav-list>
-            <a mat-list-item
-               class="mt-1"
-               href="tel:+40737167631">
-                <span class="material-icons text-success">phone</span>
-                <span>(0737) 167 631</span>
-            </a>
-            <a mat-list-item
-               class="mt-1"
-               (click)="openScheduleInService()">
-                <span class="material-icons text-warning">tire_repair</span>
-                <span>PROGRAMEAZĂ ÎN SERVICE</span>
-            </a>
-            <a mat-list-item
-               class="mt-1"
-               target="_blank"
-               [href]="azetDtLocation">
-                <span class="material-icons text-primary">place</span>
-                <span>LOCAȚIE</span>
-            </a>
-            <a mat-list-item
-               class="mt-1"
-               (click)="openSchedule()">
-                <span class="material-icons text-danger">schedule</span>
-                <span>PROGRAM</span>
-            </a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <main class="container-fluid">
-            <router-outlet></router-outlet>
-            <app-footer></app-footer>
-        </main>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<app-header></app-header>
+<main class="container-fluid">
+    <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>

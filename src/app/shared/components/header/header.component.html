@@ -1,227 +1,26 @@
-<mat-toolbar class="mat-elevation-z6 azet-dt-header">
-    <mat-toolbar-row class="header-first-row">
-        <div class="row w-100 align-items-center">
-            <div class="col col-lg-3">
-                <app-logo-icon [position]="'end'"></app-logo-icon>
-            </div>
-            <div class="col ms-4 d-none d-lg-block">
-                <button mat-button
-                        routerLink="/products"
-                        color="primary">ANVELOPE</button>
-            </div>
-            <div class="col text-end d-none d-lg-block">
-                <a mat-button
-                   color="primary"
-                   href="tel:+40737167631">
-                    <span class="material-icons">
-                        phone
-                    </span>
-                    (0737) 167 631
-                </a>
-            </div>
-            <div class="col vertical-line d-none d-lg-block">
-                <button mat-icon-button
-                        color="secondary"
-                        (click)="toggleSearchOverlay()"
-                        type="button">
-                    <span class="material-icons">
-                        search
-                    </span>
-                </button>
-                <button mat-icon-button
-                        color="secondary"
-                        (click)="toggleMenuOverlay()">
-                    <span class="material-icons">
-                        menu
-                    </span>
-                </button>
-            </div>
-            <div class="col vertical-line d-lg-none">
-                <button mat-icon-button
-                        color="secondary"
-                        (click)="toggleSearchOverlay()"
-                        type="button">
-                    <span class="material-icons">
-                        search
-                    </span>
-                </button>
-                <button mat-icon-button
-                        color="secondary"
-                        (click)="clickMenuIcon()">
-                    <span class="material-icons">
-                        menu
-                    </span>
-                </button>
-            </div>
-        </div>
+<mat-toolbar class="fixed-top">
+    <mat-toolbar-row>
+        <span>My App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button
+                class="example-icon"
+                aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
     </mat-toolbar-row>
-    <mat-toolbar-row class="header-second-row">
-        <div cdkOverlayOrigin
-             #searchOverlay="cdkOverlayOrigin"></div>
-        <div cdkOverlayOrigin
-             #menuOverlay="cdkOverlayOrigin"></div>
+
+    <mat-toolbar-row>
+        <span>Second Line</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button
+                class="example-icon favorite-icon"
+                aria-label="Example icon-button with heart icon">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button
+                class="example-icon"
+                aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
     </mat-toolbar-row>
 </mat-toolbar>
-
-<ng-template cdkConnectedOverlay
-             [cdkConnectedOverlayOrigin]="searchOverlay"
-             [cdkConnectedOverlayOpen]="isSerachOverlayOpened">
-    <div class="row azet-dt-search">
-        <div class="col-12 text-end">
-            <button mat-icon-button
-                    color="primary"
-                    type="button"
-                    (click)="isSerachOverlayOpened = !isSerachOverlayOpened">
-                <span matSuffix
-                      class="material-icons">
-                    close
-                </span>
-            </button>
-        </div>
-        <div class="col-12">
-            <h3>Caută anvelopă</h3>
-            <mat-divider></mat-divider>
-            <mat-form-field class="w-100 my-3"
-                            appearance="outline">
-                <mat-label>Caută după cuvinte cheie :</mat-label>
-                <input id="searchText"
-                       #n
-                       type="text"
-                       matInput
-                       maxlength="40">
-                <span matSuffix
-                      class="material-icons">
-                    search
-                </span>
-            </mat-form-field>
-            <button mat-raised-button
-                    color="primary"
-                    type="button"
-                    (click)="search(n.value)">
-                CAUTĂ
-            </button>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template cdkConnectedOverlay
-             [cdkConnectedOverlayOrigin]="menuOverlay"
-             [cdkConnectedOverlayOpen]="isMenuOverlayOpened">
-    <div class="row azet-dt-search">
-        <div class="col-12 text-end">
-            <button mat-icon-button
-                    color="primary"
-                    type="button"
-                    (click)="isMenuOverlayOpened = false">
-                <span matSuffix
-                      class="material-icons">
-                    close
-                </span>
-            </button>
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12 d-flex">
-                    <h6 class="ms-3">Pagini</h6>
-                    <span class="title material-icons">
-                        keyboard_arrow_down
-                    </span>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium"
-                            routerLink="/home">
-                        Acasă
-                    </button>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium"
-                            routerLink="/products">
-                        Anvelope
-                    </button>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium"
-                            routerLink="/contact">
-                        Contact
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12 d-flex">
-                    <h6 class="ms-3">Informații</h6>
-                    <span class="title material-icons">
-                        keyboard_arrow_down
-                    </span>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium">
-                        Cum comand
-                    </button>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium">
-                        Prelucrarea datelor
-                    </button>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium">
-                        Termeni si conditii
-                    </button>
-                </div>
-                <div class="col-12">
-                    <button mat-button
-                            color="primary-medium">
-                        ANPC
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="row">
-                <div class="col-12 d-flex">
-                    <h6 class="ms-3">Contact</h6>
-                    <span class="title material-icons">
-                        keyboard_arrow_down
-                    </span>
-                </div>
-                <div class="col-12">
-                    <a mat-button
-                       color="primary-medium"
-                       target="_blank"
-                       [href]="azetDtLocation">
-                        Strada Zizinului Nr. 123G
-                    </a>
-                </div>
-                <div class="col-12">
-                    <a mat-button
-                       color="primary-medium"
-                       href="tel:+40737167631">
-                        (0737) 167 631
-                    </a>
-                </div>
-                <div class="col-12">
-                    <a mat-button
-                       color="primary-medium"
-                       href="tel:+40754369261">
-                        (0754) 369 261
-                    </a>
-                </div>
-                <div class="col-12">
-                    <a mat-button
-                       color="primary-medium"
-                       href="mailto: office@azet-resapare.ro">
-                        office@azet-resapare.ro
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>

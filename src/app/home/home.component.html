@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+    <div class="p-0 video-container overflow-hidden hvw-40">
+        <video class="w-100 overflow-hidden"
+               playsinline="playsinline"
+               autoplay
+               muted
+               loop>
+            <source src="assets/videos/pexels-mikhail-nilov-7441154.mp4"
+                    type="video/mp4" />
+        </video>
+    </div>
+    <div class="col-8">
+        <form [formGroup]="formGroup"
+              (ngSubmit)="onSubmit()">
+            <div class="row my-5">
+                <div class="col-12 col-lg-9">
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <mat-form-field>
+                                <mat-label>Width</mat-label>
+                                <mat-select formControlName="width">
+                                    <mat-option [value]="'205'"> 205 </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <mat-form-field>
+                                <mat-label>Height</mat-label>
+                                <mat-select formControlName="height">
+                                    <mat-option [value]="'55'"> 55 </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <mat-form-field>
+                                <mat-label>Diameter</mat-label>
+                                <mat-select formControlName="diameter">
+                                    <mat-option [value]="'R16'"> R16 </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 text-center mb-1">
+                            <div class="text-honolulu-blue fs-26 fw-bold">
+                                <span class="mx-2 width">{{
+                                    width && width.value ? width.value : "205"
+                                    }}</span>
+                                <span class="mx-2 separator">/</span>
+                                <span class="mx-2 height">{{
+                                    height && height.value ? height.value : "55"
+                                    }}</span>
+                                <span class="mx-2 diameter">{{
+                                    diameter && diameter.value ? diameter.value : "R16"
+                                    }}</span>
+                                <span class="mx-2 speedIndex">{{
+                                    speedIndex && speedIndex.value ? speedIndex.value : "91V"
+                                    }}</span>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center text-center">
+                            <img class="img-fluid"
+                                 src="./assets/pictures/tires/tire3.png" />
+                        </div>
+                        <div class="col-12 mt-4">
+                            Find the right tyre size - that's how it works
+                        </div>
+                        <div class="col-12 mb-4">
+                            Buy <b>tires</b> directly online or locally
+                        </div>
+                        <div class="col-12 text-center">
+                            <button mat-raised-button
+                                    type="submit"
+                                    color="primary">
+                                455 Show Tyres
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3 col-lg-12">
+                            <mat-form-field>
+                                <mat-label>Vehicle type</mat-label>
+                                <mat-select formControlName="vehicleType">
+                                    <mat-option [value]="'Vehicle'"> Vehicle </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-lg-12">
+                            <mat-form-field>
+                                <mat-label>Seasson</mat-label>
+                                <mat-select formControlName="season">
+                                    <mat-option [value]="'Summer Tyre'">
+                                        Summer Tyre
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-lg-12">
+                            <mat-form-field matTooltip="Ceva informatii despre SPEED INDEX">
+                                <mat-label>Speed index</mat-label>
+                                <mat-select formControlName="speedIndex">
+                                    <mat-option [value]="'All'"> All </mat-option>
+                                    <mat-option [value]="'91V'"> 91V </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-lg-12">
+                            <mat-form-field>
+                                <mat-label>Manufacturer</mat-label>
+                                <mat-select formControlName="manufacturer">
+                                    <mat-option [value]="'All'"> All </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

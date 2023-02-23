@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } fr
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
-import { Product } from 'src/app/shared/class/base-cart-item';
-import { State } from 'src/app/shared/enum/state';
-import { ViewMode } from 'src/app/shared/enum/view-mode';
+import { Product } from 'src/app/types/class/base-cart-item';
 import { patterns } from 'src/app/shared/utils/patterns';
 import { customPatternValidator } from 'src/app/shared/utils/validation';
 import { CartService } from '../shared/service/cart.service';
+import { ViewMode } from '../types/enum/view-mode';
+import { State } from '../types/enum/state';
 
 @Component({
   selector: 'app-shop-cart',

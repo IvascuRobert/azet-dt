@@ -7,8 +7,7 @@ const AppRoutes: Routes = [
   {
     path: 'home',
     component: LayoutShopComponent,
-    loadChildren: () =>
-      import('./shop-home/shop-home.module').then((m) => m.ShopHomeModule),
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'contact',
@@ -73,4 +72,4 @@ const AppRoutes: Routes = [
   exports: [RouterModule],
   providers: [PreloadModulesStrategy],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

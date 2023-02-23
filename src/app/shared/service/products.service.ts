@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../class/base-cart-item';
+import { Product } from '../../types/class/base-cart-item';
 import { HttpUrls } from '../enum/http-url';
 
 @Injectable({
