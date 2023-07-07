@@ -21,14 +21,14 @@
         </button>
 
         <span class="navbar-spacer"></span>
-        <button mat-icon-button
-                class="example-icon favorite-icon"
-                aria-label="Example icon-button with heart icon">
+        <button mat-icon-button>
             <mat-icon>account_circle</mat-icon>
         </button>
         <button mat-icon-button
-                class="example-icon favorite-icon"
-                aria-label="Example icon-button with heart icon">
+                ngbPopover="You see, I show up on hover!"
+                triggers="mouseenter:mouseleave"
+                popoverTitle="Pop title"
+                container="body">
             <mat-icon matBadge="0"
                       matBadgeColor="warn">shopping_cart</mat-icon>
         </button>
