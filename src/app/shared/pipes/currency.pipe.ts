@@ -1,20 +1,23 @@
 import { formatCurrency, getCurrencySymbol } from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'azetDtCurrency' })
 export class AzetDTCurrencyPipe implements PipeTransform {
+
+  constructor(@Inject(LOCALE_ID) private locale: string) {
+  }
+
   transform(
     value: number | null,
-    currencyCode: string = 'Lei',
+    currencyCode: string = 'lei ',
     display: 'code' | 'symbol' | 'symbol-narrow' | string | boolean = 'symbol',
-    digitsInfo: string = '3.2-2',
-    locale: string = 'ro'
+    digitsInfo: string = '1.2-2'
   ): string | null {
     if (value != null) {
       return formatCurrency(
         value,
-        locale,
-        getCurrencySymbol(currencyCode, 'wide'),
+        this.locale,
+        getCurrencySymbol(currencyCode, 'wide', this.locale),
         currencyCode,
         digitsInfo
       );

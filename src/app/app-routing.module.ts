@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PreloadModulesStrategy } from './core/strategies/preload-modules.strategy';
 import { LayoutShopComponent } from './shared/components/layout-shop/layout-shop.component';
 
-const AppRoutes: Routes = [
+const appRoutes: Routes = [
   {
     path: 'home',
     component: LayoutShopComponent,
@@ -29,6 +29,14 @@ const AppRoutes: Routes = [
     loadChildren: () =>
       import('./shop-authentication/shop-authentication.module').then(
         (m) => m.ShopAuthenticationModule
+      ),
+  },
+  {
+    path: 'products',
+    component: LayoutShopComponent,
+    loadChildren: () =>
+      import('./shop-products/shop-products.module').then(
+        (m) => m.ShopProductsModule
       ),
   },
   // {
@@ -62,7 +70,7 @@ const AppRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(AppRoutes, {
+    RouterModule.forRoot(appRoutes, {
       preloadingStrategy: PreloadModulesStrategy,
       // useHash: !environment.production,
       scrollPositionRestoration: 'enabled',

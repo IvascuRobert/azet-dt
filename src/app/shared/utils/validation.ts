@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Patterns } from 'src/app/shared/interface/patterns';
+import { Patterns } from 'src/app/types/interface/patterns';
 
 
 export function customPatternValidator(config: Patterns): ValidatorFn {

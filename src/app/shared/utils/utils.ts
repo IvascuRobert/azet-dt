@@ -1,5 +1,5 @@
-import { DaysOfWeek } from "../interface/days-of-week";
-import { DropdownValue } from "../interface/dropdown-value";
+import { DaysOfWeek } from "src/app/types/interface/days-of-week";
+
 
 
 export const azetDTGoogleMapsLocation = `https://www.google.com/maps/place/Azet+DT+Resapare+

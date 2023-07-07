@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { azetDTGoogleMapsLocation } from '../../utils/utils';
-import { DialogContentScheduleInServiceComponent } from '../dialog-content-schedule-in-service/dialog-content-schedule-in-service.component';
-import { DialogContentScheduleComponent } from '../dialog-content-schedule/dialog-content-schedule.component';
 
 @Component({
   selector: 'app-contact-list',
@@ -24,16 +22,4 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  openScheduleInService(): void {
-    this.dialog.open(DialogContentScheduleInServiceComponent, {
-      width: '400px',
-      disableClose: true
-    });
-  }
-
-  openSchedule(): void {
-    this.dialog.open(DialogContentScheduleComponent);
-  }
-
 }

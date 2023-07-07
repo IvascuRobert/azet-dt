@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
     exports: [
@@ -46,7 +47,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatCheckboxModule,
         MatInputModule,
         OverlayModule,
-        MatIconModule
+        MatIconModule,
+        MatBadgeModule
     ],
     providers: [
         MatDatepickerModule,

@@ -1,26 +1,37 @@
-<mat-toolbar class="fixed-top">
-    <mat-toolbar-row>
-        <span>My App</span>
-        <span class="example-spacer"></span>
-        <button mat-icon-button
-                class="example-icon"
-                aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
+<mat-toolbar class="fixed-top mat-elevation-z8 border-bottom-honolulu-blue">
+    <mat-toolbar-row class="h-80">
+        <app-logo-icon></app-logo-icon>
+        <button mat-button
+                routerLink="/home"
+                routerLinkActive="bg-color-transparent"
+                class="text-uppercase text-color-honolulu-blue fs-1-25rem fw-700 ms-4">
+            Acasa
         </button>
-    </mat-toolbar-row>
+        <button mat-button
+                routerLink="/products"
+                routerLinkActive="bg-color-transparent"
+                class="text-uppercase text-color-honolulu-blue fs-1-25rem fw-700 mx-3">
+            Anvelope
+        </button>
+        <button mat-button
+                routerLink="/contact"
+                routerLinkActive="bg-color-transparent"
+                class="text-uppercase text-color-honolulu-blue fs-1-25rem fw-700">
+            Contact
+        </button>
 
-    <mat-toolbar-row>
-        <span>Second Line</span>
-        <span class="example-spacer"></span>
+        <span class="navbar-spacer"></span>
         <button mat-icon-button
                 class="example-icon favorite-icon"
                 aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
+            <mat-icon>account_circle</mat-icon>
         </button>
         <button mat-icon-button
-                class="example-icon"
-                aria-label="Example icon-button with share icon">
-            <mat-icon>share</mat-icon>
+                class="example-icon favorite-icon"
+                aria-label="Example icon-button with heart icon">
+            <mat-icon matBadge="0"
+                      matBadgeColor="warn">shopping_cart</mat-icon>
         </button>
+        <span class="ms-2">{{0 | azetDtCurrency}}</span>
     </mat-toolbar-row>
 </mat-toolbar>
