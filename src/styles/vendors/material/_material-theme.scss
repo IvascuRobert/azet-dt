@@ -7,7 +7,7 @@ $light-theme: mat.define-light-theme(
   (
     color: (
       primary: mat.define-palette($md-mcgpalette0),
-      accent: mat.define-palette($md-mcgpalette0),
+      accent: mat.define-palette($md-mcgpalette2),
       warn: mat.define-palette(mat.$red-palette),
     ),
     typography: mat.define-typography-config(),
@@ -19,7 +19,7 @@ $dark-theme: mat.define-dark-theme(
   (
     color: (
       primary: mat.define-palette($md-mcgpalette0),
-      accent: mat.define-palette($md-mcgpalette0),
+      accent: mat.define-palette($md-mcgpalette2),
       warn: mat.define-palette(mat.$red-palette),
     ),
     typography: mat.define-typography-config(),

@@ -1,4 +1,17 @@
 <mat-toolbar class="fixed-top mat-elevation-z8 border-bottom-honolulu-blue">
+    <mat-toolbar-row class="h-40">
+        <button mat-fab
+                color="primary"
+                aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-fab
+                color="primary"
+                aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-toolbar-row>
+
     <mat-toolbar-row class="h-80">
         <app-logo-icon></app-logo-icon>
         <button mat-button
@@ -21,17 +34,41 @@
         </button>
 
         <span class="navbar-spacer"></span>
-        <button mat-icon-button>
+        <button mat-icon-button
+                color="primary">
             <mat-icon>account_circle</mat-icon>
         </button>
         <button mat-icon-button
-                ngbPopover="You see, I show up on hover!"
-                triggers="mouseenter:mouseleave"
-                popoverTitle="Pop title"
+                color="primary"
+                [ngbPopover]="popContent"
+                [popoverTitle]="popTitle"
+                [autoClose]="'outside'"
                 container="body">
             <mat-icon matBadge="0"
-                      matBadgeColor="warn">shopping_cart</mat-icon>
+                      matBadgeColor="accent">shopping_cart</mat-icon>
         </button>
-        <span class="ms-2">{{0 | azetDtCurrency}}</span>
+        <!-- <span class="ms-2">{{0 | azetDtCurrency}}</span> -->
     </mat-toolbar-row>
 </mat-toolbar>
+
+<ng-template #popTitle
+             class="text-center"><span class="text-uppercase">Cosul meu</span></ng-template>
+<ng-template #popContent>
+    <div class="row justify-content-center">
+        <div class="col-6">Total:</div>
+        <div class="col-6 text-end">
+            {{0 | azetDtCurrency}}
+        </div>
+        <div class="col-10 my-3">
+            <mat-divider></mat-divider>
+        </div>
+        <div class="col-6">
+            <button mat-stroked-button
+                    color="primary">Vezi cosul</button>
+        </div>
+        <div class="col-6">
+            <button mat-stroked-button
+                    color="accent">Plateste</button>
+        </div>
+    </div>
+</ng-template>
