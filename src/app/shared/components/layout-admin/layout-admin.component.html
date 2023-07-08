@@ -1,10 +1,9 @@
-<app-header (openSideNavDrawer)="snavleft.toggle()"></app-header>
-<mat-sidenav-container>
-    <mat-sidenav #snavleft
+<app-header></app-header>
+<mat-sidenav-container autosize>
+    <mat-sidenav 
                  mode="side"
                  [(opened)]="opened">
-        <mat-selection-list #dashboardSideNav
-                            [multiple]="false">
+        <mat-selection-list [multiple]="false">
             <mat-list-option value="Dashboard"
                              [routerLink]="['/admin/dashboard']">
                 <span mat-list-icon
@@ -33,15 +32,6 @@
                 <div mat-line>Anvelope</div>
             </mat-list-option>
 
-            <mat-list-option value="Review-uri"
-                             [routerLink]="['/admin/reviews']">
-                <span mat-list-icon
-                      class="material-icons">
-                    reviews
-                </span>
-                <div mat-line>Review-uri</div>
-            </mat-list-option>
-
         </mat-selection-list>
     </mat-sidenav>
 
@@ -49,22 +39,5 @@
         <div class="container-fluid">
             <router-outlet></router-outlet>
         </div>
-        <!-- <ng-container [ngSwitch]="dashboardSideNav.selectedOptions.selected[0]?.value">
-            <ng-container *ngSwitchCase="'Dashboard'">
-                <router-outlet></router-outlet>
-
-                <app-dashboard></app-dashboard>
-            </ng-container>
-            <ng-container *ngSwitchCase="'Comenzi'">
-                <app-orders></app-orders>
-            </ng-container>
-            <ng-container *ngSwitchCase="'Anvelope'">
-                <app-products [products]="products$ | async"
-                              [loading]="loading$ | async"></app-products>
-            </ng-container>
-            <ng-container *ngSwitchCase="'Review-uri'">
-                <app-reviews></app-reviews>
-            </ng-container>
-        </ng-container> -->
     </mat-sidenav-content>
 </mat-sidenav-container>

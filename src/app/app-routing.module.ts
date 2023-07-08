@@ -10,6 +10,14 @@ const appRoutes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
+    path: 'products',
+    component: LayoutShopComponent,
+    loadChildren: () =>
+      import('./shop-products/shop-products.module').then(
+        (m) => m.ShopProductsModule
+      ),
+  },
+  {
     path: 'contact',
     component: LayoutShopComponent,
     loadChildren: () =>
@@ -32,36 +40,6 @@ const appRoutes: Routes = [
       ),
   },
   {
-    path: 'products',
-    component: LayoutShopComponent,
-    loadChildren: () =>
-      import('./shop-products/shop-products.module').then(
-        (m) => m.ShopProductsModule
-      ),
-  },
-  // {
-  //     path: 'login',
-  //     component: LoginComponent
-  // },
-  // {
-  //     path: 'dashboard',
-  //     component: DashboardComponent
-  // },
-  // {
-  //     path: 'orders',
-  //     component: OrdersComponent
-  // },
-  // {
-  //     path: 'products',
-  //     component: ProductsComponent
-  // },
-  // {
-  //     path: 'reviews',
-  //     component: ReviewsComponent
-  // },
-  // catch any unfound routes and redirect to home page
-  // the path bellow must to be last
-  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '/home',
@@ -72,7 +50,6 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes, {
       preloadingStrategy: PreloadModulesStrategy,
-      // useHash: !environment.production,
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
     }),

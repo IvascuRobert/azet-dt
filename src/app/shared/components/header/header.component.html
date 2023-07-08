@@ -1,35 +1,28 @@
 <mat-toolbar class="fixed-top mat-elevation-z8 border-bottom-honolulu-blue">
-    <mat-toolbar-row class="h-40">
-        <button mat-fab
-                color="primary"
-                aria-label="Example icon button with a delete icon">
-            <mat-icon>delete</mat-icon>
-        </button>
-        <button mat-fab
-                color="primary"
-                aria-label="Example icon button with a delete icon">
-            <mat-icon>delete</mat-icon>
-        </button>
-    </mat-toolbar-row>
-
     <mat-toolbar-row class="h-80">
+        <button mat-icon-button
+                color="primary"
+                class="me-2 d-lg-none"
+                (click)="toggleMenu()">
+            <mat-icon>menu</mat-icon>
+        </button>
         <app-logo-icon></app-logo-icon>
         <button mat-button
                 routerLink="/home"
-                routerLinkActive="bg-color-transparent"
-                class="text-uppercase text-color-honolulu-blue fs-1-25rem fw-700 ms-4">
+                routerLinkActive="text-color-honolulu-blue"
+                class="text-uppercase text-color-cadet fs-1-25rem fw-700 ms-4 d-none d-lg-block">
             Acasa
         </button>
         <button mat-button
                 routerLink="/products"
-                routerLinkActive="bg-color-transparent"
-                class="text-uppercase text-color-honolulu-blue fs-1-25rem fw-700 mx-3">
+                routerLinkActive="text-color-honolulu-blue"
+                class="text-uppercase text-color-cadet fs-1-25rem fw-700 mx-3 d-none d-lg-block">
             Anvelope
         </button>
         <button mat-button
                 routerLink="/contact"
-                routerLinkActive="bg-color-transparent"
-                class="text-uppercase text-color-honolulu-blue fs-1-25rem fw-700">
+                routerLinkActive="text-color-honolulu-blue"
+                class="text-uppercase text-color-cadet fs-1-25rem fw-700 d-none d-lg-block">
             Contact
         </button>
 

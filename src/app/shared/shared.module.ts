@@ -15,6 +15,7 @@ import { MaterialModule } from './module/material.module';
 import { AzetDTCurrencyPipe } from './pipes/currency.pipe';
 import { FormControlErrorInterpretationPipe } from './pipes/form-control-error-interpretation.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
+import { OffcanvasService } from './service/offcanvas.service';
 
 @NgModule({
   imports: [
@@ -53,5 +54,8 @@ import { TrimPipe } from './pipes/trim.pipe';
     LayoutAdminComponent,
     HeaderComponent,
   ],
+  providers: [
+    OffcanvasService
+  ]
 })
 export class SharedModule { }
