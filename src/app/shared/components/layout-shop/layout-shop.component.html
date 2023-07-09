@@ -5,36 +5,11 @@
                  mode="over"
                  [opened]="offcanvasNavigationOpen$ | async"
                  (closed)="close()">
-        <mat-list>
-            <mat-list-item matRipple
-                           routerLink="/home">
-                <div class="d-flex">
-                    <mat-icon>home</mat-icon>
-                    <span matLine
-                          class="text-uppercase ms-3">Acasa</span>
-                </div>
-            </mat-list-item>
-            <mat-list-item matRipple
-                           routerLink="/products">
-                <div class="d-flex">
-                    <mat-icon>home</mat-icon>
-                    <span matLine
-                          class="text-uppercase ms-3">Anvelope</span>
-                </div>
-            </mat-list-item>
-            <mat-list-item matRipple
-                           routerLink="/contact">
-                <div class="d-flex">
-                    <mat-icon>home</mat-icon>
-                    <span matLine
-                          class="text-uppercase ms-3">Contact</span>
-                </div>
-            </mat-list-item>
-        </mat-list>
+        <app-sidenav-list></app-sidenav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <main class="container-fluid">
+        <main class="container-fluid mt-5 pt-4">
             <router-outlet></router-outlet>
         </main>
     </mat-sidenav-content>

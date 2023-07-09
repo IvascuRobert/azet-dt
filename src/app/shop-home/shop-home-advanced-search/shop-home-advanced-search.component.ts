@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-shop-home-advanced-search',
+  templateUrl: './shop-home-advanced-search.component.html',
+  styleUrls: ['./shop-home-advanced-search.component.scss']
 })
-export class HomeComponent {
+export class ShopHomeAdvancedSearchComponent {
   formGroup = this.formBuilder.group({
     width: '205',
     height: '55',

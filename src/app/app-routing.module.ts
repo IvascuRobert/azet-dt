@@ -7,7 +7,7 @@ const appRoutes: Routes = [
   {
     path: 'home',
     component: LayoutShopComponent,
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./shop-home/shop-home.module').then(m => m.ShopHomeModule)
   },
   {
     path: 'products',

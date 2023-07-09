@@ -16,6 +16,7 @@ import { AzetDTCurrencyPipe } from './pipes/currency.pipe';
 import { FormControlErrorInterpretationPipe } from './pipes/form-control-error-interpretation.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { OffcanvasService } from './service/offcanvas.service';
+import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { OffcanvasService } from './service/offcanvas.service';
     FooterComponent,
     LayoutAdminComponent,
     HeaderComponent,
+    SidenavListComponent,
   ],
   exports: [
     CommonModule,
@@ -53,6 +55,7 @@ import { OffcanvasService } from './service/offcanvas.service';
     FooterComponent,
     LayoutAdminComponent,
     HeaderComponent,
+    SidenavListComponent
   ],
   providers: [
     OffcanvasService

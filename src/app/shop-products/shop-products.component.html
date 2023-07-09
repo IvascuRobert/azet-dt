@@ -1,15 +1,49 @@
 <div class="row mt-5">
-    <div class="col-6">
-        <div class="row justify-content-center"
-             style="font-size: 1rem;">
-            <div class="col-12 mb-4">
-                <mat-toolbar class="mat-elevation-z6"
-                             color="primary">
-                    <mat-toolbar-row>
-                        <span>Informații utile despre SC AZET D.T. SRL</span>
-                    </mat-toolbar-row>
-                </mat-toolbar>
-                <app-contact-list [showContactPageDetail]="false"></app-contact-list>
+    <div class="col-3">
+        Zona de filtrare
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <div class="col-12">Zona de ordonare</div>
+            <div class="col-12">
+                <div class="row">
+                    <div *ngFor="let product of products"
+                         class="col-4">
+                        <mat-card class="example-card me-1 mb-1">
+                            <mat-card-header>
+                                <div mat-card-avatar>
+                                    <mat-icon [color]="product.weather==='wb_sunny' ? 'accent' : 'primary'">
+                                        {{product.weather}}
+                                    </mat-icon>
+                                </div>
+                                <mat-card-title>
+                                    {{product.name}}
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    {{product.brand}}
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <img mat-card-image
+                                 src="./assets/pictures/tires/tire.png"
+                                 class="rounded img-fluid"
+                                 alt="Photo of a Shiba Inu">
+                            <mat-card-content>
+                                <p>
+                                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
+                                    from
+                                    Japan.
+                                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
+                                    originally
+                                    bred for hunting.
+                                </p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-button>LIKE</button>
+                                <button mat-button>SHARE</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

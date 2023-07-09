@@ -5,6 +5,8 @@ import { ShopHomePopularProductsComponent } from './shop-home-popular-products/s
 import { ShopHomeRoutingModule } from './shop-home-routing.module';
 import { ShopHomeVideoComponent } from './shop-home-video/shop-home-video.component';
 import { ShopHomeComponent } from './shop-home.component';
+import { ShopHomePromoComponent } from './shop-home-promo/shop-home-promo.component';
+import { ShopHomeAdvancedSearchComponent } from './shop-home-advanced-search/shop-home-advanced-search.component';
 
 @NgModule({
     imports: [
@@ -17,6 +19,8 @@ import { ShopHomeComponent } from './shop-home.component';
         ShopHomeComponent,
         ShopHomePopularProductsComponent,
         ShopHomeVideoComponent,
+        ShopHomePromoComponent,
+        ShopHomeAdvancedSearchComponent,
     ]
 })
 

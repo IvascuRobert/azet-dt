@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DropdownValue } from 'src/app/shared/interface/dropdown-value';
+import { DropdownValue } from 'src/app/types/interface/dropdown-value';
 
 @Component({
   selector: 'app-shop-home-popular-products',

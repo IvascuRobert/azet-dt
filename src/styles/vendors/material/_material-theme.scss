@@ -1,5 +1,5 @@
-@use "@angular/material" as mat;
-@import "./_material-palette.scss";
+@use '@angular/material' as mat;
+@import './_material-palette.scss';
 @include mat.core();
 
 // Define a light theme
