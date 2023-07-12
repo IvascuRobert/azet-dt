@@ -3,13 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShopContactComponent } from './shop-contact.component';
 
 const routes: Routes = [
-    { path: '', component: ShopContactComponent }
+  {
+    path: '',
+    component: ShopContactComponent,
+    data: {
+      breadcrumb: 'Contact',
+    },
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-
-export class ShopContactRoutingModule {
-}
+export class ShopContactRoutingModule {}

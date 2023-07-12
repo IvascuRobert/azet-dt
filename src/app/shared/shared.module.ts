@@ -17,6 +17,7 @@ import { FormControlErrorInterpretationPipe } from './pipes/form-control-error-i
 import { TrimPipe } from './pipes/trim.pipe';
 import { OffcanvasService } from './service/offcanvas.service';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { SidenavListComponent } from './components/sidenav-list/sidenav-list.com
     LayoutAdminComponent,
     HeaderComponent,
     SidenavListComponent,
+    BreadcrumbComponent,
   ],
   exports: [
     CommonModule,

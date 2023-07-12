@@ -7,7 +7,8 @@ const appRoutes: Routes = [
   {
     path: 'home',
     component: LayoutShopComponent,
-    loadChildren: () => import('./shop-home/shop-home.module').then(m => m.ShopHomeModule)
+    loadChildren: () =>
+      import('./shop-home/shop-home.module').then((m) => m.ShopHomeModule),
   },
   {
     path: 'products',
@@ -50,11 +51,11 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes, {
       preloadingStrategy: PreloadModulesStrategy,
-      scrollPositionRestoration: 'enabled',
+      scrollPositionRestoration: 'disabled',
       anchorScrolling: 'enabled',
     }),
   ],
   exports: [RouterModule],
   providers: [PreloadModulesStrategy],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
