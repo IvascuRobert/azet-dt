@@ -1,19 +1,106 @@
-<div class="row mt-5">
-  <div class="col-3">Zona de filtrare</div>
-  <div class="col-9">
-    <div class="row">
-      <div class="col-12">Zona de ordonare</div>
-      <div class="col-12">
-        <div class="row">
-          <div *ngFor="let product of products" class="col-4">
-            <app-shop-products-item
-              [product]="product"
-            ></app-shop-products-item>
+<form [formGroup]="productsForm">
+  <div class="row mt-5">
+    <div class="col-3">
+      <div class="d-flex w-100 justify-content-center my-2">
+        <button mat-stroked-button
+                (click)="productsForm.reset()">Reseteaza filtrele</button>
+      </div>
+      <div class="fs-5">Pret
+      </div>
+      <mat-slider class="w-100 z-3"
+                  min="0"
+                  max="2000"
+                  showTickMarks
+                  discrete
+                  step="100">
+        <input formControlName="minPrice"
+               matSliderStartThumb>
+        <input formControlName="maxPrice"
+               matSliderEndThumb>
+      </mat-slider>
+      <mat-form-field>
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option *ngFor="let option of brandOptions"
+                      [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Latime</mat-label>
+        <mat-select formControlName="width">
+          <mat-option *ngFor="let option of brandOptions"
+                      [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Inaltime</mat-label>
+        <mat-select formControlName="height">
+          <mat-option *ngFor="let option of brandOptions"
+                      [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Diametru jante</mat-label>
+        <mat-select formControlName="diameter">
+          <mat-option *ngFor="let option of brandOptions"
+                      [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Profil</mat-label>
+        <mat-select formControlName="profile">
+          <mat-option *ngFor="let option of brandOptions"
+                      [value]="option.value">{{option.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field>
+            <mat-label>Sorteaza dupa</mat-label>
+            <mat-select formControlName="sortBy">
+              <mat-option *ngFor="let option of sortOptions"
+                          [value]="option.value">{{option.label}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col mb-3">
+          <mat-paginator (page)="handlePageEvent($event)"
+                         [length]="paginatorLength"
+                         [pageSize]="paginatorPageSize"
+                         [showFirstLastButtons]="paginatorShowFirstLastButtons"
+                         [pageSizeOptions]="paginatorPageSizeOptions || []"
+                         [hidePageSize]="paginatorHidePageSize"
+                         [pageIndex]="paginatorPageIndex"
+                         aria-label="Select page"
+                         itemsPerPageLabel="Pagina">
+          </mat-paginator>
+        </div>
+
+        <div class="col-12">
+          <div class="row">
+            <div *ngFor="let product of products"
+                 class="col-4">
+              <app-shop-products-item [product]="product"></app-shop-products-item>
+            </div>
           </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <mat-paginator (page)="handlePageEvent($event)"
+                         [length]="paginatorLength"
+                         [pageSize]="paginatorPageSize"
+                         [showFirstLastButtons]="paginatorShowFirstLastButtons"
+                         [pageSizeOptions]="paginatorPageSizeOptions || []"
+                         [hidePageSize]="paginatorHidePageSize"
+                         [pageIndex]="paginatorPageIndex"
+                         aria-label="Select page"
+                         itemsPerPageLabel="Pagina">
+          </mat-paginator>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+</form>
 <router-outlet></router-outlet>

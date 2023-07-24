@@ -10,6 +10,6 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule, {
-    providers: [{ provide: LOCALE_ID, useValue: 'ro_RO' }]
+    providers: [{ provide: LOCALE_ID, useValue: 'ro_RO' }],
   })
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));

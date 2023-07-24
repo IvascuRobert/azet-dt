@@ -1,7 +1,8 @@
-<mat-card class="example-card me-1 mb-1">
+<mat-card class="example-card me-1 mb-3">
   <mat-card-header>
     <div mat-card-avatar>
-      <mat-icon [color]="product.weather === 'wb_sunny' ? 'accent' : 'primary'">
+      <mat-icon [matTooltip]="product.weather"
+                [color]="product.weather === 'wb_sunny' ? 'accent' : 'primary'">
         {{ product.weather }}
       </mat-icon>
     </div>
@@ -12,23 +13,33 @@
       {{ product.brand }}
     </mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    src="./assets/pictures/tires/tire.png"
-    class="rounded img-fluid cursor-pointer"
-    [alt]="product.name"
-    [routerLink]="[product.id]"
-  />
+  <div mat-card-image>
+    <img src="./assets/pictures/tires/tire.png"
+         class="rounded img-fluid cursor-pointer"
+         [alt]="product.name"
+         [routerLink]="[product.id]" />
+    <div *ngIf="product.discount"
+         class="col-12 fw-700 fs-15 fs-12 position-absolute top-15 text-color-white bg-color-red w-85 ps-2">
+      - {{ product.discount }}% extra
+    </div>
+  </div>
   <mat-card-content>
     <div class="row">
-      <div class="col-12 fw-700">{{ 3498243 | azetDtCurrency }}</div>
-      <div class="col-12 fw-500">
-        {{ 3498243 | azetDtCurrency : true }} Fără TVA
+
+      <div class="col-12 fw-700 fs-2 text-color-honolulu-blue">
+        {{ product.price | azetDtCurrency }}
+        <span class="align-text-top fs-65-percentage">lei</span>
+      </div>
+      <div class="col-12 fw-500 fs-15">
+        {{ product.price | azetDtCurrency : true }}
+        <span class="align-text-top fs-65-percentage">lei</span> Fără TVA
       </div>
     </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
+  <mat-card-actions class="justify-content-end">
+    <button color="primary"
+            mat-mini-fab
+            aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </button> </mat-card-actions>
 </mat-card>

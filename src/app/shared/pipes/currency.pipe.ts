@@ -8,24 +8,28 @@ export class AzetDTCurrencyPipe implements PipeTransform {
   transform(
     value: number | null,
     tva?: boolean,
+    showCurrency = false,
     currencyCode: string = 'lei ',
-    display: 'code' | 'symbol' | 'symbol-narrow' | string | boolean = 'symbol',
     digitsInfo: string = '1.2-2'
   ): string | null {
-    if (value != null) {
-      if (tva) {
-        value = value - (value / 100) * 19;
-      }
-
-      return formatCurrency(
-        value,
-        this.locale,
-        getCurrencySymbol(currencyCode, 'wide', this.locale),
-        currencyCode,
-        digitsInfo
-      );
+    if (value === null) {
+      return '';
     }
 
-    return '';
+    if (tva) {
+      value = value - (value / 100) * 19;
+    }
+
+    const formatValue = formatCurrency(
+      value,
+      this.locale,
+      '',
+      currencyCode,
+      digitsInfo
+    );
+
+    const currencySymbol = getCurrencySymbol(currencyCode, 'wide', this.locale);
+
+    return showCurrency ? `${formatValue} ${currencySymbol}` : `${formatValue}`;
   }
 }

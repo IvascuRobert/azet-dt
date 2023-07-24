@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Hi {{product.id}}</h1>
+<h1 mat-dialog-title>Hi {{ product.id }}</h1>
 <div mat-dialog-content>
   <p>What's your favorite animal?</p>
   <!-- <mat-form-field>
@@ -6,6 +6,9 @@
   </mat-form-field> -->
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
+  <button mat-button
+          (click)="onNoClick()">No Thanks</button>
+  <button mat-button
+          (click)="onOkClick()"
+          cdkFocusInitial>Ok</button>
 </div>

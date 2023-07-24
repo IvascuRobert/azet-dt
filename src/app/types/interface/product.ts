@@ -4,4 +4,6 @@ export interface Product {
   name: string;
   brand: string;
   type: string[];
+  price: number;
+  discount?: number;
 }
