@@ -1,12 +1,7 @@
 <form [formGroup]="productsForm">
   <div class="row mt-5">
-    <div class="col-3">
-      <div class="d-flex w-100 justify-content-center my-2">
-        <button mat-stroked-button
-                (click)="productsForm.reset()">Reseteaza filtrele</button>
-      </div>
-      <div class="fs-5">Pret
-      </div>
+    <div class="col-12 col-sm-3">
+      <div class="fs-5">Pret</div>
       <mat-slider class="w-100 z-3"
                   min="0"
                   max="2000"
@@ -53,10 +48,14 @@
                       [value]="option.value">{{option.label}}</mat-option>
         </mat-select>
       </mat-form-field>
+      <div class="d-flex w-100 justify-content-center my-2">
+        <button mat-stroked-button
+                (click)="resetFilters()">Reseteaza filtrele</button>
+      </div>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-sm-9">
       <div class="row">
-        <div class="col-3">
+        <div class="col-12 col-lg-3">
           <mat-form-field>
             <mat-label>Sorteaza dupa</mat-label>
             <mat-select formControlName="sortBy">
@@ -65,7 +64,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col mb-3">
+        <div class="col-12 col-lg-9 mb-3">
           <mat-paginator (page)="handlePageEvent($event)"
                          [length]="paginatorLength"
                          [pageSize]="paginatorPageSize"
@@ -77,11 +76,10 @@
                          itemsPerPageLabel="Pagina">
           </mat-paginator>
         </div>
-
         <div class="col-12">
           <div class="row">
             <div *ngFor="let product of products"
-                 class="col-4">
+                 class="col-12 col-sm-6 col-lg-4 col-xl-3">
               <app-shop-products-item [product]="product"></app-shop-products-item>
             </div>
           </div>

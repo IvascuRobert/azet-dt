@@ -1,8 +1,7 @@
 <app-header></app-header>
 
 <mat-sidenav-container>
-    <mat-sidenav #snavleft
-                 mode="over"
+    <mat-sidenav mode="over"
                  [opened]="offcanvasNavigationOpen$ | async"
                  (closed)="close()">
         <app-sidenav-list></app-sidenav-list>

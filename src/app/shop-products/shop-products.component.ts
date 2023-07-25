@@ -171,4 +171,14 @@ export class ShopProductsComponent implements OnInit {
       pageSize,
     });
   }
+
+  resetFilters() {
+    this.productsForm.get('brand')?.reset();
+    this.productsForm.get('width')?.reset();
+    this.productsForm.get('height')?.reset();
+    this.productsForm.get('diameter')?.reset();
+    this.productsForm.get('profile')?.reset();
+    this.productsForm.get('minPrice')?.reset();
+    this.productsForm.get('maxPrice')?.reset();
+  }
 }
