@@ -1,57 +1,48 @@
-<mat-toolbar class="fixed-top mat-elevation-z8 border-bottom-honolulu-blue">
+<mat-toolbar class="fixed-top z-3 mat-elevation-z8 border-bottom-honolulu-blue">
   <mat-toolbar-row class="h-80">
-    <button
-      mat-icon-button
-      color="primary"
-      class="me-2 d-lg-none"
-      (click)="toggleMenu()"
-    >
+    <button mat-icon-button
+            color="primary"
+            class="me-2 d-lg-none"
+            (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
     <app-logo-icon></app-logo-icon>
-    <button
-      mat-button
-      routerLink="/home"
-      routerLinkActive="text-color-honolulu-blue"
-      class="text-uppercase text-color-cadet fs-1-25rem fw-700 ms-4 d-none d-lg-block"
-    >
+    <button mat-button
+            routerLink="/home"
+            routerLinkActive="text-color-honolulu-blue"
+            class="text-uppercase text-color-cadet fs-1-25rem fw-700 ms-4 d-none d-lg-block">
       Acasa
     </button>
-    <button
-      mat-button
-      routerLink="/products"
-      routerLinkActive="text-color-honolulu-blue"
-      class="text-uppercase text-color-cadet fs-1-25rem fw-700 mx-3 d-none d-lg-block"
-    >
+    <button mat-button
+            routerLink="/products"
+            routerLinkActive="text-color-honolulu-blue"
+            class="text-uppercase text-color-cadet fs-1-25rem fw-700 mx-3 d-none d-lg-block">
       Anvelope
     </button>
-    <button
-      mat-button
-      routerLink="/contact"
-      routerLinkActive="text-color-honolulu-blue"
-      class="text-uppercase text-color-cadet fs-1-25rem fw-700 d-none d-lg-block"
-    >
+    <button mat-button
+            routerLink="/contact"
+            routerLinkActive="text-color-honolulu-blue"
+            class="text-uppercase text-color-cadet fs-1-25rem fw-700 d-none d-lg-block">
       Contact
     </button>
 
     <span class="navbar-spacer"></span>
-    <button mat-icon-button color="primary">
+    <button mat-icon-button
+            color="primary">
       <mat-icon>account_circle</mat-icon>
     </button>
-    <button
-      mat-icon-button
-      color="primary"
-      [ngbPopover]="popContent"
-      [popoverTitle]="popTitle"
-      [autoClose]="'outside'"
-      container="body"
-    >
-      <mat-icon matBadge="0" matBadgeColor="accent">shopping_cart</mat-icon>
+    <button mat-icon-button
+            color="primary"
+            [ngbPopover]="popContent"
+            [popoverTitle]="popTitle"
+            [autoClose]="'outside'"
+            container="body">
+      <mat-icon matBadge="0"
+                matBadgeColor="accent">shopping_cart</mat-icon>
     </button>
 
-    <ng-template #popTitle class="text-center"
-      ><span class="text-uppercase">Cosul meu</span></ng-template
-    >
+    <ng-template #popTitle
+                 class="text-center"><span class="text-uppercase">Cosul meu</span></ng-template>
     <ng-template #popContent>
       <div class="row justify-content-center">
         <div class="col-6">Total:</div>
@@ -62,17 +53,20 @@
           <mat-divider></mat-divider>
         </div>
         <div class="col-6">
-          <button mat-stroked-button color="primary">Vezi cosul</button>
+          <button mat-stroked-button
+                  color="primary">Vezi cosul</button>
         </div>
         <div class="col-6">
-          <button mat-stroked-button color="accent">Plateste</button>
+          <button mat-stroked-button
+                  color="accent">Plateste</button>
         </div>
       </div>
     </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>
 <ng-container *ngIf="breadcrumbs$ | async as breadcrumbs">
-  <mat-toolbar *ngIf="breadcrumbs.length > 0" color="primary">
+  <mat-toolbar *ngIf="breadcrumbs.length > 0"
+               color="primary">
     <mat-toolbar-row class="h-160 align-items-end">
       <span class="mb-1">
         <app-breadcrumb></app-breadcrumb>
