@@ -8,6 +8,7 @@ export class AzetDTCurrencyPipe implements PipeTransform {
   transform(
     value: number | null,
     tva?: boolean,
+    discount?: number,
     showCurrency = false,
     currencyCode: string = 'lei ',
     digitsInfo: string = '1.2-2'

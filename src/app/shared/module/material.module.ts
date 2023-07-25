@@ -29,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   exports: [
@@ -58,6 +59,7 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
     NgbPopoverModule,
     MatPaginatorModule,
     MatSliderModule,
+    MatExpansionModule,
   ],
   providers: [MatDatepickerModule, MatSnackBar],
 })

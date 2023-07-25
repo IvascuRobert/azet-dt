@@ -1,14 +1,96 @@
-<h1 mat-dialog-title>Hi {{ product.id }}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <!-- <mat-form-field>
-    <input matInput [(ngModel)]="animal" />
-  </mat-form-field> -->
-</div>
-<div mat-dialog-actions>
-  <button mat-button
-          (click)="onNoClick()">No Thanks</button>
-  <button mat-button
-          (click)="onOkClick()"
-          cdkFocusInitial>Ok</button>
+<h1 mat-dialog-title
+    class="align-items-center">
+  Descriere produs
+</h1>
+<mat-dialog-content class="mat-typography">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 align-self-center">
+      <img [src]="product.pictureSrc"
+           class="rounded img-fluid"
+           [alt]="product.name" />
+      <div *ngIf="product.discount"
+           class="col-12 fw-700 fs-15 fs-12 position-absolute top-70 text-color-white bg-color-red w-85 ps-2">
+        - {{ product.discount }}% extra
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="row text-center border border-primary py-2">
+        <div *ngIf="product.discount"
+             class="col-12 fw-500 fs-13">
+          <span class="text-decoration-line-through">{{ product.price | azetDtCurrency : false }}</span>
+          <span class="ms-1">lei</span>
+          <span class="text-color-red fw-b"> -{{product.discount}}%</span>
+        </div>
+        <div class="col-12 fw-700 fs-2 text-color-honolulu-blue my-2">
+          {{ product.price | azetDtCurrency: true: product.discount }}lei
+        </div>
+        <div class="col-12 fw-500 fs-13">
+          {{ product.price | azetDtCurrency : true }} lei Fără TVA
+        </div>
+      </div>
+      <mat-list>
+        <mat-list-item>
+          <span matListItemTitle>Nume</span>
+          <span matListItemLine>{{product.name}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Brand</span>
+          <span matListItemLine>{{product.brand}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Vreme</span>
+          <span matListItemLine
+                class="d-flex align-items-center">
+            <mat-icon class="mt-2"
+                      [matTooltip]="product.weather"
+                      [color]="product.weather === 'wb_sunny' ? 'accent' : 'primary'">
+              {{ product.weather }}
+            </mat-icon>
+            <div class="mt-2 ms-2">
+              {{ product.weather }}
+            </div>
+          </span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Width</span>
+          <span matListItemLine>{{product.width}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Height</span>
+          <span matListItemLine>{{product.height}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Diameter</span>
+          <span matListItemLine>{{product.diameter}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Profile</span>
+          <span matListItemLine>{{product.profile}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Tip vehicule</span>
+          <span *ngFor="let option of product.vehicleType"
+                class="border border-primary rounded px-2 me-2">
+            {{option}}
+          </span>
+        </mat-list-item>
+        <mat-list-item *ngIf="product.description"
+                       lines="3">
+          <span matListItemTitle>Description</span>
+          {{product.description}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions
+     class="justify-content-between">
+  <button mat-flat-button
+          (click)="onNoClick()">Mai tarziu</button>
+
+  <button color="primary"
+          mat-fab
+          cdkFocusInitial>
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
 </div>

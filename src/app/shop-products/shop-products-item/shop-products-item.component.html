@@ -14,10 +14,10 @@
     </mat-card-subtitle>
   </mat-card-header>
   <div mat-card-image>
-    <img src="./assets/pictures/tires/tire.png"
+    <img [src]="product.pictureSrc"
          class="rounded img-fluid cursor-pointer"
          [alt]="product.name"
-         [routerLink]="[product.id]" />
+         (click)="openProductDetails(product)" />
     <div *ngIf="product.discount"
          class="col-12 fw-700 fs-15 fs-12 position-absolute top-15 text-color-white bg-color-red w-85 ps-2">
       - {{ product.discount }}% extra
@@ -25,11 +25,20 @@
   </div>
   <mat-card-content>
     <div class="row">
+      <div *ngIf="product.discount; else noProduct"
+           class="col-12 fw-500 fs-13">
+        <span class="text-decoration-line-through">{{ product.price | azetDtCurrency : false }}</span>
+        <span class="align-text-top fs-65-percentage ms-1">lei</span>
+        <span class="text-color-red fw-b"> -{{product.discount}}%</span>
+      </div>
+      <ng-template #noProduct>
+        <span class="h-20"></span>
+      </ng-template>
       <div class="col-12 fw-700 fs-2 text-color-honolulu-blue">
-        {{ product.price | azetDtCurrency }}
+        {{ product.price | azetDtCurrency: true: product.discount }}
         <span class="align-text-top fs-65-percentage">lei</span>
       </div>
-      <div class="col-12 fw-500 fs-15">
+      <div class="col-12 fw-500 fs-13">
         {{ product.price | azetDtCurrency : true }}
         <span class="align-text-top fs-65-percentage">lei</span> Fără TVA
       </div>
@@ -37,8 +46,8 @@
   </mat-card-content>
   <mat-card-actions class="justify-content-end">
     <button color="primary"
-            mat-mini-fab
-            aria-label="Example icon button with a vertical three dot icon">
+            mat-mini-fab>
       <mat-icon>shopping_cart</mat-icon>
-    </button> </mat-card-actions>
+    </button>
+  </mat-card-actions>
 </mat-card>

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopProductsComponent } from './shop-products.component';
-import { ShopProductsDetailsComponent } from './shop-products-details/shop-products-details.component';
 
 const routes: Routes = [
   {
@@ -10,15 +9,6 @@ const routes: Routes = [
     data: {
       breadcrumb: 'Anvelope',
     },
-    children: [
-      {
-        path: ':id',
-        component: ShopProductsDetailsComponent,
-        data: {
-          breadcrumb: 'Detalii',
-        },
-      },
-    ],
   },
 ];
 
