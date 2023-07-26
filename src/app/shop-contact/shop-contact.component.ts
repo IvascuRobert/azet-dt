@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { customPatternValidator } from 'src/app/shared/utils/validation';
-import { azetDTGoogleMapsLocation } from 'src/app/shared/utils/utils';
 import { patterns } from 'src/app/shared/utils/patterns';
 
 @Component({
@@ -10,8 +9,6 @@ import { patterns } from 'src/app/shared/utils/patterns';
   styleUrls: ['./shop-contact.component.scss']
 })
 export class ShopContactComponent implements OnInit {
-
-  azetDtLocation = azetDTGoogleMapsLocation;
   contactForm = new UntypedFormGroup({
     name: new UntypedFormControl('', [
       Validators.required,

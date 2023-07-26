@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { azetDTGoogleMapsLocation } from '../../utils/utils';
 
 @Component({
   selector: 'app-contact-list',
@@ -9,9 +8,6 @@ import { azetDTGoogleMapsLocation } from '../../utils/utils';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactListComponent implements OnInit {
-
-  azetDtLocation = azetDTGoogleMapsLocation;
-
   @Input() title = 'Detalii de contact';
   @Input() showJuridicDetails = true;
   @Input() showContactPageDetail = true;

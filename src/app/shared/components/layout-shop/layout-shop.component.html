@@ -3,7 +3,8 @@
 <mat-sidenav-container>
     <mat-sidenav mode="over"
                  [opened]="offcanvasNavigationOpen$ | async"
-                 (closed)="close()">
+                 (closed)="closeNavigation()"
+                 class="position-fixed">
         <app-sidenav-list></app-sidenav-list>
     </mat-sidenav>
 

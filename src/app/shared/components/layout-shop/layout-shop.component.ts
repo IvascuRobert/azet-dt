@@ -16,7 +16,7 @@ export class LayoutShopComponent implements OnInit {
     this.offcanvasNavigationOpen$ = this.offcanvasService.offcanvasNavigationOpen;
   }
 
-  close(): void {
+  closeNavigation(): void {
     this.offcanvasService.closeOffcanvasNavigation();
   }
 }
