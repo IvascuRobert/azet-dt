@@ -1,24 +1,25 @@
 // Vendors
-@import './vendors/bootstrap/share';
+@import "./vendors/bootstrap/variables";
+@import "./vendors/bootstrap/share";
 
 // Helpers style
-@import './helpers/colors';
-@import './helpers/colors-background';
-@import './helpers/colors-text';
-@import './helpers/typography';
-@import './helpers/utils';
-@import './helpers/sizing';
-@import './helpers/font-size';
-@import './helpers/font-weight';
-@import './helpers/borders';
+@import "./helpers/colors";
+@import "./helpers/colors-background";
+@import "./helpers/colors-text";
+@import "./helpers/typography";
+@import "./helpers/utils";
+@import "./helpers/sizing";
+@import "./helpers/font-size";
+@import "./helpers/font-weight";
+@import "./helpers/borders";
 
 // Components style
-@import './components/scroll-bar';
-@import './components/header';
-@import './components/mat-button';
-@import './components/mat-input';
-@import './components/mat-tab';
-@import './components/layout';
-@import './components/mat-form-field';
-@import './components/popover';
-@import './components/mat_drawer';
+@import "./components/scroll-bar";
+@import "./components/header";
+@import "./components/mat-button";
+@import "./components/mat-input";
+@import "./components/mat-tab";
+@import "./components/layout";
+@import "./components/mat-form-field";
+@import "./components/popover";
+@import "./components/mat_drawer";

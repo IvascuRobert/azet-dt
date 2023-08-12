@@ -27,7 +27,7 @@
     <div class="row">
       <div *ngIf="product.discount; else noProduct"
            class="col-12 fw-500 fs-13">
-        <span class="text-decoration-line-through">{{ product.price | azetDtCurrency : false }}</span>
+        <span class="text-decoration-line-through">{{ product.price | currency : false }}</span>
         <span class="align-text-top fs-65-percentage ms-1">lei</span>
         <span class="text-color-red fw-b"> -{{product.discount}}%</span>
       </div>
@@ -35,11 +35,11 @@
         <span class="h-20"></span>
       </ng-template>
       <div class="col-12 fw-700 fs-2 text-color-honolulu-blue">
-        {{ product.price | azetDtCurrency: true: product.discount }}
+        {{ product.price | currency: false: product.discount }}
         <span class="align-text-top fs-65-percentage">lei</span>
       </div>
       <div class="col-12 fw-500 fs-13">
-        {{ product.price | azetDtCurrency : true }}
+        {{ product.price | currency : true: product.discount }}
         <span class="align-text-top fs-65-percentage">lei</span> Fără TVA
       </div>
     </div>

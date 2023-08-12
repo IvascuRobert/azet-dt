@@ -29,7 +29,6 @@
               class="text-uppercase text-color-cadet fs-1-25rem fw-700 d-none d-lg-block">
         Contact
       </button>
-
       <span class="navbar-spacer"></span>
       <button mat-icon-button
               color="primary">
@@ -44,7 +43,6 @@
         <mat-icon [matBadge]="headerDetails.cart?.length"
                   matBadgeColor="accent">shopping_cart</mat-icon>
       </button>
-
       <ng-template #popTitle>
         <span class="text-uppercase">Cosul meu</span>
       </ng-template>
@@ -52,35 +50,44 @@
         <div class="row justify-content-center">
           <div *ngFor="let cart of headerDetails.cart"
                class="col-12">
-            <div class="row align-items-center">
+            <div class="row align-items-center no-gutters mb-3">
               <div class="col-2">
                 <img [src]="cart.product.pictureSrc"
                      class="rounded img-fluid"
                      [alt]="cart.product.name" />
               </div>
-              <div class="col-8">
+              <div class="col-8 ps-2">
                 <div matListItemTitle>
                   {{cart.product.name}}
                 </div>
                 <div matListItemLine
-                     class="fw-700 text-color-honolulu-blue">
-                  {{ cart.price | azetDtCurrency: true: cart.product.discount }}
+                     class="fw-700 text-color-honolulu-blue mt-n2">
+                  <span>{{ (cart.product.price * cart.quantity) | currency: false: cart.product.discount }}</span>
                   <span class="align-text-top fs-65-percentage">lei</span>
                   <span class="text-color-cadet fw-500"> x {{cart.quantity}}</span>
                 </div>
               </div>
               <div class="col-2">
                 <button mat-icon-button
-                        aria-label="Example icon button with a vertical three dot icon">
+                        color="primary"
+                        class="d-flex"
+                        (click)="removeFromCart(cart.product)">
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
             </div>
           </div>
-
-          <div class="col-6">Total:</div>
+          <div class="col-10 my-3">
+            <mat-divider></mat-divider>
+          </div>
+          <div class="col-6">TOTAL: {{ (headerDetails.cart || [] | countTotalProducts)}} produse</div>
           <div class="col-6 text-end">
-            {{ 0 | azetDtCurrency }}
+            <div class="fw-700 text-color-honolulu-blue">
+              <span>
+                {{ headerDetails.cart || [] | countTotalPrice | currency }}
+              </span>
+              <span class="align-text-top fs-65-percentage">lei</span>
+            </div>
           </div>
           <div class="col-10 my-3">
             <mat-divider></mat-divider>
@@ -94,8 +101,6 @@
                     color="accent">Plateste</button>
           </div>
         </div>
-
-
       </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>

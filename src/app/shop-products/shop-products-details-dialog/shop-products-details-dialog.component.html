@@ -17,15 +17,15 @@
       <div class="row text-center border border-primary py-2">
         <div *ngIf="product.discount"
              class="col-12 fw-500 fs-13">
-          <span class="text-decoration-line-through">{{ product.price | azetDtCurrency : false }}</span>
+          <span class="text-decoration-line-through">{{ product.price | currency : false }}</span>
           <span class="ms-1">lei</span>
           <span class="text-color-red fw-b"> -{{product.discount}}%</span>
         </div>
         <div class="col-12 fw-700 fs-2 text-color-honolulu-blue my-2">
-          {{ product.price | azetDtCurrency: true: product.discount }}lei
+          {{ product.price | currency: false: product.discount }}lei
         </div>
         <div class="col-12 fw-500 fs-13">
-          {{ product.price | azetDtCurrency : true }} lei Fără TVA
+          {{ product.price | currency : true: product.discount }} lei Fără TVA
         </div>
       </div>
       <mat-list>
@@ -90,7 +90,8 @@
 
   <button color="primary"
           mat-fab
-          cdkFocusInitial>
+          cdkFocusInitial
+          (click)="addToCart(product)">
     <mat-icon>shopping_cart</mat-icon>
   </button>
 </div>

@@ -1,40 +1,43 @@
 <div [ngSwitch]="data.type">
-    <span *ngSwitchCase="typeTemplate.DANGER">
-        <i class="fas fa-bomb {{typeTemplate.DANGER}}"
-           style="font-size: 1.3rem;"></i>
-        {{data.message}}
-        <button mat-button
-                color="primary"
-                (click)="snackBarRef.dismiss()">Închide</button>
-    </span>
-    <span *ngSwitchCase="typeTemplate.SUCCESS">
-        <i class="fas fa-check-circle {{typeTemplate.SUCCESS}}"
-           style="font-size: 1.3rem;"></i>
-        {{data.message}}
-        <button mat-button
-                color="primary"
-                (click)="snackBarRef.dismiss()">Închide</button>
-    </span>
-    <span *ngSwitchCase="typeTemplate.INFO">
-        <i class="fas fa-info-circle {{typeTemplate.INFO}}"
-           style="font-size: 1.3rem;"></i>
-        {{data.message}}
-        <button mat-button
-                color="primary"
-                (click)="snackBarRef.dismiss()">Închide</button>
-    </span>
-    <span *ngSwitchCase="typeTemplate.WARNING">
-        <i class="fas fa-exclamation-triangle {{typeTemplate.WARNING}}"
-           style="font-size: 1.3rem;"></i>
-        {{data.message}}
-        <button mat-button
-                color="primary"
-                (click)="snackBarRef.dismiss()">Închide</button>
-    </span>
-    <span *ngSwitchDefault>
-        Mesaj Default
-        <button mat-button
-                color="primary"
-                (click)="snackBarRef.dismiss()">Închide</button>
-    </span>
+   <span *ngSwitchCase="typeTemplate.DANGER"
+         class="d-flex align-items-center justify-content-between">
+      <mat-icon class="me-2">thumb_up</mat-icon>
+      {{data.message}}
+      <button class="ms-2"
+              mat-icon-button
+              color="warn"
+              (click)="snackBarRef.dismiss()"><mat-icon>close</mat-icon></button>
+   </span>
+   <span *ngSwitchCase="typeTemplate.SUCCESS"
+         class="d-flex align-items-center justify-content-between">
+      <mat-icon class="me-2">thumb_up</mat-icon>
+      {{data.message}}
+      <button class="ms-2"
+              mat-icon-button
+              color="warn"
+              (click)="snackBarRef.dismiss()"><mat-icon>close</mat-icon></button>
+   </span>
+   <span *ngSwitchCase="typeTemplate.INFO"
+         class="d-flex align-items-center justify-content-between">
+      <mat-icon class="me-2">thumb_up</mat-icon>
+      {{data.message}}
+      <button class="ms-2"
+              mat-icon-button
+              color="warn"
+              (click)="snackBarRef.dismiss()"><mat-icon>close</mat-icon></button>
+   </span>
+   <span *ngSwitchCase="typeTemplate.WARNING"
+         class="d-flex align-items-center justify-content-between">
+      <mat-icon class="me-2">thumb_up</mat-icon>
+      {{data.message}}
+      <button class="ms-2"
+              mat-icon-button
+              color="warn"
+              (click)="snackBarRef.dismiss()"><mat-icon>close</mat-icon></button>
+   </span>
+   <span *ngSwitchDefault>
+      Mesaj Default
+      <button mat-button
+              (click)="snackBarRef.dismiss()">Închide</button>
+   </span>
 </div>

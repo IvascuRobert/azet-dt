@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { OffcanvasService } from '../../service/offcanvas.service';
-import { Observable, map, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Breadcrumb } from 'src/app/types/interface/breadcrumb';
+import { Cart } from 'src/app/types/interface/cart';
 import { Product } from 'src/app/types/interface/product';
 import { CartService } from '../../service/cart.service';
-import * as _ from 'lodash';
-import { Cart } from 'src/app/types/interface/cart';
+import { OffcanvasService } from '../../service/offcanvas.service';
 
 @Component({
   selector: 'app-header',
@@ -28,5 +27,9 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu(): void {
     this.offcanvasService.toggleOffcanvasNavigation();
+  }
+
+  removeFromCart(product: Product): void {
+    this.cartService.removeFromCart(product);
   }
 }
