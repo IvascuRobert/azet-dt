@@ -8,25 +8,36 @@
       <img [src]="product.pictureSrc"
            class="rounded img-fluid"
            [alt]="product.name" />
-      <div *ngIf="product.discount"
+      <div *ngIf="product.price.discount"
            class="col-12 fw-700 fs-15 fs-12 position-absolute top-70 text-color-white bg-color-red w-85 ps-2">
-        - {{ product.discount }}% extra
+        - {{ product.price.discount }}% extra
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="row text-center border border-primary py-2">
-        <div *ngIf="product.discount"
+        <div *ngIf="product.price.discount; else productHasNoDiscount"
              class="col-12 fw-500 fs-13">
-          <span class="text-decoration-line-through">{{ product.price | currency : false }}</span>
-          <span class="ms-1">lei</span>
-          <span class="text-color-red fw-b"> -{{product.discount}}%</span>
+          <span class="text-decoration-line-through">{{ product.price.withTax | aztDtCurrency }}</span>
+          <span class="text-color-red fw-b"> -{{product.price.discount}}%</span>
+          <div *ngIf="product.price.withDiscountWithTax"
+               class="col-12 fw-700 fs-2 text-color-honolulu-blue">
+            {{ product.price.withDiscountWithTax | aztDtCurrency }}
+          </div>
+          <div *ngIf="product.price.withDiscount"
+               class="col-12 fw-500 fs-13">
+            {{ product.price.withDiscount | aztDtCurrency }} Fără TVA
+          </div>
         </div>
-        <div class="col-12 fw-700 fs-2 text-color-honolulu-blue my-2">
-          {{ product.price | currency: false: product.discount }}lei
-        </div>
-        <div class="col-12 fw-500 fs-13">
-          {{ product.price | currency : true: product.discount }} lei Fără TVA
-        </div>
+        <ng-template #productHasNoDiscount>
+          <div class="col-12 fw-500 fs-13 mt-2">
+            <div class="col-12 fw-700 fs-2 text-color-honolulu-blue">
+              {{ product.price.withTax | aztDtCurrency }}
+            </div>
+            <div class="col-12 fw-500 fs-13">
+              {{ product.price.value | aztDtCurrency }} Fără TVA
+            </div>
+          </div>
+        </ng-template>
       </div>
       <mat-list>
         <mat-list-item>

@@ -8,15 +8,21 @@ import { OffcanvasService } from '../../service/offcanvas.service';
   styleUrls: ['./layout-shop.component.scss'],
 })
 export class LayoutShopComponent implements OnInit {
-  offcanvasNavigationOpen$ = new Observable<boolean>();
+  offcanvasSidenavMenu$ = new Observable<boolean>();
+  offcanvasSidenavCart$ = new Observable<boolean>();
 
-  constructor(private offcanvasService: OffcanvasService) { }
+  constructor(private offcanvasService: OffcanvasService) {}
 
   ngOnInit(): void {
-    this.offcanvasNavigationOpen$ = this.offcanvasService.offcanvasNavigationOpen;
+    this.offcanvasSidenavMenu$ = this.offcanvasService.offcanvasSidenavMenu$;
+    this.offcanvasSidenavCart$ = this.offcanvasService.offcanvasSidenavCart$;
   }
 
-  closeNavigation(): void {
-    this.offcanvasService.closeOffcanvasNavigation();
+  closeSidenavMenu(): void {
+    this.offcanvasService.closeOffcanvasSidenavMenu();
+  }
+
+  closeSidenavCart(): void {
+    this.offcanvasService.closeOffcanvasSidenavCart();
   }
 }

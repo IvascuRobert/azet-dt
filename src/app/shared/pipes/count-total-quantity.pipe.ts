@@ -2,16 +2,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Cart } from 'src/app/types/interface/cart';
 
 @Pipe({
-  name: 'countTotalProducts',
+  name: 'countTotalQuantity',
+  pure: false
 })
-export class CountTotalProductsPipe implements PipeTransform {
+export class CountTotalQuantityPipe implements PipeTransform {
   transform(cart: Cart[]): number {
-    let totalProducts = 0;
+    let totalQuantity = 0;
 
     for (const cartValue of cart) {
-      totalProducts += cartValue.quantity;
+      totalQuantity += cartValue.quantity;
     }
 
-    return totalProducts;
+    return totalQuantity;
   }
 }

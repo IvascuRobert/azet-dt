@@ -39,6 +39,7 @@ export class CartService {
     this.cart$.next(cart);
 
     this.snackBar.openFromComponent(MessageComponent, {
+      duration: 1000,
       data: {
         message: 'Produsul a fost adaugat in cos!',
         type: MessageType.SUCCESS,
@@ -59,6 +60,7 @@ export class CartService {
     this.cart$.next(cart);
 
     this.snackBar.openFromComponent(MessageComponent, {
+      duration: 1000,
       data: {
         message: 'Produsul a fost sters din cos!',
         type: MessageType.SUCCESS,

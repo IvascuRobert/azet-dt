@@ -1,11 +1,11 @@
 <app-header></app-header>
 
 <mat-sidenav-container>
-    <mat-sidenav mode="over"
-                 [opened]="offcanvasNavigationOpen$ | async"
-                 (closed)="closeNavigation()"
-                 class="position-fixed">
-        <app-sidenav-list></app-sidenav-list>
+    <mat-sidenav [opened]="offcanvasSidenavMenu$ | async"
+                 (closed)="closeSidenavMenu()"
+                 mode="over"
+                 class="left-sidenav position-fixed">
+        <app-sidenav-menu></app-sidenav-menu>
     </mat-sidenav>
 
     <mat-sidenav-content>
@@ -13,6 +13,16 @@
             <router-outlet></router-outlet>
         </main>
     </mat-sidenav-content>
+
+    <mat-sidenav [opened]="offcanvasSidenavCart$ | async"
+                 (closed)="closeSidenavCart()"
+                 mode="over"
+                 position="end"
+                 class="right-sidenav position-fixed"
+                 autoFocus="false">
+        <app-sidenav-cart></app-sidenav-cart>
+    </mat-sidenav>
+
 </mat-sidenav-container>
 
 <app-footer></app-footer>

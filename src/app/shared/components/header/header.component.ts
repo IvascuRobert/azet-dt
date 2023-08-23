@@ -25,11 +25,11 @@ export class HeaderComponent implements OnInit {
     this.cart$ = this.cartService.cart$;
   }
 
-  toggleMenu(): void {
-    this.offcanvasService.toggleOffcanvasNavigation();
+  toggleSidenavMenu(): void {
+    this.offcanvasService.toggleOffcanvasSidenavMenu();
   }
 
-  removeFromCart(product: Product): void {
-    this.cartService.removeFromCart(product);
+  toggleSidenavCart(): void {
+    this.offcanvasService.toggleOffcanvasSidenavCart();
   }
 }

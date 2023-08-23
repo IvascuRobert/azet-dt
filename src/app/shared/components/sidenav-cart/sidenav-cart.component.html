@@ -1,0 +1,142 @@
+<div class="mx-3" *ngIf="cart$ | async as cart">
+  <div
+    class="text-uppercase text-center text-color-honolulu-blue fs-26 fw-bold pt-4 sticky-top bg-color-white"
+  >
+    Coș
+    <mat-divider class="my-3"></mat-divider>
+  </div>
+  <ng-container *ngIf="cart.length > 0; else noProductsInCart">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr class="text-center">
+            <th scope="col"></th>
+            <th scope="col">Produs</th>
+            <th scope="col">Cantitate</th>
+            <th scope="col">
+              Total <br />
+              (fără TVA)
+            </th>
+            <th scope="col">
+              Total <br />
+              (cu TVA)
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cart of cart">
+            <th scope="row">
+              <img
+                [src]="cart.product.pictureSrc"
+                class="rounded w-85"
+                [alt]="cart.product.name"
+              />
+            </th>
+            <td class="align-middle" [title]="cart.product.name">
+              <span
+                class="d-inline-block text-truncate"
+                style="max-width: 150px"
+                >{{ cart.product.name }}
+              </span>
+            </td>
+            <td class="align-middle">
+              <mat-form-field
+                floatLabel="always"
+                class="w-50-px mt-4"
+                appearance="outline"
+              >
+                <input
+                  mask="00"
+                  [validation]="false"
+                  [allowNegativeNumbers]="false"
+                  matInput
+                  type="string"
+                  [(ngModel)]="cart.quantity"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </mat-form-field>
+            </td>
+            <td class="align-middle">
+              <ng-container
+                *ngIf="
+                  cart.product.price.discount;
+                  else totalProductsHasNoDiscountWithoutTax
+                "
+              >
+                <ng-container *ngIf="cart.product.price.withDiscount">
+                  {{
+                    cart.product.price.withDiscount * cart.quantity
+                      | aztDtCurrency
+                  }}
+                </ng-container>
+              </ng-container>
+              <ng-template #totalProductsHasNoDiscountWithoutTax>
+                {{ cart.product.price.value * cart.quantity | aztDtCurrency }}
+              </ng-template>
+            </td>
+            <td class="align-middle">
+              <ng-container
+                *ngIf="
+                  cart.product.price.discount;
+                  else totalProductsHasNoDiscountWithTax
+                "
+              >
+                <ng-container *ngIf="cart.product.price.withDiscountWithTax">
+                  {{
+                    cart.product.price.withDiscountWithTax * cart.quantity
+                      | aztDtCurrency
+                  }}
+                </ng-container>
+              </ng-container>
+              <ng-template #totalProductsHasNoDiscountWithTax>
+                {{ cart.product.price.withTax * cart.quantity | aztDtCurrency }}
+              </ng-template>
+            </td>
+            <td class="align-middle">
+              <button
+                mat-icon-button
+                color="primary"
+                class="d-flex"
+                (click)="removeFromCart(cart.product)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sticky-bottom bg-color-white">
+      <div class="row justify-content-end text-end">
+        <div class="col-lg-6 col-12">
+          <div class="row">
+            <div class="col-6">Subtotal fără TVA</div>
+            <div class="col-6">10.153,00 lei</div>
+            <div class="col-6">Valoare TVA</div>
+            <div class="col-6">1.929,07 lei</div>
+            <div class="col-6">TOTAL</div>
+            <div class="col-6">12.082,07 lei</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noProductsInCart>
+    <div class="text-center">
+      <div class="d-flex">
+        <mat-icon class="me-2 text-color-gargoyle-gas">warning</mat-icon>
+        <div class="text-color-cadet">Coșul tău este în prezent gol.</div>
+      </div>
+      <button
+        class="mt-4"
+        mat-raised-button
+        color="primary"
+        routerLink="/products"
+        (click)="closeSidenavCart()"
+      >
+        Inapoi la magazin
+      </button>
+    </div>
+  </ng-template>
+</div>

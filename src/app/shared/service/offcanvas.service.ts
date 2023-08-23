@@ -10,7 +10,8 @@ import { Breadcrumb } from 'src/app/types/interface/breadcrumb';
 
 @Injectable()
 export class OffcanvasService {
-  public offcanvasNavigationOpen = new BehaviorSubject(false);
+  public offcanvasSidenavMenu$ = new BehaviorSubject(false);
+  public offcanvasSidenavCart$ = new BehaviorSubject(false);
   public breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
 
   constructor(private router: Router) {
@@ -21,17 +22,30 @@ export class OffcanvasService {
       });
   }
 
-  public toggleOffcanvasNavigation() {
-    const state = !this.offcanvasNavigationOpen.getValue();
-    this.offcanvasNavigationOpen.next(state);
+  public toggleOffcanvasSidenavMenu() {
+    const state = !this.offcanvasSidenavMenu$.getValue();
+    this.offcanvasSidenavMenu$.next(state);
   }
 
-  public openOffcanvasNavigation() {
-    this.offcanvasNavigationOpen.next(true);
+  public openOffcanvasSidenavMenu() {
+    this.offcanvasSidenavMenu$.next(true);
   }
 
-  public closeOffcanvasNavigation() {
-    this.offcanvasNavigationOpen.next(false);
+  public closeOffcanvasSidenavMenu() {
+    this.offcanvasSidenavMenu$.next(false);
+  }
+
+  public toggleOffcanvasSidenavCart() {
+    const state = !this.offcanvasSidenavCart$.getValue();
+    this.offcanvasSidenavCart$.next(state);
+  }
+
+  public openOffcanvasSidenavCart() {
+    this.offcanvasSidenavCart$.next(true);
+  }
+
+  public closeOffcanvasSidenavCart() {
+    this.offcanvasSidenavCart$.next(false);
   }
 
   private initBreadcrumb(): void {
