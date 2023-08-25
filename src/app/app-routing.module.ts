@@ -45,7 +45,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes, {
       preloadingStrategy: PreloadModulesStrategy,
-      scrollPositionRestoration: 'disabled',
+      scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
     }),
   ],

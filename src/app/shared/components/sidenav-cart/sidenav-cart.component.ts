@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { ShopProductsDetailsDialogComponent } from 'src/app/shop-products/shop-products-details-dialog/shop-products-details-dialog.component';
 import { Cart } from 'src/app/types/interface/cart';
-import { CartService } from '../../service/cart.service';
 import { Product } from 'src/app/types/interface/product';
+import { CartService } from '../../service/cart.service';
 import { OffcanvasService } from '../../service/offcanvas.service';
 
 @Component({
@@ -15,7 +17,8 @@ export class SidenavCartComponent {
 
   constructor(
     private cartService: CartService,
-    private offCanvasService: OffcanvasService
+    private offCanvasService: OffcanvasService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -28,5 +31,11 @@ export class SidenavCartComponent {
 
   closeSidenavCart(): void {
     this.offCanvasService.closeOffcanvasSidenavCart();
+  }
+
+  openProductDetails(product: Product): void {
+    this.dialog.open(ShopProductsDetailsDialogComponent, {
+      data: product,
+    });
   }
 }
