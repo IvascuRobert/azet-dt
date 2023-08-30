@@ -5,14 +5,14 @@ import {
   NavigationEnd,
   Router,
 } from '@angular/router';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, filter } from 'rxjs';
 import { Breadcrumb } from 'src/app/types/interface/breadcrumb';
 
 @Injectable()
 export class OffcanvasService {
-  public offcanvasSidenavMenu$ = new BehaviorSubject(false);
-  public offcanvasSidenavCart$ = new BehaviorSubject(false);
-  public breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
+  offcanvasSidenavMenu$ = new BehaviorSubject(false);
+  offcanvasSidenavCart$ = new BehaviorSubject(false);
+  breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
 
   constructor(private router: Router) {
     this.router.events
@@ -20,31 +20,45 @@ export class OffcanvasService {
       .subscribe(() => {
         this.initBreadcrumb();
       });
+
+    this.offcanvasSidenavCart$
+      .pipe(distinctUntilChanged())
+      .subscribe((opened) => {
+        const bodyElement = document.querySelector('body');
+
+        if (opened) {
+          bodyElement?.classList.remove('overflow-scroll');
+          bodyElement?.classList.add('overflow-hidden');
+        } else {
+          bodyElement?.classList.remove('overflow-hidden');
+          bodyElement?.classList.add('overflow-scroll');
+        }
+      });
   }
 
-  public toggleOffcanvasSidenavMenu() {
+  toggleOffcanvasSidenavMenu() {
     const state = !this.offcanvasSidenavMenu$.getValue();
     this.offcanvasSidenavMenu$.next(state);
   }
 
-  public openOffcanvasSidenavMenu() {
+  openOffcanvasSidenavMenu() {
     this.offcanvasSidenavMenu$.next(true);
   }
 
-  public closeOffcanvasSidenavMenu() {
+  closeOffcanvasSidenavMenu() {
     this.offcanvasSidenavMenu$.next(false);
   }
 
-  public toggleOffcanvasSidenavCart() {
+  toggleOffcanvasSidenavCart() {
     const state = !this.offcanvasSidenavCart$.getValue();
     this.offcanvasSidenavCart$.next(state);
   }
 
-  public openOffcanvasSidenavCart() {
+  openOffcanvasSidenavCart() {
     this.offcanvasSidenavCart$.next(true);
   }
 
-  public closeOffcanvasSidenavCart() {
+  closeOffcanvasSidenavCart() {
     this.offcanvasSidenavCart$.next(false);
   }
 

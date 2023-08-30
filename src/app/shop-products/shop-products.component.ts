@@ -95,7 +95,10 @@ export class ShopProductsComponent implements OnInit {
       price: {
         value: 100,
         withTax: 119,
+        withDiscount: 90,
+        withDiscountWithTax: 107.1,
         taxPercentage: 19,
+        discount: 10,
       },
       pictureSrc: './assets/pictures/tires/tire.png',
       description:

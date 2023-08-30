@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { CopyLinkComponent } from './components/copy-link/copy-link.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -10,16 +11,17 @@ import { LayoutAdminComponent } from './components/layout-admin/layout-admin.com
 import { LayoutShopComponent } from './components/layout-shop/layout-shop.component';
 import { LogoIconComponent } from './components/logo-icon/logo-icon.component';
 import { MessageComponent } from './components/message/message.component';
+import { SidenavCartComponent } from './components/sidenav-cart/sidenav-cart.component';
 import { SidenavMenuComponent } from './components/sidenav-menu/sidenav-menu.component';
 import { MaterialModule } from './module/material.module';
+import { CountTotalDiscountPipe } from './pipes/count-total-discount.pipe';
+import { CountTotalPricePipe } from './pipes/count-total-price.pipe';
 import { CountTotalQuantityPipe } from './pipes/count-total-quantity.pipe';
+import { CountTotalTaxPipe } from './pipes/count-total-tax.pipe';
+import { AztDtCurrencyPipe } from './pipes/currency.pipe';
 import { FormControlErrorInterpretationPipe } from './pipes/form-control-error-interpretation.pipe';
 import { TrimPipe } from './pipes/trim.pipe';
 import { OffcanvasService } from './service/offcanvas.service';
-import { AztDtCurrencyPipe } from './pipes/currency.pipe';
-import { SidenavCartComponent } from './components/sidenav-cart/sidenav-cart.component';
-import { FormsModule } from '@angular/forms';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -45,6 +47,9 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     BreadcrumbComponent,
     CountTotalQuantityPipe,
     AztDtCurrencyPipe,
+    CountTotalPricePipe,
+    CountTotalDiscountPipe,
+    CountTotalTaxPipe,
     SidenavCartComponent,
   ],
   exports: [
@@ -62,6 +67,9 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     SidenavMenuComponent,
     CountTotalQuantityPipe,
     AztDtCurrencyPipe,
+    CountTotalPricePipe,
+    CountTotalDiscountPipe,
+    CountTotalTaxPipe,
     NgxMaskDirective,
     NgxMaskPipe,
   ],

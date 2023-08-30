@@ -25,4 +25,16 @@ export class LayoutShopComponent implements OnInit {
   closeSidenavCart(): void {
     this.offcanvasService.closeOffcanvasSidenavCart();
   }
+
+  openSidenavMenu(event: boolean) {
+    if (event) {
+      this.closeSidenavCart();
+    }
+  }
+
+  openSidenavCart(event: boolean) {
+    if (event) {
+      this.closeSidenavMenu();
+    }
+  }
 }
