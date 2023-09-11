@@ -1,40 +1,50 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
 import { Cart } from 'src/app/types/interface/cart';
+import { azDTFormatCurrency } from '../utils/utils';
 
 @Pipe({
   name: 'countTotalPrice',
   pure: false,
 })
 export class CountTotalPricePipe implements PipeTransform {
-  transform(cart: Cart[], withTax: boolean = true): number {
-    let totalPrice = 0;
+  constructor(@Inject(LOCALE_ID) private locale: string) {}
 
-    if (withTax) {
-      for (const cartValue of cart) {
-        if (
-          cartValue.product.price.discount &&
-          cartValue.product.price.withDiscountWithTax
-        ) {
+  transform(
+    cart: Cart[],
+    priceWithoutTax = false,
+    currencyCode: string = 'lei ',
+    digitsInfo: string = '1.2-2'
+  ): string | null {
+    let totalPrice = 0;
+    console.log({ cart });
+    for (const cartValue of cart) {
+      const discount = cartValue.product.price.discount;
+      const taxPercentage = cartValue.product.price.taxPercentage;
+      const value = cartValue.product.price.value;
+      const quantity = cartValue.quantity;
+
+      if (priceWithoutTax) {
+        if (discount && value) {
           totalPrice +=
-            cartValue.product.price.withDiscountWithTax * cartValue.quantity;
+            (value - (value * discount) / 100 - (value * taxPercentage) / 100) *
+            quantity;
         } else {
-          totalPrice += cartValue.product.price.withTax * cartValue.quantity;
+          totalPrice += (value - (value * taxPercentage) / 100) * quantity;
         }
-      }
-    } else {
-      for (const cartValue of cart) {
-        if (
-          cartValue.product.price.discount &&
-          cartValue.product.price.withDiscount
-        ) {
-          totalPrice +=
-            cartValue.product.price.withDiscount * cartValue.quantity;
+      } else {
+        if (discount && value) {
+          totalPrice += (value - (value * discount) / 100) * quantity;
         } else {
-          totalPrice += cartValue.product.price.value * cartValue.quantity;
+          totalPrice += value * quantity;
         }
       }
     }
 
-    return totalPrice;
+    return azDTFormatCurrency(
+      totalPrice,
+      this.locale,
+      currencyCode,
+      digitsInfo
+    );
   }
 }

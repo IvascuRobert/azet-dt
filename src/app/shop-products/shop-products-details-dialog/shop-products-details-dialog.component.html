@@ -1,40 +1,45 @@
-<h1 mat-dialog-title
-    class="align-items-center">
-  Descriere produs
-</h1>
+<h1 mat-dialog-title class="align-items-center">Descriere produs</h1>
 <mat-dialog-content class="mat-typography">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-6 align-self-center">
-      <img [src]="product.pictureSrc"
-           class="rounded img-fluid"
-           [alt]="product.name" />
-      <div *ngIf="product.price.discount"
-           class="col-12 fw-700 fs-15 fs-12 position-absolute top-70 text-color-white bg-color-red w-85 ps-2">
+      <img
+        [src]="product.pictureSrc"
+        class="rounded img-fluid"
+        [alt]="product.name"
+      />
+      <div
+        *ngIf="product.price.discount"
+        class="col-12 fw-700 fs-15 fs-12 position-absolute top-70 text-color-white bg-color-red w-85 ps-2"
+      >
         - {{ product.price.discount }}% extra
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
       <div class="row text-center border border-primary py-2">
-        <div *ngIf="product.price.discount; else productHasNoDiscount"
-             class="col-12 fw-500 fs-13">
-          <span class="text-decoration-line-through">{{ product.price.withTax | aztDtCurrency }}</span>
-          <span class="text-color-red fw-b"> -{{product.price.discount}}%</span>
-          <div *ngIf="product.price.withDiscountWithTax"
-               class="col-12 fw-700 fs-2 text-color-honolulu-blue">
-            {{ product.price.withDiscountWithTax | aztDtCurrency }}
+        <div
+          *ngIf="product.price.discount; else productHasNoDiscount"
+          class="col-12 fw-500 fs-13"
+        >
+          <span class="text-decoration-line-through">{{
+            product.price | aztDtCurrency
+          }}</span>
+          <span class="text-color-red fw-b">
+            -{{ product.price.discount }}%</span
+          >
+          <div class="col-12 fw-700 fs-2 text-color-honolulu-blue">
+            {{ product.price | aztDtCurrency : true }}
           </div>
-          <div *ngIf="product.price.withDiscount"
-               class="col-12 fw-500 fs-13">
-            {{ product.price.withDiscount | aztDtCurrency }} Fără TVA
+          <div class="col-12 fw-500 fs-13">
+            {{ product.price | aztDtCurrency : true : true }} Fără TVA
           </div>
         </div>
         <ng-template #productHasNoDiscount>
           <div class="col-12 fw-500 fs-13 mt-2">
             <div class="col-12 fw-700 fs-2 text-color-honolulu-blue">
-              {{ product.price.withTax | aztDtCurrency }}
+              {{ product.price | aztDtCurrency }}
             </div>
             <div class="col-12 fw-500 fs-13">
-              {{ product.price.value | aztDtCurrency }} Fără TVA
+              {{ product.price | aztDtCurrency : false : true }} Fără TVA
             </div>
           </div>
         </ng-template>
@@ -42,19 +47,20 @@
       <mat-list>
         <mat-list-item>
           <span matListItemTitle>Nume</span>
-          <span matListItemLine>{{product.name}}</span>
+          <span matListItemLine>{{ product.name }}</span>
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Brand</span>
-          <span matListItemLine>{{product.brand}}</span>
+          <span matListItemLine>{{ product.brand }}</span>
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Vreme</span>
-          <span matListItemLine
-                class="d-flex align-items-center">
-            <mat-icon class="mt-2"
-                      [matTooltip]="product.weather"
-                      [color]="product.weather === 'wb_sunny' ? 'accent' : 'primary'">
+          <span matListItemLine class="d-flex align-items-center">
+            <mat-icon
+              class="mt-2"
+              [matTooltip]="product.weather"
+              [color]="product.weather === 'wb_sunny' ? 'accent' : 'primary'"
+            >
               {{ product.weather }}
             </mat-icon>
             <div class="mt-2 ms-2">
@@ -64,45 +70,41 @@
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Width</span>
-          <span matListItemLine>{{product.width}}</span>
+          <span matListItemLine>{{ product.width }}</span>
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Height</span>
-          <span matListItemLine>{{product.height}}</span>
+          <span matListItemLine>{{ product.height }}</span>
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Diameter</span>
-          <span matListItemLine>{{product.diameter}}</span>
+          <span matListItemLine>{{ product.diameter }}</span>
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Profile</span>
-          <span matListItemLine>{{product.profile}}</span>
+          <span matListItemLine>{{ product.profile }}</span>
         </mat-list-item>
         <mat-list-item>
           <span matListItemTitle>Tip vehicule</span>
-          <span *ngFor="let option of product.vehicleType"
-                class="border border-primary rounded px-2 me-2">
-            {{option}}
+          <span
+            *ngFor="let option of product.vehicleType"
+            class="border border-primary rounded px-2 me-2"
+          >
+            {{ option }}
           </span>
         </mat-list-item>
-        <mat-list-item *ngIf="product.description"
-                       lines="3">
+        <mat-list-item *ngIf="product.description" lines="3">
           <span matListItemTitle>Description</span>
-          {{product.description}}
+          {{ product.description }}
         </mat-list-item>
       </mat-list>
     </div>
   </div>
 </mat-dialog-content>
-<div mat-dialog-actions
-     class="justify-content-between">
-  <button mat-flat-button
-          (click)="onNoClick()">Mai tarziu</button>
+<div mat-dialog-actions class="justify-content-between">
+  <button mat-flat-button (click)="onNoClick()">Mai tarziu</button>
 
-  <button color="primary"
-          mat-fab
-          cdkFocusInitial
-          (click)="addToCart(product)">
+  <button color="primary" mat-fab cdkFocusInitial (click)="addToCart(product)">
     <mat-icon>shopping_cart</mat-icon>
   </button>
 </div>

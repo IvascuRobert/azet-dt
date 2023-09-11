@@ -12,10 +12,10 @@ export class CountTotalDiscountPipe implements PipeTransform {
     for (const cartValue of cart) {
       if (
         cartValue.product.price.discount &&
-        cartValue.product.price.withDiscountWithTax
+        cartValue.product.price.value
       ) {
         totalDiscount +=
-          cartValue.product.price.withDiscountWithTax * cartValue.quantity;
+          cartValue.product.price.value * cartValue.quantity;
       }
     }
 

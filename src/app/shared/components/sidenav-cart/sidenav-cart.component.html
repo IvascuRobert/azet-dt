@@ -43,50 +43,44 @@
                 />
               </mat-form-field>
             </div>
-            <div class="col-6 bg-color-transparent fw-700 mb-1">
-              Total ( cu TVA ):
-            </div>
-            <div
-              class="col-6 text-color-honolulu-blue fw-700 bg-color-transparent mb-1"
-            >
+            <div class="col-6 fw-700 mb-1">Total (cu TVA):</div>
+            <div class="col-6 text-color-honolulu-blue fw-700 mb-1">
               <ng-container
                 *ngIf="
                   cart.product.price.discount;
                   else totalProductsHasNoDiscountWithTax
                 "
               >
-                <ng-container *ngIf="cart.product.price.withDiscountWithTax">
-                  {{
-                    cart.product.price.withDiscountWithTax * cart.quantity
-                      | aztDtCurrency
-                  }}
-                </ng-container>
+                {{
+                  cart.product.price
+                    | aztDtCurrency : true : false : cart.quantity
+                }}
               </ng-container>
               <ng-template #totalProductsHasNoDiscountWithTax>
-                {{ cart.product.price.withTax * cart.quantity | aztDtCurrency }}
+                {{
+                  cart.product.price
+                    | aztDtCurrency : false : false : cart.quantity
+                }}
               </ng-template>
             </div>
-            <div class="col-6 bg-color-transparent fw-700">
-              Total ( fara TVA ):
-            </div>
-            <div
-              class="col-6 text-color-honolulu-blue fw-700 bg-color-transparent"
-            >
+            <div class="col-6 fw-700">Total (fara TVA):</div>
+            <div class="col-6 text-color-honolulu-blue fw-700">
               <ng-container
                 *ngIf="
                   cart.product.price.discount;
                   else totalProductsHasNoDiscountWithoutTax
                 "
               >
-                <ng-container *ngIf="cart.product.price.withDiscount">
-                  {{
-                    cart.product.price.withDiscount * cart.quantity
-                      | aztDtCurrency
-                  }}
-                </ng-container>
+                {{
+                  cart.product.price
+                    | aztDtCurrency : true : true : cart.quantity
+                }}
               </ng-container>
               <ng-template #totalProductsHasNoDiscountWithoutTax>
-                {{ cart.product.price.value * cart.quantity | aztDtCurrency }}
+                {{
+                  cart.product.price
+                    | aztDtCurrency : false : true : cart.quantity
+                }}
               </ng-template>
             </div>
           </div>
@@ -106,22 +100,28 @@
       </ng-container>
     </div>
 
-    <div
-      class="row justify-content-end text-end sticky-bottom bg-color-honolulu-blue text-color-white mt-3"
-    >
+    <div class="row sticky-bottom bg-color-honolulu-blue text-color-white mt-3">
       <div class="col-lg-6 col-12">
-        <div class="row py-4">
-          <div class="col-6">Subtotal fără TVA</div>
+        <button
+          class="mt-4"
+          mat-raised-button
+          routerLink="/products"
+          (click)="closeSidenavCart()"
+        >
+          Plateste
+        </button>
+      </div>
+      <div class="col-lg-6 col-12">
+        <div class="row py-4 text-end">
+          <div class="col-6">TOTAL (cu TVA):</div>
           <div class="col-6">
-            {{ cart | countTotalPrice : false | aztDtCurrency }}
+            {{ cart | countTotalPrice }}
           </div>
-          <div class="col-6">Valoare TVA</div>
-          <div class="col-6">{{cart | countTotalTax | aztDtCurrency}}</div>
-          <div class="col-6">Discount</div>
-          <div class="col-6">{{cart | countTotalDiscount | aztDtCurrency}}</div>
           <mat-divider class="my-2"></mat-divider>
-          <div class="col-6 fw-700">TOTAL</div>
-          <div class="col-6 fw-700">{{ cart | countTotalPrice | aztDtCurrency }}</div>
+          <div class="col-6 fw-700">TOTAL (fara TVA):</div>
+          <div class="col-6 fw-700">
+            {{ cart | countTotalPrice : true }}
+          </div>
         </div>
       </div>
     </div>

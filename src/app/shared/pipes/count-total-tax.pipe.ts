@@ -13,22 +13,22 @@ export class CountTotalTaxPipe implements PipeTransform {
       for (const cartValue of cart) {
         if (
           cartValue.product.price.discount &&
-          cartValue.product.price.withDiscountWithTax
+          cartValue.product.price.value
         ) {
           totalPrice +=
-            cartValue.product.price.withDiscountWithTax * cartValue.quantity;
+            cartValue.product.price.value * cartValue.quantity;
         } else {
-          totalPrice += cartValue.product.price.withTax * cartValue.quantity;
+          totalPrice += cartValue.product.price.value * cartValue.quantity;
         }
       }
     } else {
       for (const cartValue of cart) {
         if (
           cartValue.product.price.discount &&
-          cartValue.product.price.withDiscount
+          cartValue.product.price.value
         ) {
           totalPrice +=
-            cartValue.product.price.withDiscount * cartValue.quantity;
+            cartValue.product.price.value * cartValue.quantity;
         } else {
           totalPrice += cartValue.product.price.value * cartValue.quantity;
         }
