@@ -1,17 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
-import { CanActivateGuard } from './guards/can-activate.guard';
 import { LoggerService } from './services/logger.service';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, HttpClientModule],
-  exports: [RouterModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule],
+  exports: [HttpClientModule],
   declarations: [],
   providers: [
-    CanActivateGuard,
     LoggerService,
     {
       provide: 'Window',
