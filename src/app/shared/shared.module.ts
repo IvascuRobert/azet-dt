@@ -11,7 +11,6 @@ import { LayoutAdminComponent } from './components/layout-admin/layout-admin.com
 import { LayoutShopComponent } from './components/layout-shop/layout-shop.component';
 import { LogoIconComponent } from './components/logo-icon/logo-icon.component';
 import { MessageComponent } from './components/message/message.component';
-import { SidenavCartComponent } from './components/sidenav-cart/sidenav-cart.component';
 import { SidenavMenuComponent } from './components/sidenav-menu/sidenav-menu.component';
 import { MaterialModule } from './module/material.module';
 import { CountTotalDiscountPipe } from './pipes/count-total-discount.pipe';
@@ -50,7 +49,6 @@ import { OffcanvasService } from './service/offcanvas.service';
     CountTotalPricePipe,
     CountTotalDiscountPipe,
     CountTotalTaxPipe,
-    SidenavCartComponent,
   ],
   exports: [
     CommonModule,

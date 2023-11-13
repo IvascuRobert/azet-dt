@@ -11,7 +11,6 @@ import { Breadcrumb } from 'src/app/types/interface/breadcrumb';
 @Injectable()
 export class OffcanvasService {
   offcanvasSidenavMenu$ = new BehaviorSubject(false);
-  offcanvasSidenavCart$ = new BehaviorSubject(false);
   breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>([]);
 
   constructor(private router: Router) {
@@ -19,20 +18,6 @@ export class OffcanvasService {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.initBreadcrumb();
-      });
-
-    this.offcanvasSidenavCart$
-      .pipe(distinctUntilChanged())
-      .subscribe((opened) => {
-        const bodyElement = document.querySelector('body');
-
-        if (opened) {
-          bodyElement?.classList.remove('overflow-scroll');
-          bodyElement?.classList.add('overflow-hidden');
-        } else {
-          bodyElement?.classList.remove('overflow-hidden');
-          bodyElement?.classList.add('overflow-scroll');
-        }
       });
   }
 
@@ -47,19 +32,6 @@ export class OffcanvasService {
 
   closeOffcanvasSidenavMenu() {
     this.offcanvasSidenavMenu$.next(false);
-  }
-
-  toggleOffcanvasSidenavCart() {
-    const state = !this.offcanvasSidenavCart$.getValue();
-    this.offcanvasSidenavCart$.next(state);
-  }
-
-  openOffcanvasSidenavCart() {
-    this.offcanvasSidenavCart$.next(true);
-  }
-
-  closeOffcanvasSidenavCart() {
-    this.offcanvasSidenavCart$.next(false);
   }
 
   private initBreadcrumb(): void {

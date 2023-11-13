@@ -35,6 +35,12 @@ const appRoutes: Routes = [
       ),
   },
   {
+    path: 'cart',
+    component: LayoutShopComponent,
+    loadChildren: () =>
+      import('./shop-cart/shop-cart.module').then((m) => m.ShopCartModule),
+  },
+  {
     path: '**',
     pathMatch: 'full',
     redirectTo: '/home',

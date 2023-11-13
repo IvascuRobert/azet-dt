@@ -1,0 +1,27 @@
+<ng-container *ngIf="cart$ | async as cart">
+  <ng-container *ngIf="cart.length; else emptyCart">
+    <div class="row py-5 my-5">
+      <div class="col-8">
+        {{ cart | json }}
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #emptyCart>
+  <div class="row py-5 my-5">
+    <div class="col-12 text-center">
+      <div class="p-5 border rounded-3">
+        <h2>Nu ai produse in cos.</h2>
+        <p class="my-5">
+          Poti adauga produse prin apasarea butonului 'Adauga in cos' din
+          dreptul fiecarui produs dorit.
+        </p>
+        <button color="warn" routerLink="/products" mat-flat-button>
+          Anvelope
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

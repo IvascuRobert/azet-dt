@@ -9,32 +9,10 @@ import { OffcanvasService } from '../../service/offcanvas.service';
 })
 export class LayoutShopComponent implements OnInit {
   offcanvasSidenavMenu$ = new Observable<boolean>();
-  offcanvasSidenavCart$ = new Observable<boolean>();
 
   constructor(private offcanvasService: OffcanvasService) {}
 
   ngOnInit(): void {
     this.offcanvasSidenavMenu$ = this.offcanvasService.offcanvasSidenavMenu$;
-    this.offcanvasSidenavCart$ = this.offcanvasService.offcanvasSidenavCart$;
-  }
-
-  closeSidenavMenu(): void {
-    this.offcanvasService.closeOffcanvasSidenavMenu();
-  }
-
-  closeSidenavCart(): void {
-    this.offcanvasService.closeOffcanvasSidenavCart();
-  }
-
-  openSidenavMenu(event: boolean) {
-    if (event) {
-      this.closeSidenavCart();
-    }
-  }
-
-  openSidenavCart(event: boolean) {
-    if (event) {
-      this.closeSidenavMenu();
-    }
   }
 }

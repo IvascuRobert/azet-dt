@@ -28,8 +28,4 @@ export class HeaderComponent implements OnInit {
   toggleSidenavMenu(): void {
     this.offcanvasService.toggleOffcanvasSidenavMenu();
   }
-
-  toggleSidenavCart(): void {
-    this.offcanvasService.toggleOffcanvasSidenavCart();
-  }
 }

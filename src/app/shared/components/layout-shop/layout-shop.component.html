@@ -3,8 +3,6 @@
 <mat-sidenav-container>
   <mat-sidenav
     [opened]="offcanvasSidenavMenu$ | async"
-    (closed)="closeSidenavMenu()"
-    (openedChange)="openSidenavMenu($event)"
     mode="over"
     class="left-sidenav position-fixed"
   >
@@ -16,18 +14,6 @@
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
-
-  <mat-sidenav
-    [opened]="offcanvasSidenavCart$ | async"
-    (closed)="closeSidenavCart()"
-    (openedChange)="openSidenavCart($event)"
-    mode="over"
-    position="end"
-    class="right-sidenav position-fixed"
-    autoFocus="false"
-  >
-    <app-sidenav-cart></app-sidenav-cart>
-  </mat-sidenav>
 </mat-sidenav-container>
 
 <app-footer></app-footer>
